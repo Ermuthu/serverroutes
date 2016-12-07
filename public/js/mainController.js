@@ -31,8 +31,6 @@ ngElastic.controller('mainController', function($scope, $http) {
 	$scope.findIds = function() {
 		$http.get('/api/ip').success(function(ids) {
 			$scope.routes = ids.hits.hits;
-			console.log("IDs",ids);
-			// $scope.ids = ids;
 		}).error(function(err) {
 			console.log(err.message);
 		});
@@ -42,6 +40,9 @@ ngElastic.controller('mainController', function($scope, $http) {
 ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	$http.get('/api/ip/'+ $routeParams.id).success(function(data) {
 		$scope.data = data;
+		for (var i in data.existing_config){
+	    	$scope.router_name = i;
+		}
 	}).error(function(err) {
 		console.log(err.message);
 	});

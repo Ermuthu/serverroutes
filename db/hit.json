@@ -27,15 +27,15 @@
    {
      "_index" : "mpls_lsps",
      "_type" : "config",
-     "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10",
+     "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-72",
      "_score" : 1.0,
      "_source" : {
        "new_config" : {
-         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-72" : [ "19.0.146.1", "19.0.146.64" ]
        },
        "router_name" : "17.198.240.72",
        "existing_config" : {
-         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.64", "19.0.146.1" ]
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-72" : [ "19.0.146.64", "19.0.146.1" ]
        }
      }
    } ]
