@@ -1,21 +1,25 @@
-<div class="container" ng-controller="ipController" style="margin-top: 100px;">
-	<a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a>
-	<table class="table table-bordered animated fadeIn">
-		<thead>
-			<tr>
-				<th>IP Address</th>
-				<th>Router Name</th>
-				<th>Existing Config</th>
-				<th>New Config</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>{{data.router_name}}</td>
-				<td>{{router_name}}</td>
-				<td>{{data.existing_config}}</td>
-				<td>{{data.new_config}}</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<!-- <div class="container" ng-controller="ipController" style="margin-top: 100px;"> -->
+	<!-- <a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a> -->
+	<div class="row" ng-controller="ipController" style="margin-top: 100px;">
+		<div class="col-sm-6">
+			<table class="table table-bordered animated fadeIn">
+				<thead>
+					<tr>
+						<th>IP Address</th>
+						<th>Router Name</th>
+						<th>Existing Config</th>
+						<th>New Config</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{data.router_name}}</td>
+						<td>{{router_name}}</td>
+						<td>{{data.existing_config}}</td>
+						<td>{{data.new_config}}</td>
+					</tr>
+				</tbody>
+			</table>	
+		</div>
+	</div>
+<!-- </div> -->

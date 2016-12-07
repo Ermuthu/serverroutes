@@ -4,10 +4,6 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 
 	// Router
 	$routeProvider.
-		when('/', {
-			templateUrl: 'views/index.html',
-			controller: 'mainController'
-		}).
 		when('/ip/:id', {
 			templateUrl: 'views/ip.html',
 			controller: 'ipController'
@@ -28,7 +24,7 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 }]);
 
 ngElastic.controller('mainController', function($scope, $http) {
-	$scope.findIds = function() {
+	$scope.findIP = function() {
 		$http.get('/api/ip').success(function(ids) {
 			$scope.routes = ids.hits.hits;
 		}).error(function(err) {
