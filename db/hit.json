@@ -1,0 +1,43 @@
+{
+ "took" : 51,
+ "timed_out" : false,
+ "_shards" : {
+   "total" : 5,
+   "successful" : 5,
+   "failed" : 0
+ },
+ "hits" : {
+   "total" : 1,
+   "max_score" : 1.0,
+   "hits" : [ {
+     "_index" : "mpls_lsps",
+     "_type" : "config",
+     "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10",
+     "_score" : 1.0,
+     "_source" : {
+       "new_config" : {
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
+       },
+       "router_name" : "17.198.240.73",
+       "existing_config" : {
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.64", "19.0.146.1" ]
+       }
+     }
+   },
+   {
+     "_index" : "mpls_lsps",
+     "_type" : "config",
+     "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10",
+     "_score" : 1.0,
+     "_source" : {
+       "new_config" : {
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
+       },
+       "router_name" : "17.198.240.72",
+       "existing_config" : {
+         "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.64", "19.0.146.1" ]
+       }
+     }
+   } ]
+ }
+}

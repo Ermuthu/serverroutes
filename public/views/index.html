@@ -1,0 +1,14 @@
+<div class="container" ng-controller="mainController" ng-init="findIds()" style="margin-top: 100px;">
+	<table class="table table-bordered animated fadeIn">
+		<thead>
+			<tr>
+				<th>Router Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="route in routes">
+				<td><a href="#/ip/{{route._source.router_name}}">{{route._source.router_name}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
