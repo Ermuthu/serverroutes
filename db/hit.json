@@ -18,7 +18,7 @@
        "new_config" : {
          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
        },
-       "router_name" : "17.198.240.73",
+       "router_name" : "17.198.240.73 (1)",
        "existing_config" : {
          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.64", "19.0.146.1" ]
        }
@@ -33,7 +33,7 @@
        "new_config" : {
          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-72" : [ "19.0.146.1", "19.0.146.64" ]
        },
-       "router_name" : "17.198.240.72",
+       "router_name" : "17.198.240.72 (1)",
        "existing_config" : {
          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-72" : [ "19.0.146.64", "19.0.146.1" ]
        }
