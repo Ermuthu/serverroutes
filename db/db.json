@@ -1,0 +1,54 @@
+{
+  "took" : 5,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 3,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "mpls_lsps",
+      "_type" : "config",
+      "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10",
+      "_score" : 1.0,
+      "_source" : {
+        "new_config" : {
+          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
+        },
+        "router_name" : "17.198.240.73",
+        "existing_config" : {
+          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-10" : [ "19.0.146.64", "19.0.146.1" ]
+        }
+      }
+    }, {
+      "_index" : "mpls_lsps",
+      "_type" : "config",
+      "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BTEST-GW1-10",
+      "_score" : 1.0,
+      "_source" : {
+        "new_config" : {
+          "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BTEST-GW1-10" : [ "19.0.146.1", "19.0.146.64" ]
+        },
+        "router_name" : "17.198.240.73",
+        "existing_config" : null
+      }
+    }, {
+      "_index" : "mpls_lsps",
+      "_type" : "config",
+      "_id" : "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1-10",
+      "_score" : 1.0,
+      "_source" : {
+        "new_config" : {
+          "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1-10" : [ "19.0.148.80", "19.0.148.75", "19.0.136.97", "19.0.130.2" ]
+        },
+        "router_name" : "17.198.240.73",
+        "existing_config" : {
+          "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1-10" : [ "19.0.148.80", "19.0.148.75", "19.0.136.97", "19.0.130.1" ]
+        }
+      }
+    } ]
+  }
+}

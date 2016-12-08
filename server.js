@@ -14,8 +14,8 @@ app.use(bodyParser.json());
 //routes
 // require('./app/routes')(app);
 
-app.get('/api/ip', Api.getJSON);
-app.get('/api/ip/:ip', Api.getJSONIp);
+app.get('/api/id', Api.getJSON);
+app.get('/api/id/:id', Api.getJSONById);
 
 // express server
 app.listen(port, function(req, res) {
