@@ -39,7 +39,6 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		for (var i in data._source.existing_config){
 	    	$scope.router_name = i;
 	    	$scope.existing_config = data._source.existing_config[i];
-	    	console.log($scope.existing_config);
 		}
 		for (var i in data._source.new_config){
 	    	$scope.new_config = data._source.new_config[i];
