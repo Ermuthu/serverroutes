@@ -46,6 +46,20 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	}).error(function(err) {
 		console.log(err.message);
 	});
+	$scope.postData = function(req, res) {
+		var routerInfo = {
+			Router_name: $scope.data._source.router_name,
+			LSP_name: $scope.data._id,
+			Hops: $scope.existing_config,
+			NodeSeq: $scope.new_config
+		};
+		var Result = {config: routerInfo};
+		$http.post('/api/apply', Result).success(function(response) {
+			console.log("Posted");
+		}).error(function(res) {
+			console.log(res.message);
+		});
+	};
 });
 
 ngElastic.controller('notFound', function($scope) {

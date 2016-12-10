@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 app.get('/api/id', Api.getJSON);
 app.get('/api/id/:id', Api.getJSONById);
+app.post('http://10.12.21.14:9095/apply', Api.postJSON);
 
 // express server
 app.listen(port, function(req, res) {

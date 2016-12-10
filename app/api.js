@@ -14,5 +14,8 @@ module.exports = {
 			if(d._id == _id)
 				res.send(d);
 		});
+	},
+	postJSON: function(req, res) {
+		res.send(req.body);
 	}
 }
