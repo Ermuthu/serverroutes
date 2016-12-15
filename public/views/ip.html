@@ -1,7 +1,7 @@
 <!-- <div class="container" ng-controller="ipController" style="margin-top: 100px;"> -->
 	<!-- <a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a> -->
-	<div class="row" ng-controller="ipController" style="margin-top: 100px;">
-		<div class="col-sm-6">
+	<div class="row" ng-controller="ipController" ng-init="init()" style="margin-top: 100px;">
+		<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data" style="clear: both;">
 			<table class="table table-bordered animated fadeIn">
 				<thead>
 					<tr>
@@ -18,7 +18,7 @@
 						<td >{{data._id}}</td>
 						<td >{{existing_config}}</td>
 						<td >{{new_config}}</td>
-						<td ><a href="" ng-click="postData(data._id)" target="_blank" class="btn btn-primary">Apply</a></td>
+						<td ><a href="" ng-click="postData($index)" target="_blank" class="btn btn-primary">Apply</a></td>
 					</tr>
 				</tbody>
 			</table>	

@@ -1,0 +1,53 @@
+{
+    "took": 3,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 2,
+        "max_score": 0,
+        "hits": []
+    },
+    "aggregations": {
+        "states": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+                {
+                    "key": "DLNYC3-BBISP-GW2",
+                    "doc_count": 2,
+                    "hits": {
+                        "hits": {
+                            "total": 2,
+                            "max_score": 1,
+                            "hits": [
+                                {
+                                    "_index": "mpls_lsps",
+                                    "_type": "config",
+                                    "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+                                    "_score": 1,
+                                    "_source": {
+                                        "router_address": [
+                                            "17.198.240.75"
+                                        ],
+                                        "new_config": {
+                                            "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1": [
+                                                "19.0.146.64",
+                                                "19.0.146.1"
+                                            ]
+                                        },
+                                        "router_name": "DLNYC3-BBISP-GW2",
+                                        "existing_config": null
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
