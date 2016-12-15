@@ -1,7 +1,15 @@
 <!-- <div class="container" ng-controller="ipController" style="margin-top: 100px;"> -->
 	<!-- <a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a> -->
 	<div class="row" ng-controller="ipController" ng-init="init()" style="margin-top: 100px;">
-		<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data" style="clear: both;">
+		<form action="" class="form-inline col-sm-offset-3" style="padding-left: 15px;">
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router_lsp_search">
+				</div>
+			</div>
+			<!-- <button type="submit" class="btn btn-success">Submit</button> -->
+		</form>
+		<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data | filter: router_lsp_search" style="clear: both;">
 			<table class="table table-bordered animated fadeIn">
 				<thead>
 					<tr>

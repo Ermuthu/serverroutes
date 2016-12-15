@@ -34,7 +34,7 @@ ngElastic.controller('mainController', function($scope, $http) {
 		$http.get('/api/routes').success(function(data) {
 			$scope.routes = data.aggregations.states.buckets;
 			var extractData =  data.aggregations.states.buckets.map(function(data) {
-				console.log(data);
+				// console.log(data);
 				$scope.total = data.doc_count;
 				// $scope.routes = data;
 				// console.log($scope.routes);
@@ -114,7 +114,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			};
 		});
 		console.log($scope.routerInfo);
-		$http.post('http://10.12.21.14:9095/apply', $scope.routerInfo).success(function(response) {
+		$http.post('/api/apply', $scope.routerInfo).success(function(response) {
 			console.log("Posted");
 			toastr.success('Posted Successfully');
 		}).error(function(res) {
