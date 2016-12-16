@@ -142,6 +142,17 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	};
 });
 
+// TabController
+ngElastic.controller('tabController', function($scope, $http) {
+	$scope.init = function() {
+		$http.get('/api/records').success(function(data) {
+			$scope.routes = data.hits.hits;
+		}).error(function(err) {
+			console.log("Error loading data");
+		});
+	};
+});
+
 ngElastic.controller('notFound', function($scope) {
 	$scope.title = "Not FOUND";
 });
