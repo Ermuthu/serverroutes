@@ -29,5 +29,9 @@ module.exports = {
 	getPOSTJSON: function(req, res) {
 		var postfile = './db/post.json';
 		res.send(jsonfile.readFileSync(postfile));
+	},
+	records: function(req, res) {
+		var records = './db/records.json';
+		res.send(jsonfile.readFileSync(records));
 	}
 }

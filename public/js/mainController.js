@@ -8,6 +8,9 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 			templateUrl: 'views/ip.html',
 			controller: 'ipController'
 		}).
+		when('/tab', {
+			templateUrl: 'views/tab.html'
+		}).
 		when('/404', {
 			templateUrl: 'views/404.html',
 			controller: 'notFound'

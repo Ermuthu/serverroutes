@@ -24,6 +24,7 @@ app.get('/api/id', Api.getJSON);
 app.get('/api/id/:id', Api.getJSONById);
 app.get('/api/routes', Api.Routes);
 app.get('/api/route/:routername', Api.getRouteInfo);
+app.get('/api/records', Api.records);
 app.post('/api/apply', function(req, res) {
 	res.send(req.body);
 	var obj = {name: 'JP'}
