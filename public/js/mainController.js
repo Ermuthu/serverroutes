@@ -118,6 +118,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			console.log("Posted");
 			toastr.success('Posted Successfully');
 		}).error(function(res) {
+			console.log(res.message);
          	toastr.error('Internal Server Error');
 		});
 		$scope.data.splice(i, 1);

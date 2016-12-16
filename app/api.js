@@ -25,5 +25,9 @@ module.exports = {
 	getRouteInfo: function(req, res) {
 		var router_info = './db/router.json';
 		res.send(jsonfile.readFileSync(router_info));
+	},
+	getPOSTJSON: function(req, res) {
+		var postfile = './db/post.json';
+		res.send(jsonfile.readFileSync(postfile));
 	}
 }
