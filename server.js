@@ -10,6 +10,7 @@ var express = require('express'),
 var port = process.env.PORT || 9090;
 
 var file = './db/post.json';
+var file1 = './db/anotherpost.json';
 
 // app.use(express.static(__dirname + './public'));
 app.use(express.static('./public'));
@@ -24,10 +25,13 @@ app.get('/api/id/:id', Api.getJSONById);
 app.get('/api/routes', Api.Routes);
 app.get('/api/route/:routername', Api.getRouteInfo);
 app.post('/api/apply', function(req, res) {
-	console.log(req.body);
 	res.send(req.body);
 	var obj = {name: 'JP'}
-	jsonfile.writeFile(file, req.body);
+	jsonfile.writeFileSync(file, req.body);
+});
+app.post('/api/applyanother', function(req, res) {
+	res.send(req.body);
+	jsonfile.writeFileSync(file1, req.body);
 });
 app.get('/api/apply', Api.getPOSTJSON);
 // app.post('http://10.12.21.14:9095/apply', Api.postJSON);

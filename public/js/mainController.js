@@ -68,9 +68,9 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			// });
 			for(var i=0; i<$scope.data.length; i++) {
 				for(var key in $scope.data[i]._source.new_config){
-					console.log($scope.data[i]._source.new_config.hasOwnProperty(key));
+					// console.log($scope.data[i]._source.new_config.hasOwnProperty(key));
 					$scope.new_config=$scope.data[i]._source.new_config[key];
-					console.log($scope.new_config);
+					// console.log($scope.new_config);
 				};
 			}
 			// console.log($scope.routeDetails._source);
@@ -98,22 +98,36 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	// 		console.log(res.message);
 	// 	});
 	// };
-	$scope.postData = function(i) {
+	$scope.postData = function(i, d) {
 		// var routerInfo = {
 		// 	Router_name: $scope.data._source.router_name,
 		// 	LSP_name: $scope.data._id,
 		// 	Hops: $scope.existing_config,
 		// 	NodeSeq: $scope.new_config
 		// };
-		$scope.data.forEach(function(d) {
+		// console.log(d);
+		// $scope.data.forEach(function(d) {
 	        $scope.routerInfo = {
 				Router_name: d._source.router_name,
 				LSP_name: d._id,
-				Hops: $scope.existing_config,
-				NodeSeq: $scope.new_config
+				Hops: d._source.existing_config,
+				NodeSeq: d._source.new_config
 			};
-		});
+			$scope.anotherRouteInfo = {
+				router_name: d._source.router_name,
+				router_address: d._source.router_address,
+				new_config: d._source.new_config
+			};
+		// });
 		console.log($scope.routerInfo);
+		console.log($scope.anotherRouteInfo);
+		$http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
+			console.log("posting another Router");
+			toastr.error("Posted Success");
+		}).error(function(res) {
+			console.log(res.message);
+			toastr.info('Internal server error in another Router');
+		});
 		$http.post('/api/apply', $scope.routerInfo).success(function(response) {
 			console.log("Posted");
 			toastr.success('Posted Successfully');

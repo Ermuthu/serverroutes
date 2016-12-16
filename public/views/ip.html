@@ -14,6 +14,7 @@
 				<thead>
 					<tr>
 						<th>Router</th>
+						<th>Router Address</th>
 						<th>LSP Name</th>
 						<th>Existing Config</th>
 						<th>New Config</th>
@@ -23,10 +24,11 @@
 				<tbody>
 					<tr>
 						<td >{{data._source.router_name}}</td>
+						<td >{{data._source.router_address}}</td>
 						<td >{{data._id}}</td>
 						<td >{{existing_config}}</td>
 						<td >{{new_config}}</td>
-						<td ><a href="" ng-click="postData($index)" target="_blank" class="btn btn-primary">Apply</a></td>
+						<td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td>
 					</tr>
 				</tbody>
 			</table>	
