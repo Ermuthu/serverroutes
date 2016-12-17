@@ -1,0 +1,14 @@
+<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+	<table class="table table-bordered animated fadeIn">
+		<thead>
+			<tr>
+				<th>Router Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="route in routes">
+				<td><a href="#/route/{{route.key}}">{{route.key}} ({{route.doc_count}})</a></td>
+			</tr>
+		</tbody>
+	</table>	
+</div>	

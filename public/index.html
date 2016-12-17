@@ -30,6 +30,7 @@
 	    	</div>
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
+        			<li><a href="#/routes">Routes</a></li>
         			<li><a href="#/tab">Tab</a></li>
       			</ul>
     		</div>
@@ -38,20 +39,7 @@
 	<!-- Render views using angular -->
 	<!-- <div class="container" ng-controller="mainController"  ng-init="findIP()" style="margin-top: 100px;"> -->
 		<!-- <div class="row"> -->
-			<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
-				<table class="table table-bordered animated fadeIn">
-					<thead>
-						<tr>
-							<th>Router Name</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="route in routes">
-							<td><a href="#/route/{{route.key}}">{{route.key}} ({{route.doc_count}})</a></td>
-						</tr>
-					</tbody>
-				</table>	
-			</div>	
+
 		<!-- </div> -->
 	<!-- </div> -->
 	<!-- <div class="container">

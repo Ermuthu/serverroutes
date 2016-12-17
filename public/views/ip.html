@@ -1,6 +1,20 @@
 <!-- <div class="container" ng-controller="ipController" style="margin-top: 100px;"> -->
 	<!-- <a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a> -->
-	<div class="row" ng-controller="ipController" ng-init="init()" style="margin-top: 100px;">
+	<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+		<table class="table table-bordered animated fadeIn">
+			<thead>
+				<tr>
+					<th>Router Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="route in routes">
+					<td><a href="#/route/{{route.key}}">{{route.key}} ({{route.doc_count}})</a></td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+	<div class="row" ng-controller="ipController" ng-init="init()">
 		<form action="" class="form-inline col-sm-offset-3" style="padding-left: 15px;">
 			<div class="form-group">
 				<div class="input-group">

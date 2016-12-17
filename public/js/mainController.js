@@ -4,6 +4,14 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 
 	// Router
 	$routeProvider.
+		when('/', {
+			templateUrl: 'views/routes.html',
+			controller: 'mainController'
+		}).
+		when('/routes', {
+			templateUrl: 'views/routes.html',
+			controller: 'mainController'
+		}).
 		when('/route/:routename', {
 			templateUrl: 'views/ip.html',
 			controller: 'ipController'
