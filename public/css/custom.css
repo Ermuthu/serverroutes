@@ -1,5 +1,33 @@
 .logo{
 	width: 32px;
 	padding: 7px 0;
-	margin-top: -15px;
+	margin-top: -18px;
+}
+.logSuccess{
+	color: #449d44;
+	border:1px solid #398439;
+	background-color: #FFF;
+	padding: 4px;
+	border-radius: 5px;
+}
+.logSuccess:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #398439;
+    border:1px solid #398439;
+    cursor: pointer;
+}
+.logFailure{
+	color: #c9302c;
+	border:1px solid #ac2925;
+	background-color: #FFF;
+	padding: 4px;
+	border-radius: 5px;
+}
+.logFailure:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #c9302c;
+    border:1px solid #ac2925;
+    cursor: pointer;
 }

@@ -1,23 +1,26 @@
 <html>
 <head>
 	<title>Server Routes</title>
+
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<link rel="stylesheet" href="../css/custom.css">
+
 	<!-- Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 	<script src="./js/mainController.js"></script>
 </head>
 <body ng-app="ngElastic">
 	<!-- Navbar -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-inverse" style="border-radius: 0;">
   		<div class="container">
 	    	<div class="navbar-header">
 	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -26,12 +29,14 @@
 		        	<span class="icon-bar"></span>
 		        	<span class="icon-bar"></span>
 	      		</button>
-	      		<a class="navbar-brand" href="/"><img src="../img/Apple_logo_black.svg" class="logo"></a>
+	      		<a class="navbar-brand" href="#/"><img src="../img/Silver-Apple-Logo-psd60454.png" class="logo"></a>
 	    	</div>
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
-        			<li><a href="#/routes">Routes</a></li>
-        			<li><a href="#/tab">Tab</a></li>
+        			<!-- <li><a href="#/tab">Apply</a></li> -->
+        			<li><a href="#/logs">Log</a></li>
+        			<li><a href="/">Status</a></li>
+        			<li><a href="/">Build</a></li>
       			</ul>
     		</div>
   		</div>

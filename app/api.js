@@ -30,8 +30,8 @@ module.exports = {
 		var postfile = './db/post.json';
 		res.send(jsonfile.readFileSync(postfile));
 	},
-	records: function(req, res) {
-		var records = './db/records.json';
+	logs: function(req, res) {
+		var records = './db/new_records.json';
 		res.send(jsonfile.readFileSync(records));
 	}
 }

@@ -1,4 +1,4 @@
-var ngElastic = angular.module('ngElastic',['ngRoute']);
+var ngElastic = angular.module('ngElastic',['ngRoute', 'ui.bootstrap']);
 
 ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
@@ -16,8 +16,9 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 			templateUrl: 'views/ip.html',
 			controller: 'ipController'
 		}).
-		when('/tab', {
-			templateUrl: 'views/tab.html'
+		when('/logs', {
+			templateUrl: 'views/logs.html',
+			controller: 'tabController'
 		}).
 		when('/404', {
 			templateUrl: 'views/404.html',
@@ -73,24 +74,6 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	$scope.init = function() {
 		$http.get('/api/route/'+$routeParams.routername).success(function(data) {
 			$scope.data = data.hits.hits;
-			// console.log($scope.data);
-			// $scope.data.forEach(function(d) {
-			// 	$scope.routeDetails = d;
-			// });
-			for(var i=0; i<$scope.data.length; i++) {
-				for(var key in $scope.data[i]._source.new_config){
-					// console.log($scope.data[i]._source.new_config.hasOwnProperty(key));
-					$scope.new_config=$scope.data[i]._source.new_config[key];
-					// console.log($scope.new_config);
-				};
-			}
-			// console.log($scope.routeDetails._source);
-			// for(var i in $scope.routeDetails._source.existing_config) {
-			// 	$scope.existing_config = $scope.routeDetails._source.existing_config[i];
-			// }
-			// for(var i in $scope.routeDetails._source.new_config) {
-			// 	$scope.new_config = $scope.routeDetails._source.new_config[i];
-			// }
      	}).error(function(err) {
 			console.log(err.message);
 		});
@@ -151,14 +134,29 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 });
 
 // TabController
-ngElastic.controller('tabController', function($scope, $http) {
-	$scope.init = function() {
-		$http.get('/api/records').success(function(data) {
+ngElastic.controller('tabController', function($scope, $http, ModalService) {
+	$scope.tabInit = function() {
+		$http.get('/api/logs').success(function(data) {
 			$scope.routes = data.hits.hits;
 		}).error(function(err) {
 			console.log("Error loading data");
 		});
 	};
+	$scope.showModal = function(d) {
+		ModalService.showModal({
+			templateUrl: 'modal.html',
+			controller: 'tabController',
+			resolve: {
+				remarks: function() {
+					return d;
+				}
+			}
+		}).then(function(modal) {
+			$scope.message = "message";
+			console.log(modal);
+			modal.element.modal();
+		});
+	}
 });
 
 ngElastic.controller('notFound', function($scope) {
