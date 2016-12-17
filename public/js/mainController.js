@@ -134,7 +134,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 });
 
 // TabController
-ngElastic.controller('tabController', function($scope, $http, ModalService) {
+ngElastic.controller('tabController', function($scope, $http) {
 	$scope.tabInit = function() {
 		$http.get('/api/logs').success(function(data) {
 			$scope.routes = data.hits.hits;
@@ -143,19 +143,7 @@ ngElastic.controller('tabController', function($scope, $http, ModalService) {
 		});
 	};
 	$scope.showModal = function(d) {
-		ModalService.showModal({
-			templateUrl: 'modal.html',
-			controller: 'tabController',
-			resolve: {
-				remarks: function() {
-					return d;
-				}
-			}
-		}).then(function(modal) {
-			$scope.message = "message";
-			console.log(modal);
-			modal.element.modal();
-		});
+		console.log(d);
 	}
 });
 
