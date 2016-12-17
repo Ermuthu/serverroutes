@@ -9,6 +9,8 @@
 	background-color: #FFF;
 	padding: 4px;
 	border-radius: 5px;
+	display: block;
+	text-align: center;
 }
 .logSuccess:hover {
     color: #FFF;
@@ -23,6 +25,8 @@
 	background-color: #FFF;
 	padding: 4px;
 	border-radius: 5px;
+	display: block;
+	text-align: center;
 }
 .logFailure:hover {
     color: #FFF;

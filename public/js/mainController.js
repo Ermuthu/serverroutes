@@ -134,7 +134,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 });
 
 // TabController
-ngElastic.controller('tabController', function($scope, $http) {
+ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
 	$scope.tabInit = function() {
 		$http.get('/api/logs').success(function(data) {
 			$scope.routes = data.hits.hits;
@@ -143,8 +143,35 @@ ngElastic.controller('tabController', function($scope, $http) {
 		});
 	};
 	$scope.showModal = function(d) {
-		console.log(d);
+		if(d == "")
+			$scope.remarks = "No Remarks"
+		else
+			$scope.remarks = d;
+		var modalInstance = $uibModal.open({
+			templateUrl: 'myModalContent.html',
+			controller: 'ModalInstanceCtrl',
+			size: 'sm',
+			resolve: {
+		        remarks: function(){
+		          	return $scope.remarks
+		        }
+	      	}
+		});
 	}
+});
+
+// For Modal
+ngElastic.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, remarks) {
+
+  $scope.remarks = remarks;
+
+  $scope.ok = function () {
+    $uibModalInstance.close($scope.remarks);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
 
 ngElastic.controller('notFound', function($scope) {
