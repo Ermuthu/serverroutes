@@ -1,4 +1,11 @@
 <div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+	<form action="" class="form-inline">
+		<div class="form-group">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router.search" ng-change="routerSearch()">
+			</div>
+		</div>
+	</form>
 	<table class="table table-bordered animated fadeIn">
 		<thead>
 			<tr>
@@ -13,13 +20,6 @@
 	</table>	
 </div>
 <div class="row" ng-controller="ipController" ng-init="init()">
-	<form action="" class="form-inline col-sm-offset-3" style="padding-left: 15px;">
-		<div class="form-group">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router_lsp_search">
-			</div>
-		</div>
-	</form>
 	<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data | filter: router_lsp_search" style="clear: both;">
 		<table class="table table-bordered animated fadeIn">
 			<thead>
