@@ -20,6 +20,7 @@
 	<script src="./js/mainController.js"></script>
 </head>
 <body ng-app="ngElastic">
+
 	<!-- Navbar -->
 	<nav class="navbar navbar-default navbar-inverse" style="border-radius: 0;">
   		<div class="container">
@@ -42,33 +43,9 @@
     		</div>
   		</div>
 	</nav>
-	<!-- Render views using angular -->
-	<!-- <div class="container" ng-controller="mainController"  ng-init="findIP()" style="margin-top: 100px;"> -->
-		<!-- <div class="row"> -->
-
-		<!-- </div> -->
-	<!-- </div> -->
-	<!-- <div class="container">
-		<div class="row">
-			<div class="col-sm-6"><table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>TItle</th>
-					</tr>
-				</thead>
-			</table></p></div>
-			<div class="col-sm-6"><table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>TItle</th>
-					</tr>
-				</thead>
-			</table></p></div>
-		</div>
-	</div> -->
-	<!-- <div class="container"> -->
-		<div ng-view></div>
-	<!-- </div> -->
+	
+	<!-- Render .html files as per user request  -->
+	<div ng-view></div>
 
 </body>
 </html>

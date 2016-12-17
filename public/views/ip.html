@@ -1,51 +1,47 @@
-<!-- <div class="container" ng-controller="ipController" style="margin-top: 100px;"> -->
-	<!-- <a href="#/" class="btn btn-primary btn-small" style="margin-bottom: 15px;">Back</a> -->
-	<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+	<table class="table table-bordered animated fadeIn">
+		<thead>
+			<tr>
+				<th>Router Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="route in routes">
+				<td><a href="#/route/{{route.key}}">{{route.key}} ({{route.doc_count}})</a></td>
+			</tr>
+		</tbody>
+	</table>	
+</div>
+<div class="row" ng-controller="ipController" ng-init="init()">
+	<form action="" class="form-inline col-sm-offset-3" style="padding-left: 15px;">
+		<div class="form-group">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router_lsp_search">
+			</div>
+		</div>
+	</form>
+	<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data | filter: router_lsp_search" style="clear: both;">
 		<table class="table table-bordered animated fadeIn">
 			<thead>
 				<tr>
-					<th>Router Name</th>
+					<th>Router</th>
+					<th>Router Address</th>
+					<th>LSP Name</th>
+					<th>Existing Config</th>
+					<th>New Config</th>
+					<th>Details</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="route in routes">
-					<td><a href="#/route/{{route.key}}">{{route.key}} ({{route.doc_count}})</a></td>
+				<tr>
+					<td >{{data._source.router_name}}</td>
+					<td >{{data._source.router_address}}</td>
+					<td >{{data._id}}</td>
+					<td >{{data._source.existing_config}}</td>
+					<td >{{data._source.new_config[data._id]}}</td>
+					<td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td>
 				</tr>
 			</tbody>
 		</table>	
 	</div>
-	<div class="row" ng-controller="ipController" ng-init="init()">
-		<form action="" class="form-inline col-sm-offset-3" style="padding-left: 15px;">
-			<div class="form-group">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router_lsp_search">
-				</div>
-			</div>
-			<!-- <button type="submit" class="btn btn-success">Submit</button> -->
-		</form>
-		<div class="col-sm-offset-3 col-sm-6" ng-repeat="data in data | filter: router_lsp_search" style="clear: both;">
-			<table class="table table-bordered animated fadeIn">
-				<thead>
-					<tr>
-						<th>Router</th>
-						<th>Router Address</th>
-						<th>LSP Name</th>
-						<th>Existing Config</th>
-						<th>New Config</th>
-						<th>Details</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td >{{data._source.router_name}}</td>
-						<td >{{data._source.router_address}}</td>
-						<td >{{data._id}}</td>
-						<td >{{data._source.existing_config}}</td>
-						<td >{{data._source.new_config[data._id]}}</td>
-						<td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td>
-					</tr>
-				</tbody>
-			</table>	
-		</div>
-	</div>
-<!-- </div> -->
+</div>
