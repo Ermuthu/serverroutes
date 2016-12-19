@@ -1,13 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
-			<!-- <form action="" class="form-inline">
-				<div class="form-group">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Router/LSP Name" ng-model="router.search" ng-change="routerSearch()">
-					</div>
-				</div>
-			</form> -->
 			<table class="table table-bordered animated fadeIn">
 				<thead>
 					<tr>
@@ -23,22 +16,12 @@
 		</div>
 		<div class="col-sm-offset-3 col-sm-9" ng-controller="ipController" ng-init="init()">
 			<h1 class="well lead animated fadeIn" ng-show="data.length == 0"><i class="fa fa-hand-o-left fa-2x"></i> Select Router Name from Router table</h1>
-			<!-- <input type="button" class="btn btn-danger" value="Select All" ng-click="checkAll()" ng-hide="data.length == 0" ng-model="selectAll"> -->
-			<div id="ck-button" ng-hide="data.length == 0">
+			<div id="c2b" ng-hide="data.length == 0">
 				<label>
 					<input type="checkbox" value="1" class="btn btn-danger" ng-click="checkAll()" ng-hide="data.length == 0" ng-model="selectAll">
 					<span class="btn btn-danger">Select All</span>
 				</label>
 			</div>
-			<!-- <div id="ck-button">
-				<input type="checkbox" value="1" class="btn btn-danger" ng-click="checkAll()" ng-hide="data.length == 0" ng-model="selectAll">
-				<span class="btn btn-danger">red</span>
-			</div> -->
-			<!-- <div id="ck-button">
-			   <label>
-			      <input type="checkbox" value="1"><span>red</span>
-			   </label>
-			</div> -->
 			<input type="button" class="btn btn-success" value="Apply" ng-click="removeSelected()" ng-hide="data.length == 0">
 			<form action="" class="form-inline pull-right" ng-hide="data.length == 0">
 				<div class="form-group">
