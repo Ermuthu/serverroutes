@@ -61,7 +61,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	}
 	// send POST Request
 	$scope.postData = function(d) {
-		console.log(d);
+		// console.log(d);
         $scope.routerInfo = {
 			Router_name: d._source.router_name,
 			LSP_name: d._id,
@@ -73,16 +73,14 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			router_address: d._source.router_address,
 			new_config: d._source.new_config
 		};
-		// $http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
-		// 	toastr.error("Posted Success");
-		// }).error(function(res) {
-		// 	toastr.info('Internal server error in another Router');
-		// });
+		$http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
+			toastr.error("Posted Success");
+		}).error(function(res) {
+			toastr.info('Internal server error in another Router');
+		});
 		$http.post('/api/apply', $scope.routerInfo).success(function(response) {
-			console.log(response);
 			toastr.success('Posted Successfully');
 		}).error(function(res) {
-			console.log(response);
          	toastr.error('Internal Server Error');
 		});
 	};
@@ -92,7 +90,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		var newDataList = [];
 		angular.forEach($scope.data, function(d) {
 			if(!d.isDelete) {
-				console.log(d);
+				// console.log(d);
 				newDataList.push(d);
 			}else{
 				$scope.postData(d);
