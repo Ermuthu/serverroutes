@@ -80,8 +80,24 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		}).error(function(res) {
          	toastr.error('Internal Server Error');
 		});
-		$scope.data.splice(i, 1);
+		// $scope.data.splice(i, 1);
 	};
+	$scope.removeSelected = function() {
+		var newDataList = [];
+		angular.forEach($scope.data, function(d) {
+			if(!d.isDelete) {
+				console.log(d);
+				console.log(d.isDelete);
+				newDataList.push(d);
+			}
+		});
+		$scope.data = newDataList;
+	};
+	$scope.checkAll = function() {
+		angular.forEach($scope.data, function(data) {
+			data.isDelete = $scope.selectAll;
+		});
+	};	
 });
 
 // TabController
