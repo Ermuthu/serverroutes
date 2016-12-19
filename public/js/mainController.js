@@ -58,7 +58,8 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			console.log(err.message);
 		});
 	}
-	$scope.postData = function(i, d) {
+	$scope.postData = function(d) {
+		console.log(d);
         $scope.routerInfo = {
 			Router_name: d._source.router_name,
 			LSP_name: d._id,
@@ -80,15 +81,15 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		}).error(function(res) {
          	toastr.error('Internal Server Error');
 		});
-		// $scope.data.splice(i, 1);
 	};
 	$scope.removeSelected = function() {
 		var newDataList = [];
 		angular.forEach($scope.data, function(d) {
 			if(!d.isDelete) {
 				console.log(d);
-				console.log(d.isDelete);
 				newDataList.push(d);
+			}else{
+				$scope.postData(d);
 			}
 		});
 		$scope.data = newDataList;
