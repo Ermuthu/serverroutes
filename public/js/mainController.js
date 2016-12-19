@@ -50,6 +50,7 @@ ngElastic.controller('mainController', function($scope, $http) {
 });
 
 ngElastic.controller('ipController', function($scope, $http, $routeParams) {
+	// Load Initial Data
 	// var url = 'http://10.12.21.14:9200/mpls_lsps/_search?q=_id:'+$routeParams.id+'&pretty=true';
 	$scope.init = function() {
 		$http.get('/api/route/'+$routeParams.routername).success(function(data) {
@@ -58,6 +59,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			console.log(err.message);
 		});
 	}
+	// send POST Request
 	$scope.postData = function(d) {
 		console.log(d);
         $scope.routerInfo = {
@@ -71,17 +73,21 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			router_address: d._source.router_address,
 			new_config: d._source.new_config
 		};
-		$http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
-			toastr.error("Posted Success");
-		}).error(function(res) {
-			toastr.info('Internal server error in another Router');
-		});
+		// $http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
+		// 	toastr.error("Posted Success");
+		// }).error(function(res) {
+		// 	toastr.info('Internal server error in another Router');
+		// });
 		$http.post('/api/apply', $scope.routerInfo).success(function(response) {
+			console.log(response);
 			toastr.success('Posted Successfully');
 		}).error(function(res) {
+			console.log(response);
          	toastr.error('Internal Server Error');
 		});
 	};
+
+	// remove selected routes
 	$scope.removeSelected = function() {
 		var newDataList = [];
 		angular.forEach($scope.data, function(d) {
@@ -94,11 +100,13 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		});
 		$scope.data = newDataList;
 	};
+
+	// checkAll the routes
 	$scope.checkAll = function() {
 		angular.forEach($scope.data, function(data) {
 			data.isDelete = $scope.selectAll;
 		});
-	};	
+	};
 });
 
 // TabController
