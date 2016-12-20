@@ -31,7 +31,7 @@ module.exports = {
 		res.send(jsonfile.readFileSync(postfile));
 	},
 	logs: function(req, res) {
-		var records = './db/new_records.json';
+		var records = './db/new_records_2.json';
 		res.send(jsonfile.readFileSync(records));
 	}
 }

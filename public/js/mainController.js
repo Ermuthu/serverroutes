@@ -109,6 +109,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 
 // TabController
 ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
+	$scope.isCollapsed = true;
 	$scope.tabInit = function() {
 		$http.get('/api/logs').success(function(data) {
 			$scope.routes = data.hits.hits;
@@ -116,22 +117,22 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
 			console.log("Error loading data");
 		});
 	};
-	$scope.showModal = function(d) {
-		if(d == "")
-			$scope.remarks = "No Remarks"
-		else
-			$scope.remarks = d;
-		var modalInstance = $uibModal.open({
-			templateUrl: 'myModalContent.html',
-			controller: 'ModalInstanceCtrl',
-			size: 'sm',
-			resolve: {
-		        remarks: function(){
-		          	return $scope.remarks
-		        }
-	      	}
-		});
-	}
+	// $scope.showModal = function(d) {
+	// 	if(d == "")
+	// 		$scope.remarks = "No Remarks"
+	// 	else
+	// 		$scope.remarks = d;
+	// 	var modalInstance = $uibModal.open({
+	// 		templateUrl: 'myModalContent.html',
+	// 		controller: 'ModalInstanceCtrl',
+	// 		size: 'sm',
+	// 		resolve: {
+	// 	        remarks: function(){
+	// 	          	return $scope.remarks
+	// 	        }
+	//       	}
+	// 	});
+	// }
 });
 
 // For Modal

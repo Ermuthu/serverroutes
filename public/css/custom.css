@@ -67,3 +67,9 @@
     background-color:#911;
     color:#fff;
 }
+
+/* Logs Remarks toggle */
+.remarks{
+    padding: 5px;
+    border: 3px dotted #CCC;
+}

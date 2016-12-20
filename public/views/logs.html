@@ -20,32 +20,40 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="r in routes | filter: logs_search">
+					<tr ng-repeat-start="r in routes | filter: logs_search">
 						<td>{{r._source.router_name}}</td>
 						<td>{{r._source.router_address}}</td>
 						<td>{{r._id}}</td>
 						<td>{{r._source.existing_config}}</td>
 						<td>{{r._source.new_config}}</td>
 						<td>
-							<a ng-class="{'logSuccess': r._source.appliedstatus=='success', 'logFailure': r._source.appliedstatus=='fail'}" data-toggle="modal" data-target="#myModal" ng-click="showModal(r._source.remarks)">{{r._source.appliedstatus=='success' ? "Success" : "Fail"}}</a>
+							<!-- <a ng-class="{'logSuccess': r._source.appliedstatus=='success', 'logFailure': r._source.appliedstatus=='fail'}" data-toggle="modal" data-target="#myModal" ng-click="isCollapsed = !isCollapsed">{{r._source.appliedstatus=='success' ? "Success" : "Fail"}}</a> -->
+							<a ng-class="{'logSuccess': r._source.applied_status=='success', 'logFailure': r._source.applied_status=='failed'}" data-toggle="modal" data-target="#myModal" ng-click="isCollapsed = !isCollapsed">{{r._source.applied_status=='success' ? "Success" : "Fail"}}</a>
 						</td>
 					</tr>
+					<tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+			           <td colspan="6" ng-show="isCollapsed == false">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+							<b>Remarks : </b>{{r._source.remarks=="" ? 'No Remarks' : r._source.remarks}}
+							</p>
+						</td>
+			        </tr>  
 				</tbody>
 			</table>	
 		</div>
 	</div>
 	
 	<!-- Modal Window -->
-   	<script type="text/ng-template" id="myModalContent.html">
+   	<!-- <script type="text/ng-template" id="myModalContent.html">
 	    <div class="modal-header">
 	        <h3 class="modal-title" id="modal-title">Remarks!</h3>
 	    </div>
 	    <div class="modal-body" id="modal-body">
 	        <b>{{remarks}}</b>
 	    </div>
-	    <!-- <div class="modal-footer">
+	    <div class="modal-footer">
 	        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 	        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-	    </div> -->
-	</script>
+	    </div>
+	</script> -->
 </div>

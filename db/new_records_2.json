@@ -1,0 +1,48 @@
+{
+    "took": 1,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 2,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+                "_score": 1,
+                "_source": {
+                    "running_status": "init",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP",
+                    "remarks": "",
+                    "config": [],
+                    "applied_status": "success"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1",
+                "_score": 1,
+                "_source": {
+                    "running_status": "init",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB",
+                    "remarks": "Unable commit configuration changes: CommitError(edit_path: None, bad_element: None, message: error: configuration database locked by:\n  gnsarchlab terminal  (pid 23943) on since 2016-12-20 05:58:37 UTC\n      running commit script)",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.1"
+                    ],
+                    "applied_status": "failed"
+                }
+            }
+        ]
+    }
+}
