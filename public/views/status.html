@@ -20,16 +20,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}">
+					<tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}">
 						<td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
-						<td>{{s._id}}</td>
+						<td style="cursor: pointer;">
+							<a ng-click="isCollapsed = !isCollapsed">{{s._id}}</a>
+						</td>
 						<td class="text-center">
 							<button ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
 							<button ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
 							<button ng-show="s._source.running_status == 'init'" class="btn btn-info btn-circle"></button>
 							<button ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
 						</td>
+					</tr>
+					<tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+			           <td colspan="4" ng-show="isCollapsed == false">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+							<b>Logs : </b>{{s._source.log=="" ? 'No log found' : s._source.log}}
+							</p>
+						</td>
+			        </tr>  
 				</tbody>
 			</table>	
 		</div>

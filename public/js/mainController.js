@@ -142,6 +142,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
 // statusController
 
 ngElastic.controller('statusController', function($scope, $http) {
+	$scope.isCollapsed = true;
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
