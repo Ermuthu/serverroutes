@@ -148,7 +148,7 @@ ngElastic.controller('statusController', function($scope, $http) {
 		}).error(function(e) {
 			console.log(e.message);
 		});
-	}
+	};
 });
 
 // For Modal

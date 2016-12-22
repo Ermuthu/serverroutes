@@ -1,10 +1,12 @@
 <div class="row" ng-controller="statusController" ng-init="loadStatus()">
 	<div class="container">
-		<h1>status</h1>
+		<h1>Status</h1>
 		<form action="" class="form-inline">
 			<div class="form-group">
 				<label for="search">Search : </label>
-				<input type="text" id="search" class="form-control" placeholder="Router/LSP Name" ng-model="logs_search">
+				<input type="text" id="search" class="form-control" placeholder="Router Name" ng-model="router_name_search">
+				<span>-</span>
+				<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
 			</div>
 		</form>
 		<div>
@@ -18,15 +20,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="s in status | filter: logs_search">
+					<tr ng-repeat="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}">
 						<td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
 						<td>{{s._id}}</td>
 						<td class="text-center">
 							<button ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
 							<button ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
-							<button ng-show="s._source.running_status == 'info'" class="btn btn-info btn-circle"></button>
-							<button ng-show="s._source.running_status == 'undefined'" class="btn btn-primary btn-circle"></button>
+							<button ng-show="s._source.running_status == 'init'" class="btn btn-info btn-circle"></button>
+							<button ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
 						</td>
 				</tbody>
 			</table>	
