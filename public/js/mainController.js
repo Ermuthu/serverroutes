@@ -20,6 +20,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 			templateUrl: 'views/logs.html',
 			controller: 'tabController'
 		}).
+		when('/status', {
+			templateUrl: 'views/status.html',
+			controller: 'statusController'
+		}).
 		when('/404', {
 			templateUrl: 'views/404.html',
 			controller: 'notFound'
@@ -135,19 +139,31 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
 	// }
 });
 
-// For Modal
-ngElastic.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, remarks) {
+// statusController
 
-  $scope.remarks = remarks;
-
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.remarks);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+ngElastic.controller('statusController', function($scope, $http) {
+	$scope.loadStatus = function() {
+		$http.get('/api/status').success(function(data) {
+			$scope.status = data.hits.hits;
+		}).error(function(e) {
+			console.log(e.message);
+		});
+	}
 });
+
+// For Modal
+// ngElastic.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, remarks) {
+
+//   $scope.remarks = remarks;
+
+//   $scope.ok = function () {
+//     $uibModalInstance.close($scope.remarks);
+//   };
+
+//   $scope.cancel = function () {
+//     $uibModalInstance.dismiss('cancel');
+//   };
+// });
 
 // notFound Controller
 ngElastic.controller('notFound', function($scope) {
