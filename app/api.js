@@ -33,5 +33,9 @@ module.exports = {
 	logs: function(req, res) {
 		var records = './db/new_records_2.json';
 		res.send(jsonfile.readFileSync(records));
+	},
+	status: function(req, res) {
+		var status = './db/status.json';
+		res.send(jsonfile.readFileSync(status));
 	}
 }
