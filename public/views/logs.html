@@ -4,7 +4,9 @@
 		<form action="" class="form-inline">
 			<div class="form-group">
 				<label for="search">Search : </label>
-				<input type="text" id="search" class="form-control" placeholder="Router/LSP Name" ng-model="logs_search">
+				<input type="text" id="search" class="form-control" placeholder="Router/LSP Name" ng-model="router_name_search">
+				<span>-</span>
+				<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
 			</div>
 		</form>
 		<div>
@@ -20,7 +22,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat-start="r in routes | filter: logs_search">
+					<tr ng-repeat-start="r in routes | filter: {_source: {router_name: router_name_search}, _id: lsp_name_search}">
 						<td>{{r._source.router_name}}</td>
 						<td>{{r._source.router_address}}</td>
 						<td>{{r._id}}</td>
