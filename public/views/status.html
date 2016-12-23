@@ -18,7 +18,7 @@
 						<div class="funkyradio">
 							<div class="funkyradio-default">
 					            <input type="radio" name="radio" id="radio33" value="" ng-checked="checked" ng-model="selectStatus" />
-					            <label class="inline" for="radio33">All</label>
+					            <label for="radio33">All</label>
 					        </div>
 						</div>			
 					</div>
@@ -26,7 +26,7 @@
 						<div class="funkyradio">
 							<div class="funkyradio-success">
 					            <input type="radio" name="radio" id="radio3" value="Up" ng-model="selectStatus" />
-					            <label class="inline" for="radio3">Up</label>
+					            <label for="radio3">Up</label>
 					        </div>
 						</div>			
 					</div>
@@ -34,7 +34,7 @@
 						<div class="funkyradio">
 							<div class="funkyradio-danger">
 					            <input type="radio" name="radio" id="radio4" value="Dn" ng-model="selectStatus" />
-					            <label class="inline" for="radio4">Down</label>
+					            <label for="radio4">Down</label>
 					        </div>
 						</div>			
 					</div>
@@ -42,7 +42,7 @@
 						<div class="funkyradio">
 							<div class="funkyradio-warning">
 					            <input type="radio" name="radio" id="radio5" value="init" ng-model="selectStatus" />
-					            <label class="inline" for="radio5">Init</label>
+					            <label for="radio5">Init</label>
 					        </div>
 						</div>			
 					</div>
@@ -50,7 +50,7 @@
 						<div class="funkyradio">
 							<div class="funkyradio-primary">
 					            <input type="radio" name="radio" id="radio2" value="unknown" ng-model="selectStatus" />
-					            <label class="inline" for="radio2">Unknown</label>
+					            <label for="radio2">Unknown</label>
 					        </div>
 						</div>			
 					</div>
@@ -72,7 +72,7 @@
 					<tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search, _source: {running_status: selectStatus}}">
 						<td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
-						<td style="cursor: pointer;">
+						<td class="cpointer">
 							<a ng-click="isCollapsed = !isCollapsed">{{s._id}}</a>
 						</td>
 						<td class="text-center">

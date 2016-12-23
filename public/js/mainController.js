@@ -140,7 +140,6 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
 });
 
 // statusController
-
 ngElastic.controller('statusController', function($scope, $http) {
 	$scope.isCollapsed = true;
 	$scope.loadStatus = function() {
