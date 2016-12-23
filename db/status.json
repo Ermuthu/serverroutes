@@ -49,6 +49,48 @@
                     "applied_status": "success",
                     "log": "CSPF failed: no route toward 19.0.148.80[1742 times]"
                 }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "BB-PE1",
+                "_score": 0.30685282,
+                "_source": {
+                    "running_status": "init",
+                    "router_name": "GW2",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB",
+                    "remarks": "",
+                    "router_ip": "19.0.146.2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.1"
+                    ],
+                    "applied_status": "success",
+                    "log": "CSPF failed: no route toward 19.0.148.80[1742 times]"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "BB-PE1",
+                "_score": 0.30685282,
+                "_source": {
+                    "running_status": "unknown",
+                    "router_name": "GW2",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB",
+                    "remarks": "",
+                    "router_ip": "19.0.146.2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.1"
+                    ],
+                    "applied_status": "success",
+                    "log": "CSPF failed: no route toward 19.0.148.80[1742 times]"
+                }
             }
         ]
     }

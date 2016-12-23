@@ -1,14 +1,62 @@
 <div class="row" ng-controller="statusController" ng-init="loadStatus()">
 	<div class="container">
 		<h1>Status</h1>
-		<form action="" class="form-inline">
-			<div class="form-group">
-				<label for="search">Search : </label>
-				<input type="text" id="search" class="form-control" placeholder="Router Name" ng-model="router_name_search">
-				<span>-</span>
-				<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
+		<div class="row">
+			<div class="col-sm-5">
+				<form action="" class="form-inline">
+					<div class="form-group">
+						<label for="search">Search : </label>
+						<input type="text" id="search" class="form-control" placeholder="Router Name" ng-model="router_name_search">
+						<span>-</span>
+						<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
+					</div>
+				</form>	
 			</div>
-		</form>
+			<div class="col-sm-7 pull-right" style="margin-top: -30px;">
+				<form class="form-inline">
+					<div class="form-group">
+						<div class="funkyradio">
+							<div class="funkyradio-default">
+					            <input type="radio" name="radio" id="radio33" value="" ng-checked="checked" ng-model="selectStatus" />
+					            <label class="inline" for="radio33">All</label>
+					        </div>
+						</div>			
+					</div>
+					<div class="form-group">
+						<div class="funkyradio">
+							<div class="funkyradio-success">
+					            <input type="radio" name="radio" id="radio3" value="Up" ng-model="selectStatus" />
+					            <label class="inline" for="radio3">Up</label>
+					        </div>
+						</div>			
+					</div>
+					<div class="form-group">
+						<div class="funkyradio">
+							<div class="funkyradio-danger">
+					            <input type="radio" name="radio" id="radio4" value="Dn" ng-model="selectStatus" />
+					            <label class="inline" for="radio4">Down</label>
+					        </div>
+						</div>			
+					</div>
+					<div class="form-group">
+						<div class="funkyradio">
+							<div class="funkyradio-warning">
+					            <input type="radio" name="radio" id="radio5" value="init" ng-model="selectStatus" />
+					            <label class="inline" for="radio5">Init</label>
+					        </div>
+						</div>			
+					</div>
+					<div class="form-group">
+						<div class="funkyradio">
+							<div class="funkyradio-primary">
+					            <input type="radio" name="radio" id="radio2" value="unknown" ng-model="selectStatus" />
+					            <label class="inline" for="radio2">Unknown</label>
+					        </div>
+						</div>			
+					</div>
+				</form>
+			</div>
+		</div>
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn">
 				<thead>
@@ -20,7 +68,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}">
+					<!-- <tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}"> -->
+					<tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search, _source: {running_status: selectStatus}}">
 						<td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
 						<td style="cursor: pointer;">
@@ -29,7 +78,7 @@
 						<td class="text-center">
 							<button ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
 							<button ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
-							<button ng-show="s._source.running_status == 'init'" class="btn btn-info btn-circle"></button>
+							<button ng-show="s._source.running_status == 'init'" class="btn btn-warning btn-circle"></button>
 							<button ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
 						</td>
 					</tr>
