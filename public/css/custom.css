@@ -63,10 +63,10 @@
     position:absolute;
     display: none;
 }
-#c2b input:checked + span{
+/*#c2b input:checked + span{
     background-color:#911;
     color:#fff;
-}
+}*/
 
 /* Logs Remarks toggle */
 .remarks{

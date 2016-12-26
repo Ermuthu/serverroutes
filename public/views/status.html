@@ -5,10 +5,10 @@
 			<div class="col-sm-5">
 				<form action="" class="form-inline">
 					<div class="form-group">
-						<label for="search">Search : </label>
-						<input type="text" id="search" class="form-control" placeholder="Router Name" ng-model="router_name_search">
+						<label for="routes_search">Search : </label>
+						<input type="text" id="routes_search" class="form-control" placeholder="Router Name" ng-model="status_router_search">
 						<span>-</span>
-						<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
+						<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="status_lsp_search">
 					</div>
 				</form>	
 			</div>
@@ -69,7 +69,7 @@
 				</thead>
 				<tbody>
 					<!-- <tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}"> -->
-					<tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search, _source: {running_status: selectStatus}}">
+					<tr ng-repeat-start="s in status | filter:{_source: {router_name: status_router_search}, _id: status_lsp_search, _source: {running_status: selectStatus}}">
 						<td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
 						<td class="cpointer">

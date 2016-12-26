@@ -89,11 +89,53 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		});
 	};
 
+	$scope.checkbox = {};
+	$scope.checkbox.selectAll = false;
+	$scope.search = {};
+	$scope.search.name = '';
+
+	$scope.searchParams = function() {
+    
+  	};
+  	$scope.selectAllFiltered = function() {
+    	if ($scope.checkbox.selectAll) {
+      		$scope.checkbox.selectAll = false;
+    	} else {
+      		$scope.checkbox.selectAll = true;
+    	}
+    
+    	if (!$scope.search.name) {
+      		for (var i = 0; i < $scope.data.length; i++) {
+      			console.log($scope.data[i].isSelected);
+        		if (angular.isUndefined($scope.data[i].isSelected)) {
+        			console.log('if');
+          			$scope.data[i].isSelected = $scope.checkbox.selectAll;
+        		} else {
+          			$scope.data[i].isSelected = !$scope.data[i].isSelected;
+        		}
+      		}
+    	} else {
+      		for (var i = 0; i < $scope.filtered.length; i++) {
+        		if (angular.isUndefined($scope.filtered[i].isSelected)) {
+          			$scope.filtered[i].isSelected = $scope.checkbox.selectAll;
+        		} else {
+          			$scope.filtered[i].isSelected = !$scope.filtered[i].isSelected;
+        		}
+      		}
+    	}
+  	}
+
+  	$scope.unCheckAll = function() {
+  		angular.forEach($scope.data, function(d) {
+	    	d.isSelected = false;
+		});
+  	}
+
 	// remove selected routes
-	$scope.removeSelected = function() {
+	$scope.apply = function() {
 		var newDataList = [];
 		angular.forEach($scope.data, function(d) {
-			if(!d.isDelete) {
+			if(!d.isSelected) {
 				// console.log(d);
 				newDataList.push(d);
 			}else{
