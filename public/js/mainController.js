@@ -1,5 +1,53 @@
 var ngElastic = angular.module('ngElastic',['ngRoute', 'ui.bootstrap']);
 
+ngElastic.filter('wildcard', function() {
+
+  return function(list, value) {
+   
+    if (!value) {
+      return list;
+    }
+
+    var escaped = value.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+    var formatted = escaped.replace('*', '.*')
+
+    if (formatted.indexOf('*') === -1) {
+      formatted = '.*' + formatted + '.*'
+    }
+
+    var output = []
+
+    angular.forEach(list, function(item) {
+      var regex = new RegExp('^' + formatted + '$', 'im');
+      if (traverse(item, regex)) {
+        output.push(item);
+      }
+    });
+ 
+    return output
+  }
+
+  function traverse(item, regex) {
+    for (var prop in item) {
+
+      //angular property like hash
+      if(prop[0] === '$$'){
+        return;  
+      }
+      
+      var value = item[prop];
+      
+      if (typeof value === 'object') {
+        traverse(value, regex);
+      }
+
+      if(regex.test(value)){
+        return true;
+      }
+    }
+  }
+})
+
 ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
 	// Router
@@ -59,10 +107,15 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	$scope.init = function() {
 		$http.get('/api/route/'+$routeParams.routername).success(function(data) {
 			$scope.data = data.hits.hits;
+			data.hits.hits.map(function(d,i){
+				// console.log(d._source.new_config[d._id]);
+				$scope.newConfig = d._source.new_config[d._id].join('\n');
+			});
      	}).error(function(err) {
 			console.log(err.message);
 		});
 	}
+
 	// send POST Request
 	$scope.postData = function(d) {
 		// console.log(d);
@@ -106,9 +159,9 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
     
     	if (!$scope.search.name) {
       		for (var i = 0; i < $scope.data.length; i++) {
-      			console.log($scope.data[i].isSelected);
+      			// console.log($scope.data[i].isSelected);
         		if (angular.isUndefined($scope.data[i].isSelected)) {
-        			console.log('if');
+        			// console.log('if');
           			$scope.data[i].isSelected = $scope.checkbox.selectAll;
         		} else {
           			$scope.data[i].isSelected = !$scope.data[i].isSelected;
@@ -151,7 +204,43 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			data.isDelete = $scope.selectAll;
 		});
 	};
+
+	// function escapeRegExp(string) {
+ //  		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+	// }
+
+	// $scope.textSearch = '';
+ //  	var regex;
+ //  	$scope.$watch('textSearch', function(value) {
+ //  		console.log(value);
+ //    	var escaped = escapeRegExp(value);
+ //    	var formatted = escaped.replace('*', '.*');
+ //    	if(formatted.indexOf('*') === -1){
+ //    		formatted = '.*' + formatted + '.*'
+ //    	}
+ //    	regex = new RegExp('^' + formatted + '$', 'im');
+ //  	});
+
+ //  	$scope.filterBySearch = function(dataItem) {
+ //    	if (!$scope.textSearch) return true;
+ //    	return regex.test(dataItem);
+ //  	};
 });
+
+// $scope.testing = "FROM-DLNYC3-BBISP-GW2-TO-DL";
+// ngElastic.filter('myfilter', function() {
+// 	return function( items, types) {
+//     	var filtered = [];
+//     	angular.forEach(items, function(item) {
+//     		// console.log(item._id);
+//        		if(item._id.match(/^FROM-DLNYC3-BBISP-GW2-TO-DL.*$/)) {
+//           		filtered.push(item);
+//     		}
+//     	});
+//     	return filtered;
+//   	};
+// });	
+
 
 // TabController
 ngElastic.controller('tabController', function($scope, $http, $uibModal, $log) {
