@@ -118,28 +118,28 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 
 	// send POST Request
 	$scope.postData = function(d) {
+		$scope.routerInfo = d;
 		// console.log(d);
-        $scope.routerInfo = {
-			Router_name: d._source.router_name,
-			LSP_name: d._id,
-			Hops: d._source.existing_config,
-			NodeSeq: d._source.new_config
-		};
-		$scope.anotherRouteInfo = {
-			router_name: d._source.router_name,
-			router_address: d._source.router_address,
-			new_config: d._source.new_config
-		};
-		$http.post('/api/applyanother', $scope.anotherRouteInfo).success(function(res) {
-			toastr.error("Posted Success");
+  //       $scope.routerInfo = {
+		// 	Router_name: d._source.router_name,
+		// 	LSP_name: d._id,
+		// 	Hops: d._source.existing_config,
+		// 	NodeSeq: d._source.new_config,
+		// 	router_name: d._source.router_name,
+		// 	router_address: d._source.router_address,
+		// 	new_config: d._source.new_config
+		// };
+		// console.log($scope.routerInfo);
+		$http.post('/api/applyanother', $scope.routerInfo).success(function(res) {
+			toastr.success("Posted Success");
 		}).error(function(res) {
 			toastr.info('Internal server error in another Router');
 		});
-		$http.post('/api/apply', $scope.routerInfo).success(function(response) {
-			toastr.success('Posted Successfully');
-		}).error(function(res) {
-         	toastr.error('Internal Server Error');
-		});
+		// $http.post('/api/apply', $scope.routerInfo).success(function(response) {
+		// 	toastr.success('Posted Successfully');
+		// }).error(function(res) {
+  //        	toastr.error('Internal Server Error');
+		// });
 	};
 
 	$scope.checkbox = {};
@@ -187,15 +187,19 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	// remove selected routes
 	$scope.apply = function() {
 		var newDataList = [];
+		var postData = [];
 		angular.forEach($scope.data, function(d) {
 			if(!d.isSelected) {
 				// console.log(d);
 				newDataList.push(d);
 			}else{
-				$scope.postData(d);
+				console.log("else");
+				postData.push(d);
+				// $scope.postData(d);
 			}
 		});
 		$scope.data = newDataList;
+		$scope.postData(postData);
 	};
 
 	// checkAll the routes
