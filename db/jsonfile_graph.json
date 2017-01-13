@@ -1,0 +1,125 @@
+{
+    "took": 3,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 4325,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:45:00.940839",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:45:00.940849",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.6188969612121582
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T02:27:13.922749",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T02:27:13.922758",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.5687339305877686
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:54:18.204356",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:54:18.204367",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.6179931163787842
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:54:22.491389",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:54:22.491399",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.6179630756378174
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:55:15.514008",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:55:15.514019",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.5693018436431885
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:55:43.626180",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:55:43.626190",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.6178579330444336
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:55:06.901782",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:55:06.901792",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.6682980060577393
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:54:56.496830",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:54:56.496840",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.617893934249878
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:55:21.801796",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:55:21.801806",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.618340015411377
+                }
+            },
+            {
+                "_index": "commitconfig",
+                "_type": "stats",
+                "_id": "2017-01-06T22:55:11.273122",
+                "_score": 1,
+                "_source": {
+                    "received_ts": "2017-01-06T22:55:11.273132",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "time_taken": 1.617940902709961
+                }
+            }
+        ]
+    }
+}

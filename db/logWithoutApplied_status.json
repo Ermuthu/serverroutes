@@ -1,0 +1,1121 @@
+{
+    "took": 2,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 79,
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134696",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134733",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134743",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134760",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135008",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135017",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135035",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135116",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135161",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135224",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135260",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135278",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135319",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135328",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135337",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135355",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135382",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135391",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF1-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135408",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135480",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135516",
+                    "running_status": "Up",
+                    "destIp": "19.0.158.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134667",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134724",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134779",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134788",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134971",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135000",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135044",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135143",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135188",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135206",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135233",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135269",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135301",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135373",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135399",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135461",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135471",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134676",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134705",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134715",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10",
+                    "router_ip": "19.0.146.2",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134751",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134769",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135026",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135062",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135080",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135125",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135134",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135179",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135310",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135346",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135364",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF2-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135417",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135444",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135452",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135489",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134648",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135053",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135071",
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135098",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135152",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF3-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135426",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF5-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135435",
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": null,
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135498",
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135507",
+                    "running_status": "Up",
+                    "destIp": "19.0.158.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134686",
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134796",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134806",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134962",
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134982",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.134991",
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135089",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135107",
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135170",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135197",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135215",
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135242",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135251",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": "2017-01-13T01:21:26.135286",
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-20",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            }
+        ]
+    }
+}

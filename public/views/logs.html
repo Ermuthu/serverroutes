@@ -9,6 +9,20 @@
 				<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
 			</div>
 		</form>
+		<nvd3-line-chart
+	    	data="exampleData"
+	        id="exampleId"
+	        xAxisTickFormat="xAxisTickFormatFunction()"
+	        yAxisTickFormat="yAxisTickFormatFunction()"
+	        width="550"
+	        height="350"
+	        showXAxis="true"
+	        showYAxis="true"
+	        interactive="true"
+        	tooltips="true">
+	        	<svg></svg>
+    	</nvd3-line-chart>
+    	<!-- <svg id="svg"></svg> -->
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn">
 				<thead>

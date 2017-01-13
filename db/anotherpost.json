@@ -1,1 +1,46 @@
-[{"_index":"mpls_lsps","_type":"config","_id":"FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1","_score":0.30685282,"_source":{"router_address":["17.198.240.75"],"new_config":{"FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1":["19.0.146.64","19.0.146.1"]},"router_name":"DLNYC3-BBISP-GW2","existing_config":null},"isSelected":true},{"_index":"mpls_lsps","_type":"config","_id":"FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1","_score":0.30685282,"_source":{"router_address":["17.198.240.75"],"new_config":{"FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1":["19.0.148.80","19.0.148.75","19.0.136.97","19.0.130.1"]},"router_name":"DLNYC3-BBISP-GW2","existing_config":null},"isSelected":true}]
+{
+    "d": [
+        {
+            "_index": "mpls_lsps",
+            "_type": "config",
+            "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+            "_score": 0.30685282,
+            "_source": {
+                "router_address": [
+                    "17.198.240.75"
+                ],
+                "new_config": {
+                    "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1": [
+                        "19.0.146.64",
+                        "19.0.146.1"
+                    ]
+                },
+                "router_name": "DLNYC3-BBISP-GW2",
+                "existing_config": null
+            },
+            "isSelected": true
+        },
+        {
+            "_index": "mpls_lsps",
+            "_type": "config",
+            "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1",
+            "_score": 0.30685282,
+            "_source": {
+                "router_address": [
+                    "17.198.240.75"
+                ],
+                "new_config": {
+                    "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1": [
+                        "19.0.148.80",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.1"
+                    ]
+                },
+                "router_name": "DLNYC3-BBISP-GW2",
+                "existing_config": null
+            },
+            "isSelected": true
+        }
+    ]
+}
