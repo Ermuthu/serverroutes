@@ -1,4 +1,3 @@
-
     function DrawGraph(seriesData, container, XLabel, YLabel) {   // this graph need to change with line chart.
       var jsonData = seriesData.map(function(d) {
         var tmpData = {}; // convert the data into format that's compatible with nv.d3
@@ -12,11 +11,11 @@
         }
         return tmpData; 
       });
-      internalGraph(jsonData, container, XLabel, YLabel);
+      internalGraph(jsonData, container, "XLabel", "YLabel");
     }       
 
     // internalDrawGraph
-    function internalGraph(jsonData, container, XLabel, YLabel) {   // this graph need to change with line chart.
+    function internalGraph(jsonData, container, "XLabel", "YLabel") {   // this graph need to change with line chart.
        // var colors = d3.scale.category10();   4682B4    42f45f
       var colorScale = d3.scale.linear()
          .range(["#8000ff","#ff9999"]); 
@@ -39,13 +38,13 @@
           .useInteractiveGuideline(false);
         chart2.xScale(d3.time.scale());
         setChartOptions(chart2, container);
-        chart2.xAxis.axisLabel(XLabel)
+        chart2.xAxis.axisLabel("XLabel")
           .rotateLabels(30)
           .axisLabelDistance(100)
           // .noData("There is no data avilable for " + container.toUpperCase() + " graph")
          
           .staggerLabels(true); 
-        chart2.yAxis.axisLabel(YLabel);
+        chart2.yAxis.axisLabel("YLabel");
         d3.select('#' + container)
           .append('svg')
           .datum(jsonData)
@@ -53,7 +52,7 @@
           .call(chart2);
 
         if (gdata.length>0) {
-            var drag = addDragFeature(chart, container, XLabel, YLabel);
+            var drag = addDragFeature(chart, container, "XLabel", "YLabel");
             d3.select('#' + container).call(drag);
         }  
 

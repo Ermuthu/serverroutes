@@ -1,4 +1,4 @@
-<div class="row" ng-controller="tabController" ng-init="tabInit()">
+<div class="row" ng-controller="tabController" ng-init='tabInit();lineChart()'>
 	<div class="container">
 		<h1>Logs</h1>
 		<form action="" class="form-inline">
@@ -10,21 +10,24 @@
 			</div>
 		</form>
 		<nvd3-line-chart
-	    	data="exampleData"
+	    	data="lineChartData"
 	        id="exampleId"
+	        width="800"
+	        height="350"
 	        xAxisTickFormat="xAxisTickFormatFunction()"
 	        yAxisTickFormat="yAxisTickFormatFunction()"
-	        width="550"
-	        height="350"
 	        showXAxis="true"
 	        showYAxis="true"
 	        interactive="true"
-        	tooltips="true">
+	        margin={top:0,bottom:0}
+	        padding="0"
+	        xAxisLabel="Time"
+	        yAxisLabel="Date"
+	        noData="No Data For You!">
 	        	<svg></svg>
     	</nvd3-line-chart>
-    	<!-- <svg id="svg"></svg> -->
 		<div>
-			<table class="table table-bordered table-striped animated fadeIn">
+			<table class="table table-bordered table-striped animated fadeIn" ng-show="!routes._source.applied_status">
 				<thead>
 					<tr>
 						<th>Router</th>
