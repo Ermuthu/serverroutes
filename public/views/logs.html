@@ -3,10 +3,8 @@
 		<h1>Logs</h1>
 		<form action="" class="form-inline">
 			<div class="form-group">
-				<label for="routes_search">Search : </label>
-				<input type="text" id="routes_search" class="form-control" placeholder="Router Name" ng-model="router_name_search">
-				<span>-</span>
-				<input type="text" id="search" class="form-control" placeholder="LSP Name" ng-model="lsp_name_search">
+				<label for="search">Search :</label>
+				<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
 			</div>
 		</form>
 		<nvd3-line-chart
@@ -37,7 +35,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat-start="r in routes | filter: {_source: {router_name: router_name_search}, _id: lsp_name_search}">
+					<tr ng-repeat-start="r in routes | wildcard:LSPSearch">
 						<td>{{r._source.router_name}}</td>
 						<td>{{r._source.router_address}}</td>
 						<td>{{r._id}}</td>
