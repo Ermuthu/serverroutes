@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
+		<div class="col-sm-2" ng-controller="mainController" ng-init="findIP()" style="position: absolute;">
 			<table class="table table-bordered animated fadeIn">
 				<thead>
 					<tr>
@@ -14,7 +14,7 @@
 				</tbody>
 			</table>	
 		</div>
-		<div class="col-sm-offset-3 col-sm-9" ng-controller="ipController" ng-init="init()">
+		<div class="col-sm-offset-2 col-sm-10" ng-controller="ipController" ng-init="init()">
 			<div class="row">
 				<div class="col-sm-6">
 					<h1 class="well lead animated fadeIn" ng-show="data.length == 0"><i class="fa fa-hand-o-left fa-2x"></i> Select Router Name from Router table</h1>
@@ -79,7 +79,7 @@
 							<td>{{dataItem._source.existing_ips}}</td>
 							<td>{{dataItem._source.existing_names}}  </td>
 							<td>{{dataItem._source.new_node_seq.join("\n")}}</td>
-                            <td style="width: "300px !important";">{{dataItem._source.new_config_name.join("\n")}}</td>
+                            <td width="20%">{{dataItem._source.new_config_name.join("\n")}}</td>
 							<!-- <td>{{_.chunk(dataItem._source.new_config[dataItem._id], 1)}}</td> -->
 							<!-- <td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td> -->
 						</tr>
