@@ -115,10 +115,6 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	$scope.init = function() {
 		$http.get('/api/route/'+$routeParams.routername).success(function(data) {
 			$scope.data = data.hits.hits;
-			data.hits.hits.map(function(d,i){
-				// console.log(d._source.new_config[d._id]);
-				$scope.newConfig = d._source.new_config[d._id].join('\n');
-			});
      	}).error(function(err) {
 			console.log(err.message);
 		});
@@ -128,27 +124,11 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 	$scope.postData = function(d) {
 		// console.log({"d": d});
 		$scope.routerInfo = {"LSPS": d};
-		// console.log(d);
-  //       $scope.routerInfo = {
-		// 	Router_name: d._source.router_name,
-		// 	LSP_name: d._id,
-		// 	Hops: d._source.existing_config,
-		// 	NodeSeq: d._source.new_config,
-		// 	router_name: d._source.router_name,
-		// 	router_address: d._source.router_address,
-		// 	new_config: d._source.new_config
-		// };
-		// console.log($scope.routerInfo);
 		$http.post('/api/applyanother', $scope.routerInfo).success(function(res) {
 			toastr.success("Posted Success");
 		}).error(function(res) {
 			toastr.info('Internal server error in another Router');
 		});
-		// $http.post('/api/apply', $scope.routerInfo).success(function(response) {
-		// 	toastr.success('Posted Successfully');
-		// }).error(function(res) {
-  //        	toastr.error('Internal Server Error');
-		// });
 	};
 
 	$scope.checkbox = {};

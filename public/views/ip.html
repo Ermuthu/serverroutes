@@ -58,23 +58,29 @@
 						<tr>
 							<th>#</th>
 							<th>Router</th>
-							<th>Router Address</th>
+							<th>Source RouterIP</th>
+							<th>Destination RouterIP</th>
 							<th>LSP Name</th>
-							<th>Existing Config</th>
-							<th>New Config</th>
+							<th>Existing LSP Path IP Hops </th>
+                         	<th>Existing LSP Path DNS Names</th>
+                         	<th>New LSP Path IP Hops</th>
+                            <th>New LSP Path DNS Names</th>
 							<!-- <th>Details</th> -->
 						</tr>
 					</thead>
 					<tbody>
 						<!-- <tr ng-repeat="dataItem in filtered = (data | filter: {_source: {router_name: router_name_search}, _id: search.name})"> -->
 						<tr ng-repeat="dataItem in filtered = (data | wildcard:search.name)" >
-						<!-- <tr ng-repeat="dataItem in data | wildcard:search.name" > -->
 							<td><input type="checkbox" ng-model="dataItem.isSelected">{{$index}}</input></td>
-							<td>{{dataItem._source.router_name}}</td>
-							<td>{{dataItem._source.router_address}}</td>
+							<td>{{dataItem._source.src_router_name}}  </td>
+							<td>{{dataItem._source.src_router_ip}}</td>
+							<td>{{dataItem._source.destIp}} </td> 
 							<td>{{dataItem._id}}</td>
-							<td>{{dataItem._source.existing_config}}</td>
-							<td>{{dataItem._source.new_config[dataItem._id].join("\n")}}</td>
+							<td>{{dataItem._source.existing_ips}}</td>
+							<td>{{dataItem._source.existing_names}}  </td>
+							<td>{{dataItem._source.new_node_seq.join("\n")}}</td>
+                            <td style="width: "300px !important";">{{dataItem._source.new_config_name.join("\n")}}</td>
+							<!-- <td>{{_.chunk(dataItem._source.new_config[dataItem._id], 1)}}</td> -->
 							<!-- <td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td> -->
 						</tr>
 						<!-- <tr ng-if="data.length < 1" span="6">
