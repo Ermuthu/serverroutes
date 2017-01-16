@@ -35,8 +35,9 @@ module.exports = {
 		res.send(jsonfile.readFileSync(records));
 	},
 	status: function(req, res) {
-		var status = './db/status.json';
-		res.send(jsonfile.readFileSync(status));
+		// var status = './db/status.json';
+		var status_new = './db/status_new.json';
+		res.send(jsonfile.readFileSync(status_new));
 	},
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';
