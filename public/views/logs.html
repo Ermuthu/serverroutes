@@ -35,7 +35,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat-start="r in routes | wildcard:LSPSearch">
+					<tr ng-show="r._source.applied_status != undefined" ng-repeat-start="r in routes | wildcard:LSPSearch">
 						<td>{{r._source.router_name}}</td>
 						<td>{{r._source.router_address}}</td>
 						<td>{{r._id}}</td>

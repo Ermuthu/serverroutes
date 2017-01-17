@@ -1,5 +1,5 @@
 {
-    "took": 1,
+    "took": 3,
     "timed_out": false,
     "_shards": {
         "total": 5,
@@ -7,21 +7,2707 @@
         "failed": 0
     },
     "hits": {
-        "total": 2,
+        "total": 106,
         "max_score": 1,
         "hits": [
             {
                 "_index": "test_applied_lsps",
                 "_type": "config",
-                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-1",
                 "_score": 1,
                 "_source": {
-                    "running_status": "init",
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
                     "router_name": "DLNYC3-BBISP-GW2",
-                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 22 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50761 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:01.152"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 22 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50760 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:01.154"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 25 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50710 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:04.327"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 25 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50709 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:04.329"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 7 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50770 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:45.904"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 7 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50769 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:45.907"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 18 second(s).",
+                            "bandwidth": "38bps",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10120 times]",
+                                "sequence-number": "379",
+                                "time": "Jan 17 19:07:58.528"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 18 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10120 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:58.531"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 29 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50817 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:38.655"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 29 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50816 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:38.658"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50701 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:58.670"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50700 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:58.673"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.67"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": "19.0.146.64"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF1-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.158.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": "19.0.158.74"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 3 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50752 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:42.283"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 3 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50751 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:42.286"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB",
+                "_score": 1,
+                "_source": {
+                    "applied_timestamp": 1484679847,
+                    "router_ip": "0.0.0.0",
+                    "existing_config": null,
                     "remarks": "",
+                    "existing_config_names": null,
+                    "config_name": [],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "destIp": "19.0.130.1",
+                    "pathName": "(none)",
                     "config": [],
+                    "destName": "DLPAO1-BB-PE1",
+                    "applied_status": "success",
+                    "log": {
+                        "cspf-status": "Will be enqueued for recomputation in 15 second(s).",
+                        "path-history": {
+                            "route": null,
+                            "log": "CSPF failed: no route toward 19.0.148.80[19 times]",
+                            "sequence-number": "1",
+                            "time": "Jan 17 19:07:53.993"
+                        },
+                        "optimize-timer": "1800",
+                        "name": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1",
+                        "title": "Primary",
+                        "path-state": "Dn",
+                        "setup-priority": "7",
+                        "hold-priority": "0",
+                        "smart-optimize-timer": "180"
+                    }
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.67"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 28 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50735 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:38.119"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 28 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50734 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:38.123"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.67"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.67"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF0-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 24 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50683 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:02.741"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 24 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50682 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:02.744"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 13 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50672 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:52.154"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 13 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50671 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:52.159"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "19.0.146.2",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 23 second(s).",
+                            "bandwidth": "35bps",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10083 times]",
+                                "sequence-number": "531",
+                                "time": "Jan 17 19:08:01.893"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 23 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10083 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:01.896"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 11 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10109 times]",
+                                "sequence-number": "27",
+                                "time": "Jan 17 19:07:50.240"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 11 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10109 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:50.243"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 6 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50608 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:45.473"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 6 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50607 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:45.475"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE2-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": "19.0.144.88"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USNYC3-BBISP-GW1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": "19.0.146.64"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF2-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP",
+                "_score": 1,
+                "_source": {
+                    "applied_timestamp": 1484680617,
+                    "router_ip": "10.0.146.1",
+                    "existing_config": "",
+                    "remarks": "",
+                    "existing_config_names": "",
+                    "config_name": [
+                        "DLNYC3-BBISP-GW1",
+                        "DLNYC3-BBISP-GW1"
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "destIp": "19.0.146.1",
+                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1 (primary)",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.1"
+                    ],
+                    "destName": "DLNYC3-BBISP-GW1",
                     "applied_status": "success"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 9 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50747 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:48.068"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 9 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.129.2[50746 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:48.071"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.129.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.138.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.91"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 4 second(s).",
+                            "bandwidth": "39bps",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10070 times]",
+                                "sequence-number": "450",
+                                "time": "Jan 17 19:07:43.050"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 4 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10070 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:43.052"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 18 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10105 times]",
+                                "sequence-number": "27",
+                                "time": "Jan 17 19:07:57.719"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 18 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10105 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:57.722"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-5",
+                "_score": 1,
+                "_source": {
+                    "log": {
+                        "title": "Primary",
+                        "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-40",
+                        "path-state": "Dn",
+                        "setup-priority": "7",
+                        "hold-priority": "7",
+                        "optimize-timer": "1800",
+                        "smart-optimize-timer": "180",
+                        "admin-groups": {
+                            "@heading": "    Exclude:",
+                            "admin-group-name": "DONOTINCLUDE"
+                        },
+                        "cspf-status": "Will be enqueued for recomputation in 13 second(s).",
+                        "path-history": {
+                            "sequence-number": "1",
+                            "time": "Jan 17 19:07:51.831",
+                            "log": "CSPF failed: no route toward 19.0.138.102[50639 times]",
+                            "route": null
+                        }
+                    },
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.1",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 13 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50681 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:52.151"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 13 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50680 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:52.157"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 2 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50754 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:41.345"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 2 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50753 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:41.348"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF3-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1-CBF5-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.146.1",
+                    "pathName": "(primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.148.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCHI3-BBISP-GW1-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.146.64",
+                        "19.0.146.126"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.158.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USBOS2-BBISP-GW1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": "19.0.158.74"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.129.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USSJC2-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.111"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.67"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.130.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USPAO1-BB-PE2-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.148.80",
+                        "19.0.148.64",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.65"
+                    ]
                 }
             },
             {
@@ -30,17 +2716,676 @@
                 "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1",
                 "_score": 1,
                 "_source": {
-                    "running_status": "init",
+                    "log": {
+                        "title": "Primary",
+                        "name": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1-10",
+                        "path-state": "Dn",
+                        "setup-priority": "7",
+                        "hold-priority": "0",
+                        "optimize-timer": "1800",
+                        "smart-optimize-timer": "180",
+                        "cspf-status": "Will be enqueued for recomputation in 2 second(s).",
+                        "path-history": {
+                            "sequence-number": "1",
+                            "time": "Jan 17 19:07:42.212",
+                            "log": "CSPF failed: no route toward 19.0.148.80[49633 times]",
+                            "route": null
+                        }
+                    },
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.130.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
                     "router_name": "DLNYC3-BBISP-GW2",
-                    "pathName": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB",
-                    "remarks": "Unable commit configuration changes: CommitError(edit_path: None, bad_element: None, message: error: configuration database locked by:\n  gnsarchlab terminal  (pid 23943) on since 2016-12-20 05:58:37 UTC\n      running commit script)",
                     "config": [
-                        "19.0.148.80",
-                        "19.0.148.75",
-                        "19.0.136.97",
-                        "19.0.130.1"
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.136.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.146.64",
+                        "19.0.146.126",
+                        "19.0.148.75"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50621 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:57.972"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50620 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:57.975"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
                     ],
-                    "applied_status": "failed"
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 16 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50695 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:55.574"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 16 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50694 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:55.576"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 26 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50808 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:05.029"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 26 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50807 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:05.032"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 28 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50729 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:07.405"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 28 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.136.2[50728 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:08:07.408"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDEN1-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.136.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-3",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "CHI-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "bandwidth": "38bps",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10100 times]",
+                                "sequence-number": "510",
+                                "time": "Jan 17 19:07:59.173"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 19 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.138.2[10100 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:59.175"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USDAL2-BB-PE2-GLOBAL-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.138.2",
+                    "pathName": "(none)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.140.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE1-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "19.0.142.89"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "log": [
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "AMR",
+                                        "POP",
+                                        "BB-JNPR",
+                                        "ASH-NYC"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 15 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50748 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:55.529"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-10",
+                            "title": "Primary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        },
+                        {
+                            "admin-groups": [
+                                {
+                                    "@heading": "    Include Any:",
+                                    "admin-group-name": [
+                                        "BB",
+                                        "BB-JNPR"
+                                    ]
+                                },
+                                {
+                                    "@heading": "    Exclude:",
+                                    "admin-group-name": "DONOTINCLUDE"
+                                }
+                            ],
+                            "cspf-status": "Will be enqueued for recomputation in 15 second(s).",
+                            "path-history": {
+                                "route": null,
+                                "log": "CSPF failed: no route toward 19.0.140.2[50747 times]",
+                                "sequence-number": "1",
+                                "time": "Jan 17 19:07:55.532"
+                            },
+                            "optimize-timer": "1800",
+                            "name": "FROM-USNYC3-BBISP-GW2-TO-USCLT3-BB-PE2-VRF-20",
+                            "title": "Secondary",
+                            "path-state": "Dn",
+                            "setup-priority": "7",
+                            "hold-priority": "7",
+                            "smart-optimize-timer": "180"
+                        }
+                    ],
+                    "running_timestamp": 1484680881,
+                    "running_status": "Dn",
+                    "destIp": "19.0.140.2",
+                    "pathName": "(none)",
+                    "router_ip": "0.0.0.0",
+                    "router_name": "DLNYC3-BBISP-GW2"
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE1-VRF-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-4",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.142.2",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USCLT2-BB-PE2-GLOBAL-10 (primary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "config": [
+                        "19.0.144.88",
+                        "19.0.144.64",
+                        "19.0.142.106",
+                        "172.30.142.65"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-1",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-GLOBAL-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
+                }
+            },
+            {
+                "_index": "test_applied_lsps",
+                "_type": "config",
+                "_id": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-2",
+                "_score": 1,
+                "_source": {
+                    "running_timestamp": 1484680881,
+                    "running_status": "Up",
+                    "destIp": "19.0.144.1",
+                    "pathName": "FROM-USNYC3-BBISP-GW2-TO-USQAS1-BB-PE1-VRF-20 (secondary)",
+                    "router_ip": "10.0.146.1",
+                    "router_name": "DLNYC3-BBISP-GW2",
+                    "sec_config": [
+                        "19.0.144.88",
+                        "19.0.144.64"
+                    ]
                 }
             }
         ]
