@@ -60,33 +60,89 @@
 				<thead>
 					<tr>
 						<th>Router</th>
+						<th>Source Router IP </th>
+						<th>Destination Router IP</th>
 						<th>Path Name</th>
 						<th>LSP Name</th>
 						<th>Status</th>
+
+						<!-- <th>Router</th>
+						<th>Path Name</th>
+						<th>LSP Name</th>
+						<th>Status</th> -->
 					</tr>
 				</thead>
 				<tbody>
 					<!-- <tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}"> -->
 					<tr ng-repeat-start="s in status | filter:{_source: {running_status: selectStatus}} | wildcard: LSPSearch">
-						<td>{{s._source.router_name}}</td>
+						<!-- <td>{{s._source.router_name}}</td>
 						<td>{{s._source.pathName}}</td>
 						<td class="cpointer">
 							<a ng-click="isCollapsed = !isCollapsed">{{s._id}}</a>
-						</td>
+						</td> -->
+						<td>{{s._source.router_name}}</td>
+					 	<td>{{s._source.router_ip}} </td>
+					 	<td>{{s._source.destIp}} </td>
+						<td>{{s._source.pathName}}</td>
+					  	<td>{{s._id}} </td>
 						<td class="text-center">
-							<button ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
-							<button ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
-							<button ng-show="s._source.running_status == 'init'" class="btn btn-warning btn-circle"></button>
-							<button ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
+							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
+							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
+							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'init'" class="btn btn-warning btn-circle"></button>
+							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
 						</td>
 					</tr>
-					<tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+					<!-- <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
 			           <td colspan="4" ng-show="isCollapsed == false">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
 							<b>Logs : </b>{{s._source.log=="" ? 'No log found' : s._source.log}}
 							</p>
 						</td>
-			        </tr>  
+			        </tr> -->
+			        <tr class="remarks" ng-show="isCollapsed == false">
+			           <td colspan="6">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+								<b>Config Applied on: </b>
+								<span>{{s._source.applied_timestamp == undefined ? 'No Config' : config_applied_time | date:'dd/MM/yyyy HH:mm:ss'}}</span><br>
+								<b>Last Checked on: </b>
+								{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
+							</p>
+						</td>
+			        </tr>
+			        <tr class="remarks" ng-show="isCollapsed == false">
+			           <td colspan="6">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
+								<b>Primary Config: <br></b>
+								<span ng-if="s._source.config_name != undefined">{{s._source.config_name == undefined ? 'No log found' : s._source.config_name.join('\n')}}</span>
+								<span>{{s._source.config == undefined ? 'No Primary Config' : s._source.config.join('\n')}} </span> 
+							</p>
+						</td>
+			        </tr>
+			        <tr class="remarks" ng-show="isCollapsed == false">
+			           <td colspan="6">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
+								<b>Secondary Config:</b>
+								<span>{{s._source.sec_config == undefined ? 'No Secondary Config' : s._source.sec_config.join('\n')}}</span>
+							</p>
+						</td>
+			        </tr>
+			        <tr class="remarks" ng-show="isCollapsed == false">
+			           <td colspan="6">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
+								<b>Previous Config: <br></b>
+								<span ng-if="s._source.existing_config_names != undefined">{{s._source.existing_config_names == undefined ? 'No Previous Config' : s._source.existing_config_names}}</span>
+								<span>{{s._source.existing_config == undefined ? 'No Previous Config' : s._source.existing_config}} </span>
+							</p>
+						</td>
+			        </tr>
+			        <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+			           <td colspan="6">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+								<b>Logs: <br></b>
+								<span>{{s._source.log == undefined ? 'No Logs' : s._source.log}}</span>
+							</p>
+						</td>
+			        </tr>
 				</tbody>
 			</table>	
 		</div>

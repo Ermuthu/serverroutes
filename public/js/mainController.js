@@ -259,7 +259,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 	 		}
 	 	];
 	});
-	$scope.data = [[1483742700940,1.6188969612121582],[1483669633922,1.5687339305877686],[1483743258204,1.6179931163787842],[1483743262491,1.6179630756378174],[1483743315514,1.5693018436431885],[1483743343626,1.6178579330444336],[1483743306901,1.6682980060577393],[1483743296496,1.617893934249878],[1483743321801,1.618340015411377],[1483743311273,1.617940902709961]];
+	// $scope.data = [[1483742700940,1.6188969612121582],[1483669633922,1.5687339305877686],[1483743258204,1.6179931163787842],[1483743262491,1.6179630756378174],[1483743315514,1.5693018436431885],[1483743343626,1.6178579330444336],[1483743306901,1.6682980060577393],[1483743296496,1.617893934249878],[1483743321801,1.618340015411377],[1483743311273,1.617940902709961]];
  	$scope.colorFunction = function() {
 		return function(d, i) {
 	    	return '#E01B5D'
@@ -311,6 +311,31 @@ ngElastic.controller('statusController', function($scope, $http) {
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
+			//Time Difference
+			$scope.status.map(function(d){
+				//variable declaration
+				if(d._source.applied_timestamp != undefined)
+					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
+					// console.log(d._source.applied_timestamp);
+				var now = new Date();
+					then  = new Date(d._source.running_timestamp*1000),
+					diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+					duration = moment.duration(diff),
+					ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+					hour = Math.floor(duration.asHours()),
+					min = Math.floor(duration.asMinutes()),
+					sec = Math.floor(duration.asSeconds());
+				// check for higher grade
+				$scope.updated_date = then;
+				if(hour > 0)
+					$scope.last_updated_time = hour + ' Hours ago';
+				else if(min > 0)
+					$scope.last_updated_time = min + ' Minutes ago';
+				else if(min < 0 && sec > 0)
+					$scope.last_updated_time = sec + ' Seconds ago';
+				else
+					$scope.last_updated_time = 'Time is up to date';
+            });
 		}).error(function(e) {
 			console.log(e.message);
 		});
