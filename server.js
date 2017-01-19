@@ -28,7 +28,7 @@ app.use('/proxy', proxy('http://serverroutes.herokuapp.com/', {
 //routes
 app.get('/api/id', Api.getJSON);
 app.get('/api/id/:id', Api.getJSONById);
-// app.get('/api/routes', Api.Routes);
+app.get('/api/routes', Api.Routes);
 app.get('/api/route/:routername', Api.getRouteInfo);
 app.get('/api/logs', Api.logs);
 app.get('/api/status', Api.status);
