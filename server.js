@@ -1,4 +1,5 @@
 var express = require('express'),
+	proxy = require('express-http-proxy'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	open = require('open'),
@@ -17,12 +18,17 @@ app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
 
-//routes
-// require('./app/routes')(app);
+/* Cross browser proxy setup */
+app.use('/proxy', proxy('http://serverroutes.herokuapp.com/', {
+  forwardPath: function(req, res) {
+    return require('url').parse(req.url).path;
+  }
+}));
 
+//routes
 app.get('/api/id', Api.getJSON);
 app.get('/api/id/:id', Api.getJSONById);
-app.get('/api/routes', Api.Routes);
+// app.get('/api/routes', Api.Routes);
 app.get('/api/route/:routername', Api.getRouteInfo);
 app.get('/api/logs', Api.logs);
 app.get('/api/status', Api.status);
