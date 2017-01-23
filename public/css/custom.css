@@ -201,3 +201,19 @@
   color: #fff;
   background-color: #5bc0de;
 }
+/* Small box */
+.rect-box {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  display: inline-block;
+}
+.green {
+  background: #449D44;
+}
+.red {
+  background: #ae163e;
+}
+.grey {
+  background: #EEE;
+}

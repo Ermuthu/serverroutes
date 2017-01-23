@@ -1,0 +1,29 @@
+<div ng-controller="regexController" class="container" ng-init="init()">
+<!-- <div class="row" ng-controller="statusController" ng-init="loadStatus()"> -->
+  <h1>RegEx in Angular search</h1>
+  <input type="text" class="form-control" ng-model="search" autofocus>
+  <br />
+  <table class="table table-bordered animated fadeIn">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>username</th>
+        <th>website</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="d in result | wildcard:search">
+        <td>{{d.id}}</td>
+        <td>{{d.name}}</td>
+        <td>{{d.phone}}</td> 
+        <td>{{d.username}}</td>
+        <td>{{d.website}}</td>
+      </tr>
+      <tr ng-if="d.length < 1">
+        <td colspan="5" class="text-center">No Router Found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

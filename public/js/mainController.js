@@ -3,12 +3,16 @@ var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3ChartDirectives', 'u
 ngElastic.filter('wildcard', function() {
 
   return function(list, value) {
-   
+    // debugger
+   	// console.log("list",list);
+   	// console.log("value",value);
     if (!value) {
       return list;
     }
 
+    // var escaped = value.replace(/([+?^=!:${}()|\[\]()\/\\])/g, "\\$1");
     var escaped = value.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+    console.log(escaped);
     var formatted = escaped.replace('*', '.*')
 
     if (formatted.indexOf('*') === -1) {
@@ -18,12 +22,12 @@ ngElastic.filter('wildcard', function() {
     var output = []
 
     angular.forEach(list, function(item) {
-      var regex = new RegExp('^' + formatted + '$', 'im');
-      if (traverse(item, regex)) {
-        output.push(item);
-      }
+		console.log(formatted);
+      	var regex = new RegExp('^' + formatted + '$', 'im');
+      	if (traverse(item, regex)) {
+        	output.push(item);
+      	}
     });
- 
     return output
   }
 
@@ -84,6 +88,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 			templateUrl: 'views/404.html',
 			controller: 'notFound'
 		}).
+		when('/regex', {
+      		templateUrl: 'views/regex.html',
+      		controller: 'regexController'
+    	}).
 		otherwise({
 			redirectTo: '/'
 		});
@@ -94,6 +102,19 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
  //  		requireBase: false
 	// });
 }]);
+
+ngElastic.controller('regexController', function($scope, $http) {
+  $scope.init = function() {
+    $http.get('https://jsonplaceholder.typicode.com/users/').success(function(data) {
+    // $http.get('/api/status').success(function(data) {
+      $scope.result = data;
+      // result.map(fun)
+      // console.log(result);
+    }).error(function(e) {
+      console.log(e);
+    });
+  }
+});
 
 ngElastic.controller('mainController', function($scope, $http) {
 	$scope.findIP = function() {
@@ -307,37 +328,69 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 
 // statusController
 ngElastic.controller('statusController', function($scope, $http) {
+	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
+	$scope.emailPattern = (/['"]+/g, '');
+	var addText = 'Attach {0}';
+  	$scope.getText = function(label){
+  		// console.log(label.split('",'));
+  // 		if(label != undefined){
+	 //  		var arr = [];
+	 //  		_.reduce(label.split('\",'), function(sum, n) {
+		// 	  arr.push(sum+n);
+		// 	});
+	 //  	}
+		// console.log(arr[0]);
+		// console.log(arr[1]);
+    	if(label != undefined)
+    		// console.log(label.split('\",'));
+    		// _.reduce(label.split('",'), function(sum) {
+    		// 	console.log("sum",sum);
+    		// })
+    		return label.split('",');
+  	}
+	// $scope.getText = function(obj){
+	// 	console.log(obj.replace(/,/g, '\n'));
+	// 	return obj.replace(/,/g, '\n');
+	// 	// var text = obj.replace(/['"]+/g, '');
+	// 	// console.log(text.split(",").join("\n"));
+	// 	// console.log(obj.split(' "').join('\n'));
+	// 	// return obj.replace(/['"]+/g, '\n');
+ //    	// var text = obj.replace(/['"]+/g, '');
+ //    	// return text.split(", ").join("\n");
+ //    	// return text.split(",").join("<br />");
+ //  	};
 	$scope.isCollapsed = true;
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
+			// console.log($scope.status);
 			//Time Difference
-			$scope.status.map(function(d){
-				//variable declaration
-				if(d._source.applied_timestamp != undefined)
-					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
-					// console.log(d._source.applied_timestamp);
-				var now = new Date();
-					then  = new Date(d._source.running_timestamp*1000),
-					diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
-					duration = moment.duration(diff),
-					ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
-					hour = Math.floor(duration.asHours()),
-					min = Math.floor(duration.asMinutes()),
-					sec = Math.floor(duration.asSeconds());
-				// check for higher grade
-				$scope.updated_date = then;
-				if(hour > 0)
-					$scope.last_updated_time = hour + ' Hours ago';
-				else if(min > 0)
-					$scope.last_updated_time = min + ' Minutes ago';
-				else if(min < 0 && sec > 0)
-					$scope.last_updated_time = sec + ' Seconds ago';
-				else
-					$scope.last_updated_time = 'Time is up to date';
-            });
+			// $scope.status.map(function(d){
+			// 	//variable declaration
+			// 	if(d._source.applied_timestamp != undefined)
+			// 		return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
+			// 		// console.log(d._source.applied_timestamp);
+			// 	var now = new Date();
+			// 		then  = new Date(d._source.running_timestamp*1000),
+			// 		diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+			// 		duration = moment.duration(diff),
+			// 		ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+			// 		hour = Math.floor(duration.asHours()),
+			// 		min = Math.floor(duration.asMinutes()),
+			// 		sec = Math.floor(duration.asSeconds());
+			// 	// check for higher grade
+			// 	$scope.updated_date = then;
+			// 	if(hour > 0)
+			// 		$scope.last_updated_time = hour + ' Hours ago';
+			// 	else if(min > 0)
+			// 		$scope.last_updated_time = min + ' Minutes ago';
+			// 	else if(min < 0 && sec > 0)
+			// 		$scope.last_updated_time = sec + ' Seconds ago';
+			// 	else
+			// 		$scope.last_updated_time = 'Time is up to date';
+   //          });
 		}).error(function(e) {
-			console.log(e.message);
+			console.log(e);
 		});
 	};
 });

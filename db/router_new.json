@@ -1,0 +1,79 @@
+{
+    "took": 2,
+    "timed_out": false,
+    "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+    },
+    "hits": {
+        "total": 2,
+        "max_score": 0.30685282,
+        "hits": [
+            {
+                "_index": "mpls_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLNYC3-BBISP-GW1",
+                "_score": 0.30685282,
+                "_timestamp": 1484962848460,
+                "_source": {
+                    "existing_ips": null,
+                    "IFnameSeq": [
+                        "ad1"
+                    ],
+                    "src_router_ip": "19.0.146.2",
+                    "DestName": "DLNYC3-BBISP-GW1",
+                    "existing_names": null,
+                    "src_router_name": "DLNYC3-BBISP-GW2",
+                    "config_status": 2,
+                    "new_node_seq": [
+                        "19.0.146.64",
+                        "19.0.146.1"
+                    ],
+                    "received_ts": 1484958616,
+                    "destIp": "19.0.146.1",
+                    "new_config_name": [
+                        "DLNYC3-BBISP-GW2:ad1",
+                        "DLNYC3-BBISP-GW1"
+                    ],
+                    "doc_as_upsert": true
+                }
+            },
+            {
+                "_index": "mpls_lsps",
+                "_type": "config",
+                "_id": "FROM-DLNYC3-BBISP-GW2-TO-DLPAO1-BB-PE1",
+                "_score": 0.30685282,
+                "_timestamp": 1484962848460,
+                "_source": {
+                    "existing_ips": null,
+                    "IFnameSeq": [
+                        "ad9",
+                        "ae6",
+                        "ah7"
+                    ],
+                    "src_router_ip": "19.0.146.2",
+                    "DestName": "DLPAO1-BB-PE1",
+                    "existing_names": null,
+                    "src_router_name": "DLNYC3-BBISP-GW2",
+                    "config_status": 2,
+                    "new_node_seq": [
+                        "19.0.148.80",
+                        "19.0.148.75",
+                        "19.0.136.97",
+                        "19.0.130.1"
+                    ],
+                    "received_ts": 1484958616,
+                    "destIp": "19.0.130.1",
+                    "new_config_name": [
+                        "DLNYC3-BBISP-GW2:ad9",
+                        "DLCHI3-BBISP-GW2:ae6",
+                        "DLDEN1-BB-PE1:ah7",
+                        "DLPAO1-BB-PE1"
+                    ],
+                    "doc_as_upsert": true
+                }
+            }
+        ]
+    }
+}

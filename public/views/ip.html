@@ -55,7 +55,7 @@
 			<div style="clear: both;" ng-hide="data.length == 0">
 				<table class="table table-bordered animated fadeIn">
 					<thead>
-						<tr>
+						<tr style="text-align: center;">
 							<th>#</th>
 							<th>Router</th>
 							<th>Source RouterIP</th>
@@ -65,6 +65,7 @@
                          	<th>Existing LSP Path DNS Names</th>
                          	<th>New LSP Path IP Hops</th>
                             <th>New LSP Path DNS Names</th>
+                            <th>Status</th>
 							<!-- <th>Details</th> -->
 						</tr>
 					</thead>
@@ -80,6 +81,15 @@
 							<td>{{dataItem._source.existing_names}}  </td>
 							<td>{{dataItem._source.new_node_seq.join("\n")}}</td>
                             <td width="20%">{{dataItem._source.new_config_name.join("\n")}}</td>
+                            <td width="15%" style="text-align: center;">
+                            	<!-- 1. green, grey, grey -->
+                            	<!-- 2. green, green, grey -->
+                            	<!-- 3. green, green, green -->
+                            	<!-- 4. green, red, grey -->
+                            	<div ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4}" class="rect-box"></div>
+								<div ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="rect-box"></div>
+								<div ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}" class="rect-box"></div>
+							</td>
 							<!-- <td>{{_.chunk(dataItem._source.new_config[dataItem._id], 1)}}</td> -->
 							<!-- <td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td> -->
 						</tr>

@@ -23,7 +23,8 @@ module.exports = {
 		res.send(jsonfile.readFileSync(routes));
 	},
 	getRouteInfo: function(req, res) {
-		var router_info = './db/router.json';
+		// var router_info = './db/router.json';
+		var router_info = './db/router_new.json';
 		res.send(jsonfile.readFileSync(router_info));
 	},
 	getPOSTJSON: function(req, res) {
@@ -36,8 +37,9 @@ module.exports = {
 	},
 	status: function(req, res) {
 		// var status = './db/status.json';
-		var status_new = './db/status_new.json';
-		res.send(jsonfile.readFileSync(status_new));
+		// var status_new = './db/status_new.json';
+		var status_logs = './db/status_logs.json';
+		res.send(jsonfile.readFileSync(status_logs));
 	},
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';
