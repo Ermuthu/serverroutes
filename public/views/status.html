@@ -66,8 +66,6 @@
 						<th>Path Name</th>
 						<th>LSP Name</th>
 						<th>Status</th>
-						<th>Box</th>
-
 						<!-- <th>Router</th>
 						<th>Path Name</th>
 						<th>LSP Name</th>
@@ -101,7 +99,58 @@
 							</p>
 						</td>
 			        </tr> -->
-			        <tr class="remarks" ng-show="isCollapsed == false">
+
+			        <!-- Start -->
+			        <!-- When running status button is clicked -->
+					<tr class="remarks" ng-show="isCollapsed == false">
+						<td colspan="6" style="height:10px;">
+							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+								<table class="table table-bordered" style="empty-cells: hide">
+									<thead>
+										<tr>
+											<th class="text-center">Config Applied on: </th>
+											<th class="text-center">Last Checked on: </th>
+											<th colspan="2" class="text-center">Primary path </th>
+											<th colspan="2" style="text-align: center;">Secondary path </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										<td style="border-bottom-style: hidden;"></td>
+										<td style="border-bottom-style: hidden;"></td>
+										<td class="text-center">Domain Name</td>
+										<td class="text-center">IPS</td>
+										<td class="text-center">Domain Name</td>
+										<td class="text-center">IPS</td>
+		              					<tr class="text-center">
+							              	<td style="vertical-align: middle;">{{s._source.applied_timestamp == undefined ? 'None' : config_applied_time | date:'dd/MM/yyyy HH:mm:ss'}}
+							              	</td>
+							              	<td style="vertical-align: middle;">{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
+							              	</td>
+							              	<td style="width:129px; border-right-style: hidden;vertical-align: middle;">{{s._source.config_name == undefined ? 'None - ' : s._source.config_name.join('\n')}}
+							              	</td>
+							              	<td style="vertical-align: middle;" width="1px;">
+							              		<span ng-show="s._source.config == undefined">None</span>
+							              		<div ng-if="s._source.config != undefined" ng-repeat="a in addPTag(s._source.config)">
+							              			<p>{{'(' + a + ')'}}</p>
+							              		</div>
+							              	</td>
+							              	<td style="vertical-align: middle;">
+							              		{{s._source.sec_config == undefined ? 'None' : s._source.sec_config.join('\n')}}
+							              	</td> 
+							              	<td style="vertical-align: middle;">
+							              		{{s._source.sec_config == undefined ? 'None' : s._source.sec_config.join('\n')}}
+							              	</td>
+						              	</tr>
+						              	</tr>
+					              	</tbody>
+      							</table>
+  							</p>
+						</td>
+					</tr> 
+			        <!-- End -->
+
+			        <!-- <tr class="remarks" ng-show="isCollapsed == false">
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
 								<b>Config Applied on: </b>
@@ -110,8 +159,8 @@
 								{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
 							</p>
 						</td>
-			        </tr>
-			        <tr class="remarks" ng-show="isCollapsed == false">
+			        </tr> -->
+			        <!-- <tr class="remarks" ng-show="isCollapsed == false">
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
 								<b>Primary Config: <br></b>
@@ -119,16 +168,16 @@
 								<span>{{s._source.config == undefined ? 'No Primary Config' : s._source.config.join('\n')}} </span> 
 							</p>
 						</td>
-			        </tr>
-			        <tr class="remarks" ng-show="isCollapsed == false">
+			        </tr> -->
+			        <!-- <tr class="remarks" ng-show="isCollapsed == false">
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
 								<b>Secondary Config:</b>
 								<span>{{s._source.sec_config == undefined ? 'No Secondary Config' : s._source.sec_config.join('\n')}}</span>
 							</p>
 						</td>
-			        </tr>
-			        <tr class="remarks" ng-show="isCollapsed == false">
+			        </tr> -->
+			        <!-- <tr class="remarks" ng-show="isCollapsed == false">
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;width:10em;text-align: center;">
 								<b>Previous Config: <br></b>
@@ -136,7 +185,7 @@
 								<span>{{s._source.existing_config == undefined ? 'No Previous Config' : s._source.existing_config}} </span>
 							</p>
 						</td>
-			        </tr>
+			        </tr> -->
 			        <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;text-align: center;">

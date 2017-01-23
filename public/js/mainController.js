@@ -330,6 +330,12 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 ngElastic.controller('statusController', function($scope, $http) {
 	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
 	$scope.emailPattern = (/['"]+/g, '');
+	function escapeRegExp(string) {
+  		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+	}
+	$scope.addPTag = function(sConfig) {
+		return sConfig;
+	}
 	var addText = 'Attach {0}';
   	$scope.getText = function(label){
   		// console.log(label.split('",'));
