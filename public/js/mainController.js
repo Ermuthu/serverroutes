@@ -404,18 +404,20 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
             sin2.push({x: i, y: i % 10 == 5 ? null : Math.sin(i/10) *0.25 + 0.5});
             cos.push({x: i, y: .5 * Math.cos(i/10+ 2) + Math.random() / 10});
         }
-
+        var data = [{"x": 0,"y": 0},{"x": 1,"y": 0.09983341664682815},{"x": 2,"y": 0.19866933079506122},{"x": 3,"y": 0.29552020666133955},{"x": 4,"y": 0.3894183423086505},{"x": 5,"y": 0.479425538604203},{"x": 6,"y": 0.5646424733950354},{"x": 7,"y": 0.644217687237691},{"x": 8,"y": 0.7173560908995228},{"x": 9,"y": 0.7833269096274834},{"x": 10,"y": 0.8414709848078965}];
         //Line chart data should be sent as an array of series objects.
         return [
             {
-                values: sin,      //values - represents the array of {x,y} data points
-                key: 'Sine Wave', //key  - the name of the series.
+                values: data,      //values - represents the array of {x,y} data points
+                key: 'Testing Wave', //key  - the name of the series.
                 color: '#ff7f0e',  //color - optional: choose your own line color.
                 strokeWidth: 2,
                 classed: 'dashed'
             }
         ];
     };
+
+    console.log(sinAndCos()[0].values);
 
 	$scope.lineChar = function() {
 		$scope.values = [];
