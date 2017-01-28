@@ -7,23 +7,7 @@
 				<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
 			</div>
 		</form>
-		<!-- <chart product="lineChartData" chart-data="salesData"></chart> -->
-		<!-- <div linear-chart chart-data="salesData"></div> -->
-		<!-- <nvd3 options="options" data="data" class="with-3d-shadow with-transitions" on-ready="callback"></nvd3> -->
 		<nvd3 options="options" data="data" on-ready="callback"></nvd3>
-		<!-- <nvd3-line-chart
-	    	data="exampleData"
-	        id="exampleId"
-	        width="800"
-	        height="350"
-	        showXAxis="true"
-	        showYAxis="true"
-	        interactive="true"
-	        margin={top:0,bottom:0}
-	        padding="0"
-	        noData="No Data For You!">
-	        	<svg></svg>
-    	</nvd3-line-chart> -->
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn" ng-show="!routes._source.applied_status">
 				<thead>
@@ -44,7 +28,6 @@
 						<td>{{r._source.existing_config}}</td>
 						<td>{{r._source.new_config}}</td>
 						<td>
-							<!-- <a ng-class="{'logSuccess': r._source.appliedstatus=='success', 'logFailure': r._source.appliedstatus=='fail'}" data-toggle="modal" data-target="#myModal" ng-click="isCollapsed = !isCollapsed">{{r._source.appliedstatus=='success' ? "Success" : "Fail"}}</a> -->
 							<a ng-class="{'logSuccess': r._source.applied_status=='success', 'logFailure': r._source.applied_status=='failed'}" data-toggle="modal" data-target="#myModal" ng-click="isCollapsed = !isCollapsed">{{r._source.applied_status=='success' ? "Success" : "Fail"}}</a>
 						</td>
 					</tr>

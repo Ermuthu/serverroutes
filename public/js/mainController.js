@@ -5,17 +5,12 @@ ngElastic.filter('typesFilter', function() {
    		if (!angular.isUndefined(clients) && !angular.isUndefined(selectedCompany) && selectedCompany.length > 0) {
    			var tempClients = [];
             angular.forEach(selectedCompany, function (id) {
-            	console.log("ID",id);
                 angular.forEach(clients, function (client) {
-                	console.log("Type",client._source.path_type);
-                	console.log("ID",id);
                     if (angular.equals(client._source.path_type, id)) {
-                    	console.log(("If"));
                         tempClients.push(client);
                     }
                 });
             });
-            console.log(tempClients);
             return tempClients;
    		}else{
    			return clients;
@@ -75,7 +70,6 @@ ngElastic.filter('wildcard', function() {
     var output = []
 
     angular.forEach(list, function(item) {
-		console.log(formatted);
       	var regex = new RegExp('^' + formatted + '$', 'im');
       	if (traverse(item, regex)) {
         	output.push(item);
@@ -154,7 +148,6 @@ ngElastic.controller('regexController', function($scope, $http) {
     // $http.get('/api/status').success(function(data) {
       $scope.result = data;
       // result.map(fun)
-      // console.log(result);
     }).error(function(e) {
       console.log(e);
     });
@@ -188,7 +181,6 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 
 	// send POST Request
 	$scope.postData = function(d) {
-		// console.log({"d": d});
 		$scope.routerInfo = {"LSPS": d};
 		$http.post('/api/applyanother', $scope.routerInfo).success(function(res) {
 			toastr.success("Posted Success");
@@ -214,9 +206,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
     
     	if (!$scope.search.name) {
       		for (var i = 0; i < $scope.data.length; i++) {
-      			// console.log($scope.data[i].isSelected);
         		if (angular.isUndefined($scope.data[i].isSelected)) {
-        			// console.log('if');
           			$scope.data[i].isSelected = $scope.checkbox.selectAll;
         		} else {
           			$scope.data[i].isSelected = !$scope.data[i].isSelected;
@@ -245,12 +235,9 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 		var postData = [];
 		angular.forEach($scope.data, function(d) {
 			if(!d.isSelected) {
-				// console.log(d);
 				newDataList.push(d);
 			}else{
-				console.log("else");
 				postData.push(d);
-				// $scope.postData(d);
 			}
 		});
 		$scope.data = newDataList;
@@ -303,7 +290,6 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 
 // TabController
 ngElastic.controller('tabController', function($scope, $http, $uibModal, lineChartService, $interval) {
-	// Line chart
 	$scope.isCollapsed = true;
 	$scope.tabInit = function() {
 		$http.get('/api/logs').success(function(data) {
@@ -312,6 +298,8 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 			console.log("Error loading data");
 		});
 	};
+
+	// Line Chart
 	$scope.options = {
         chart: {
             type: 'lineChart',
@@ -344,13 +332,17 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
             }
         }
     };
+
+    // Line chart data
     $scope.data = sinAndCos();
+
+    // callback function to handle the events (click, mouseover and mouseout)
     $scope.callback = function(scope, element){
     	// Add a click event
-    	d3.selectAll('.nv-point-paths').on('click', function(e){
-      		d3.selectAll('.nvtooltip').each(function(){
-          		this.style.setProperty('display', 'block', 'important');
-      	});
+		d3.selectAll('.nv-point-paths').on('click', function(e){
+  			d3.selectAll('.nvtooltip').each(function(){
+      			this.style.setProperty('display', 'block', 'important');
+      		});
     	});
     	// Clear tooltip on mouseout
     	d3.selectAll('.nv-point-paths').each(function(){
@@ -360,6 +352,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
           		});
       		}, false);
 		});
+		// Clear toolip on onload using mouseover
 		d3.selectAll('.nv-point-paths').each(function(){
       		this.addEventListener('mouseover', function(){
           		d3.selectAll('.nvtooltip').each(function(){
@@ -367,15 +360,15 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
           		});
       		}, false);
 		});
-	    // we use foreach and event listener because the on('mouseout')
-	    // was overidding some other function
-  };
+  	};
 
+  	// To generate data for Line Chart
     function lineChartDatas() {
     	var chartInput = [];
-    	$http.get('/api/linechart').success(function(d) {
+    	lineChartService.getdata().success(function(d) {
     		var hits = d.hits.hits;
     		_.map(hits, function(d) {
+    			//Data is represented as an array of {x,y} pairs.
     			chartInput.push({
     				x: new Date(d._source.received_ts).getTime(),
     				router_name: d._source.router_name,
@@ -385,27 +378,28 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     	}).error(function(err) {
 
     	});
+    	//Line chart data should be sent as an array of series objects.
     	return [
     		{
-    			values: chartInput,
-    			key: 'Router', //key  - the name of the series.
-                color: '#ff7f0e'  //color - optional: choose your own line color.
+    			values: chartInput,	//values - represent the array of {x,y} 
+    			key: 'Router',		//key  - the name of the series.
+                color: '#ff7f0e'	//color - optional: choose your own line color.
+                // strokeWidth: 2,		//strokeWidth - Width of the line.
+                // classed: 'dashed'	//classed - 
     		}
     	];
     }
 
+    // Dummy data for Line Chart
     function sinAndCos() {
         var sin = [],sin2 = [],
             cos = [];
-
-        //Data is represented as an array of {x,y} pairs.
         for (var i = 0; i < 100; i++) {
             sin.push({x: i, y: Math.sin(i/10)});
             sin2.push({x: i, y: i % 10 == 5 ? null : Math.sin(i/10) *0.25 + 0.5});
             cos.push({x: i, y: .5 * Math.cos(i/10+ 2) + Math.random() / 10});
         }
         var data = [{"x": 0,"y": 0},{"x": 1,"y": 0.09983341664682815},{"x": 2,"y": 0.19866933079506122},{"x": 3,"y": 0.29552020666133955},{"x": 4,"y": 0.3894183423086505},{"x": 5,"y": 0.479425538604203},{"x": 6,"y": 0.5646424733950354},{"x": 7,"y": 0.644217687237691},{"x": 8,"y": 0.7173560908995228},{"x": 9,"y": 0.7833269096274834},{"x": 10,"y": 0.8414709848078965}];
-        //Line chart data should be sent as an array of series objects.
         return [
             {
                 values: data,      //values - represents the array of {x,y} data points
@@ -417,42 +411,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
         ];
     };
 
-    console.log(sinAndCos()[0].values);
-
-	$scope.lineChar = function() {
-		$scope.values = [];
-		$scope.router_name = [];
-		$scope.slotsLength = [];
-		lineChartService.getdata().success(function(d) {
-	   //      for (var i=0; i<d.hits.hits.length; i++) {
-	   //          $scope.slotsLength.push({
-	   //          	x: new Date(d._source.received_ts[i]).getTime(),
-				// 	y: d._source.time_taken[i]
-				// });
-	   //      }
-			d.hits.hits.map(function(d) {
-				// console.log(d);
-				// $scope.values.push({
-				// 	x: new Date(d._source.received_ts).getTime(),
-				// 	y: d._source.time_taken
-				// });
-				$scope.axisData = [new Date(d._source.received_ts).getTime(),d._source.time_taken]
-				$scope.values.push($scope.axisData);
-				$scope.router_name.push(d._source.router_name);
-			});
-			// console.log($scope.values);
-			// console.log($scope.values);
-			$scope.lineChartData = [
-		     	{
-		        	"key": "Series 1",
-		        	"values": $scope.values,
-		        	"router_name": $scope.router_name
-		 		}
-		 	];
-		});
-		// $scope.lineChartData = $scope.values;
-		// console.log("Length : ",$scope.slotsLength);
-	}
+    // Time Difference
 	var difference,
 		daysDifference,
 		hoursDifference,
@@ -489,7 +448,6 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 });
 
 // statusController
-// function statusController($scope, $http) {
 ngElastic.controller('statusController', function($scope, $http) {
 	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
 	$scope.emailPattern = (/['"]+/g, '');
@@ -533,10 +491,6 @@ ngElastic.controller('statusController', function($scope, $http) {
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
-			console.log($scope.status.length);
-			// $scope.status.map(function(d) {
-			// 	console.log(d._source.path_type);
-			// });
 			//Time Difference
 			$scope.status.map(function(d){
 				//variable declaration
@@ -581,7 +535,6 @@ ngElastic.controller('statusController', function($scope, $http) {
 	      	}else {
 	        	$scope.selectedCompany.push(type);
 	      	}
-	      	console.log($scope.selectedCompany);
 	    };  
 	};
 });
