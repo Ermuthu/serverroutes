@@ -1,4 +1,4 @@
-<div class="row" ng-controller="tabController" ng-init='tabInit();lineChart()'>
+<div class="row" ng-controller="tabController" ng-init='tabInit()'>
 	<div class="container">
 		<h1>Logs</h1>
 		<form action="" class="form-inline">
@@ -7,13 +7,15 @@
 				<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
 			</div>
 		</form>
-		<nvd3-line-chart
-	    	data="lineChartData"
+		<!-- <chart product="lineChartData" chart-data="salesData"></chart> -->
+		<!-- <div linear-chart chart-data="salesData"></div> -->
+		<!-- <nvd3 options="options" data="data" class="with-3d-shadow with-transitions" on-ready="callback"></nvd3> -->
+		<nvd3 options="options" data="data" on-ready="callback"></nvd3>
+		<!-- <nvd3-line-chart
+	    	data="exampleData"
 	        id="exampleId"
 	        width="800"
 	        height="350"
-	        xAxisTickFormat="xAxisTickFormatFunction()"
-	        yAxisTickFormat="yAxisTickFormatFunction()"
 	        showXAxis="true"
 	        showYAxis="true"
 	        interactive="true"
@@ -21,7 +23,7 @@
 	        padding="0"
 	        noData="No Data For You!">
 	        	<svg></svg>
-    	</nvd3-line-chart>
+    	</nvd3-line-chart> -->
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn" ng-show="!routes._source.applied_status">
 				<thead>

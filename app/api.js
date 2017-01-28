@@ -38,8 +38,9 @@ module.exports = {
 	status: function(req, res) {
 		// var status = './db/status.json';
 		// var status_new = './db/status_new.json';
-		var status_logs = './db/status_logs.json';
-		res.send(jsonfile.readFileSync(status_logs));
+		// var status_logs = './db/status_logs.json';
+		var status_path_type = './db/status_path_type.json';
+		res.send(jsonfile.readFileSync(status_path_type));
 	},
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';

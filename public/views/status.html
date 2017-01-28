@@ -1,17 +1,22 @@
 <div class="row" ng-controller="statusController" ng-init="loadStatus()">
 	<div class="container">
 		<h1>Status</h1>
+		<hr>
 		<div class="row">
-			<div class="col-sm-5">
+			<div class="col-sm-12">
 				<form action="" class="form-inline">
 					<div class="form-group">
 						<label for="search">Search :</label>
 						<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
-						<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
+						<!-- <input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name"> -->
 					</div>
 				</form>	
 			</div>
-			<div class="col-sm-7 pull-right" style="margin-top: -30px;">
+		</div>
+		<!-- <hr /> -->
+		<div class="row">
+			<div class="col-sm-6">
+				<!-- <h3>Filters</h3> -->
 				<form class="form-inline">
 					<div class="form-group">
 						<div class="funkyradio">
@@ -55,47 +60,37 @@
 					</div>
 				</form>
 			</div>
+			<div class="col-sm-6">
+				<!-- <h3></h3> -->
+				<form class="form-inline">
+					<div class="form-group">
+						<div class="checkbox checkbox-primary checkbox-inline">
+			                <input type="checkbox" id="inlineCheckbox1" value="" ng-click="toggleSelection('0')" ng-checked="">
+			                <label for="inlineCheckbox1">All</label>
+			            </div>
+					</div>
+					<div class="form-group">
+						<div class="checkbox checkbox-success checkbox-inline">
+			                <input type="checkbox" id="inlineCheckbox2" value="1" ng-click="toggleSelection('1')">
+			                <label for="inlineCheckbox2">Primary</label>
+			            </div>
+					</div>
+					<div class="form-group">
+						<div class="checkbox checkbox-warning checkbox-inline">
+			                <input type="checkbox" id="inlineCheckbox3" value="2" ng-click="toggleSelection('2')">
+			                <label for="inlineCheckbox3">Secondary</label>
+			            </div>
+					</div>
+					<div class="form-group">
+						<div class="checkbox checkbox-danger checkbox-inline">
+	                		<input type="checkbox" id="inlineCheckbox4" value="9" ng-click="toggleSelection('9')">
+		                	<label for="inlineCheckbox4">None</label>
+		            	</div>
+					</div>
+				</form>
+			</div>
 		</div>
-		<div class="col-sm-12" style="margin-left:800px;">
-	        <div class="checkbox" style="margin-left: -40px; margin-top:10px;">
-	          	<label class="form-inline" >
-	            	<input type="checkbox" checked>
-	            	<span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span >Primary
-	          	</label>
-	       	</div>
-	       	<div class="checkbox" style="margin-left:45px;margin-top:-30px;">
-          		<label class="form-inline">
-	            	<input type="checkbox">
-	            	<span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>Secondary
-	          	</label>
-	       	</div>
-	       	<div class="checkbox" style="margin-left:150px;margin-top:-31px;">
-	          	<label class="form-inline">
-	            	<input type="checkbox" value="">
-	            	<span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span >Teritiary
-	          	</label>
-	       	</div>
-	       	<div class="checkbox" style="margin-left:235px;margin-top:-32px;">
-	          	<label class="form-inline">
-	            	<input type="checkbox" value="">
-	            	<span class="cr" style="color:#ff4444;"><i class="cr-icon glyphicon glyphicon-ok"></i></span> <span style="color:#ff4444;">No</span> 
-	          	</label>
-	       	</div>
-   		</div>
-   		<div>
-   			<div class="checkbox checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1">
-                <label for="inlineCheckbox1"> Inline One </label>
-            </div>
-            <div class="checkbox checkbox-success checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox2" value="option1" checked="">
-                <label for="inlineCheckbox2"> Inline Two </label>
-            </div>
-            <div class="checkbox checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox3" value="option1">
-                <label for="inlineCheckbox3"> Inline Three </label>
-            </div>
-   		</div>
+		<hr>
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn">
 				<thead>
@@ -113,13 +108,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- <tr ng-repeat-start="s in status | filter:{_source: {router_name: router_name_search}, _id: lsp_name_search}"> -->
-					<tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}}">
-						<!-- <td>{{s._source.router_name}}</td>
-						<td>{{s._source.pathName}}</td>
-						<td class="cpointer">
-							<a ng-click="isCollapsed = !isCollapsed">{{s._id}}</a>
-						</td> -->
+					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | typesFilter: selectedTypes"> -->
+					<tr ng-repeat-start="s in status | wildcard: LSPSearch">
 						<td>{{s._source.router_name}}</td>
 					 	<td>{{s._source.router_ip}} </td>
 					 	<td>{{s._source.destIp}} </td>
@@ -150,8 +140,8 @@
 										<tr>
 											<th class="text-center">Config Applied on: </th>
 											<th class="text-center">Last Checked on: </th>
-											<th colspan="2" class="text-center">Primary path </th>
-											<th colspan="2" style="text-align: center;">Secondary path </th>
+											<th colspan="3" class="text-center">Primary path </th>
+											<th colspan="3" style="text-align: center;">Secondary path </th>
 										</tr>
 									</thead>
 									<tbody>
@@ -160,8 +150,10 @@
 										<td style="border-bottom-style: hidden;"></td>
 										<td class="text-center">Domain Name</td>
 										<td class="text-center">IPS</td>
+										<td class="text-center">Admin group</td>
 										<td class="text-center">Domain Name</td>
 										<td class="text-center">IPS</td>
+										<td class="text-center">Admin group secondary</td>
 		              					<tr class="text-center">
 							              	<td style="vertical-align: middle;">{{s._source.applied_timestamp == undefined ? 'None' : config_applied_time | date:'dd/MM/yyyy HH:mm:ss'}}
 							              	</td>
@@ -175,12 +167,24 @@
 							              			<p>{{'(' + a + ')'}}</p>
 							              		</div>
 							              	</td>
+						              		<td style="vertical-align: middle;width:132px;">
+						              			<span ng-show="s._source.admin_grp == undefined">None</span>
+							              		<div ng-if="s._source.admin_grp != undefined" ng-repeat="agp in adminGroupPrimary(s._source.admin_grp)">
+							              			<p>{{agp}}</p>
+							              		</div>
+						              		</td>
 							              	<td style="vertical-align: middle;">
 							              		{{s._source.sec_config == undefined ? 'None' : s._source.sec_config.join('\n')}}
 							              	</td> 
 							              	<td style="vertical-align: middle;">
 							              		{{s._source.sec_config == undefined ? 'None' : s._source.sec_config.join('\n')}}
 							              	</td>
+							              	<td style="vertical-align: middle;width:132px;">
+							              		<span ng-show="s._source.admin_grp_secondary == undefined">None</span>
+							              		<div ng-if="s._source.admin_grp_secondary != undefined" ng-repeat="ags in adminGroupSecondary(s._source.admin_grp_secondary)">
+							              			<p>{{ags}}</p>
+							              		</div>
+						              		</td>
 						              	</tr>
 						              	</tr>
 					              	</tbody>
@@ -232,17 +236,8 @@
 								<b>Logs: <br></b>
 								<!-- <span>{{s._source.log == undefined ? 'No Logs' : getText(s._source.log)}}</span> -->
 								<span>
-									<div style="margin: 0 auto;text-align: center;margin-top: 14px;">
-										<!-- <p>{{gt}}</p> -->
-										<p ng-show="getText(s._source.log)[0] != undefined">{{getText(s._source.log)[0]}}</p>
-										<p ng-show="getText(s._source.log)[1] != undefined">{{getText(s._source.log)[1]}}</p>
-										<p ng-show="getText(s._source.log)[2] != undefined">{{getText(s._source.log)[2]}}</p>
-										<p ng-show="getText(s._source.log)[3] != undefined">{{getText(s._source.log)[3]}}</p>
-										<p ng-show="getText(s._source.log)[4] != undefined">{{getText(s._source.log)[4]}}</p>
-										<p ng-show="getText(s._source.log)[5] != undefined">{{getText(s._source.log)[5]}}</p>
-										<p ng-show="getText(s._source.log)[6] != undefined">{{getText(s._source.log)[6]}}</p>
-										<p ng-show="getText(s._source.log)[7] != undefined">{{getText(s._source.log)[7]}}</p>
-										<p ng-show="getText(s._source.log)[8] != undefined">{{getText(s._source.log)[8]}}</p>
+									<div ng-repeat="gt in getText(s._source.log)" style="margin: 0 auto;text-align: center;margin-top: 14px;">
+										<p>{{gt}}</p>
 									</div>
 									<!-- <p>hello</p> -->
 								</span>

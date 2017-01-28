@@ -1,21 +1,74 @@
-var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3ChartDirectives', 'ui.bootstrap']);
+var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap']);
+// ngElastic.controller('statusController', statusController);
+ngElastic.filter('typesFilter', function() {
+   return function(clients, selectedCompany) {
+   		if (!angular.isUndefined(clients) && !angular.isUndefined(selectedCompany) && selectedCompany.length > 0) {
+   			var tempClients = [];
+            angular.forEach(selectedCompany, function (id) {
+            	console.log("ID",id);
+                angular.forEach(clients, function (client) {
+                	console.log("Type",client._source.path_type);
+                	console.log("ID",id);
+                    if (angular.equals(client._source.path_type, id)) {
+                    	console.log(("If"));
+                        tempClients.push(client);
+                    }
+                });
+            });
+            console.log(tempClients);
+            return tempClients;
+   		}else{
+   			return clients;
+   		}
+    };
+});
 
+// return function (clients, selectedCompany) {
+//         if (!angular.isUndefined(clients) && !angular.isUndefined(selectedCompany) && selectedCompany.length > 0) {
+//             var tempClients = [];
+//             angular.forEach(selectedCompany, function (id) {
+//                 angular.forEach(clients, function (client) {
+//                     if (angular.equals(client.company.id, id)) {
+//                         tempClients.push(client);
+//                     }
+//                 });
+//             });
+//             return tempClients;
+//         } else {
+//             return clients;
+//         }
+//     };
+// ngElastic.filter('typesFilter', function() {
+//    return function(files, types) {
+//     	return files.filter(function(file) {
+//           if(types.indexOf(file._source.path_type) > -1){
+//           	console.log("if");
+//           	return true;
+//           }else{
+//           	console.log("else");
+//           	return false;
+//           }
+//         });
+//     };
+// });
+ngElastic.factory('lineChartService', function($http){
+    return {
+        getdata: function(){
+          	return $http.get('/api/linechart'); // You Have to give Correct Url either Local path or api etc 
+        }
+    };
+});
 ngElastic.filter('wildcard', function() {
 
   return function(list, value) {
-    // debugger
-   	// console.log("list",list);
-   	// console.log("value",value);
     if (!value) {
       return list;
     }
 
-    // var escaped = value.replace(/([+?^=!:${}()|\[\]()\/\\])/g, "\\$1");
     var escaped = value.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-    console.log(escaped);
     var formatted = escaped.replace('*', '.*')
 
-    if (formatted.indexOf('*') === -1) {
+    if (formatted.indexOf('*') === -1 || openb.indexOf('(') === -1 || closeb.indexOf(')') === -1) {
       formatted = '.*' + formatted + '.*'
     }
 
@@ -50,14 +103,6 @@ ngElastic.filter('wildcard', function() {
       }
     }
   }
-});
-
-ngElastic.factory('lineChartService', function($http){
-    return {
-        getdata: function(){
-          	return $http.get('/api/linechart'); // You Have to give Correct Url either Local path or api etc 
-        }
-    };
 });
 
 ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -257,7 +302,8 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 
 
 // TabController
-ngElastic.controller('tabController', function($scope, $http, $uibModal, lineChartService) {
+ngElastic.controller('tabController', function($scope, $http, $uibModal, lineChartService, $interval) {
+	// Line chart
 	$scope.isCollapsed = true;
 	$scope.tabInit = function() {
 		$http.get('/api/logs').success(function(data) {
@@ -266,30 +312,139 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 			console.log("Error loading data");
 		});
 	};
-	$scope.values = [];
-	lineChartService.getdata().success(function(d) {
-		d.hits.hits.map(function(d) {
-			// console.log(d);
-			$scope.axisData = [new Date(d._source.received_ts).getTime(),d._source.time_taken]
-			$scope.values.push($scope.axisData);
+	$scope.options = {
+        chart: {
+            type: 'lineChart',
+            height: 450,
+            margin : {
+                top: 20,
+                right: 20,
+                bottom: 40,
+                left: 75
+            },
+            // tooltip:{
+            // 	enabled: false
+            // },
+            x: function(d){ return d.x; },
+            y: function(d){ return d.y; },
+            // useInteractiveGuideline: false,
+            dispatch: {
+              tooltipShow: function(e){ console.log('! tooltip SHOW !')},
+              tooltipHide: function(e){console.log('! tooltip HIDE !')},
+              beforeUpdate: function(e){ console.log('! before UPDATE !')}
+            },
+            xAxis: {
+                axisLabel: 'Time',
+                tickFormat: function(d) {
+            		return d3.time.format('%d/%b %H:%M')(new Date(d * 1000));
+                }
+            },
+            yAxis: {
+                axisLabel: 'Timetaken'
+            }
+        }
+    };
+    $scope.data = sinAndCos();
+    $scope.callback = function(scope, element){
+    	console.log("callback");
+    	// Add a click event
+    	d3.selectAll('.nv-point-paths').on('click', function(){
+    		console.log("cicked");
+      		d3.selectAll('.nvtooltip').each(function(){
+          		this.style.setProperty('display', 'block', 'important');
+      	});
+    	});
+    	// Clear tooltip on mouseout
+    	d3.selectAll('.nv-point-paths').each(function(){
+      		this.addEventListener('mouseout', function(){
+          		d3.selectAll('.nvtooltip').each(function(){
+              		this.style.setProperty('display', 'none', 'important');
+          		});
+      		}, false);
 		});
-		$scope.lineChartData = [
-	     	{
-	        	"key": "Series 1",
-	        	"values": $scope.values
-	 		}
-	 	];
-	});
-	// $scope.data = [[1483742700940,1.6188969612121582],[1483669633922,1.5687339305877686],[1483743258204,1.6179931163787842],[1483743262491,1.6179630756378174],[1483743315514,1.5693018436431885],[1483743343626,1.6178579330444336],[1483743306901,1.6682980060577393],[1483743296496,1.617893934249878],[1483743321801,1.618340015411377],[1483743311273,1.617940902709961]];
- 	$scope.colorFunction = function() {
-		return function(d, i) {
-	    	return '#E01B5D'
-	    };
-	}
-	$scope.xAxisTickFormatFunction = function(){
-		return function(d){
-			return d3.time.format('%d/%b %H:%M')(new Date(d * 1000));
-		}
+	    // we use foreach and event listener because the on('mouseout')
+	    // was overidding some other function
+  };
+
+    function lineChartDatas() {
+    	var chartInput = [];
+    	$http.get('/api/linechart').success(function(d) {
+    		var hits = d.hits.hits;
+    		_.map(hits, function(d) {
+    			chartInput.push({
+    				x: new Date(d._source.received_ts).getTime(),
+    				router_name: d._source.router_name,
+    				y: d._source.time_taken
+    			});
+    		});
+    	}).error(function(err) {
+
+    	});
+    	return [
+    		{
+    			values: chartInput,
+    			key: 'Router', //key  - the name of the series.
+                color: '#ff7f0e'  //color - optional: choose your own line color.
+    		}
+    	];
+    }
+
+    function sinAndCos() {
+        var sin = [],sin2 = [],
+            cos = [];
+
+        //Data is represented as an array of {x,y} pairs.
+        for (var i = 0; i < 100; i++) {
+            sin.push({x: i, y: Math.sin(i/10)});
+            sin2.push({x: i, y: i % 10 == 5 ? null : Math.sin(i/10) *0.25 + 0.5});
+            cos.push({x: i, y: .5 * Math.cos(i/10+ 2) + Math.random() / 10});
+        }
+
+        //Line chart data should be sent as an array of series objects.
+        return [
+            {
+                values: sin,      //values - represents the array of {x,y} data points
+                key: 'Sine Wave', //key  - the name of the series.
+                color: '#ff7f0e',  //color - optional: choose your own line color.
+                strokeWidth: 2,
+                classed: 'dashed'
+            }
+        ];
+    };
+
+	$scope.lineChar = function() {
+		$scope.values = [];
+		$scope.router_name = [];
+		$scope.slotsLength = [];
+		lineChartService.getdata().success(function(d) {
+	   //      for (var i=0; i<d.hits.hits.length; i++) {
+	   //          $scope.slotsLength.push({
+	   //          	x: new Date(d._source.received_ts[i]).getTime(),
+				// 	y: d._source.time_taken[i]
+				// });
+	   //      }
+			d.hits.hits.map(function(d) {
+				// console.log(d);
+				// $scope.values.push({
+				// 	x: new Date(d._source.received_ts).getTime(),
+				// 	y: d._source.time_taken
+				// });
+				$scope.axisData = [new Date(d._source.received_ts).getTime(),d._source.time_taken]
+				$scope.values.push($scope.axisData);
+				$scope.router_name.push(d._source.router_name);
+			});
+			// console.log($scope.values);
+			// console.log($scope.values);
+			$scope.lineChartData = [
+		     	{
+		        	"key": "Series 1",
+		        	"values": $scope.values,
+		        	"router_name": $scope.router_name
+		 		}
+		 	];
+		});
+		// $scope.lineChartData = $scope.values;
+		// console.log("Length : ",$scope.slotsLength);
 	}
 	var difference,
 		daysDifference,
@@ -305,7 +460,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
         minutesDifference = Math.floor(difference/1000/60);
         difference -= minutesDifference*1000*60
         secondsDifference = Math.floor(difference/1000);
-		console.log('difference = ' + daysDifference + ' day/s ' + hoursDifference + ' hour/s ' + minutesDifference + ' minute/s ' + secondsDifference + ' second/s ');
+		// console.log('difference = ' + daysDifference + ' day/s ' + hoursDifference + ' hour/s ' + minutesDifference + ' minute/s ' + secondsDifference + ' second/s ');
  	}
  	$scope.timeDifference($scope.date1, $scope.date2);
 	// $scope.showModal = function(d) {
@@ -327,6 +482,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 });
 
 // statusController
+// function statusController($scope, $http) {
 ngElastic.controller('statusController', function($scope, $http) {
 	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
 	$scope.emailPattern = (/['"]+/g, '');
@@ -336,23 +492,23 @@ ngElastic.controller('statusController', function($scope, $http) {
 	$scope.addPTag = function(sConfig) {
 		return sConfig;
 	}
-	var addText = 'Attach {0}';
   	$scope.getText = function(label){
-  		// console.log(label.split('",'));
-  // 		if(label != undefined){
-	 //  		var arr = [];
-	 //  		_.reduce(label.split('\",'), function(sum, n) {
-		// 	  arr.push(sum+n);
-		// 	});
-	 //  	}
-		// console.log(arr[0]);
-		// console.log(arr[1]);
     	if(label != undefined)
-    		// console.log(label.split('\",'));
-    		// _.reduce(label.split('",'), function(sum) {
-    		// 	console.log("sum",sum);
-    		// })
-    		return label.split('",');
+			return label.split('$');
+  	}
+  	$scope.adminGroupPrimary = function(agp) {
+  		if(agp != undefined) {
+  			var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
+  				removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
+  			return removespechar.split('$');
+  		}
+  	}
+  	$scope.adminGroupSecondary = function(agp) {
+  		if(agp != undefined) {
+  			var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
+  				removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
+  			return removespechar.split('$');
+  		}
   	}
 	// $scope.getText = function(obj){
 	// 	console.log(obj.replace(/,/g, '\n'));
@@ -366,38 +522,60 @@ ngElastic.controller('statusController', function($scope, $http) {
  //    	// return text.split(",").join("<br />");
  //  	};
 	$scope.isCollapsed = true;
+	$scope.selectedCompany = [];
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
-			// console.log($scope.status);
+			console.log($scope.status.length);
+			// $scope.status.map(function(d) {
+			// 	console.log(d._source.path_type);
+			// });
 			//Time Difference
-			// $scope.status.map(function(d){
-			// 	//variable declaration
-			// 	if(d._source.applied_timestamp != undefined)
-			// 		return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
-			// 		// console.log(d._source.applied_timestamp);
-			// 	var now = new Date();
-			// 		then  = new Date(d._source.running_timestamp*1000),
-			// 		diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
-			// 		duration = moment.duration(diff),
-			// 		ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
-			// 		hour = Math.floor(duration.asHours()),
-			// 		min = Math.floor(duration.asMinutes()),
-			// 		sec = Math.floor(duration.asSeconds());
-			// 	// check for higher grade
-			// 	$scope.updated_date = then;
-			// 	if(hour > 0)
-			// 		$scope.last_updated_time = hour + ' Hours ago';
-			// 	else if(min > 0)
-			// 		$scope.last_updated_time = min + ' Minutes ago';
-			// 	else if(min < 0 && sec > 0)
-			// 		$scope.last_updated_time = sec + ' Seconds ago';
-			// 	else
-			// 		$scope.last_updated_time = 'Time is up to date';
-   //          });
+			$scope.status.map(function(d){
+				//variable declaration
+				if(d._source.applied_timestamp != undefined)
+					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
+				var now = new Date();
+					then  = new Date(d._source.running_timestamp*1000),
+					diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+					duration = moment.duration(diff),
+					ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+					hour = Math.floor(duration.asHours()),
+					min = Math.floor(duration.asMinutes()),
+					sec = Math.floor(duration.asSeconds());
+				// check for higher grade
+				$scope.updated_date = then;
+				if(hour > 0)
+					$scope.last_updated_time = hour + ' Hours ago';
+				else if(min > 0)
+					$scope.last_updated_time = min + ' Minutes ago';
+				else if(min < 0 && sec > 0)
+					$scope.last_updated_time = sec + ' Seconds ago';
+				else
+					$scope.last_updated_time = 'Time is up to date';
+            });
 		}).error(function(e) {
 			console.log(e);
 		});
+		// $scope.toggleSelection = function toggleSelection(type) {
+		// 	console.log(type);
+		// 	_.filter($scope.status, function(o) { 
+		// 		// console.log(o._source.path_type );
+		// 		if(o._source.path_type == type){
+		// 			$scope.selectedItems.push(o);
+		// 		}
+		// 	});
+		// }
+		// $scope.selectedTypes = [];
+		$scope.toggleSelection = function toggleSelection(type) {
+	    	var idx = $scope.selectedCompany.indexOf(type);
+	      	if (idx > -1) {
+	        	$scope.selectedCompany.splice(idx, 1);
+	      	}else {
+	        	$scope.selectedCompany.push(type);
+	      	}
+	      	console.log($scope.selectedCompany);
+	    };  
 	};
 });
 
