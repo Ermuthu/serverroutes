@@ -348,7 +348,6 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     $scope.callback = function(scope, element){
     	// Add a click event
     	d3.selectAll('.nv-point-paths').on('click', function(e){
-    		console.log(e)
       		d3.selectAll('.nvtooltip').each(function(){
           		this.style.setProperty('display', 'block', 'important');
       	});
