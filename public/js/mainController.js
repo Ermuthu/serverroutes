@@ -346,10 +346,9 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     };
     $scope.data = sinAndCos();
     $scope.callback = function(scope, element){
-    	console.log("callback");
     	// Add a click event
-    	d3.selectAll('.nv-point-paths').on('click', function(){
-    		console.log("cicked");
+    	d3.selectAll('.nv-point-paths').on('click', function(e){
+    		console.log(e)
       		d3.selectAll('.nvtooltip').each(function(){
           		this.style.setProperty('display', 'block', 'important');
       	});
@@ -357,6 +356,13 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     	// Clear tooltip on mouseout
     	d3.selectAll('.nv-point-paths').each(function(){
       		this.addEventListener('mouseout', function(){
+          		d3.selectAll('.nvtooltip').each(function(){
+              		this.style.setProperty('display', 'none', 'important');
+          		});
+      		}, false);
+		});
+		d3.selectAll('.nv-point-paths').each(function(){
+      		this.addEventListener('mouseover', function(){
           		d3.selectAll('.nvtooltip').each(function(){
               		this.style.setProperty('display', 'none', 'important');
           		});
