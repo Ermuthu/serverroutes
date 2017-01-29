@@ -141,7 +141,7 @@
 										<tr>
 											<th class="text-center">Config Applied on: </th>
 											<th class="text-center">Last Checked on: </th>
-											<th colspan="3" class="text-center">Primary path </th>
+											<th colspan="2" class="text-center">Primary path </th>
 											<th colspan="3" style="text-align: center;">Secondary path </th>
 										</tr>
 									</thead>
@@ -150,7 +150,7 @@
 										<td style="border-bottom-style: hidden;"></td>
 										<td style="border-bottom-style: hidden;"></td>
 										<td class="text-center">Domain Name</td>
-										<td class="text-center">IPS</td>
+										<!-- <td class="text-center">IPS</td> -->
 										<td class="text-center">Admin group</td>
 										<td class="text-center">Domain Name</td>
 										<td class="text-center">IPS</td>
@@ -160,12 +160,12 @@
 							              	</td>
 							              	<td style="vertical-align: middle;">{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
 							              	</td>
-							              	<td style="width:129px; border-right-style: hidden;vertical-align: middle;">{{s._source.config_name == undefined ? 'None - ' : s._source.config_name.join('\n')}}
-							              	</td>
-							              	<td style="vertical-align: middle;" width="1px;">
+							              	<!-- <td style="width:129px; border-right-style: hidden;vertical-align: middle;">{{s._source.config_name == undefined ? 'None - ' : s._source.config_name.join('\n')}}
+							              	</td> -->
+							              	<td style="vertical-align: middle;width: 30%;" width="1px;">
 							              		<span ng-show="s._source.config == undefined">None</span>
 							              		<div ng-if="s._source.config != undefined" ng-repeat="a in addPTag(s._source.config)">
-							              			<p>{{'(' + a + ')'}}</p>
+							              			<p>{{'DONOTINCLUDE - ' +  '(' + a + ')'}}</p>
 							              		</div>
 							              	</td>
 						              		<td style="vertical-align: middle;width:132px;">
