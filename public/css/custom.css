@@ -203,10 +203,12 @@
 }
 /* Small box */
 .rect-box {
-  width: 10px;
-  height: 10px;
+  width: 25px;
+  height: 25px;
   border: 1px solid rgba(0, 0, 0, .2);
   display: inline-block;
+  border-radius: 50%;
+  vertical-align: middle;
 }
 .green {
   background: #449D44;
