@@ -1,12 +1,12 @@
 var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap']);
-// ngElastic.controller('statusController', statusController);
+
 ngElastic.filter('typesFilter', function() {
    return function(clients, selectedCompany) {
    		if (!angular.isUndefined(clients) && !angular.isUndefined(selectedCompany) && selectedCompany.length > 0) {
    			var tempClients = [];
             angular.forEach(selectedCompany, function (id) {
                 angular.forEach(clients, function (client) {
-                    if (angular.equals(client._source.path_type, id)) {
+                    if(angular.equals(client._source.path_type, id.toString())) {
                         tempClients.push(client);
                     }
                 });
@@ -17,35 +17,6 @@ ngElastic.filter('typesFilter', function() {
    		}
     };
 });
-
-// return function (clients, selectedCompany) {
-//         if (!angular.isUndefined(clients) && !angular.isUndefined(selectedCompany) && selectedCompany.length > 0) {
-//             var tempClients = [];
-//             angular.forEach(selectedCompany, function (id) {
-//                 angular.forEach(clients, function (client) {
-//                     if (angular.equals(client.company.id, id)) {
-//                         tempClients.push(client);
-//                     }
-//                 });
-//             });
-//             return tempClients;
-//         } else {
-//             return clients;
-//         }
-//     };
-// ngElastic.filter('typesFilter', function() {
-//    return function(files, types) {
-//     	return files.filter(function(file) {
-//           if(types.indexOf(file._source.path_type) > -1){
-//           	console.log("if");
-//           	return true;
-//           }else{
-//           	console.log("else");
-//           	return false;
-//           }
-//         });
-//     };
-// });
 ngElastic.factory('lineChartService', function($http){
     return {
         getdata: function(){
@@ -80,7 +51,6 @@ ngElastic.filter('wildcard', function() {
 
   function traverse(item, regex) {
     for (var prop in item) {
-
       //angular property like hash
       if(prop[0] === '$$'){
         return;  
@@ -145,9 +115,7 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 ngElastic.controller('regexController', function($scope, $http) {
   $scope.init = function() {
     $http.get('https://jsonplaceholder.typicode.com/users/').success(function(data) {
-    // $http.get('/api/status').success(function(data) {
       $scope.result = data;
-      // result.map(fun)
     }).error(function(e) {
       console.log(e);
     });
@@ -250,43 +218,7 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			data.isDelete = $scope.selectAll;
 		});
 	};
-
-	// function escapeRegExp(string) {
- //  		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-	// }
-
-	// $scope.textSearch = '';
- //  	var regex;
- //  	$scope.$watch('textSearch', function(value) {
- //  		console.log(value);
- //    	var escaped = escapeRegExp(value);
- //    	var formatted = escaped.replace('*', '.*');
- //    	if(formatted.indexOf('*') === -1){
- //    		formatted = '.*' + formatted + '.*'
- //    	}
- //    	regex = new RegExp('^' + formatted + '$', 'im');
- //  	});
-
- //  	$scope.filterBySearch = function(dataItem) {
- //    	if (!$scope.textSearch) return true;
- //    	return regex.test(dataItem);
- //  	};
 });
-
-// $scope.testing = "FROM-DLNYC3-BBISP-GW2-TO-DL";
-// ngElastic.filter('myfilter', function() {
-// 	return function( items, types) {
-//     	var filtered = [];
-//     	angular.forEach(items, function(item) {
-//     		// console.log(item._id);
-//        		if(item._id.match(/^FROM-DLNYC3-BBISP-GW2-TO-DL.*$/)) {
-//           		filtered.push(item);
-//     		}
-//     	});
-//     	return filtered;
-//   	};
-// });	
-
 
 // TabController
 ngElastic.controller('tabController', function($scope, $http, $uibModal, lineChartService, $interval) {
@@ -475,19 +407,8 @@ ngElastic.controller('statusController', function($scope, $http) {
   			return removespechar.split('$');
   		}
   	}
-	// $scope.getText = function(obj){
-	// 	console.log(obj.replace(/,/g, '\n'));
-	// 	return obj.replace(/,/g, '\n');
-	// 	// var text = obj.replace(/['"]+/g, '');
-	// 	// console.log(text.split(",").join("\n"));
-	// 	// console.log(obj.split(' "').join('\n'));
-	// 	// return obj.replace(/['"]+/g, '\n');
- //    	// var text = obj.replace(/['"]+/g, '');
- //    	// return text.split(", ").join("\n");
- //    	// return text.split(",").join("<br />");
- //  	};
 	$scope.isCollapsed = true;
-	$scope.selectedCompany = [];
+	$scope.selectedTypes = [];
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
@@ -528,14 +449,31 @@ ngElastic.controller('statusController', function($scope, $http) {
 		// 	});
 		// }
 		// $scope.selectedTypes = [];
-		$scope.toggleSelection = function toggleSelection(type) {
-	    	var idx = $scope.selectedCompany.indexOf(type);
-	      	if (idx > -1) {
-	        	$scope.selectedCompany.splice(idx, 1);
-	      	}else {
-	        	$scope.selectedCompany.push(type);
-	      	}
-	    };  
+		// $scope.toggleSelection = function toggleSelection(type) {
+	 	//    	var idx = $scope.selectedTypes.indexOf(type);
+		//      	if (idx > -1) {
+		//        	$scope.selectedTypes.splice(idx, 1);
+		//      	}else {
+		//        	$scope.selectedTypes.push(type);
+		//      	}
+		//    }; 
+	 	$scope.colourIncludes = [];
+	 	$scope.toggleSelection = function(colour) {
+	        var i = $.inArray(colour, $scope.colourIncludes);
+	        if (i > -1) {
+	            $scope.colourIncludes.splice(i, 1);
+	        } else {
+	            $scope.colourIncludes.push(colour);
+	        }
+    	}
+    	$scope.colourFilter = function(fruit) {
+	        if ($scope.colourIncludes.length > 0) {
+	            if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
+	            	return
+	            }
+	        }
+	        return fruit;
+	    }
 	};
 });
 

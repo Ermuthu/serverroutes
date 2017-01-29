@@ -65,7 +65,7 @@
 				<form class="form-inline">
 					<div class="form-group">
 						<div class="checkbox checkbox-primary checkbox-inline">
-			                <input type="checkbox" id="inlineCheckbox1" value="" ng-click="toggleSelection('0')" ng-checked="">
+			                <input type="checkbox" id="inlineCheckbox1" value="" ng-click="toggleSelection('')" ng-checked="">
 			                <label for="inlineCheckbox1">All</label>
 			            </div>
 					</div>
@@ -109,7 +109,8 @@
 				</thead>
 				<tbody>
 					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | typesFilter: selectedTypes"> -->
-					<tr ng-repeat-start="s in status | wildcard: LSPSearch">
+					<tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter">
+					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch"> -->
 						<td>{{s._source.router_name}}</td>
 					 	<td>{{s._source.router_ip}} </td>
 					 	<td>{{s._source.destIp}} </td>
