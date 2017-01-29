@@ -218,6 +218,10 @@ ngElastic.controller('ipController', function($scope, $http, $routeParams) {
 			data.isDelete = $scope.selectAll;
 		});
 	};
+
+  $scope.placement = {
+    selected: 'top'
+  };
 });
 
 // TabController

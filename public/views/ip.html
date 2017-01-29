@@ -86,9 +86,50 @@
                             	<!-- 2. green, green, grey -->
                             	<!-- 3. green, green, green -->
                             	<!-- 4. green, red, grey -->
-                            	<div ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4}" class="rect-box"><span>A</span></div>
-								<div ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="rect-box"><span>B</span></div>
-								<div ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}" class="rect-box"><span>C</span></div>
+                            	<div 
+                            		ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4}" class="rect-box">
+                        				<span 
+											tooltip-class="animated flipInX"
+											tooltip-placement="{{placement.selected}}"
+											uib-tooltip="Small">
+											S
+										</span>
+                    			</div>
+								<div
+									ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}"
+									class="rect-box">
+										<span 
+											tooltip-class="animated flipInX"
+											tooltip-placement="{{placement.selected}}"
+											uib-tooltip="Medium">
+											M
+										</span>
+								</div>
+								<div
+									ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}"
+									class="rect-box">
+										<span 
+											tooltip-class="animated flipInX"
+											tooltip-placement="{{placement.selected}}"
+											uib-tooltip-template="'myTooltipTemplate.html'">
+											L
+										</span>
+								</div>
+								<script type="text/ng-template" id="myTooltipTemplate.html">
+									<div class="clear">
+										<p class="left red rect-box2"></p>
+										<span>Macbook</span>
+									</div>
+									<div class="clear">
+										<p class="left green rect-box2"></p>
+										<span>OS Version</span>
+									</div>
+									<div class="clear">
+										<p class="left grey rect-box2"></p>
+										<span>Macbook Air</span>
+									</div>
+									<div class="clear"></div>
+							    </script>
 							</td>
 							<!-- <td>{{_.chunk(dataItem._source.new_config[dataItem._id], 1)}}</td> -->
 							<!-- <td ><a href="" ng-click="postData($index, data)" target="_blank" class="btn btn-primary">Apply</a></td> -->
