@@ -91,17 +91,17 @@
                         				<span 
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
-											uib-tooltip="Small">
+											uib-tooltip-template="'myTooltipTemplate1.html'">
 											S
 										</span>
                     			</div>
 								<div
 									ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}"
 									class="rect-box">
-										<span 
+										<span
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
-											uib-tooltip="Medium">
+											uib-tooltip-template="'myTooltipTemplate2.html'">
 											M
 										</span>
 								</div>
@@ -111,21 +111,27 @@
 										<span 
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
-											uib-tooltip-template="'myTooltipTemplate.html'">
+											uib-tooltip-template="'myTooltipTemplate3.html'">
 											L
 										</span>
 								</div>
-								<script type="text/ng-template" id="myTooltipTemplate.html">
+								<script type="text/ng-template" id="myTooltipTemplate1.html">
 									<div class="clear">
-										<p class="left red rect-box2"></p>
+										<p ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="left rect-box2"></p>
 										<span>Macbook</span>
 									</div>
+									<div class="clear"></div>
+							    </script>
+							    <script type="text/ng-template" id="myTooltipTemplate2.html">
 									<div class="clear">
-										<p class="left green rect-box2"></p>
+										<p ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="left green rect-box2"></p>
 										<span>OS Version</span>
 									</div>
+									<div class="clear"></div>
+							    </script>
+								<script type="text/ng-template" id="myTooltipTemplate3.html">
 									<div class="clear">
-										<p class="left grey rect-box2"></p>
+										<p ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}" class="left grey rect-box2"></p>
 										<span>Macbook Air</span>
 									</div>
 									<div class="clear"></div>
