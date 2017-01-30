@@ -425,7 +425,25 @@ ngElastic.controller('statusController', function($scope, $http) {
 	 function escapeRegExp(string) {
 		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 	 }
-   $scope.pcm = function(pcm, pc) {
+   $scope.primaryConfig = function(pcm, pc) {
+    if(pcm != undefined && pc != undefined){
+      var arr = [];
+      var result = pcm.map(function(val, index){
+        arr.push(val+'('+pc[index]+')');
+      });
+      return arr;
+    }
+  }
+  $scope.secondaryConfig = function(pcm, pc) {
+    if(pcm != undefined && pc != undefined){
+      var arr = [];
+      var result = pcm.map(function(val, index){
+        arr.push(val+'('+pc[index]+')');
+      });
+      return arr;
+    }
+  }
+  $scope.teritaryConfig = function(pcm, pc) {
     if(pcm != undefined && pc != undefined){
       var arr = [];
       var result = pcm.map(function(val, index){
