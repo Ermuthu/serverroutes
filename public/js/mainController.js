@@ -32,9 +32,9 @@ ngElastic.filter('wildcard', function() {
     }
 
     var escaped = value.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-    var formatted = escaped.replace('*', '.*')
+    var formatted = escaped.replace('*', '.*');
 
-    if (formatted.indexOf('*') === -1 || openb.indexOf('(') === -1 || closeb.indexOf(')') === -1) {
+    if (formatted.indexOf('*') === -1) {
       formatted = '.*' + formatted + '.*'
     }
 
@@ -235,6 +235,24 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 		});
 	};
 
+  $scope.showModal = function(d) {
+    console.log(d);
+    if(d == "")
+      $scope.remarks = "No Remarks"
+    else
+      $scope.remarks = d;
+    var modalInstance = $uibModal.open({
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      size: 'sm',
+      resolve: {
+        remarks: function(){
+          return $scope.remarks
+        }
+      }
+    });
+  }
+
 	// Line Chart
 	$scope.options = {
         chart: {
@@ -276,9 +294,26 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     $scope.callback = function(scope, element){
     	// Add a click event
 		d3.selectAll('.nv-point-paths').on('click', function(e){
-  			d3.selectAll('.nvtooltip').each(function(){
-      			this.style.setProperty('display', 'block', 'important');
-      		});
+        // $scope.showModal = function(d) {
+        //  if(d == "")
+        //    $scope.remarks = "No Remarks"
+        //  else
+        //    $scope.remarks = d;
+        //  var modalInstance = $uibModal.open({
+        //    templateUrl: 'myModalContent.html',
+        //    controller: 'ModalInstanceCtrl',
+        //    size: 'sm',
+        //    resolve: {
+        //          remarks: function(){
+        //              return $scope.remarks
+        //          }
+        //        }
+        //  });
+        // }
+  			// d3.selectAll('.nvtooltip').each(function(){
+        //  			this.style.setProperty('display', 'block', 'important');
+        //  		});
+        $scope.showModal('Hello');
     	});
     	// Clear tooltip on mouseout
     	d3.selectAll('.nv-point-paths').each(function(){
@@ -385,14 +420,12 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 
 // statusController
 ngElastic.controller('statusController', function($scope, $http) {
-	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
-	$scope.emailPattern = (/['"]+/g, '');
-	function escapeRegExp(string) {
-  		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-	}
-	$scope.addPTag = function(sConfig) {
-		return sConfig;
-	}
+	 // $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
+	 $scope.emailPattern = (/['"]+/g, '');
+	 function escapeRegExp(string) {
+		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+	 } 
+  
   	$scope.getText = function(label){
     	if(label != undefined)
 			return label.split('$');
@@ -482,18 +515,18 @@ ngElastic.controller('statusController', function($scope, $http) {
 });
 
 // For Modal
-// ngElastic.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, remarks) {
+ngElastic.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, remarks) {
 
-//   $scope.remarks = remarks;
+  $scope.remarks = remarks;
 
-//   $scope.ok = function () {
-//     $uibModalInstance.close($scope.remarks);
-//   };
+  $scope.ok = function () {
+    $uibModalInstance.close($scope.remarks);
+  };
 
-//   $scope.cancel = function () {
-//     $uibModalInstance.dismiss('cancel');
-//   };
-// });
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+});
 
 // notFound Controller
 ngElastic.controller('notFound', function($scope) {

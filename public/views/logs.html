@@ -8,6 +8,7 @@
 			</div>
 		</form>
 		<nvd3 options="options" data="data" on-ready="callback"></nvd3>
+		<button data-toggle="modal" data-target="#myModal" ng-click="showModal(r._source.remarks)">Modal</button>
 		<div>
 			<table class="table table-bordered table-striped animated fadeIn" ng-show="!routes._source.applied_status">
 				<thead>
@@ -44,7 +45,7 @@
 	</div>
 	
 	<!-- Modal Window -->
-   	<!-- <script type="text/ng-template" id="myModalContent.html">
+   	<script type="text/ng-template" id="myModalContent.html">
 	    <div class="modal-header">
 	        <h3 class="modal-title" id="modal-title">Remarks!</h3>
 	    </div>
@@ -55,5 +56,5 @@
 	        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 	        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 	    </div>
-	</script> -->
+	</script>
 </div>
