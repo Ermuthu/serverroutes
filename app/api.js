@@ -39,8 +39,9 @@ module.exports = {
 		// var status = './db/status.json';
 		// var status_new = './db/status_new.json';
 		// var status_logs = './db/status_logs.json';
-		var status_path_type = './db/status_path_type.json';
-		res.send(jsonfile.readFileSync(status_path_type));
+		// var status_path_type = './db/status_path_type.json';
+		var jan30 = './db/jan30_status.json';
+		res.send(jsonfile.readFileSync(jan30));
 	},
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';

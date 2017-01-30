@@ -420,11 +420,20 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 
 // statusController
 ngElastic.controller('statusController', function($scope, $http) {
-	 // $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
-	 $scope.emailPattern = (/['"]+/g, '');
+	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
+  $scope.emailPattern = (/['"]+/g, '');
 	 function escapeRegExp(string) {
 		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-	 } 
+	 }
+   $scope.pcm = function(pcm, pc) {
+    if(pcm != undefined && pc != undefined){
+      var arr = [];
+      var result = pcm.map(function(val, index){
+        arr.push(val+'('+pc[index]+')');
+      });
+      return arr;
+    }
+  }
   
   	$scope.getText = function(label){
     	if(label != undefined)

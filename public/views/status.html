@@ -163,14 +163,14 @@
 							              	<!-- <td style="width:129px; border-right-style: hidden;vertical-align: middle;">{{s._source.config_name == undefined ? 'None - ' : s._source.config_name.join('\n')}}
 							              	</td> -->
 							              	<td style="vertical-align: middle;width: 30%;" width="1px;">
-							              		<span ng-show="s._source.config == undefined">None</span>
-							              		<div ng-if="s._source.config != undefined" ng-repeat="a in addPTag(s._source.config)">
-							              			<p>{{'DONOTINCLUDE - ' +  '(' + a + ')'}}</p>
+							              		<!-- <span ng-show="s._source.config == undefined">None</span> -->
+							              		<div ng-if="s._source.Primary_config_names != undefined && s._source.Primary_config != undefined " ng-repeat="a in pcm(s._source.Primary_config_names,s._source.Primary_config)">
+							              			<p>{{a}}</p>
 							              		</div>
 							              	</td>
 						              		<td style="vertical-align: middle;width:132px;">
 						              			<span ng-show="s._source.admin_grp == undefined">None</span>
-							              		<div ng-if="s._source.admin_grp != undefined" ng-repeat="agp in adminGroupPrimary(s._source.admin_grp)">
+							              		<div ng-if="s._source.admin_grp != undefined" ng-repeat="agp in adminGroupPrimary(s._source.admin_grp) track by $index">
 							              			<p>{{agp}}</p>
 							              		</div>
 						              		</td>
@@ -235,12 +235,10 @@
 			           <td colspan="6">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;text-align: center;">
 								<b>Logs: <br></b>
-								<!-- <span>{{s._source.log == undefined ? 'No Logs' : getText(s._source.log)}}</span> -->
 								<span>
-									<div ng-repeat="gt in getText(s._source.log)" style="margin: 0 auto;text-align: center;margin-top: 14px;">
+									<div ng-repeat="gt in getText(s._source.log) track by $index" style="margin: 0 auto;text-align: center;margin-top: 14px;">
 										<p>{{gt}}</p>
 									</div>
-									<!-- <p>hello</p> -->
 								</span>
 							</p>
 						</td>
