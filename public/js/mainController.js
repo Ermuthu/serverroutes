@@ -313,7 +313,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
   			// d3.selectAll('.nvtooltip').each(function(){
         //  			this.style.setProperty('display', 'block', 'important');
         //  		});
-        $scope.showModal('Hello');
+        $scope.showModal(e[0].key);
     	});
     	// Clear tooltip on mouseout
     	d3.selectAll('.nv-point-paths').each(function(){
@@ -354,7 +354,7 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
     		{
     			values: chartInput,	//values - represent the array of {x,y} 
     			key: 'Router',		//key  - the name of the series.
-                color: '#ff7f0e'	//color - optional: choose your own line color.
+          color: '#ff7f0e'	//color - optional: choose your own line color.
                 // strokeWidth: 2,		//strokeWidth - Width of the line.
                 // classed: 'dashed'	//classed - 
     		}
@@ -425,28 +425,28 @@ ngElastic.controller('statusController', function($scope, $http) {
 	 function escapeRegExp(string) {
 		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 	 }
-   $scope.primaryConfig = function(pcm, pc) {
-    if(pcm != undefined && pc != undefined){
+   $scope.primaryConfig = function(pcn, pc) {
+    if(pcn != undefined && pc != undefined){
       var arr = [];
-      var result = pcm.map(function(val, index){
+      var result = pcn.map(function(val, index){
         arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
   }
-  $scope.secondaryConfig = function(pcm, pc) {
-    if(pcm != undefined && pc != undefined){
+  $scope.secondaryConfig = function(pcn, pc) {
+    if(pcn != undefined && pc != undefined){
       var arr = [];
-      var result = pcm.map(function(val, index){
+      var result = pcn.map(function(val, index){
         arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
   }
-  $scope.teritaryConfig = function(pcm, pc) {
-    if(pcm != undefined && pc != undefined){
+  $scope.teritaryConfig = function(pcn, pc) {
+    if(pcn != undefined && pc != undefined){
       var arr = [];
-      var result = pcm.map(function(val, index){
+      var result = pcn.map(function(val, index){
         arr.push(val+'('+pc[index]+')');
       });
       return arr;
