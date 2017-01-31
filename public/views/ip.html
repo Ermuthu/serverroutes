@@ -86,53 +86,77 @@
                             	<!-- 2. green, green, grey -->
                             	<!-- 3. green, green, green -->
                             	<!-- 4. green, red, grey -->
+                            	<!-- 5. green green red -->
+                            	<!-- Red -> R -->
+								<!-- Green -> U -->
+								<!-- Grey -> E -->
                             	<div 
-                            		ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4}" class="rect-box">
+                            		ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4 || dataItem._source.config_status == 5}" class="rect-box">
                         				<span 
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
 											uib-tooltip-template="'myTooltipTemplate1.html'">
-											S
+											<p>U</p>
 										</span>
                     			</div>
 								<div
-									ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}"
+									ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 5, 'red': dataItem._source.config_status == 4}"
 									class="rect-box">
 										<span
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
 											uib-tooltip-template="'myTooltipTemplate2.html'">
-											M
+												<!-- Grey -->
+												<p ng-if="dataItem._source.config_status == 1">E</p>
+												<!-- Green -->
+												<p ng-if="dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 5">U</p>
+												<!-- Red -->
+												<p ng-if="dataItem._source.config_status == 4">D</p>
 										</span>
 								</div>
 								<div
-									ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}"
+									ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 5}"
 									class="rect-box">
 										<span 
 											tooltip-class="animated flipInX"
 											tooltip-placement="{{placement.selected}}"
 											uib-tooltip-template="'myTooltipTemplate3.html'">
-											L
+												<!-- Grey -->
+												<p ng-if="dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4">E</p>
+												<!-- Green -->
+												<p ng-if="dataItem._source.config_status == 3">U</p>
+												<!-- Red -->
+												<p ng-if="dataItem._source.config_status == 5">D</p>
 										</span>
 								</div>
 								<script type="text/ng-template" id="myTooltipTemplate1.html">
 									<div class="clear">
-										<p ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="left rect-box2"></p>
-										<span>Macbook</span>
+										<p ng-class="{'green': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 4 || dataItem._source.config_status == 5}" class="left rect-box2"></p>
+										<span>UP</span>
 									</div>
 									<div class="clear"></div>
 							    </script>
 							    <script type="text/ng-template" id="myTooltipTemplate2.html">
 									<div class="clear">
-										<p ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 4}" class="left green rect-box2"></p>
-										<span>OS Version</span>
+										<p ng-class="{'grey': dataItem._source.config_status == 1, 'green': dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 5, 'red': dataItem._source.config_status == 4}" class="left rect-box2"></p>
+										<!-- To be declared -->
+										<span ng-if="dataItem._source.config_status == 1">{{tbd}}</span>
+										<!-- UP -->
+										<span ng-if="dataItem._source.config_status == 2 || dataItem._source.config_status == 3 || dataItem._source.config_status == 5">{{up}}</span>
+										<!-- DOWN -->
+										<span ng-if="dataItem._source.config_status == 4">{{down}}</span>
 									</div>
 									<div class="clear"></div>
 							    </script>
 								<script type="text/ng-template" id="myTooltipTemplate3.html">
 									<div class="clear">
-										<p ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3}" class="left grey rect-box2"></p>
-										<span>Macbook Air</span>
+										<p ng-class="{'grey': dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4, 'green': dataItem._source.config_status == 3, 'red': dataItem._source.config_status == 5}" class="left rect-box2"></p>
+										<!-- To be declared -->
+										<span ng-if="dataItem._source.config_status == 1 || dataItem._source.config_status == 2 || dataItem._source.config_status == 4">{{tbd}}</span>
+										<!-- UP -->
+										<span ng-if="dataItem._source.config_status == 3">{{up}}</span>
+										<!-- DOWN -->
+										<span ng-if="dataItem._source.config_status == 5">{{down}}</span>
 									</div>
 									<div class="clear"></div>
 							    </script>

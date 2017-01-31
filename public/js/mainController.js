@@ -137,6 +137,10 @@ ngElastic.controller('mainController', function($scope, $http) {
 });
 
 ngElastic.controller('ipController', function($scope, $http, $routeParams) {
+  // Declaration
+  $scope.up = "UP";
+  $scope.down = "DOWN";
+  $scope.tbd = "TBD";
 	// Load Initial Data
 	// var url = 'http://10.12.21.14:9200/mpls_lsps/_search?q=_id:'+$routeParams.id+'&pretty=true';
 	$scope.init = function() {
