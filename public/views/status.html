@@ -100,6 +100,7 @@
 						<th>Destination Router IP</th>
 						<th>Path Name</th>
 						<th>LSP Name</th>
+						<th>Path Count</th>
 						<th>Status</th>
 						<!-- <th>Router</th>
 						<th>Path Name</th>
@@ -116,6 +117,16 @@
 					 	<td>{{s._source.destIp}} </td>
 						<td>{{s._source.pathName}}</td>
 					  	<td>{{s._id}} </td>
+					  	<td style="vertical-align: middle;text-align: center;">
+					  		<i 
+					  			ng-class="{'green_bulb': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == 3, 'grey_bulb': s._source.path_count == undefined}" class="fa fa-lightbulb-o fa-lg"
+					  			aria-hidden="true"
+					  			tooltip-class="animated flipInX"
+								tooltip-placement="{{placement.selected}}"
+								uib-tooltip="1"></i>
+					  		<i ng-class="{'green_bulb': s._source.path_count == 2 || s._source.path_count == 3, 'grey_bulb': s._source.path_count == 1 || s._source.path_count == undefined}" class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i>
+					  		<i ng-class="{'green_bulb': s._source.path_count == 3, 'grey_bulb': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == undefined}" class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i>
+					  	</td>
 						<td class="text-center">
 							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
 							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
@@ -134,7 +145,7 @@
 			        <!-- Start -->
 			        <!-- When running status button is clicked -->
 					<tr class="remarks" ng-show="isCollapsed == false">
-						<td colspan="6" style="height:10px;">
+						<td colspan="7" style="height:10px;">
 							<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
 								<table class="table table-bordered" style="empty-cells: hide">
 									<thead>

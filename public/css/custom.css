@@ -255,3 +255,10 @@
 .clear {
   clear: both;
 }
+/* status page */
+.green_bulb {
+  color: #449D44;
+}
+.grey_bulb {
+  color: #808080;
+}
