@@ -433,7 +433,10 @@ ngElastic.controller('statusController', function($scope, $http) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
       var result = pcn.map(function(val, index){
-        arr.push(val+'('+pc[index]+')');
+        if(typeof pc === 'string')
+          arr.push(val+'('+pc+')');
+        if(typeof pc === 'object')
+          arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
@@ -442,7 +445,10 @@ ngElastic.controller('statusController', function($scope, $http) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
       var result = pcn.map(function(val, index){
-        arr.push(val+'('+pc[index]+')');
+        if(typeof pc === 'string')
+          arr.push(val+'('+pc+')');
+        if(typeof pc === 'object')
+          arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
@@ -451,7 +457,10 @@ ngElastic.controller('statusController', function($scope, $http) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
       var result = pcn.map(function(val, index){
-        arr.push(val+'('+pc[index]+')');
+        if(typeof pc === 'string')
+          arr.push(val+'('+pc+')');
+        if(typeof pc === 'object')
+          arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
