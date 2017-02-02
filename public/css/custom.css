@@ -262,3 +262,6 @@
 .grey_bulb {
   color: #808080;
 }
+.inline{
+  display: inline-block;
+}
