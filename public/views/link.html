@@ -1,3 +1,23 @@
 <div class="container" ng-init="initLink()">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum laudantium quis, sed corporis dolorum, sunt placeat deleniti! Dicta soluta aliquam quas doloribus voluptatem maiores et, in explicabo laudantium culpa reprehenderit.</p>
+	<h1>{{link}}</h1>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th class="text-center">Source Device</th>
+				<th class="text-center">Direction</th>
+				<th class="text-center">Source Interface</th>
+				<th class="text-center">Speed</th>
+				<th class="text-center">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="(key, value) in dataset" class="text-center">
+				<td>{{value._index}}</td>
+				<td>{{value._source.direction}}</td>
+				<td>{{value._source.interface_name}}</td>
+				<td>{{value._source.speed}}</td>
+				<td class="white-pre" ng-style="{'background-color': '{{getBGColor(value._source.b_w)[0]}}'}">{{getDescValue(value._source.b_w)}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

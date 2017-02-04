@@ -1,3 +1,7 @@
+/* Global */
+.white-pre{
+  white-space: pre;
+}
 /* Logs page status buttons */
 .logo{
 	width: 32px;
