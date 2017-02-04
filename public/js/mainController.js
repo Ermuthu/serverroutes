@@ -98,9 +98,13 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
 			controller: 'notFound'
 		}).
 		when('/regex', {
-      		templateUrl: 'views/regex.html',
-      		controller: 'regexController'
-    	}).
+  		templateUrl: 'views/regex.html',
+  		controller: 'regexController'
+  	}).
+    when('/link', {
+      templateUrl: 'views/link.html',
+      controller: 'linkController'
+    }).
 		otherwise({
 			redirectTo: '/'
 		});
