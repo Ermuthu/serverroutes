@@ -46,5 +46,9 @@ module.exports = {
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';
 		res.send(jsonfile.readFileSync(lc));
+	},
+	link: function(req, res) {
+		var link = './db/link_02_04.json';
+		res.send(jsonfile.readFileSync(link));
 	}
 }

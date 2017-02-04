@@ -25,7 +25,8 @@ app.use('/proxy', proxy('http://serverroutes.herokuapp.com/', {
   }
 }));
 
-//routes
+/* Routes */
+// GET
 app.get('/api/id', Api.getJSON);
 app.get('/api/id/:id', Api.getJSONById);
 app.get('/api/routes', Api.Routes);
@@ -33,6 +34,9 @@ app.get('/api/route/:routername', Api.getRouteInfo);
 app.get('/api/logs', Api.logs);
 app.get('/api/status', Api.status);
 app.get('/api/linechart', Api.linechart);
+app.get('/api/link', Api.link);
+app.get('/api/apply', Api.getPOSTJSON);
+// POST
 app.post('/api/apply', function(req, res) {
 	res.send(req.body);
 	var obj = {name: 'JP'}
@@ -42,8 +46,6 @@ app.post('/api/applyanother', function(req, res) {
 	res.send(req.body);
 	jsonfile.writeFileSync(file1, req.body);
 });
-app.get('/api/apply', Api.getPOSTJSON);
-// app.post('http://10.12.21.14:9095/apply', Api.postJSON);
 
 // express server
 app.listen(port, function(req, res) {
