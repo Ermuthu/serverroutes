@@ -11,16 +11,14 @@ ngElastic.controller('linkRouteController', function($scope, $http, $routeParams
 			$scope.status.map(function(d){
         $scope.isLoading = true;
 				//variable declaration
-				if(d._source.applied_timestamp != undefined)
-					return $scope.config_applied_time = new Date(d._source.applied_timestamp);
-				var now = new Date();
-       	then  = new Date(d._source.running_timestamp*1000),
-       	diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
-       	duration = moment.duration(diff),
-       	ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
-       	hour = Math.floor(duration.asHours()),
-       	min = Math.floor(duration.asMinutes()),
-       	sec = Math.floor(duration.asSeconds());
+				var now = new Date(),
+       			then  = new Date(d._source.running_timestamp*1000),
+		       	diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+		       	duration = moment.duration(diff),
+		       	ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+		       	hour = Math.floor(duration.asHours()),
+		       	min = Math.floor(duration.asMinutes()),
+		       	sec = Math.floor(duration.asSeconds());
 				// check for higher grade
 				$scope.updated_date = then;
 				if(hour > 0)
@@ -31,6 +29,8 @@ ngElastic.controller('linkRouteController', function($scope, $http, $routeParams
 					$scope.last_updated_time = sec + ' Seconds ago';
 				else
 					$scope.last_updated_time = 'Time is up to date';
+				if(d._source.applied_timestamp != undefined)
+					return $scope.config_applied_time = new Date(d._source.applied_timestamp);
       });
   	}).error(function(e) {
    		console.log(e);
@@ -38,14 +38,16 @@ ngElastic.controller('linkRouteController', function($scope, $http, $routeParams
 	};
 
 	// Primary Config
-	$scope.primaryConfigRoute = function(pcn, pc) {
-    if(pcn != undefined && pc != undefined){
+	// Format usuqo4-bbisp-gw1  lo0 (unknown)
+	$scope.primaryConfigRoute = function(pcn, pc, pi) {
+    if(pcn != undefined && pc != undefined && pi != undefined){
       var arr = [];
       var result = pcn.map(function(val, index){
         if(typeof pc === 'string')
           arr.push(val+'('+pc+')');
         if(typeof pc === 'object')
-          arr.push(val+'('+pc[index]+')');
+          arr.push(val + ' ' + pi[index] + ' (' + pc[index] + ')');
+          // arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }

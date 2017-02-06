@@ -1,27 +1,90 @@
 <div class="container" ng-init="initLinkRoute()">
 	<h1>{{linkRoute}}</h1>
-	<a href="#/status"><input type="button" class="btn btn-inverse pull-right" value="Show All"></a>
+	<hr>
+
+	<!-- Search -->
+	<div class="row">
+		<div class="col-sm-12">
+			<form action="" class="form-inline">
+				<div class="form-group">
+					<label for="search">Search :</label>
+					<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
+				</div>
+			</form>	
+		</div>
+	</div>
+
+	<!--  -->
+	<div class="row">
+		<div class="col-sm-6">
+			<form class="form-inline">
+				<div class="form-group">
+					<div class="funkyradio">
+						<div class="funkyradio-default">
+		            <input type="radio" name="radio" id="radio33" value="" ng-checked="checked" ng-model="selectStatus" />
+	            	<label for="radio33">All</label>
+		        </div>
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="funkyradio">
+						<div class="funkyradio-success">
+	            <input type="radio" name="radio" id="radio3" value="Up" ng-model="selectStatus" />
+	            <label for="radio3">Up</label>
+		        </div>
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="funkyradio">
+						<div class="funkyradio-danger">
+	            <input type="radio" name="radio" id="radio4" value="Dn" ng-model="selectStatus" />
+	            <label for="radio4">Down</label>
+		        </div>
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="funkyradio">
+						<div class="funkyradio-warning">
+	            <input type="radio" name="radio" id="radio5" value="init" ng-model="selectStatus" />
+	            <label for="radio5">Init</label>
+		        </div>
+					</div>			
+				</div>
+				<div class="form-group">
+					<div class="funkyradio">
+						<div class="funkyradio-primary">
+	            <input type="radio" name="radio" id="radio2" value="unknown" ng-model="selectStatus" />
+	            <label for="radio2">Unknown</label>
+		        </div>
+					</div>			
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Table Data -->
 	<table class="table table-bordered table-striped animated fadeIn">
 		<thead>
 			<tr>
-				<th>Router</th>
-				<th>Source Router IP </th>
-				<th>Destination Router IP</th>
-				<th>Path Name</th>
-				<th>LSP Name</th>
-				<th>Path Count</th>
 				<th>Status</th>
+				<th>Path Type</th>
+				<th>Path Count</th>
+				<th>Source router</th>
+				<th>Destination router</th>
+				<th>LSP name</th>
+				<th>Path name</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat-start="s in status">
-				<!-- <td ng-hide="isLoading == false" colspan="7">Loading....</td> -->
-				<td>{{s._source.router_name}}</td>
-			 	<td>{{s._source.router_ip}} </td>
-			 	<td>{{s._source.destIp}} </td>
+			<tr ng-repeat-start="s in status | filter:{_source: {running_status: selectStatus}} | wildcard: LSPSearch">
+				<td class="text-center">
+					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
+					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
+					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'init'" class="btn btn-warning btn-circle"></button>
+					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
+				</td>
 				<td>{{s._source.pathName}}</td>
-		  	<td>{{s._id}} </td>
-		  	<td style="vertical-align: middle;text-align: center;">
+				<td style="vertical-align: middle;text-align: center;">
 		  		<i 
 		  			ng-class="{'green': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == 3, 'grey': s._source.path_count == undefined}"
 		  			class="rect-box2 inline"
@@ -47,84 +110,82 @@
 						uib-tooltip="T">
 	  			</i>
 		  	</td>
-				<td class="text-center">
-					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
-					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>
-					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'init'" class="btn btn-warning btn-circle"></button>
-					<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'unknown'" class="btn btn-primary btn-circle"></button>
-				</td>
-				</tr>
-        <!-- When running status button is clicked -->
-				<tr class="remarks" ng-show="isCollapsed == false">
-					<td colspan="7" style="height:10px;">
-						<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
-							<table class="table table-bordered" style="empty-cells: hide">
-								<thead>
-									<tr>
-										<th class="text-center">Config Applied on: </th>
-										<th class="text-center">Last Checked on: </th>
-										<th colspan="2" class="text-center">Primary path </th>
-										<th colspan="2" style="text-align: center;">Secondary path </th>
-										<th colspan="2" style="text-align: center;">Teritary path </th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td style="border-bottom-style: hidden;"></td>
-										<td style="border-bottom-style: hidden;"></td>
-										<td class="text-center">Domain Name</td>
-										<td class="text-center">Admin group</td>
-										<td class="text-center">Domain Name</td>
-										<td class="text-center">Admin group</td>
-										<td class="text-center">Domain Name</td>
-										<td class="text-center">Admin group</td>
-          					<tr class="text-center">
-			              	<td style="vertical-align: middle;">{{s._source.applied_timestamp == undefined ? 'None' : config_applied_time | date:'dd/MM/yyyy HH:mm:ss'}}
-			              	</td>
-			              	<td style="vertical-align: middle;">{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
-			              	</td>
-			              	<td style="vertical-align: middle;width: 30%;" width="1px;">
-			              		<span ng-show="s._source.Primary_config_names == undefined && s._source.Primary_config == undefined ">None</span>
-			              		<div ng-if="s._source.Primary_config_names != undefined && s._source.Primary_config != undefined " ng-repeat="a in primaryConfigRoute(s._source.Primary_config_names,s._source.Primary_config) track by $index">
-			              			<p>{{a}}</p>
-			              		</div>
-			              	</td>
-		              		<td style="vertical-align: middle;width:132px;">
-		              			<span ng-show="s._source.admin_grp == undefined">None</span>
-			              		<div ng-if="s._source.admin_grp != undefined" ng-repeat="agp in adminGroupPrimary(s._source.admin_grp) track by $index">
-			              			<p>{{agp}}</p>
-			              		</div>
-		              		</td>
-			              	<td style="vertical-align: middle;width: 30%;" width="1px;">
-			              		<span ng-show="s._source.Secondary_config_names == undefined && s._source.Secondary_config == undefined ">None</span>
-			              		<div ng-if="s._source.Secondary_config_names != undefined && s._source.Secondary_config != undefined " ng-repeat="a in secondaryConfigRoute(s._source.Secondary_config_names,s._source.Secondary_config) track by $index">
-			              			<p>{{a}}</p>
-			              		</div>
-			              	</td>
-			              	<td style="vertical-align: middle;width:132px;">
-			              		<span ng-show="s._source.admin_grp_secondary == undefined">None</span>
-			              		<div ng-if="s._source.admin_grp_secondary != undefined" ng-repeat="ags in adminGroupSecondary(s._source.admin_grp_secondary)">
-			              			<p>{{ags}}</p>
-			              		</div>
-		              		</td>
-		              		<td style="vertical-align: middle;width: 30%;" width="1px;">
-			              		<span ng-show="s._source.Teritary_config_names == undefined && s._source.Teritary_config == undefined ">None</span>
-			              		<div ng-if="s._source.Teritary_config_names != undefined && s._source.Teritary_config != undefined " ng-repeat="a in teritaryConfigRoute(s._source.Teritary_config_names,s._source.Teritary_config) track by $index">
-			              			<p>{{a}}</p>
-			              		</div>
-			              	</td>
-			              	<td style="vertical-align: middle;">None</td>
-		              	</tr>
+				<td>{{s._source.router_ip}} </td>
+			 	<td>{{s._source.destIp}} </td>
+		  	<td>{{s._id}} </td>
+		  	<td>{{s._source.pathName}}</td>
+			</tr>
+      <!-- When running status button is clicked -->
+			<tr class="remarks" ng-show="isCollapsed == false">
+				<td colspan="7" style="height:10px;">
+					<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+						<table class="table table-bordered" style="empty-cells: hide">
+							<thead>
+								<tr>
+									<th class="text-center">Config Applied on: </th>
+									<th class="text-center">Last Checked on: </th>
+									<th colspan="2" class="text-center">Primary path </th>
+									<th colspan="2" style="text-align: center;">Secondary path </th>
+									<th colspan="2" style="text-align: center;">Teritary path </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="border-bottom-style: hidden;"></td>
+									<td style="border-bottom-style: hidden;"></td>
+									<td class="text-center">Domain Name</td>
+									<td class="text-center">Admin group</td>
+									<td class="text-center">Domain Name</td>
+									<td class="text-center">Admin group</td>
+									<td class="text-center">Domain Name</td>
+									<td class="text-center">Admin group</td>
+        					<tr class="text-center">
+		              	<td style="vertical-align: middle;">{{s._source.applied_timestamp == undefined ? 'None' : config_applied_time | date:'dd/MM/yyyy HH:mm:ss'}}
+		              	</td>
+		              	<td style="vertical-align: middle;">{{updated_date | date:'dd/MM/yyyy HH:mm:ss'}} - ({{last_updated_time}})
+		              	</td>
+		              	<td style="vertical-align: middle; width: 35%;">
+		              		<span ng-show="s._source.Primary_config_names == undefined && s._source.Primary_config == undefined ">None</span>
+		              		<div ng-if="s._source.Primary_config_names != undefined && s._source.Primary_config != undefined " ng-repeat="a in primaryConfigRoute(s._source.Primary_config_names,s._source.Primary_config,s._source.Primary_intfs) track by $index">
+		              			<p>{{a}}</p>
+		              		</div>
+		              	</td>
+	              		<td style="vertical-align: middle;width:132px;">
+	              			<span ng-show="s._source.admin_grp == undefined">None</span>
+		              		<div ng-if="s._source.admin_grp != undefined" ng-repeat="agp in adminGroupPrimary(s._source.admin_grp) track by $index">
+		              			<p>{{agp}}</p>
+		              		</div>
+	              		</td>
+		              	<td style="vertical-align: middle;width: 30%;" width="1px;">
+		              		<span ng-show="s._source.Secondary_config_names == undefined && s._source.Secondary_config == undefined ">None</span>
+		              		<div ng-if="s._source.Secondary_config_names != undefined && s._source.Secondary_config != undefined " ng-repeat="a in secondaryConfigRoute(s._source.Secondary_config_names,s._source.Secondary_config) track by $index">
+		              			<p>{{a}}</p>
+		              		</div>
+		              	</td>
+		              	<td style="vertical-align: middle;width:132px;">
+		              		<span ng-show="s._source.admin_grp_secondary == undefined">None</span>
+		              		<div ng-if="s._source.admin_grp_secondary != undefined" ng-repeat="ags in adminGroupSecondary(s._source.admin_grp_secondary)">
+		              			<p>{{ags}}</p>
+		              		</div>
+	              		</td>
+	              		<td style="vertical-align: middle;width: 30%;" width="1px;">
+		              		<span ng-show="s._source.Teritary_config_names == undefined && s._source.Teritary_config == undefined ">None</span>
+		              		<div ng-if="s._source.Teritary_config_names != undefined && s._source.Teritary_config != undefined " ng-repeat="a in teritaryConfigRoute(s._source.Teritary_config_names,s._source.Teritary_config) track by $index">
+		              			<p>{{a}}</p>
+		              		</div>
+		              	</td>
+		              	<td style="vertical-align: middle;">None</td>
 	              	</tr>
-              	</tbody>
-							</table>
-						</p>
-					</td>
-				</tr>
-        <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
-         	<td colspan="7">
-						<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;text-align: center;">
-						<b>Logs: <br></b>
+              	</tr>
+            	</tbody>
+						</table>
+					</p>
+				</td>
+			</tr>
+      <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+       	<td colspan="7">
+					<p ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center" style="margin:0 auto;text-align: center;">
+					<b>Logs: <br></b>
 						<span>
 							<div ng-repeat="gt in getText(s._source.log) track by $index" style="margin: 0 auto;text-align: center;margin-top: 14px;">
 								<p>{{gt}}</p>

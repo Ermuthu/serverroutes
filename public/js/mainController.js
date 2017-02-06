@@ -220,7 +220,7 @@ $scope.unCheckAll = function() {
 				postData.push(d);
 			}
 		});
-		$scope.data = newDataList;
+		// $scope.data = newDataList;
 		$scope.postData(postData);
 	};
 
@@ -451,18 +451,19 @@ ngElastic.controller('statusController', function($scope, $http) {
     return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
   }
    // Primary Config
-   $scope.primaryConfig = function(pcn, pc) {
-    if(pcn != undefined && pc != undefined){
+  $scope.primaryConfig = function(pcn, pc, pi) {
+    if(pcn != undefined && pc != undefined && pi != undefined){
       var arr = [];
       var result = pcn.map(function(val, index){
         if(typeof pc === 'string')
           arr.push(val+'('+pc+')');
         if(typeof pc === 'object')
-          arr.push(val+'('+pc[index]+')');
+          arr.push(val + ' ' + pi[index] + ' (' + pc[index] + ')');
+          // arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
-  }
+  };
 
   // Secondary config
   $scope.secondaryConfig = function(pcn, pc) {

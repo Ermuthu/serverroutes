@@ -212,7 +212,7 @@
 							              	</td>
 							              	<td style="vertical-align: middle;width: 30%;" width="1px;">
 							              		<span ng-show="s._source.Primary_config_names == undefined && s._source.Primary_config == undefined ">None</span>
-							              		<div ng-if="s._source.Primary_config_names != undefined && s._source.Primary_config != undefined " ng-repeat="a in primaryConfig(s._source.Primary_config_names,s._source.Primary_config)">
+							              		<div ng-if="s._source.Primary_config_names != undefined && s._source.Primary_config != undefined " ng-repeat="a in primaryConfig(s._source.Primary_config_names,s._source.Primary_config,s._source.Primary_intfs)">
 							              			<p>{{a}}</p>
 							              		</div>
 							              	</td>
