@@ -35,6 +35,7 @@ app.get('/api/logs', Api.logs);
 app.get('/api/status', Api.status);
 app.get('/api/linechart', Api.linechart);
 app.get('/api/link', Api.link);
+app.get('/api/status/:dstinterface', Api.getRouterInterfaceName);
 app.get('/api/apply', Api.getPOSTJSON);
 // POST
 app.post('/api/apply', function(req, res) {

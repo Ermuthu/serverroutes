@@ -12,7 +12,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="(key, value) in dataset" class="text-center">
-				<td><a href="#/status">{{value._source.dst_router}}</a></td>
+				<td><a href="#/status/{{value._source.dst_router}}{{value._source.interface_name}}">{{value._source.dst_router}}</a></td>
 				<td>{{value._source.direction}}</td>
 				<td>{{value._source.interface_name}}</td>
 				<td>{{value._source.speed}}</td>

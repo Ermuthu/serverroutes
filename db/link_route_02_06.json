@@ -1,0 +1,141 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 3,
+    "max_score": 2.0747247,
+    "hits": [
+      {
+        "_index": "test_applied_lsps",
+        "_type": "config",
+        "_id": "FROM-USATL4-BBISP-GW1-TO-USCHI5-BBISP-GW2-GLOBAL-1",
+        "_score": 2.0747247,
+        "_source": {
+          "Primary_intfs": [
+            "mgmt",
+            "ae16",
+            "mgmt",
+            "ae15",
+            "mgmt",
+            "ae1"
+          ],
+          "applied_timestamp": "862652",
+          "Primary_config": [
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown"
+          ],
+          "Primary_config_names": [
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw2",
+            "uschi5-bbisp-gw2"
+          ],
+          "search_string": "uschi5_bbisp_gw3mgmt-uschi5_bbisp_gw3ae16-uschi5_bbisp_gw1mgmt-uschi5_bbisp_gw1ae15-uschi5_bbisp_gw2mgmt-uschi5_bbisp_gw2ae1",
+          "running_status": "Up",
+          "maxAvgBw": 39215656,
+          "running_timestamp": "1486139771",
+          "path_count": "1"
+        }
+      },
+      {
+        "_index": "test_applied_lsps",
+        "_type": "config",
+        "_id": "FROM-USATL4-BBISP-GW1-TO-USMES1-BBISP-GW2-VRF-1",
+        "_score": 1.6341449,
+        "_source": {
+          "Primary_intfs": [
+            "mgmt",
+            "ae16",
+            "mgmt",
+            "ae15",
+            "mgmt",
+            "ae1",
+            "lo0",
+            "ae10"
+          ],
+          "applied_timestamp": "5283298",
+          "Primary_config": [
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown"
+          ],
+          "Primary_config_names": [
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw2",
+            "uschi5-bbisp-gw2",
+            "usmes1-bbisp-gw2",
+            "usmes1-bbisp-gw2"
+          ],
+          "search_string": "uschi5_bbisp_gw3mgmt-uschi5_bbisp_gw3ae16-uschi5_bbisp_gw1mgmt-uschi5_bbisp_gw1ae15-uschi5_bbisp_gw2mgmt-uschi5_bbisp_gw2ae1-usmes1_bbisp_gw2lo0-usmes1_bbisp_gw2ae10",
+          "running_status": "Up",
+          "maxAvgBw": 1771,
+          "running_timestamp": "1486139771",
+          "path_count": "2"
+        }
+      },
+      {
+        "_index": "test_applied_lsps",
+        "_type": "config",
+        "_id": "FROM-USATL4-BBISP-GW1-TO-USMES1-BBISP-GW2-VRF-3",
+        "_score": 1.6341449,
+        "_source": {
+          "Primary_intfs": [
+            "mgmt",
+            "ae16",
+            "mgmt",
+            "ae15",
+            "mgmt",
+            "ae1",
+            "lo0",
+            "ae10"
+          ],
+          "applied_timestamp": "5282198",
+          "Primary_config": [
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown"
+          ],
+          "Primary_config_names": [
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw3",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw1",
+            "uschi5-bbisp-gw2",
+            "uschi5-bbisp-gw2",
+            "usmes1-bbisp-gw2",
+            "usmes1-bbisp-gw2"
+          ],
+          "search_string": "uschi5_bbisp_gw3mgmt-uschi5_bbisp_gw3ae16-uschi5_bbisp_gw1mgmt-uschi5_bbisp_gw1ae15-uschi5_bbisp_gw2mgmt-uschi5_bbisp_gw2ae1-usmes1_bbisp_gw2lo0-usmes1_bbisp_gw2ae10",
+          "running_status": "Up",
+          "maxAvgBw": 2224,
+          "running_timestamp": "1486139771",
+          "path_count": "2"
+        }
+      }
+    ]
+  }
+}
