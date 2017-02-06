@@ -1,6 +1,9 @@
 /* Global */
 .white-pre{
   white-space: pre;
+}.
+.marginBottom{
+  margin: 0 0 30px 0 !important;
 }
 /* Logs page status buttons */
 .logo{

@@ -428,11 +428,25 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 
 // statusController
 ngElastic.controller('statusController', function($scope, $http) {
+  // Pagination
+  $scope.viewby = 10;
+  $scope.currentPage = 4;
+  $scope.itemsPerPage = $scope.viewby;
+  $scope.maxSize = 5; //Number of pager buttons to show
+  $scope.setPage = function (pageNo) {
+    $scope.currentPage = pageNo;
+  };
+  $scope.setItemsPerPage = function(num) {
+    $scope.itemsPerPage = num;
+    $scope.currentPage = 1; //reset to first paghe
+  }
+
 	// $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
   $scope.emailPattern = (/['"]+/g, '');
 	 function escapeRegExp(string) {
 		return string.replace(/([.+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 	 }
+   // Primary Config
    $scope.primaryConfig = function(pcn, pc) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
@@ -445,6 +459,8 @@ ngElastic.controller('statusController', function($scope, $http) {
       return arr;
     }
   }
+
+  // Secondary config
   $scope.secondaryConfig = function(pcn, pc) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
@@ -493,8 +509,11 @@ ngElastic.controller('statusController', function($scope, $http) {
 	$scope.loadStatus = function() {
 		$http.get('/api/status').success(function(data) {
 			$scope.status = data.hits.hits;
+      $scope.totalItems = $scope.status.length;
+      console.log($scope.totalItems);
 			//Time Difference
 			$scope.status.map(function(d){
+        $scope.isLoading = true;
 				//variable declaration
 				if(d._source.applied_timestamp != undefined)
 					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
@@ -516,7 +535,8 @@ ngElastic.controller('statusController', function($scope, $http) {
 					$scope.last_updated_time = sec + ' Seconds ago';
 				else
 					$scope.last_updated_time = 'Time is up to date';
-            });
+      });
+      $scope.isLoading = false;
 		}).error(function(e) {
 			console.log(e);
 		});
