@@ -48,7 +48,8 @@ module.exports = {
 		res.send(jsonfile.readFileSync(lc));
 	},
 	link: function(req, res) {
-		var link = './db/link_02_04.json';
-		res.send(jsonfile.readFileSync(link));
+		// var link1 = './db/link_02_04.json';
+		var link2 = './db/link_02_06.json';
+		res.send(jsonfile.readFileSync(link2));
 	}
 }
