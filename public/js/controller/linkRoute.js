@@ -6,7 +6,7 @@ ngElastic.controller('linkRouteController', function($scope, $http, $routeParams
 	// Load initially when the link page called.
 	$scope.isLoading = true;
 	$scope.initLinkRoute = function() {
-		$http.get('/api/status/'+$routeParams.dst_interface).success(function(d) {
+		$http.get('/api/status/'+$routeParams.dst_interface.replace(/-/g, '_')).success(function(d) {
 			$scope.status = d.hits.hits;
 			$scope.status.map(function(d){
         $scope.isLoading = true;
