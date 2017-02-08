@@ -1,4 +1,4 @@
-<div class="container" ng-init="initLink()">
+<div class="container-fluid" ng-init="initLink()">
 	<h1>{{link}}</h1>
 	<table class="table table-bordered table-striped">
 		<thead>
@@ -12,27 +12,24 @@
 		</thead>
 		<tbody>
 			<tr ng-hide="isLoading === true">
-				<!-- <td style="text-align: center;" colspan="5">
+				<td style="text-align: center;" colspan="5">
 					<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
-					<span>Loading Data..</span>
-				</td> -->
+					<span style="font-weight: bolder;">Please Wait...</span>
+				</td>
 			</tr>
 			<tr ng-repeat="(key, value) in dataset" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
 				<td class="vertical-middle"><a href="#/status/{{value._source.dst_router}}{{value._source.interface_name}}">{{value._source.dst_router}}</a></td>
 				<td class="vertical-middle">{{value._source.direction}}</td>
 				<td class="vertical-middle">{{value._source.interface_name}}</td>
 				<td class="vertical-middle">{{value._source.speed}}</td>
-				<!-- <td class="vertical-middle" class="white-pre" ng-style="{'background-color': '{{getBGColor(value._source.b_w)[0]}}'}">{{getDescValue(value._source.b_w)}}</td> -->
-				<!-- ng-style="{'background-color': '{{getRandomColor()}}'}" -->
 				<td style="width: 10;" 
 					class="vertical-middle"
-					ng-style="getRandomColor()"
-					ng-repeat="value in getDescValue(value._source.b_w) track by $index"
+					ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
+					ng-style="{'background-color': '{{colors[$index]}}'}"
 				>
-					{{value | number : 1}}
+					{{v | number : 1}}
 				</td>
 			</tr>
-			<!-- <tr ng-hide="isLoading == true">Load....</tr> -->
 		</tbody>
 	</table>
 </div>
