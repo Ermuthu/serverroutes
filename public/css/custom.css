@@ -5,6 +5,9 @@
 .marginBottom{
   margin: 0 0 30px 0 !important;
 }
+.vertical-middle{
+  vertical-align: middle !important;
+}
 /* Logs page status buttons */
 .logo{
 	width: 32px;
