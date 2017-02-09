@@ -509,16 +509,16 @@ $scope.adminGroupSecondary = function(agp) {
    return removespechar.split('$');
  }
 }
-$scope.isCollapsed = true;
+// $scope.isCollapsed = true;
 $scope.selectedTypes = [];
 $scope.loadStatus = function() {
   $http.get('/api/status').success(function(data) {
-   $scope.status = data.hits.hits;
-   $scope.totalItems = $scope.status.length;
-   console.log($scope.totalItems);
+    $scope.isLoading = true;
+    $scope.status = data.hits.hits;
+    $scope.totalItems = $scope.status.length;
+    console.log($scope.totalItems);
 			//Time Difference
 			$scope.status.map(function(d){
-        $scope.isLoading = true;
 				//variable declaration
 				if(d._source.applied_timestamp != undefined)
 					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
@@ -541,10 +541,10 @@ $scope.loadStatus = function() {
 				else
 					$scope.last_updated_time = 'Time is up to date';
       });
-      $scope.isLoading = false;
     }).error(function(e) {
      console.log(e);
    });
+    $scope.isLoading = false;
 		// $scope.toggleSelection = function toggleSelection(type) {
 		// 	console.log(type);
 		// 	_.filter($scope.status, function(o) { 

@@ -93,7 +93,7 @@
 		<hr>
 		<div>
 			<!-- Pagination -->
-			<div class="row marginBottom">
+			<!-- <div class="row marginBottom">
 				<div class="col-sm-2">
 				{{(itemsPerPage*currentPage)-(viewby)+1}}-{{(itemsPerPage*currentPage)}} of {{totalItems}}
 				</div>
@@ -110,7 +110,7 @@
 				<div class="col-sm-6">
 					<ul style="margin: 0;" uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 				</div>
-			</div>
+			</div> -->
 			<hr>
 			<table class="table table-bordered table-striped animated fadeIn">
 				<thead>
@@ -129,11 +129,18 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- Show Loader -->
+					<tr ng-hide="isLoading === true">
+						<td style="text-align: center;" colspan="7">
+							<i class="fa fa-remove"></i>
+							<span style="font-weight: bolder;">Loading... Please Wait...</span>
+						</td>
+					</tr>
 					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | typesFilter: selectedTypes"> -->
-					<tr ng-repeat-start="s in status.slice(((currentPage - 1)*itemsPerPage), ((currentPage)*itemsPerPage)) | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter">
+					<!-- <tr ng-repeat-start="s in status.slice(((currentPage - 1)*itemsPerPage), ((currentPage)*itemsPerPage)) | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter"> -->
+					<tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter">
 					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch"> -->
 						<!-- <p ng-hide="isLoading == false">{{isLoading}}Loading....</p> -->
-						<td ng-hide="isLoading == false" colspan="7">Loading....</td>
 						<td>{{s._source.router_name}}</td>
 					 	<td>{{s._source.router_ip}} </td>
 					 	<td>{{s._source.destIp}} </td>

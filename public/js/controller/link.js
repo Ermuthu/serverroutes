@@ -6,8 +6,9 @@ ngElastic.controller('linkController', function($scope, $http) {
 	$scope.initLink = function() {
 		$http.get('/api/link').success(function(d) {
 			$scope.dataset = d.hits.hits;
-			var bw = _.map(d.hits.hits, function(d) {
+			_.map(d.hits.hits, function(d) {
 				$scope.valueLength = d._source.b_w.length/2;
+				$scope.heading = d._source.heading;
 			});
 		});
 	};
@@ -19,8 +20,10 @@ ngElastic.controller('linkController', function($scope, $http) {
 		var descriptionValue = _.filter(v, function(d) {
 				if(d.indexOf("#") !== 0)
 					values.push(d);
+				else if((d.indexOf("#") == 0))
+					colorCode.push(d);
 				else
-					colorCode.push(d)
+					console.log(d);
 		});
 		$scope.colors = colorCode;
 		return values;

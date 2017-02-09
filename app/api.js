@@ -49,8 +49,9 @@ module.exports = {
 	},
 	link: function(req, res) {
 		// var link1 = './db/link_02_04.json';
-		var link2 = './db/link_02_06.json';
-		res.send(jsonfile.readFileSync(link2));
+		// var link2 = './db/link_02_06.json';
+		var link3 = './db/link_02_09.json';
+		res.send(jsonfile.readFileSync(link3));
 	},
 	getRouterInterfaceName: function(req, res) {
 		var getRouterInterfaceName1 = './db/link_route_02_06.json';

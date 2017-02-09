@@ -7,7 +7,10 @@
 				<th class="text-center">Direction</th>
 				<th class="text-center">Source Interface</th>
 				<th class="text-center">Speed</th>
-				<th colspan="{{valueLength}}" class="text-center">Description</th>
+				<th class="text-center">Description</th>
+				<th ng-repeat="h in heading track by $index" class="text-center">
+					{{h}}
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +25,7 @@
 				<td class="vertical-middle">{{value._source.direction}}</td>
 				<td class="vertical-middle">{{value._source.interface_name}}</td>
 				<td class="vertical-middle">{{value._source.speed}}</td>
+				<td class="vertical-middle">{{value._source.desc}}</td>
 				<td style="width: 10;" 
 					class="vertical-middle"
 					ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
