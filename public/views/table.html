@@ -1,0 +1,30 @@
+<div class="container-fluid" ng-init="initTable()">
+	<h1>{{table}}</h1>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th class="text-center">src_routers</th>
+				<th ng-repeat="th in tableHeader track by $index" class="text-center" style="font-size: 10px;">
+					{{th}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-hide="isLoading === true">
+				<td style="text-align: center;" colspan="1">
+					<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+					<span style="font-weight: bolder;">Please Wait...</span>
+				</td>
+			</tr>
+			<tr ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+				<td class="vertical-middle">{{value._id}}</td>
+				<td style="width: 10;" 
+					class="vertical-middle"
+					ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index"
+				>
+					<button ng-class="{'btn-danger': v<1, 'btn-success': v>0}" class="btn btn-circle">{{v}}</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

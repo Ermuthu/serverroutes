@@ -56,5 +56,13 @@ module.exports = {
 	getRouterInterfaceName: function(req, res) {
 		var getRouterInterfaceName1 = './db/link_route_02_06.json';
 		res.send(jsonfile.readFileSync(getRouterInterfaceName1));
+	},
+	getTableHeading: function(req, res) {
+		var getTableHeading = './db/table_heading_02_12.json';
+		res.send(jsonfile.readFileSync(getTableHeading));
+	},
+	getTableStats: function(req, res) {
+		var getTableStats = './db/table_stats_02_12.json';
+		res.send(jsonfile.readFileSync(getTableStats));
 	}
 }

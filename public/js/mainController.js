@@ -101,13 +101,17 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/regex.html',
     controller: 'regexController'
   }).
+  when('/status/:dst_interface', {
+    templateUrl: 'views/linkRoute.html',
+    controller: 'linkRouteController'
+  }).
   when('/link', {
     templateUrl: 'views/link.html',
     controller: 'linkController'
   }).
-  when('/status/:dst_interface', {
-    templateUrl: 'views/linkRoute.html',
-    controller: 'linkRouteController'
+  when('/table', {
+    templateUrl: 'views/table.html',
+    controller: 'tableController'
   }).
   otherwise({
    redirectTo: '/'
@@ -432,6 +436,83 @@ ngElastic.controller('tabController', function($scope, $http, $uibModal, lineCha
 
 // statusController
 ngElastic.controller('statusController', function($scope, $http) {
+  // $scope.isCollapsed = true;
+  // $scope.selectedTypes = [];
+  // On page load
+  $scope.loadStatus = function() {
+    $http.get('/api/status').success(function(data) {
+      $scope.isLoading = true;
+      $scope.status = data.hits.hits;
+      $scope.totalItems = $scope.status.length;
+      console.log($scope.totalItems);
+      // $scope.data = $scope.users.slice(0, 5);
+      // $scope.getMoreData = function () {
+      //   $scope.status = data.hits.hits.slice(0, $scope.status.length + 10);
+      // }
+      //Time Difference
+      $scope.status.map(function(d){
+        //variable declaration
+        if(d._source.applied_timestamp != undefined)
+         return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
+        var now = new Date();
+        then  = new Date(d._source.running_timestamp*1000),
+        diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+        duration = moment.duration(diff),
+        ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+        hour = Math.floor(duration.asHours()),
+        min = Math.floor(duration.asMinutes()),
+        sec = Math.floor(duration.asSeconds());
+        // check for higher grade
+        $scope.updated_date = then;
+        if(hour > 0)
+         $scope.last_updated_time = hour + ' Hours ago';
+        else if(min > 0)
+          $scope.last_updated_time = min + ' Minutes ago';
+        else if(min < 0 && sec > 0)
+          $scope.last_updated_time = sec + ' Seconds ago';
+        else
+          $scope.last_updated_time = 'Time is up to date';
+      });
+    }).error(function(e) {
+      console.log(e);
+    });
+    console.log($scope.status);
+    $scope.isLoading = false;
+    // $scope.toggleSelection = function toggleSelection(type) {
+   //    console.log(type);
+    //    _.filter($scope.status, function(o) { 
+    //    if(o._source.path_type == type){
+    //      $scope.selectedItems.push(o);
+    //    }
+    //  });
+    // }
+    // $scope.selectedTypes = [];
+    // $scope.toggleSelection = function toggleSelection(type) {
+  //      var idx = $scope.selectedTypes.indexOf(type);
+  //        if (idx > -1) {
+  //          $scope.selectedTypes.splice(idx, 1);
+   //       }else {
+   //         $scope.selectedTypes.push(type);
+   //       }
+   //   }; 
+  //   $scope.colourIncludes = [];
+  //   $scope.toggleSelection = function(colour) {
+  //     var i = $.inArray(colour, $scope.colourIncludes);
+  //     if (i > -1) {
+  //       $scope.colourIncludes.splice(i, 1);
+  //     } else {
+  //       $scope.colourIncludes.push(colour);
+  //     }
+  //   }
+  //   $scope.colourFilter = function(fruit) {
+  //     if ($scope.colourIncludes.length > 0) {
+  //       if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
+  //         return
+  //       }
+  //     }
+  //     return fruit;
+  //   }
+  };
   // Pagination
   $scope.viewby = 10;
   $scope.currentPage = 4;
@@ -512,83 +593,6 @@ ngElastic.controller('statusController', function($scope, $http) {
       return removespechar.split('$');
     }
   }
-
-  // $scope.isCollapsed = true;
-  // $scope.selectedTypes = [];
-  $scope.loadStatus = function() {
-    $http.get('/api/status').success(function(data) {
-      $scope.isLoading = true;
-      $scope.status = data.hits.hits.slice(0, 10);
-      $scope.totalItems = $scope.status.length;
-      console.log($scope.totalItems);
-      // $scope.data = $scope.users.slice(0, 5);
-      $scope.getMoreData = function () {
-        $scope.status = data.hits.hits.slice(0, $scope.status.length + 10);
-      }
-			//Time Difference
-			$scope.status.map(function(d){
-				//variable declaration
-			  if(d._source.applied_timestamp != undefined)
-				 return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
-			  var now = new Date();
-        then  = new Date(d._source.running_timestamp*1000),
-        diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
-        duration = moment.duration(diff),
-        ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
-        hour = Math.floor(duration.asHours()),
-        min = Math.floor(duration.asMinutes()),
-        sec = Math.floor(duration.asSeconds());
-				// check for higher grade
-				$scope.updated_date = then;
-				if(hour > 0)
-				 $scope.last_updated_time = hour + ' Hours ago';
-				else if(min > 0)
-					$scope.last_updated_time = min + ' Minutes ago';
-				else if(min < 0 && sec > 0)
-					$scope.last_updated_time = sec + ' Seconds ago';
-				else
-					$scope.last_updated_time = 'Time is up to date';
-      });
-    }).error(function(e) {
-      console.log(e);
-    });
-    console.log($scope.status);
-    $scope.isLoading = false;
-		// $scope.toggleSelection = function toggleSelection(type) {
-	 //    console.log(type);
-		//    _.filter($scope.status, function(o) { 
-		// 	  if(o._source.path_type == type){
-		// 	    $scope.selectedItems.push(o);
-		// 		}
-		// 	});
-		// }
-		// $scope.selectedTypes = [];
-		// $scope.toggleSelection = function toggleSelection(type) {
- 	//    	var idx = $scope.selectedTypes.indexOf(type);
-  //  	    if (idx > -1) {
-  //  	      $scope.selectedTypes.splice(idx, 1);
-	 //     	}else {
-	 //       	$scope.selectedTypes.push(type);
-	 //     	}
-	 //   }; 
-  //   $scope.colourIncludes = [];
-  //   $scope.toggleSelection = function(colour) {
-  //     var i = $.inArray(colour, $scope.colourIncludes);
-  //     if (i > -1) {
-  //       $scope.colourIncludes.splice(i, 1);
-  //     } else {
-  //       $scope.colourIncludes.push(colour);
-  //     }
-  //   }
-  //   $scope.colourFilter = function(fruit) {
-  //     if ($scope.colourIncludes.length > 0) {
-  //       if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
-  //         return
-  //       }
-  //     }
-  //     return fruit;
-  //   }
-  };
 });
 
 // For Modal
