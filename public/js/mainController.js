@@ -1,4 +1,4 @@
-var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap']);
+var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap', 'infinite-scroll']);
 
 ngElastic.filter('typesFilter', function() {
   return function(clients, selectedCompany) {
@@ -459,7 +459,6 @@ ngElastic.controller('statusController', function($scope, $http) {
           arr.push(val+'('+pc+')');
         if(typeof pc === 'object')
           arr.push(val + ' ' + pi[index] + ' (' + pc[index] + ')');
-          // arr.push(val+'('+pc[index]+')');
       });
       return arr;
     }
@@ -478,6 +477,8 @@ ngElastic.controller('statusController', function($scope, $http) {
       return arr;
     }
   }
+
+  // Teritary Config
   $scope.teritaryConfig = function(pcn, pc) {
     if(pcn != undefined && pc != undefined){
       var arr = [];
@@ -492,48 +493,55 @@ ngElastic.controller('statusController', function($scope, $http) {
   }
   
   $scope.getText = function(label){
-   if(label != undefined)
-     return label.split('$');
- }
- $scope.adminGroupPrimary = function(agp) {
-  if(agp != undefined) {
-   var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
-   removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
-   return removespechar.split('$');
- }
-}
-$scope.adminGroupSecondary = function(agp) {
-  if(agp != undefined) {
-   var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
-   removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
-   return removespechar.split('$');
- }
-}
-// $scope.isCollapsed = true;
-$scope.selectedTypes = [];
-$scope.loadStatus = function() {
-  $http.get('/api/status').success(function(data) {
-    $scope.isLoading = true;
-    $scope.status = data.hits.hits;
-    $scope.totalItems = $scope.status.length;
-    console.log($scope.totalItems);
+    if(label != undefined)
+      return label.split('$');
+  }
+
+  $scope.adminGroupPrimary = function(agp) {
+    if(agp != undefined) {
+      var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
+      removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
+      return removespechar.split('$');
+    }
+  }
+
+  $scope.adminGroupSecondary = function(agp) {
+    if(agp != undefined) {
+      var removeWhiteSpaces = agp.replace(/\s+/g, ' ').trim(),
+      removespechar = removeWhiteSpaces.replace(/[.*+?^{}'()|[\]\\]/g, "");
+      return removespechar.split('$');
+    }
+  }
+
+  // $scope.isCollapsed = true;
+  // $scope.selectedTypes = [];
+  $scope.loadStatus = function() {
+    $http.get('/api/status').success(function(data) {
+      $scope.isLoading = true;
+      $scope.status = data.hits.hits.slice(0, 10);
+      $scope.totalItems = $scope.status.length;
+      console.log($scope.totalItems);
+      // $scope.data = $scope.users.slice(0, 5);
+      $scope.getMoreData = function () {
+        $scope.status = data.hits.hits.slice(0, $scope.status.length + 10);
+      }
 			//Time Difference
 			$scope.status.map(function(d){
 				//variable declaration
-				if(d._source.applied_timestamp != undefined)
-					return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
-				var now = new Date();
-       then  = new Date(d._source.running_timestamp*1000),
-       diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
-       duration = moment.duration(diff),
-       ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
-       hour = Math.floor(duration.asHours()),
-       min = Math.floor(duration.asMinutes()),
-       sec = Math.floor(duration.asSeconds());
+			  if(d._source.applied_timestamp != undefined)
+				 return $scope.config_applied_time = new Date(d._source.applied_timestamp*1000);
+			  var now = new Date();
+        then  = new Date(d._source.running_timestamp*1000),
+        diff = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss")),
+        duration = moment.duration(diff),
+        ss = Math.floor(duration.asHours()) + moment.utc(diff).format(":mm:ss"),
+        hour = Math.floor(duration.asHours()),
+        min = Math.floor(duration.asMinutes()),
+        sec = Math.floor(duration.asSeconds());
 				// check for higher grade
 				$scope.updated_date = then;
 				if(hour > 0)
-					$scope.last_updated_time = hour + ' Hours ago';
+				 $scope.last_updated_time = hour + ' Hours ago';
 				else if(min > 0)
 					$scope.last_updated_time = min + ' Minutes ago';
 				else if(min < 0 && sec > 0)
@@ -542,45 +550,45 @@ $scope.loadStatus = function() {
 					$scope.last_updated_time = 'Time is up to date';
       });
     }).error(function(e) {
-     console.log(e);
-   });
+      console.log(e);
+    });
+    console.log($scope.status);
     $scope.isLoading = false;
 		// $scope.toggleSelection = function toggleSelection(type) {
-		// 	console.log(type);
-		// 	_.filter($scope.status, function(o) { 
-		// 		// console.log(o._source.path_type );
-		// 		if(o._source.path_type == type){
-		// 			$scope.selectedItems.push(o);
+	 //    console.log(type);
+		//    _.filter($scope.status, function(o) { 
+		// 	  if(o._source.path_type == type){
+		// 	    $scope.selectedItems.push(o);
 		// 		}
 		// 	});
 		// }
 		// $scope.selectedTypes = [];
 		// $scope.toggleSelection = function toggleSelection(type) {
-	 	//    	var idx = $scope.selectedTypes.indexOf(type);
-		//      	if (idx > -1) {
-		//        	$scope.selectedTypes.splice(idx, 1);
-		//      	}else {
-		//        	$scope.selectedTypes.push(type);
-		//      	}
-		//    }; 
-   $scope.colourIncludes = [];
-   $scope.toggleSelection = function(colour) {
-     var i = $.inArray(colour, $scope.colourIncludes);
-     if (i > -1) {
-       $scope.colourIncludes.splice(i, 1);
-     } else {
-       $scope.colourIncludes.push(colour);
-     }
-   }
-   $scope.colourFilter = function(fruit) {
-     if ($scope.colourIncludes.length > 0) {
-       if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
-        return
-      }
-    }
-    return fruit;
-  }
-};
+ 	//    	var idx = $scope.selectedTypes.indexOf(type);
+  //  	    if (idx > -1) {
+  //  	      $scope.selectedTypes.splice(idx, 1);
+	 //     	}else {
+	 //       	$scope.selectedTypes.push(type);
+	 //     	}
+	 //   }; 
+  //   $scope.colourIncludes = [];
+  //   $scope.toggleSelection = function(colour) {
+  //     var i = $.inArray(colour, $scope.colourIncludes);
+  //     if (i > -1) {
+  //       $scope.colourIncludes.splice(i, 1);
+  //     } else {
+  //       $scope.colourIncludes.push(colour);
+  //     }
+  //   }
+  //   $scope.colourFilter = function(fruit) {
+  //     if ($scope.colourIncludes.length > 0) {
+  //       if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
+  //         return
+  //       }
+  //     }
+  //     return fruit;
+  //   }
+  };
 });
 
 // For Modal
