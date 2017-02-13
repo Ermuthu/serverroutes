@@ -22,7 +22,7 @@
 					class="vertical-middle"
 					ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index"
 				>
-					<button ng-class="{'btn-danger': v<1, 'btn-success': v>0}" class="btn btn-circle">{{v}}</button>
+					<a href="/{{value._id}}/collectionName/{{tableHeader[$index]}}"><button ng-class="{'btn-danger': v<1, 'btn-success': v>0}" class="btn btn-circle">{{v}}</button></a>
 				</td>
 			</tr>
 		</tbody>
