@@ -137,7 +137,7 @@ ngElastic.controller('regexController', function($scope, $http) {
 ngElastic.controller('mainController', function($scope, $http) {
 	$scope.findIP = function() {
 		// var url = 'http://10.12.21.14:9200/mpls_lsps/_search?search_type=count&pretty&source={%22aggregations%22:{%22states%22:{%22terms%22:{%22field%22:%22router_name%22},%22aggs%22:{%22hits%22:{%22top_hits%22:{%22size%22:1}}}}}}';
-		$http.get('/proxy/api/routes').success(function(data) {
+		$http.get('/api/routes').success(function(data) {
 			$scope.routes = data.aggregations.states.buckets;
 			var extractData =  data.aggregations.states.buckets.map(function(data) {
 				$scope.total = data.doc_count;
@@ -444,7 +444,7 @@ ngElastic.controller('statusController', function($scope, $http) {
       $scope.isLoading = true;
       $scope.status = data.hits.hits;
       $scope.totalItems = $scope.status.length;
-      console.log($scope.totalItems);
+      // console.log($scope.totalItems);
       // $scope.data = $scope.users.slice(0, 5);
       // $scope.getMoreData = function () {
       //   $scope.status = data.hits.hits.slice(0, $scope.status.length + 10);
@@ -476,7 +476,7 @@ ngElastic.controller('statusController', function($scope, $http) {
     }).error(function(e) {
       console.log(e);
     });
-    console.log($scope.status);
+    // console.log($scope.status);
     $scope.isLoading = false;
     // $scope.toggleSelection = function toggleSelection(type) {
    //    console.log(type);
@@ -513,6 +513,25 @@ ngElastic.controller('statusController', function($scope, $http) {
   //     return fruit;
   //   }
   };
+
+  // LSP watch
+  $scope.$watch('LSPSearch', function(findLsp) {
+    var copyOfStatus = $scope.status;
+    $scope.statusCopy = angular.copy(copyOfStatus);
+    // var getIds = [];
+    // _.map($scope.status, function(d) {
+    //   getIds.push(d._id);
+    // });
+    // _.indexOf(getIds, findLsp);
+    
+    if(findLsp != undefined){
+      $http.get('/api/status/lsp/'+findLsp).success(function(lsps) {
+        console.log(lsps);
+      }).error(function(err) {
+        console.log(err);
+      });
+    }
+  });
   // Pagination
   $scope.viewby = 10;
   $scope.currentPage = 4;

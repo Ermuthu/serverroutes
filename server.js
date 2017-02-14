@@ -19,11 +19,11 @@ app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
 
 /* Cross browser proxy setup */
-app.use('/proxy', proxy('http://serverroutes.herokuapp.com/', {
-  forwardPath: function(req, res) {
-    return require('url').parse(req.url).path;
-  }
-}));
+// app.use('/proxy', proxy('http://serverroutes.herokuapp.com/', {
+//   forwardPath: function(req, res) {
+//     return require('url').parse(req.url).path;
+//   }
+// }));
 
 /* Routes */
 // GET
@@ -33,9 +33,10 @@ app.get('/api/routes', Api.Routes);
 app.get('/api/route/:routername', Api.getRouteInfo);
 app.get('/api/logs', Api.logs);
 app.get('/api/status', Api.status);
+app.get('/api/status/:dstinterface', Api.getRouterInterfaceName);
+app.get('/api/status/lsp/:lspname', Api.getLSPName);
 app.get('/api/linechart', Api.linechart);
 app.get('/api/link', Api.link);
-app.get('/api/status/:dstinterface', Api.getRouterInterfaceName);
 app.get('/api/apply', Api.getPOSTJSON);
 app.get('/api/tableheading', Api.getTableHeading);
 app.get('/api/tablestats', Api.getTableStats);

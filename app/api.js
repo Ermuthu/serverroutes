@@ -43,6 +43,16 @@ module.exports = {
 		var jan30 = './db/jan30_status.json';
 		res.send(jsonfile.readFileSync(jan30));
 	},
+	getLSPName: function(req, res) {
+		var LSPName = req.params.lspname,
+			file = './db/jan30_status.json',
+			data = jsonfile.readFileSync(file).hits.hits;
+		var result = _.map(data, function(d) {
+			if(d._id == LSPName){
+				res.send(d);
+			}
+		});
+	},
 	linechart: function(req, res) {
 		var lc = './db/jsonfile_graph.json';
 		res.send(jsonfile.readFileSync(lc));
