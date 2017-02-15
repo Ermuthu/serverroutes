@@ -1,0 +1,33 @@
+<div class="container" ng-init="initLspMesh()">
+	<h1>{{lspMesh}}</h1>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th class="text-center">Source Router</th>
+		    <th class="text-center">Active Routers</th>
+				<th class="text-center">Missing Routers</th>
+				<th class="text-center">Total Routers</th>
+				<th class="text-center">Missing Routers</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr ng-hide="isLoading === true">
+				<td style="text-align: center;" colspan="5">
+					<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+					<span style="font-weight: bolder;">Please Wait...</span>
+				</td>
+			</tr> -->
+			<tr ng-repeat="(key, value) in lsps" class="text-center">
+				<td style="text-align:center;"> <a href="#/lsp/{{value._source.src_rtr}}" > {{value._source.src_rtr}} </a> </td> 
+				<td class="text-center">{{value._source.active_routers}} </td>
+			 	<td class="text-center">{{value._source.missing_routers}} </td>
+			 	<td class="text-center">{{value._source.total_routers}} </td>
+			 	<td class="text-center white-pre vertical-middle">
+			 		<p>
+			 			{{value._source.missing_rtrs.join('\n')}}(<p ng-show="value._source.missing_rtrs.length > 10">{{value._source.missing_rtrs.length}}</p>)
+		 			</p>
+		 		</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

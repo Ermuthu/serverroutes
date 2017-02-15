@@ -113,6 +113,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/table.html',
     controller: 'tableController'
   }).
+  when('/lspmesh', {
+    templateUrl: 'views/lspmesh.html',
+    controller: 'lspMeshController'
+  }).
   otherwise({
    redirectTo: '/'
  });

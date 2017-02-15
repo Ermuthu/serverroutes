@@ -1,0 +1,256 @@
+{
+   "took": 1,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
+   },
+   "hits": {
+      "total": 96,
+      "max_score": 1,
+      "hits": [
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "deber3_bbisp_gw1",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "deber3-bbisp-gw1",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "deber3_bbisp_gw1"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "deber3_bbisp_gw2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "deber3-bbisp-gw2",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "deber3_bbisp_gw2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "usprz3_bb_pe2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 11,
+               "src_rtr": "usprz3-bb-pe2",
+               "missing_rtrs": [
+                  "17.0.132.1",
+                  "17.0.132.2",
+                  "17.0.134.1",
+                  "17.0.134.2",
+                  "17.0.138.1",
+                  "17.0.138.2",
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "uspao1_bb_pe1",
+                  "uspao1_bb_pe2",
+                  "usprz3_bb_pe2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 114
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "uslax1_bbisp_gw2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 13,
+               "src_rtr": "uslax1-bbisp-gw2",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "17.0.82.3",
+                  "17.0.82.4",
+                  "17.0.84.3",
+                  "17.0.84.4",
+                  "uslax1_bbisp_gw2",
+                  "usmsc2_bb_pe1",
+                  "usmsc2_bb_pe2",
+                  "usprz2_bb_pe1_new",
+                  "usprz2_bb_pe2_new",
+                  "usrno1_bb_pe1",
+                  "usrno1_bb_pe2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 112
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "cntnj1_bbisp_gw2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "cntnj1-bbisp-gw2",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "cntnj1_bbisp_gw2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "jptyo7_bbisp_gw1",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "jptyo7-bbisp-gw1",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "jptyo7_bbisp_gw1"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "ausyd2_bbisp_gw2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "ausyd2-bbisp-gw2",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "ausyd2_bbisp_gw2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "jposa3_bbisp_gw1",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "jposa3-bbisp-gw1",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "jposa3_bbisp_gw1"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "ushou1_bbisp_gw1",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 3,
+               "src_rtr": "ushou1-bbisp-gw1",
+               "missing_rtrs": [
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "ushou1_bbisp_gw1"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 122
+            }
+         },
+         {
+            "_index": "lsp_sum",
+            "_type": "stats",
+            "_id": "usdal4_bb_cr2",
+            "_score": 1,
+            "_source": {
+               "missing_routers": 46,
+               "src_rtr": "usdal4-bb-cr2",
+               "missing_rtrs": [
+                  "17.0.105.1",
+                  "17.0.105.2",
+                  "17.0.111.1",
+                  "17.0.111.2",
+                  "17.0.116.1",
+                  "17.0.116.2",
+                  "17.0.132.1",
+                  "17.0.132.2",
+                  "17.0.134.1",
+                  "17.0.134.2",
+                  "17.0.138.1",
+                  "17.0.138.2",
+                  "17.0.156.1",
+                  "17.0.156.2",
+                  "17.0.170.1",
+                  "17.0.170.2",
+                  "17.0.178.1",
+                  "17.0.178.2",
+                  "17.0.70.3",
+                  "17.0.70.4",
+                  "17.0.82.3",
+                  "17.0.82.4",
+                  "17.0.84.3",
+                  "17.0.84.4",
+                  "17.0.96.1",
+                  "17.0.96.2",
+                  "usclt2_bb_pe1",
+                  "usclt2_bb_pe2",
+                  "usclt3_bb_pe1",
+                  "usclt3_bb_pe2",
+                  "usdal4_bbisp_gw1",
+                  "usdal4_bbisp_gw2",
+                  "usden1_bbisp_gw1",
+                  "usden1_bbisp_gw2",
+                  "usden5_bbisp_gw1",
+                  "usden5_bbisp_gw2",
+                  "usmsc2_bb_pe1",
+                  "usmsc2_bb_pe2",
+                  "uspao1_bb_pe1",
+                  "uspao1_bb_pe2",
+                  "usprz3_bb_pe1",
+                  "usprz3_bb_pe2",
+                  "usrno3_bb_pe1",
+                  "usrno3_bb_pe2",
+                  "ussjc2_bb_pe1",
+                  "ussjc2_bb_pe2"
+               ],
+               "sum_timestamp": 1487055266,
+               "total_routers": 125,
+               "active_routers": 79
+            }
+         }
+      ]
+   }
+}

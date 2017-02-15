@@ -74,5 +74,9 @@ module.exports = {
 	getTableStats: function(req, res) {
 		var getTableStats = './db/table_stats_02_12.json';
 		res.send(jsonfile.readFileSync(getTableStats));
+	},
+	lspMesh: function(req, res) {
+		var lspMesh = './db/LSPMesh_02_15.json';
+		res.send(jsonfile.readFileSync(lspMesh));
 	}
 }
