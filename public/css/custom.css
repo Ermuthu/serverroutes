@@ -8,6 +8,12 @@
 .vertical-middle{
   vertical-align: middle !important;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
+.bolder{
+  font-weight: bolder;
+}
 /* Logs page status buttons */
 .logo{
 	width: 32px;
