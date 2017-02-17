@@ -1,6 +1,19 @@
 <div class="container" ng-init="initLinkRoute()">
 	<h1>{{linkRoute}}</h1>
 	<hr>
+	
+	<!-- Interface, Source and Destination Device -->
+	<div class="row inlineRoutes">
+		<div class="col-sm-4 br-sol-rt">
+			<b>Source Device:</b> {{src_device}}
+		</div>
+		<div class="col-sm-4 br-sol-rt">
+			<b>Interface:</b> {{interface}}
+		</div>
+		<div class="col-sm-4">
+			<b>Destination Device:</b> {{dst_device}}
+		</div>
+	</div>
 
 	<!-- Search -->
 	<div class="row">

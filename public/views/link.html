@@ -4,6 +4,8 @@
 		<thead>
 			<tr>
 				<th class="text-center">Source Device</th>
+				<th class="text-center">Interface</th>
+				<th class="text-center">Destination Device</th>
 				<th class="text-center">Direction</th>
 				<th class="text-center">Source Interface</th>
 				<th class="text-center">Speed</th>
@@ -15,13 +17,24 @@
 		</thead>
 		<tbody>
 			<tr ng-hide="isLoading === true">
-				<td style="text-align: center;" colspan="5">
+				<td style="text-align: center;" colspan="7">
 					<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
 					<span style="font-weight: bolder;">Please Wait...</span>
 				</td>
 			</tr>
 			<tr ng-repeat="(key, value) in dataset" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
-				<td class="vertical-middle"><a href="#/status/{{value._source.dst_router}}{{value._source.interface_name}}">{{value._source.dst_router}}</a></td>
+				<!-- <td class="vertical-middle"><a href="#/status/{{value._source.dst_router}}{{value._source.interface_name}}">{{value._source.dst_router}}</a></td> -->
+				<td class="vertical-middle">
+					<a href="#/status/{{value._id}}">
+						{{value._source.src_rtr}}
+					</a>
+				</td>
+				<td class="vertical-middle">
+					<a href="#/status/{{value._source.src_rtr}}{{value._source.interface_name}}">
+						{{value._source.interface_name}}
+					</a>
+				</td>
+				<td class="vertical-middle">{{value._source.dst_router}}</td>
 				<td class="vertical-middle">{{value._source.direction}}</td>
 				<td class="vertical-middle">{{value._source.interface_name}}</td>
 				<td class="vertical-middle">{{value._source.speed}}</td>

@@ -5,7 +5,31 @@ ngElastic.controller('linkRouteController', function($scope, $http, $routeParams
 
 	// Load initially when the link page called.
 	$scope.isLoading = true;
+
 	$scope.initLinkRoute = function() {
+
+		/* ------------------------ */
+		// $http.get('/proxy/link_info/stats/_search/?size=10000&pretty=1&sort=latest_speed:desc&query:matchAll').success(function(d) {
+		$http.get('/api/link').success(function(d) {
+			var collOfData = d.hits.hits,
+				routeParam = $routeParams.dst_interface;
+			_.map(collOfData, function(d) {
+				var srcAndInterface = d._source.src_rtr+''+d._source.interface_name;
+				if(routeParam == srcAndInterface){
+					$scope.src_device = d._source.src_rtr;
+					$scope.interface = d._source.interface_name;
+					$scope.dst_device = d._source.dst_router;
+				}
+				if(routeParam == d._id){
+					$scope.src_device = d._source.src_rtr;
+					$scope.interface = d._source.interface_name;
+					$scope.dst_device = d._source.dst_router;
+				}
+			})
+		});
+
+		/* ------------------------ */
+		/* Starts */
 		$http.get('/api/status/'+$routeParams.dst_interface.replace(/-/g, '_')).success(function(d) {
 			$scope.status = d.hits.hits;
 			$scope.status.map(function(d){
