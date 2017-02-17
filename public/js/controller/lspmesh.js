@@ -17,6 +17,15 @@ ngElastic.controller('lspMeshController', function($scope, $http) {
 
 	// Missing Routers
 	$scope.limitMissRoute = function(route) {
-		return route;
+		var replaceSymbol = [];
+		_.map(route, function(d, i) {
+			replaceSymbol.push(d.replace(/_/g, '-'));
+		});
+		return replaceSymbol;
+		var replaceSymbol = [];
+		_.map(d._source.dst_routers, function(d) {
+			replaceSymbol.push(d.replace(/_/g, '-'));
+		});
+		$scope.tableHeader = replaceSymbol;
 	};
 });

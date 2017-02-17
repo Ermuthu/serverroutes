@@ -23,8 +23,8 @@
 			 	<td class="text-center">{{value._source.missing_routers}} </td>
 			 	<td class="text-center">{{value._source.total_routers}} </td>
 			 	<td>
-			 		<div ng-repeat="v in limitMissRoute(value._source.missing_rtrs) | limitTo: limit">
-			 			<p ng-class="limit == value._source.missing_rtrs.length ? 'animated bounceIn' : 'animated bounceIn'" style="margin: 0;">{{v}}</p>
+			 		<div ng-repeat="v in limitMissRoute(value._source.missing_rtrs) | limitTo: limit" ng-class="limit > 10 ? 'in_blk' : ''">
+			 			<p ng-class="limit > 10 ? 'animated bounceIn' : ''" style="margin: 0;">{{v}}&nbsp;</p>
 			 		</div>
 			 		<p class="cursor-pointer bolder" ng-click="limit == value._source.missing_rtrs.length ? limit=defaultLimit : limit=value._source.missing_rtrs.length" ng-show="value._source.missing_rtrs.length > 10">{{limit == value._source.missing_rtrs.length ? less : more}}</p>
 		 		</td>
