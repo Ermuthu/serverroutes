@@ -40,12 +40,12 @@ module.exports = {
 		// var status_new = './db/status_new.json';
 		// var status_logs = './db/status_logs.json';
 		// var status_path_type = './db/status_path_type.json';
-		var jan30 = './db/jan30_status.json';
+		var jan30 = './db/mar01_status.json';
 		res.send(jsonfile.readFileSync(jan30));
 	},
 	getLSPName: function(req, res) {
 		var LSPName = req.params.lspname,
-			file = './db/jan30_status.json',
+			file = './db/mar01_status.json',
 			data = jsonfile.readFileSync(file).hits.hits;
 		var result = _.map(data, function(d) {
 			if(d._id == LSPName){
