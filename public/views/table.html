@@ -1,5 +1,31 @@
 <div class="container-fluid" ng-init="initTable()">
 	<h1>{{table}}</h1>
+	
+	<!-- Filters -->
+	<div class="col-sm-12 form-inline" style="margin-bottom: 2em;">
+		<div class="col-sm-8">
+			<div class="form-group" >
+				<label for="search">Search :</label>
+				<input type="text" class="form-control" ng-model="device" placeholder="Device">
+				<input type="text" class="form-control" ng-model="interface" placeholder="Interface">
+				<input type="text" class="form-control" ng-model="partner" placeholder="partner">
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<label for="limit">Limits : </label>
+			<div class="form-group">
+				<select name="limit" id="limit" class="form-control">
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="50">50</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<br />
+
+	<!-- Table Content starts here  -->
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
