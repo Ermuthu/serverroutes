@@ -1,4 +1,4 @@
-<div ng-init="initTable()">
+<div class="container" ng-init="initTable()">
 	<h1>{{table}}</h1>
 	
 	<!-- Filters -->
@@ -14,12 +14,9 @@
 		<div class="col-sm-4">
 			<label for="limit">Limits : </label>
 			<div class="form-group">
-				<select name="limit" id="limit" class="form-control">
-					<option value="stl" disabled="" selected="">Select the limit</option>
-					<option value="5">5</option>
-					<option value="10">10</option>
-					<option value="50">50</option>
-				</select>
+				<select ng-model="climit" id="" class="form-control" ng-options="limit as limit.id for limit in setLimit" ng-change="findLimit(climit)" ng-disabled="radioModel == 'default'">
+				<option value="">Select the limit</option>
+			</select>
 			</div>
 		</div>
 	</div>
@@ -27,7 +24,7 @@
 	<!-- Table row count and Radio Button -->
 	<div class="col-sm-12" style="margin-bottom: 2em;">
 		<div class="col-sm-4">
-			<button type="button" class="btn btn-primary">Total count : <span class="badge">{{totalItems}}</span></button>
+			<button type="button" class="btn btn-primary">Total count : <span class="badge">{{dataset.length}}</span></button>
 		</div>
 		<div class="col-sm-4">
 			<label class="radio-inline">

@@ -2,16 +2,32 @@ ngElastic.controller('tableController', function($scope, $http) {
 	// Title
 	$scope.table = "Table";
 
+	// set value for limit dropdown
+	$scope.setLimit = [{id:5},{id:10},{id:'All'}];
+
+	$scope.limit = 5;
+
+	// change limit value as per user limit (dropdown)
+	$scope.findLimit = function(res) {
+		$scope.limit = res.id;
+	};
+
 	// Load initially when the table page called.
 	$scope.initTable = function() {
 		// $http.get('/proxy/lsp_grid/heading/_search??size=10000&pretty&query:matchAl').success(function(d) {
 		// $http.get('/api/tableheading').success(function(d) {
 		$http.get('/api/tableinfo').success(function(d) {
 			$scope.dataset = d.hits.hits;
+			// remove 'ae400' from array
+   		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
 			_.map(d.hits.hits, function(d) {
-				// $scope.headerLength = d._source.dst_routers.length/2;
-				$scope.tableHeader = d._source.dst_routers;
-				$scope.heading = d._source.heading;
+				$scope.$watch('limit', function(limit) {
+					if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
+						$scope.limit = d._source.heading.length;
+					}
+					// thead (date)
+					$scope.heading = _.take(d._source.heading, $scope.limit);
+				});
 			});
 		});
 		// $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll').success(function(d) {
@@ -31,8 +47,10 @@ ngElastic.controller('tableController', function($scope, $http) {
 				colorCode.push(d)
 		});
 
-		$scope.colors = colorCode;
-		return values;
+		var limitColorCode = _.take(colorCode, $scope.limit);
+		var limitvalues = _.take(values, $scope.limit);
+		$scope.colors = limitColorCode;
+		return limitvalues;
 		$scope.isLoading = false;
 	}
 
