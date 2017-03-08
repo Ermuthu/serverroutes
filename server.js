@@ -40,6 +40,7 @@ app.get('/api/link', Api.link);
 app.get('/api/apply', Api.getPOSTJSON);
 app.get('/api/tableheading', Api.getTableHeading);
 app.get('/api/tablestats', Api.getTableStats);
+app.get('/api/tableinfo', Api.getTableInfo);
 app.get('/api/lspmesh', Api.lspMesh);
 // POST
 app.post('/api/apply', function(req, res) {

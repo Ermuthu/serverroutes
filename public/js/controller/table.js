@@ -1,15 +1,17 @@
 ngElastic.controller('tableController', function($scope, $http) {
 	// Title
-	$scope.table = "Table"
+	$scope.table = "Table";
 
 	// Load initially when the table page called.
 	$scope.initTable = function() {
 		// $http.get('/proxy/lsp_grid/heading/_search??size=10000&pretty&query:matchAl').success(function(d) {
-		$http.get('/api/tableheading').success(function(d) {
-			$scope.dataHeader = d.hits.hits;
+		// $http.get('/api/tableheading').success(function(d) {
+		$http.get('/api/tableinfo').success(function(d) {
+			$scope.dataset = d.hits.hits;
 			_.map(d.hits.hits, function(d) {
-				$scope.headerLength = d._source.dst_routers.length/2;
+				// $scope.headerLength = d._source.dst_routers.length/2;
 				$scope.tableHeader = d._source.dst_routers;
+				$scope.heading = d._source.heading;
 			});
 		});
 		// $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll').success(function(d) {
@@ -18,12 +20,28 @@ ngElastic.controller('tableController', function($scope, $http) {
 		});
 	};
 
-	// Get the values of table status
-	$scope.getTableStats = function(ts) {
+	// Get the b_w values in new line each			   
+ 	$scope.getDescValue = function(v) {
 		$scope.isLoading = true;
-		return ts;
+		var values = [],colorCode = [];
+		var descriptionValue = _.filter(v, function(d) {
+			if(d.indexOf("#") != 0)
+				values.push(d);
+			else
+				colorCode.push(d)
+		});
+
+		$scope.colors = colorCode;
+		return values;
 		$scope.isLoading = false;
-	};
+	}
+
+	// Get the values of table status
+	// $scope.getTableStats = function(ts) {
+	// 	$scope.isLoading = true;
+	// 	return ts;
+	// 	$scope.isLoading = false;
+	// };
 });
 
 /*  Mar 06 */
