@@ -3,28 +3,30 @@
 	
 	<!-- Filters -->
 	<div class="col-sm-12 form-inline" style="margin-bottom: 2em;">
-		<div class="col-sm-8">
+		<!-- <div class="col-sm-6"> -->
 			<div class="form-group" >
 				<label for="search">Search :</label>
 				<input type="text" class="form-control" ng-model="device" placeholder="Device">
 				<input type="text" class="form-control" ng-model="interface" placeholder="Interface">
 				<input type="text" class="form-control" ng-model="partner" placeholder="partner">
 			</div>
-		</div>
-		<div class="col-sm-4">
-			<label for="limit">Limits : </label>
+		<!-- </div> -->
+		<!-- <div class="col-sm-6 form-inline"> -->
 			<div class="form-group">
+				<label for="limit">Limits : </label>
 				<select ng-model="climit" id="" class="form-control" ng-options="limit as limit.id for limit in setLimit" ng-change="findLimit(climit)" ng-disabled="radioModel == 'default'">
-				<option value="">Select the limit</option>
-			</select>
+						<option value="">Select the limit</option>
+				</select>
 			</div>
-			<label for="limit">Dir : </label>
+
 			<div class="form-group">
+				<label for="limit">Dir : </label>
 				<select ng-model="direction" id="" class="form-control" ng-options="dire as dire.dir for dire in setDir" ng-change="watchDirDropDown(direction)">
 				<option value="">Select the Dir</option>
 			</select>
 			</div>
-		</div>
+			<input type="button" class="btn btn-danger pull-right" value="Reset All" ng-click="resetAll()">
+		<!-- </div> -->
 	</div>
 
 	<!-- Table row count and Radio Button -->
@@ -43,18 +45,18 @@
 		<div class="col-sm-3 form-inline">
 			<label for="limit">Partner : </label>
 			<div class="form-group">
-				<select ng-model="partnerDrDown" id="" class="form-control" ng-options="p for p in partnerFilDrDown">
-				<option value="">Select Partner</option>
-			</select>
-			</div>	
+				<select ng-model="partnerDD" id="" class="form-control" ng-options="p for p in partnerDropDown" ng-change="partnerDrDown(partnerDD)">
+					<option value="">Select Partner</option>
+				</select>
+			</div>
 		</div>
 		<div class="col-sm-3 form-inline">
 			<label for="limit">Partner Type : </label>
 			<div class="form-group">
-				<select ng-model="partnertype" id="" class="form-control" ng-options="pt for pt in partnerTypeDropDown">
-				<option value="">Select Partner Type</option>
-			</select>
-			</div>	
+				<select ng-model="partnerTypeDD" id="" class="form-control" ng-options="pt for pt in partnerTypeDropDown"ng-change="partnerTypeDrDown(partnerTypeDD)">
+					<option value="">Select Partner Type</option>
+				</select>
+			</div>
 		</div>
 	</div>
 

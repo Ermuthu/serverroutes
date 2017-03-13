@@ -23,8 +23,12 @@ ngElastic.controller('tableController', function($scope, $http) {
 		$http.get('/api/tableinfo').success(function(d) {
 			$scope.defaultDataSetCopy = d.hits.hits;
 			$scope.dataset = d.hits.hits;
+			console.log($scope.dataset);
 
-			// Partner and Partner Type Dropdown 
+			// remove 'ae400' from array
+   		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
+
+   		// Partner and Partner Type Dropdown 
 			var partnerDropDown = [],
 				partnerTypeDropDown = [];
 			_.map($scope.dataset, function(pdata) {
@@ -33,9 +37,6 @@ ngElastic.controller('tableController', function($scope, $http) {
 			});
 			$scope.partnerDropDown = _.uniq(partnerDropDown);
 			$scope.partnerTypeDropDown = _.uniq(partnerTypeDropDown);
-
-			// remove 'ae400' from array
-   		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
 
 			_.map(d.hits.hits, function(d) {
 				$scope.$watch('limit', function(limit) {
@@ -84,7 +85,7 @@ ngElastic.controller('tableController', function($scope, $http) {
 		// return values;
 	}
 
-	// Limit Dropdown
+	// Direction Dropdown
 	$scope.watchDirDropDown = function(d) {
 		var dirData;
 		$scope.dataset = $scope.defaultDataSetCopy;
@@ -103,6 +104,33 @@ ngElastic.controller('tableController', function($scope, $http) {
 			$scope.dataset = $scope.defaultDataSetCopy;
 		}
 	};
+
+	// Partner Dropdown
+	$scope.partnerDrDown = function(partner) {
+		var filteredPartnerDropDown;
+		$scope.dataset = $scope.defaultDataSetCopy;
+		if(partner != undefined){
+			filteredPartnerDropDown = _.filter($scope.dataset, {_source:{partner: partner}});
+			return $scope.dataset = filteredPartnerDropDown;
+		}
+		$scope.dataset = $scope.defaultDataSetCopy;
+	};
+
+	// Partner Type Dropdown
+	$scope.partnerTypeDrDown = function(partnerType) {
+		var filteredPartnerTypeDropDown;
+		$scope.dataset = $scope.defaultDataSetCopy;
+		if(partnerType != undefined){
+			filteredPartnerTypeDropDown = _.filter($scope.dataset, {_source:{partner_type: partnerType}});
+			return $scope.dataset = filteredPartnerTypeDropDown;
+		}
+		$scope.dataset = $scope.defaultDataSetCopy;
+	};
+
+	// Reset All Filter
+	$scope.resetAll = function() {
+		$scope.dataset = $scope.defaultDataSetCopy;
+	}
 
 	// Partner dropdown
 	// $scope.partnerDrDown = function() {
