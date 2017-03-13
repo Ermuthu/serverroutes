@@ -486,6 +486,7 @@ ngElastic.controller('tableController', function($scope, $http) {
 		// return values;
 	}
 
+	// Limit Dropdown
 	$scope.watchDirDropDown = function(d) {
 		var dirData;
 		$scope.dataset = $scope.defaultDataSetCopy;
@@ -505,6 +506,13 @@ ngElastic.controller('tableController', function($scope, $http) {
 		}
 	};
 
+	// Partner dropdown
+	$scope.partnerDrDown = function() {
+		_.map($scope.dataset, function(_src) {
+			console.log(_src._source.partner);
+		});
+	}
+	
 	// Get the values of table status
 	// $scope.getTableStats = function(ts) {
 	// 	$scope.isLoading = true;
@@ -675,4 +683,43 @@ ngElastic.controller('tableController', function($scope, $http) {
 // 		return values;
 // 		$scope.isLoading = false;
 // 	}
+// });
+
+
+// ngElastic.filter('unique', function () {
+//     return function (items, filterOn) {
+
+//         if (filterOn === false) {
+//             return items;
+//         }
+
+//         if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+//             var hashCheck = {}, newItems = [];
+
+//             var extractValueToCompare = function (item) {
+//                 if (angular.isObject(item) && angular.isString(filterOn)) {
+//                     return item[filterOn];
+//                 } else {
+//                     return item;
+//                 }
+//             };
+
+//             angular.forEach(items, function (item) {
+//                 var valueToCheck, isDuplicate = false;
+
+//                 for (var i = 0; i < newItems.length; i++) {
+//                     if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+//                         isDuplicate = true;
+//                         break;
+//                     }
+//                 }
+//                 if (!isDuplicate) {
+//                     newItems.push(item);
+//                 }
+
+//             });
+//             items = newItems;
+//         }
+//         return items;
+//     };
 // });
