@@ -43,7 +43,7 @@
 		<div class="col-sm-3 form-inline">
 			<label for="limit">Partner : </label>
 			<div class="form-group">
-				<select ng-model="partner" id="" class="form-control" ng-options="">
+				<select ng-model="partnerDrDown" id="" class="form-control" ng-options="p for p in partnerFilDrDown">
 				<option value="">Select Partner</option>
 			</select>
 			</div>	
@@ -51,7 +51,7 @@
 		<div class="col-sm-3 form-inline">
 			<label for="limit">Partner Type : </label>
 			<div class="form-group">
-				<select ng-model="partnertype" id="" class="form-control" ng-options="data as data._source.partner_type for data in dataset">
+				<select ng-model="partnertype" id="" class="form-control" ng-options="pt for pt in partnerTypeDropDown">
 				<option value="">Select Partner Type</option>
 			</select>
 			</div>	
