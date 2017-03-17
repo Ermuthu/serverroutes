@@ -1,7 +1,10 @@
 ngElastic.controller('tableController', function($scope, $http) {
 	// Title
 	$scope.table = "Table";
-	$scope.isCollapsed = true;
+
+	// set flag for expand/collapse
+ 	$scope.isCollapsed = true;
+  $scope.isCollapseMpls = true;
 
 	// set value for limit dropdown
 	$scope.setLimit = [{id:5},{id:10},{id:'All'}];
@@ -11,6 +14,11 @@ ngElastic.controller('tableController', function($scope, $http) {
 
 	$scope.limit = 5;
 
+	// Default radio button
+	$scope.radio = {
+		"value": "default"
+	};
+
 	// change limit value as per user limit (dropdown)
 	$scope.findLimit = function(res) {
 		$scope.limit = res.id;
@@ -18,6 +26,7 @@ ngElastic.controller('tableController', function($scope, $http) {
 
 	// Load initially when the table page called.
 	$scope.initTable = function() {
+		var lteArray = [];
 		// $http.get('/proxy/lsp_grid/heading/_search??size=10000&pretty&query:matchAl').success(function(d) {
 		// $http.get('/api/tableheading').success(function(d) {
 		$http.get('/api/tableinfo').success(function(d) {
@@ -38,14 +47,64 @@ ngElastic.controller('tableController', function($scope, $http) {
 			$scope.partnerDropDown = _.uniq(partnerDropDown);
 			$scope.partnerTypeDropDown = _.uniq(partnerTypeDropDown);
 
-			_.map(d.hits.hits, function(d) {
-				$scope.$watch('limit', function(limit) {
-					if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
-						$scope.limit = d._source.heading.length;
+			// 
+			_.map($scope.dataset, function(d){
+   		 	$scope.Limit = d._source.partner
+   		 	var lteTime = d._source.heading[0];
+		    lteArray.push(lteTime);
+		    lt = _.first(lteArray);
+   	  	var deviceName = d._source.device.replace(/-/g,'_'),
+  	   		interface = d._source.interface,
+	   		 	speedd = d._source.speed,
+  	   		statSource = d._source;
+  	   		
+  	   	//Elatic query 	Api query for label
+      	es.search({
+					index: 'desc_map',
+					type: 'config',
+					size: 10000,
+					body: {
+						"query": 
+					  	{"bool": 
+					     	{"must": 
+				         	[
+				         		{"match":
+			             		{"device":deviceName}
+			            	},
+		              	{"match":
+                  		{"intf": interface}
+		                }
+                 	]
+	             	}
+		         	}
+			    }
+				}).then(function (response) {
+					 // console.log("response",response)
+					if(response.hits.hits.length > 0) {
+						_.map(response.hits.hits, function(d) {
+							var label = "mpls"+d._source.label,
+								device = d._source.device,
+								intf = d._source.intf;
+							compareLabel(label,device,intf,statSource);
+							// compareLabelEven(label,device,intf,statSource);
+						// compareLabelOdd(label,device,intf,statSource);
+            });
+					} else {
+						// console.log("No Labels Found");
 					}
-					// thead (date)
-					$scope.heading = _.take(d._source.heading, $scope.limit);
 				});
+				// console.log("$scope.dataset",$scope.newObjectOdd);
+  		});
+		});
+
+		// watch limit
+		_.map(d.hits.hits, function(d) {
+			$scope.$watch('limit', function(limit) {
+				if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
+					$scope.limit = d._source.heading.length;
+				}
+				// thead (date)
+				$scope.heading = _.take(d._source.heading, $scope.limit);
 			});
 		});
 		// $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll').success(function(d) {
