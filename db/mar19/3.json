@@ -1,0 +1,2953 @@
+{
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 4078,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "testing58",
+        "_type": "cdnstats",
+        "_id": "AVrd5cS-sgkLIDzhIQVf",
+        "_score": 1,
+        "_source": {
+          "time": 1489781181,
+          "hostname": "all",
+          "hoststring": "all",
+          "hostip": "all",
+          "numprefixes": 0,
+          "processid": 0,
+          "IntfRawTrend": [
+            {
+              "intfname": "mpls1030131",
+              "bps": 2825272,
+              "pps": 243,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet0",
+              "bps": 2373978165,
+              "pps": 200360,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030321",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030272",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030061",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030701",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030251",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030392",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030631",
+              "bps": 3244,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030181",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030302",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030371",
+              "bps": 14860662,
+              "pps": 1245,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030042",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032441",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030232",
+              "bps": 19211590,
+              "pps": 741,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy4",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030211",
+              "bps": 851,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030162",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013631",
+              "bps": 975,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030401",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030352",
+              "bps": 891,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030141",
+              "bps": 6305,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013371",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030331",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030732",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet2",
+              "bps": 2408977769,
+              "pps": 202910,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030711",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030312",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030381",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "eth1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030052",
+              "bps": 36,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030242",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030221",
+              "bps": 3117774,
+              "pps": 264,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "bond0",
+              "bps": 9858382072,
+              "pps": 832685,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030691",
+              "bps": 513422196,
+              "pps": 43509,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030411",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030362",
+              "bps": 31382998,
+              "pps": 1403,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030151",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030552",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030341",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030482",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030271",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030132",
+              "bps": 29996,
+              "pps": 2,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030322",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030391",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030062",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030301",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030702",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030252",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030041",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030231",
+              "bps": 21820797,
+              "pps": 1894,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030632",
+              "bps": 2764,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030182",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet1",
+              "bps": 2488149173,
+              "pps": 210657,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030372",
+              "bps": 3825690,
+              "pps": 180,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013322",
+              "bps": 1958461818,
+              "pps": 165422,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013391",
+              "bps": 191451886,
+              "pps": 16947,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030161",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032442",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030351",
+              "bps": 9756,
+              "pps": 1,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013961",
+              "bps": 501130235,
+              "pps": 33431,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "default0",
+              "bps": 14152427,
+              "pps": 5997,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030212",
+              "bps": 921095,
+              "pps": 33,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030731",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030402",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013822",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030142",
+              "bps": 154657,
+              "pps": 8,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030332",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030522",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "lo",
+              "bps": 11829813,
+              "pps": 1033,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013942",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030712",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030311",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013682",
+              "bps": 639403001,
+              "pps": 41084,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030051",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030241",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013471",
+              "bps": 581770098,
+              "pps": 50897,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet3",
+              "bps": 2587280927,
+              "pps": 218750,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030382",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013332",
+              "bps": 356671682,
+              "pps": 25630,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030361",
+              "bps": 79539630,
+              "pps": 6674,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013311",
+              "bps": 2313021260,
+              "pps": 125755,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030551",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030222",
+              "bps": 26359477,
+              "pps": 916,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030692",
+              "bps": 243845858,
+              "pps": 10880,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030412",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030481",
+              "bps": 20591,
+              "pps": 2,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013832",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030152",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013621",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030342",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "allMpls",
+              "bps": 7503273104,
+              "pps": 527189,
+              "bps95": 0,
+              "pps95": 0
+            }
+          ],
+          "IntfHourTrend": [
+            {
+              "intfname": "mpls1030131",
+              "bps": 7608906,
+              "pps": 648,
+              "bps95": 18654674,
+              "pps95": 1565
+            },
+            {
+              "intfname": "unknown2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet0",
+              "bps": 2580596171,
+              "pps": 217739,
+              "bps95": 2892063956,
+              "pps95": 242737
+            },
+            {
+              "intfname": "mpls1030321",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030272",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030061",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030701",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030251",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030392",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030631",
+              "bps": 8331,
+              "pps": 0,
+              "bps95": 27403,
+              "pps95": 3
+            },
+            {
+              "intfname": "mpls1030181",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030302",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030371",
+              "bps": 6133463,
+              "pps": 514,
+              "bps95": 12480472,
+              "pps95": 1043
+            },
+            {
+              "intfname": "mpls1030042",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032441",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030232",
+              "bps": 47222947,
+              "pps": 1292,
+              "bps95": 129726127,
+              "pps95": 2768
+            },
+            {
+              "intfname": "dummy4",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030211",
+              "bps": 197371,
+              "pps": 17,
+              "bps95": 27374,
+              "pps95": 2
+            },
+            {
+              "intfname": "mpls1030162",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013631",
+              "bps": 62270,
+              "pps": 5,
+              "bps95": 2093,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030401",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030352",
+              "bps": 375899,
+              "pps": 15,
+              "bps95": 2525820,
+              "pps95": 93
+            },
+            {
+              "intfname": "mpls1030141",
+              "bps": 2016033,
+              "pps": 168,
+              "bps95": 8079018,
+              "pps95": 673
+            },
+            {
+              "intfname": "mpls1013371",
+              "bps": 94586,
+              "pps": 7,
+              "bps95": 764554,
+              "pps95": 57
+            },
+            {
+              "intfname": "mpls1030331",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030732",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet2",
+              "bps": 2459061276,
+              "pps": 207932,
+              "bps95": 2753779148,
+              "pps95": 232776
+            },
+            {
+              "intfname": "mpls1030521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030711",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030312",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030381",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "eth1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030052",
+              "bps": 1313,
+              "pps": 0,
+              "bps95": 4596,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030242",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030221",
+              "bps": 10328551,
+              "pps": 871,
+              "bps95": 30622434,
+              "pps95": 2567
+            },
+            {
+              "intfname": "bond0",
+              "bps": 9969849400,
+              "pps": 841963,
+              "bps95": 10933015997,
+              "pps95": 923421
+            },
+            {
+              "intfname": "mpls1030691",
+              "bps": 489855654,
+              "pps": 41655,
+              "bps95": 648097165,
+              "pps95": 56224
+            },
+            {
+              "intfname": "mpls1030411",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030362",
+              "bps": 31230134,
+              "pps": 1423,
+              "bps95": 58972177,
+              "pps95": 2681
+            },
+            {
+              "intfname": "mpls1030151",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030552",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030341",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030482",
+              "bps": 3244,
+              "pps": 0,
+              "bps95": 7005,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030271",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030132",
+              "bps": 4103476,
+              "pps": 185,
+              "bps95": 9598567,
+              "pps95": 416
+            },
+            {
+              "intfname": "mpls1030322",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030391",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030062",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030301",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030702",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030252",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030041",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030231",
+              "bps": 101819565,
+              "pps": 8648,
+              "bps95": 192261492,
+              "pps95": 16178
+            },
+            {
+              "intfname": "mpls1030632",
+              "bps": 69524,
+              "pps": 3,
+              "bps95": 14148,
+              "pps95": 1
+            },
+            {
+              "intfname": "mpls1030182",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet1",
+              "bps": 2497688595,
+              "pps": 210923,
+              "bps95": 2961183829,
+              "pps95": 250150
+            },
+            {
+              "intfname": "mpls1030372",
+              "bps": 2645411,
+              "pps": 132,
+              "bps95": 6271478,
+              "pps95": 317
+            },
+            {
+              "intfname": "mpls1013322",
+              "bps": 1933482391,
+              "pps": 163316,
+              "bps95": 2257556419,
+              "pps95": 190743
+            },
+            {
+              "intfname": "mpls1013391",
+              "bps": 183913884,
+              "pps": 16254,
+              "bps95": 244478222,
+              "pps95": 21173
+            },
+            {
+              "intfname": "mpls1030161",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032442",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030351",
+              "bps": 812864,
+              "pps": 69,
+              "bps95": 3407152,
+              "pps95": 303
+            },
+            {
+              "intfname": "mpls1013961",
+              "bps": 546659071,
+              "pps": 40172,
+              "bps95": 691509698,
+              "pps95": 48774
+            },
+            {
+              "intfname": "default0",
+              "bps": 1494646,
+              "pps": 682,
+              "bps95": 15346708,
+              "pps95": 6252
+            },
+            {
+              "intfname": "mpls1030212",
+              "bps": 202383,
+              "pps": 10,
+              "bps95": 1191205,
+              "pps95": 50
+            },
+            {
+              "intfname": "mpls1030731",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030402",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013822",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030142",
+              "bps": 20755,
+              "pps": 1,
+              "bps95": 128002,
+              "pps95": 6
+            },
+            {
+              "intfname": "dummy2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030332",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030522",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "lo",
+              "bps": 12095711,
+              "pps": 1033,
+              "bps95": 13345767,
+              "pps95": 1158
+            },
+            {
+              "intfname": "mpls1013942",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030712",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030311",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013682",
+              "bps": 741275351,
+              "pps": 46762,
+              "bps95": 910730069,
+              "pps95": 58928
+            },
+            {
+              "intfname": "mpls1030051",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030241",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013471",
+              "bps": 578724525,
+              "pps": 51147,
+              "bps95": 711394686,
+              "pps95": 62594
+            },
+            {
+              "intfname": "inet3",
+              "bps": 2441061342,
+              "pps": 206086,
+              "bps95": 2796851038,
+              "pps95": 234976
+            },
+            {
+              "intfname": "mpls1030382",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013332",
+              "bps": 377835578,
+              "pps": 26087,
+              "bps95": 569351410,
+              "pps95": 39511
+            },
+            {
+              "intfname": "mpls1030361",
+              "bps": 60786145,
+              "pps": 5160,
+              "bps95": 102716037,
+              "pps95": 8650
+            },
+            {
+              "intfname": "mpls1013311",
+              "bps": 2202051798,
+              "pps": 120650,
+              "bps95": 2641848700,
+              "pps95": 139367
+            },
+            {
+              "intfname": "mpls1030551",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030222",
+              "bps": 4338893,
+              "pps": 191,
+              "bps95": 12875495,
+              "pps95": 574
+            },
+            {
+              "intfname": "mpls1030692",
+              "bps": 214758347,
+              "pps": 9497,
+              "bps95": 298737213,
+              "pps95": 12387
+            },
+            {
+              "intfname": "unknown0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030412",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030481",
+              "bps": 114665,
+              "pps": 9,
+              "bps95": 511919,
+              "pps95": 43
+            },
+            {
+              "intfname": "dummy3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013832",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030152",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013621",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030342",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "allMpls",
+              "bps": 7548753369,
+              "pps": 534944,
+              "bps95": 8481525353,
+              "pps95": 603902
+            }
+          ],
+          "IntfDayTrend": [
+            {
+              "intfname": "mpls1030131",
+              "bps": 6843178,
+              "pps": 578,
+              "bps95": 21637486,
+              "pps95": 1812
+            },
+            {
+              "intfname": "unknown2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet0",
+              "bps": 2048786717,
+              "pps": 173407,
+              "bps95": 2889758348,
+              "pps95": 244196
+            },
+            {
+              "intfname": "mpls1030321",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030272",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030061",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030701",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030251",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030392",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030631",
+              "bps": 751413,
+              "pps": 62,
+              "bps95": 261481,
+              "pps95": 23
+            },
+            {
+              "intfname": "mpls1030181",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030302",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030371",
+              "bps": 6482641,
+              "pps": 544,
+              "bps95": 13047986,
+              "pps95": 1093
+            },
+            {
+              "intfname": "mpls1030042",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032441",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030232",
+              "bps": 35248083,
+              "pps": 1074,
+              "bps95": 84317400,
+              "pps95": 2768
+            },
+            {
+              "intfname": "dummy4",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030211",
+              "bps": 365921,
+              "pps": 31,
+              "bps95": 729737,
+              "pps95": 71
+            },
+            {
+              "intfname": "mpls1030162",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013631",
+              "bps": 22496,
+              "pps": 1,
+              "bps95": 3783,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030401",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030352",
+              "bps": 877732,
+              "pps": 27,
+              "bps95": 3727277,
+              "pps95": 127
+            },
+            {
+              "intfname": "mpls1030141",
+              "bps": 1729205,
+              "pps": 145,
+              "bps95": 7975981,
+              "pps95": 665
+            },
+            {
+              "intfname": "mpls1013371",
+              "bps": 166759,
+              "pps": 7,
+              "bps95": 686437,
+              "pps95": 35
+            },
+            {
+              "intfname": "mpls1030331",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030732",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet2",
+              "bps": 2019349412,
+              "pps": 171337,
+              "bps95": 2777124374,
+              "pps95": 235091
+            },
+            {
+              "intfname": "mpls1030521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030711",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030312",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030381",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "eth1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030052",
+              "bps": 362666,
+              "pps": 24,
+              "bps95": 7796,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030242",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030221",
+              "bps": 8370119,
+              "pps": 711,
+              "bps95": 25844956,
+              "pps95": 2191
+            },
+            {
+              "intfname": "bond0",
+              "bps": 8102729605,
+              "pps": 686057,
+              "bps95": 11039592942,
+              "pps95": 931038
+            },
+            {
+              "intfname": "mpls1030691",
+              "bps": 424307461,
+              "pps": 36160,
+              "bps95": 612095996,
+              "pps95": 52357
+            },
+            {
+              "intfname": "mpls1030411",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030362",
+              "bps": 26226638,
+              "pps": 1183,
+              "bps95": 56276244,
+              "pps95": 2514
+            },
+            {
+              "intfname": "mpls1030151",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030552",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030341",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030482",
+              "bps": 1677,
+              "pps": 0,
+              "bps95": 2023,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030271",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030132",
+              "bps": 5395169,
+              "pps": 228,
+              "bps95": 24349302,
+              "pps95": 1055
+            },
+            {
+              "intfname": "mpls1030322",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030391",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030062",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030301",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030702",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030252",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030041",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030231",
+              "bps": 64152665,
+              "pps": 5147,
+              "bps95": 174647847,
+              "pps95": 13222
+            },
+            {
+              "intfname": "mpls1030632",
+              "bps": 98668,
+              "pps": 4,
+              "bps95": 14500,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030182",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet1",
+              "bps": 2034959065,
+              "pps": 172119,
+              "bps95": 2900098439,
+              "pps95": 243922
+            },
+            {
+              "intfname": "mpls1030372",
+              "bps": 2681392,
+              "pps": 128,
+              "bps95": 7651713,
+              "pps95": 366
+            },
+            {
+              "intfname": "mpls1013322",
+              "bps": 1478259412,
+              "pps": 124922,
+              "bps95": 2306908057,
+              "pps95": 194111
+            },
+            {
+              "intfname": "mpls1013391",
+              "bps": 155444601,
+              "pps": 13739,
+              "bps95": 230851189,
+              "pps95": 20240
+            },
+            {
+              "intfname": "mpls1030161",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032442",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030351",
+              "bps": 626077,
+              "pps": 53,
+              "bps95": 3376295,
+              "pps95": 283
+            },
+            {
+              "intfname": "mpls1013961",
+              "bps": 446897247,
+              "pps": 32686,
+              "bps95": 696691658,
+              "pps95": 49662
+            },
+            {
+              "intfname": "default0",
+              "bps": 2406700,
+              "pps": 978,
+              "bps95": 11051205,
+              "pps95": 5598
+            },
+            {
+              "intfname": "mpls1030212",
+              "bps": 1452734,
+              "pps": 14,
+              "bps95": 2077229,
+              "pps95": 50
+            },
+            {
+              "intfname": "mpls1030731",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030402",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013822",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030142",
+              "bps": 153569,
+              "pps": 6,
+              "bps95": 419641,
+              "pps95": 20
+            },
+            {
+              "intfname": "dummy2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030332",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030522",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "lo",
+              "bps": 10573569,
+              "pps": 899,
+              "bps95": 14255816,
+              "pps95": 1216
+            },
+            {
+              "intfname": "mpls1013942",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030712",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030311",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013682",
+              "bps": 679441703,
+              "pps": 43000,
+              "bps95": 941763057,
+              "pps95": 59848
+            },
+            {
+              "intfname": "mpls1030051",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030241",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013471",
+              "bps": 500657526,
+              "pps": 44630,
+              "bps95": 753892102,
+              "pps95": 65246
+            },
+            {
+              "intfname": "inet3",
+              "bps": 2004898579,
+              "pps": 169634,
+              "bps95": 2800788784,
+              "pps95": 237223
+            },
+            {
+              "intfname": "mpls1030382",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013332",
+              "bps": 288598359,
+              "pps": 19939,
+              "bps95": 470128710,
+              "pps95": 32579
+            },
+            {
+              "intfname": "mpls1030361",
+              "bps": 42647126,
+              "pps": 3627,
+              "bps95": 85863143,
+              "pps95": 7247
+            },
+            {
+              "intfname": "mpls1013311",
+              "bps": 1660910548,
+              "pps": 91594,
+              "bps95": 2530151883,
+              "pps95": 135951
+            },
+            {
+              "intfname": "mpls1030551",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030222",
+              "bps": 4097518,
+              "pps": 155,
+              "bps95": 14833026,
+              "pps95": 475
+            },
+            {
+              "intfname": "mpls1030692",
+              "bps": 212837812,
+              "pps": 9418,
+              "bps95": 309701312,
+              "pps95": 13858
+            },
+            {
+              "intfname": "unknown0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030412",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030481",
+              "bps": 974507,
+              "pps": 81,
+              "bps95": 4350709,
+              "pps95": 364
+            },
+            {
+              "intfname": "dummy3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013832",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030152",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013621",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030342",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "allMpls",
+              "bps": 6057082663,
+              "pps": 429957,
+              "bps95": 8552423276,
+              "pps95": 601330
+            }
+          ],
+          "IntfWeekTrend": [
+            {
+              "intfname": "mpls1030131",
+              "bps": 6843178,
+              "pps": 578,
+              "bps95": 21637486,
+              "pps95": 1812
+            },
+            {
+              "intfname": "unknown2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet0",
+              "bps": 2048786717,
+              "pps": 173407,
+              "bps95": 2889758348,
+              "pps95": 244196
+            },
+            {
+              "intfname": "mpls1030321",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030272",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030061",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030701",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030251",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030392",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030631",
+              "bps": 751413,
+              "pps": 62,
+              "bps95": 261481,
+              "pps95": 23
+            },
+            {
+              "intfname": "mpls1030181",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030302",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030371",
+              "bps": 6482641,
+              "pps": 544,
+              "bps95": 13047986,
+              "pps95": 1093
+            },
+            {
+              "intfname": "mpls1030042",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032441",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030232",
+              "bps": 35248083,
+              "pps": 1074,
+              "bps95": 84317400,
+              "pps95": 2768
+            },
+            {
+              "intfname": "dummy4",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030211",
+              "bps": 365921,
+              "pps": 31,
+              "bps95": 729737,
+              "pps95": 71
+            },
+            {
+              "intfname": "mpls1030162",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013631",
+              "bps": 22496,
+              "pps": 1,
+              "bps95": 3783,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030401",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030352",
+              "bps": 877732,
+              "pps": 27,
+              "bps95": 3727277,
+              "pps95": 127
+            },
+            {
+              "intfname": "mpls1030141",
+              "bps": 1729205,
+              "pps": 145,
+              "bps95": 7975981,
+              "pps95": 665
+            },
+            {
+              "intfname": "mpls1013371",
+              "bps": 166759,
+              "pps": 7,
+              "bps95": 686437,
+              "pps95": 35
+            },
+            {
+              "intfname": "mpls1030331",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030732",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet2",
+              "bps": 2019349412,
+              "pps": 171337,
+              "bps95": 2777124374,
+              "pps95": 235091
+            },
+            {
+              "intfname": "mpls1030521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030711",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030312",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030381",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "eth1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030052",
+              "bps": 362666,
+              "pps": 24,
+              "bps95": 7796,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013521",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030242",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030221",
+              "bps": 8370119,
+              "pps": 711,
+              "bps95": 25844956,
+              "pps95": 2191
+            },
+            {
+              "intfname": "bond0",
+              "bps": 8102729605,
+              "pps": 686057,
+              "bps95": 11039592942,
+              "pps95": 931038
+            },
+            {
+              "intfname": "mpls1030691",
+              "bps": 424307461,
+              "pps": 36160,
+              "bps95": 612095996,
+              "pps95": 52357
+            },
+            {
+              "intfname": "mpls1030411",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030362",
+              "bps": 26226638,
+              "pps": 1183,
+              "bps95": 56276244,
+              "pps95": 2514
+            },
+            {
+              "intfname": "mpls1030151",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030552",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030341",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030482",
+              "bps": 1677,
+              "pps": 0,
+              "bps95": 2023,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030271",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030132",
+              "bps": 5395169,
+              "pps": 228,
+              "bps95": 24349302,
+              "pps95": 1055
+            },
+            {
+              "intfname": "mpls1030322",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030391",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "dummy1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030062",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030301",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030702",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030252",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030041",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030231",
+              "bps": 64152665,
+              "pps": 5147,
+              "bps95": 174647847,
+              "pps95": 13222
+            },
+            {
+              "intfname": "mpls1030632",
+              "bps": 98668,
+              "pps": 4,
+              "bps95": 14500,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030182",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "inet1",
+              "bps": 2034959065,
+              "pps": 172119,
+              "bps95": 2900098439,
+              "pps95": 243922
+            },
+            {
+              "intfname": "mpls1030372",
+              "bps": 2681392,
+              "pps": 128,
+              "bps95": 7651713,
+              "pps95": 366
+            },
+            {
+              "intfname": "mpls1013322",
+              "bps": 1478259412,
+              "pps": 124922,
+              "bps95": 2306908057,
+              "pps95": 194111
+            },
+            {
+              "intfname": "mpls1013391",
+              "bps": 155444601,
+              "pps": 13739,
+              "bps95": 230851189,
+              "pps95": 20240
+            },
+            {
+              "intfname": "mpls1030161",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1032442",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030351",
+              "bps": 626077,
+              "pps": 53,
+              "bps95": 3376295,
+              "pps95": 283
+            },
+            {
+              "intfname": "mpls1013961",
+              "bps": 446897247,
+              "pps": 32686,
+              "bps95": 696691658,
+              "pps95": 49662
+            },
+            {
+              "intfname": "default0",
+              "bps": 2406700,
+              "pps": 978,
+              "bps95": 11051205,
+              "pps95": 5598
+            },
+            {
+              "intfname": "mpls1030212",
+              "bps": 1452734,
+              "pps": 14,
+              "bps95": 2077229,
+              "pps95": 50
+            },
+            {
+              "intfname": "mpls1030731",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030402",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013822",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030142",
+              "bps": 153569,
+              "pps": 6,
+              "bps95": 419641,
+              "pps95": 20
+            },
+            {
+              "intfname": "dummy2",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030332",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030522",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "lo",
+              "bps": 10573569,
+              "pps": 899,
+              "bps95": 14255816,
+              "pps95": 1216
+            },
+            {
+              "intfname": "mpls1013942",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030712",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030311",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013682",
+              "bps": 679441703,
+              "pps": 43000,
+              "bps95": 941763057,
+              "pps95": 59848
+            },
+            {
+              "intfname": "mpls1030051",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030241",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013471",
+              "bps": 500657526,
+              "pps": 44630,
+              "bps95": 753892102,
+              "pps95": 65246
+            },
+            {
+              "intfname": "inet3",
+              "bps": 2004898579,
+              "pps": 169634,
+              "bps95": 2800788784,
+              "pps95": 237223
+            },
+            {
+              "intfname": "mpls1030382",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013332",
+              "bps": 288598359,
+              "pps": 19939,
+              "bps95": 470128710,
+              "pps95": 32579
+            },
+            {
+              "intfname": "mpls1030361",
+              "bps": 42647126,
+              "pps": 3627,
+              "bps95": 85863143,
+              "pps95": 7247
+            },
+            {
+              "intfname": "mpls1013311",
+              "bps": 1660910548,
+              "pps": 91594,
+              "bps95": 2530151883,
+              "pps95": 135951
+            },
+            {
+              "intfname": "mpls1030551",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030222",
+              "bps": 4097518,
+              "pps": 155,
+              "bps95": 14833026,
+              "pps95": 475
+            },
+            {
+              "intfname": "mpls1030692",
+              "bps": 212837812,
+              "pps": 9418,
+              "bps95": 309701312,
+              "pps95": 13858
+            },
+            {
+              "intfname": "unknown0",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030412",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030481",
+              "bps": 974507,
+              "pps": 81,
+              "bps95": 4350709,
+              "pps95": 364
+            },
+            {
+              "intfname": "dummy3",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013832",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030152",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "unknown1",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1013621",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "mpls1030342",
+              "bps": 0,
+              "pps": 0,
+              "bps95": 0,
+              "pps95": 0
+            },
+            {
+              "intfname": "allMpls",
+              "bps": 6057082663,
+              "pps": 429957,
+              "bps95": 8552423276,
+              "pps95": 601330
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "aggregations": {
+    "group_by_state": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "all",
+          "doc_count": 864
+        },
+        {
+          "key": "odd",
+          "doc_count": 864
+        },
+        {
+          "key": "usden5-edge-bx-001.ts.apple.com",
+          "doc_count": 862
+        },
+        {
+          "key": "usden5-edge-bx-003.ts.apple.com",
+          "doc_count": 497
+        },
+        {
+          "key": "usden5-edge-bx-007.ts.apple.com",
+          "doc_count": 496
+        },
+        {
+          "key": "usden5-edge-bx-005.ts.apple.com",
+          "doc_count": 495
+        }
+      ]
+    }
+  }
+}
