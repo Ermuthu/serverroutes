@@ -1,35 +1,30 @@
 <div class="container" ng-init="initTable()">
 	<h1>{{table}}</h1>
 	
-	<!-- Filters -->
+	<!-- search, Limit and direction dropdown's and RESET ALL Button -->
 	<div class="col-sm-12 form-inline" style="margin-bottom: 2em;">
-		<!-- <div class="col-sm-6"> -->
-			<div class="form-group" >
-				<label for="search">Search :</label>
-				<input type="text" class="form-control" ng-model="device" placeholder="Device">
-				<input type="text" class="form-control" ng-model="interface" placeholder="Interface">
-				<input type="text" class="form-control" ng-model="partner" placeholder="partner">
-			</div>
-		<!-- </div> -->
-		<!-- <div class="col-sm-6 form-inline"> -->
-			<div class="form-group">
-				<label for="limit">Limits : </label>
-				<select ng-model="climit" id="" class="form-control" ng-options="limit as limit.id for limit in setLimit" ng-change="findLimit(climit)" ng-disabled="radioModel == 'default'">
-						<option value="">Select the limit</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="limit">Dir : </label>
-				<select ng-model="direction" id="" class="form-control" ng-options="dire as dire.dir for dire in setDir" ng-change="watchDirDropDown(direction)">
+		<div class="form-group" >
+			<label for="search">Search :</label>
+			<input type="text" class="form-control" ng-model="device" placeholder="Device">
+			<input type="text" class="form-control" ng-model="interface" placeholder="Interface">
+			<input type="text" class="form-control" ng-model="partner" placeholder="partner">
+		</div>
+		<div class="form-group">
+			<label for="limit">Limits : </label>
+			<select ng-model="climit" id="" class="form-control" ng-options="limit as limit.id for limit in setLimit" ng-change="findLimit(climit)" ng-disabled="radioModel == 'default'">
+				<option value="">Select the limit</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="limit">Dir : </label>
+			<select ng-model="direction" id="" class="form-control" ng-options="dire as dire.dir for dire in setDir" ng-change="watchDirDropDown(direction)">
 				<option value="">Select the Dir</option>
 			</select>
-			</div>
-			<input type="button" class="btn btn-danger pull-right" value="Reset All" ng-click="resetAll()">
-		<!-- </div> -->
+		</div>
+		<input type="button" class="btn btn-danger pull-right" value="Reset All" ng-click="resetAll()">
 	</div>
 
-	<!-- Table row count and Radio Button -->
+	<!-- Row count, radio(default,all), Partner and PartnerType Dropdown -->
 	<div class="col-sm-12" style="margin-bottom: 2em;">
 		<div class="col-sm-3">
 			<button type="button" class="btn btn-primary">Total count : <span class="badge">{{dataset.length}}</span></button>
@@ -60,7 +55,7 @@
 		</div>
 	</div>
 
-	<!-- Table Content starts here  -->
+	<!-- Table data starts here  -->
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
@@ -78,7 +73,7 @@
 				</th> -->
 			</tr>
 		</thead>
-		<tbody ng-if="radio.value == 'default'">
+		<tbody ng-if="radio.value == 'default'" data-ng-switch on="dayDataCollapse[$index]">
 			<!-- Loader -->
 			<!-- <tr ng-hide="isLoading === true">
 				<td style="text-align: center;" colspan="1">
@@ -87,10 +82,9 @@
 				</td>
 			</tr> -->
 
-			<!-- content -->
+			<!-- Row data -->
 			<tr ng-repeat-start="(key, value) in dataset | filter:{_source:{interface:interface,partner:partner, device:device}}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
-				<td class="col1"><span><a href="" ng-click=" isCollapsed = !isCollapsed; disputeButton(value._source.device,value._source.interface,value._source.desc,value._source.partner,value._source.AS,value._source.partner_type,value._source.speed,value._source.direction, isCollapsed)">{{value._source.device}}</a></span></td>
-				<!-- <td style="white-space:pre"> <a href="" ng-click="isCollapsed = !isCollapsed">{{value._source.device}} </a> </td> -->
+				<td class="col1"><span><a href="" ng-model="deviceName" ng-click=" isCollapsed = !isCollapsed; disputeButton(value._source.device,value._source.interface,value._source.desc,value._source.partner,value._source.AS,value._source.partner_type,value._source.speed,value._source.direction, isCollapsed)">{{value._source.device}}</a></span></td>
 				<td class="text-center">{{value._source.interface}}</td>
 				<td class="text-center">{{value._source.partner}}</td>
 			 	<td class="text-center">{{value._source.AS}} </td>
@@ -119,10 +113,12 @@
 					<a href="/{{value._id}}/collectionName/{{tableHeader[$index]}}"><button ng-class="{'btn-danger': v<1, 'btn-success': v>0}" class="btn btn-circle">{{v}}</button></a>
 				</td> -->
 			</tr>
-			<tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end>
+			<!-- <tr class="remarks" ng-show="isCollapsed == false" ng-repeat-end> -->
+			<tr class="remarks" data-ng-switch-when="false" ng-repeat-end>
 				<td colspan="{{5+dataset.length}}">
 				<!-- <td colspan="{{5+dataset.length}}" style="padding-bottom:0px;padding-top:0px;padding-right:0px;padding-left: 0px;"> -->
-					<p  ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center"> 
+					<p  ng-class="isCollapsed ? 'animated zoomOut' : 'animated bounceIn'" uib-collapse="isCollapsed" class="text-center">
+					<div collapse="dayDataCollapse[$index]">
 						<table class="table table-bordered" style="empty-cells: hide;font-size:10px;">
 							<!-- <thead>
 						   	<tr>
@@ -211,6 +207,7 @@
 								</tr>	 -->		
 					   	</tbody>	
            	</table>
+         	</div>
            	<!-- <table class="table table-bordered" style="empty-cells: hide;font-size:10px;">
 							<thead>
 					   		<tr>

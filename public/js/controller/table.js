@@ -32,7 +32,6 @@ ngElastic.controller('tableController', function($scope, $http) {
 		$http.get('/api/tableinfo').success(function(d) {
 			$scope.defaultDataSetCopy = d.hits.hits;
 			$scope.dataset = d.hits.hits;
-			console.log($scope.dataset);
 
 			// remove 'ae400' from array
    		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
@@ -57,48 +56,12 @@ ngElastic.controller('tableController', function($scope, $http) {
   	   		interface = d._source.interface,
 	   		 	speedd = d._source.speed,
   	   		statSource = d._source;
-  	   		
-  	   	//Elatic query 	Api query for label
-      	es.search({
-					index: 'desc_map',
-					type: 'config',
-					size: 10000,
-					body: {
-						"query": 
-					  	{"bool": 
-					     	{"must": 
-				         	[
-				         		{"match":
-			             		{"device":deviceName}
-			            	},
-		              	{"match":
-                  		{"intf": interface}
-		                }
-                 	]
-	             	}
-		         	}
-			    }
-				}).then(function (response) {
-					 // console.log("response",response)
-					if(response.hits.hits.length > 0) {
-						_.map(response.hits.hits, function(d) {
-							var label = "mpls"+d._source.label,
-								device = d._source.device,
-								intf = d._source.intf;
-							compareLabel(label,device,intf,statSource);
-							// compareLabelEven(label,device,intf,statSource);
-						// compareLabelOdd(label,device,intf,statSource);
-            });
-					} else {
-						// console.log("No Labels Found");
-					}
-				});
 				// console.log("$scope.dataset",$scope.newObjectOdd);
   		});
 		});
 
 		// watch limit
-		_.map(d.hits.hits, function(d) {
+		_.map($scope.dataset, function(d) {
 			$scope.$watch('limit', function(limit) {
 				if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
 					$scope.limit = d._source.heading.length;
@@ -191,19 +154,6 @@ ngElastic.controller('tableController', function($scope, $http) {
 		$scope.dataset = $scope.defaultDataSetCopy;
 	}
 
-	// Partner dropdown
-	// $scope.partnerDrDown = function() {
-	// 	_.map($scope.dataset, function(_src) {
-	// 		console.log(_src._source.partner);
-	// 	});
-	// }
-
-	// Get the values of table status
-	// $scope.getTableStats = function(ts) {
-	// 	$scope.isLoading = true;
-	// 	return ts;
-	// 	$scope.isLoading = false;
-	// };
 });
 
 /*  Mar 06 */
@@ -223,54 +173,54 @@ ngElastic.controller('tableController', function($scope, $http) {
 // });
 // cdnDashboard.controller('tableController', function($scope, $http,$timeout,es) {
 // 	$scope.isCollapsed = true;
-// 	$scope.initTableController = function() {
-// 		$http.get('/proxy/gw_info/stats/_search?pretty&size=100&sort=latest_speed:desc').success(function(d){
-//    		$scope.dataset = d.hits.hits;
-//    		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
-//    		// var res = [];   		
-//    		// console.log(d.hits.hits._source.partner,d.hits.hits._source.AS,d.hits.hits._source.partner_type,d.hits.hits._source.speed,d.hits.hits._source.direction);
-//       $scope.dataset.forEach(function(d){
-//    	  	var deviceName = d._source.device.replace(/-/g,'_');
-//   	   	var interface = d._source.interface;
-//   	   	var label1 = [];
-//   	   	var statSource = d._source;
-//   	   	//Elatic query
-//       	es.search({
-// 					index: 'desc_map',
-// 					type: 'config',
-// 					size: 10000,
-// 					body: {
-// 						"query": 
-// 					  	{"bool": 
-// 					     	{"must": 
-// 				         	[
-// 				         		{"match":
-// 			             		{"device":deviceName}
-// 			            	},
-// 		              	{"match":
-//                   		{"intf": interface}
-// 		                }
-//                  	]
-// 	             	}
-// 		         	}
-// 			    }
-// 				}).then(function (response) {
-// 					// console.log("Response", response);
-// 					if(response.hits.hits.length > 0) {
-// 						_.map(response.hits.hits, function(d) {
-// 							var label = "mpls"+d._source.label,
-// 								device = d._source.device,
-// 								intf = d._source.intf;
-// 							compareLabel(label,device,intf,statSource);
-// 						});
-// 					} else {
-// 							// label1.push("No Hits Found");
-// 							console.log("No Labels Found");
-// 					}
+	// $scope.initTableController = function() {
+	// 	$http.get('/proxy/gw_info/stats/_search?pretty&size=100&sort=latest_speed:desc').success(function(d){
+ //   		$scope.dataset = d.hits.hits;
+ //   		_.remove($scope.dataset, {_source:{interface: 'ae400'}});
+ //   		// var res = [];   		
+ //   		// console.log(d.hits.hits._source.partner,d.hits.hits._source.AS,d.hits.hits._source.partner_type,d.hits.hits._source.speed,d.hits.hits._source.direction);
+ //      $scope.dataset.forEach(function(d){
+ //   	  	var deviceName = d._source.device.replace(/-/g,'_');
+ //  	   	var interface = d._source.interface;
+ //  	   	var label1 = [];
+ //  	   	var statSource = d._source;
+ //  	   	//Elatic query
+ //      	es.search({
+	// 				index: 'desc_map',
+	// 				type: 'config',
+	// 				size: 10000,
+	// 				body: {
+	// 					"query": 
+	// 				  	{"bool": 
+	// 				     	{"must": 
+	// 			         	[
+	// 			         		{"match":
+	// 		             		{"device":deviceName}
+	// 		            	},
+	// 	              	{"match":
+ //                  		{"intf": interface}
+	// 	                }
+ //                 	]
+	//              	}
+	// 	         	}
+	// 		    }
+	// 			}).then(function (response) {
+	// 				// console.log("Response", response);
+	// 				if(response.hits.hits.length > 0) {
+	// 					_.map(response.hits.hits, function(d) {
+	// 						var label = "mpls"+d._source.label,
+	// 							device = d._source.device,
+	// 							intf = d._source.intf;
+	// 						compareLabel(label,device,intf,statSource);
+	// 					});
+	// 				} else {
+	// 						// label1.push("No Hits Found");
+	// 						console.log("No Labels Found");
+	// 				}
 					
-// 				});
-// 				// console.log("No Label1s : ",label1);
-//   		});
+	// 			});
+	// 			// console.log("No Label1s : ",label1);
+ //  		});
 //   		function compareLabel(l, dev, i,cb) {
 //   			// console.log(l,dev,i,cb);
 //   			var fTime = [];
