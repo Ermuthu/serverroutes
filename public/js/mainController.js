@@ -125,6 +125,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/map.html',
     controller: 'mapController'
   }).
+  when('/map/:sourcenames', {
+    templateUrl: 'views/map.html',
+    controller: 'mapController'
+  }).
   otherwise({
    redirectTo: '/'
  });

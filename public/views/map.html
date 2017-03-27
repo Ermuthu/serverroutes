@@ -3,8 +3,10 @@
 
 	<!-- SVG -->
 	<svg width="3650" height="1060">
-		<a href="#/"><path ng-repeat="(l, link) in linkHits track by $index" ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}" fill="none" stroke="#34495e" stroke-width="2px" /></a>
+		<a href="#/"><path ng-repeat="(l, link) in linkHits track by $index" ng-class="highlightNode(link._source.source) ? 'green-clr-nde-lnk' : 'black-clr-nde-lnk'" ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"/></a>
+
 	  <rect id="moveToFront" ng-repeat="(key, value) in nodeHits track by $index" ng-attr-x="{{value._source.x - 6}}" ng-attr-y="{{value._source.y - 13}}" width=100 height=20 style="fill:#e74c3c; stroke: #c0392b; fill-opacity:0.8" />
+
 		<text id="moveToFront" ng-repeat="(k, v) in nodeHits track by $index" ng-attr-x="{{v._source.x}}" ng-attr-y="{{v._source.y}}" style="fill:#FFF;" font-size="11" font-family="sans-serif">{{v._id}}</text>
 	</svg>
 

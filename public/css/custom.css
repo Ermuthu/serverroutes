@@ -15,7 +15,12 @@
   font-weight: bolder;
 }
 .hightlighter {
-  fill: #cd201f;
+  /*fill: #cd201f;*/
+  fill: #FFF;
+  font-weight: bolder;
+}
+.recthightlighter {
+  fill: #cd201f !important;
   font-weight: bolder;
 }
 /* Logs page status buttons */
@@ -298,4 +303,15 @@
 }
 .in_blk {
   display: inline-block;
+}
+/* Map */
+.green-clr-nde-lnk {
+  fill: none;
+  stroke: #27ae60;
+  stroke-width: 4px;
+}
+.black-clr-nde-lnk {
+  fill: none;
+  stroke: #34495e;
+  stroke-width:2px;
 }
