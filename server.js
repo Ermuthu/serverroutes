@@ -42,6 +42,9 @@ app.get('/api/tableheading', Api.getTableHeading);
 app.get('/api/tablestats', Api.getTableStats);
 app.get('/api/tableinfo', Api.getTableInfo);
 app.get('/api/lspmesh', Api.lspMesh);
+app.get('/api/mapnodes', Api.getMapNodes);
+app.get('/api/maplinks', Api.getMapLinks);
+
 // POST
 app.post('/api/apply', function(req, res) {
 	res.send(req.body);

@@ -121,6 +121,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/connectedgraph.html',
     controller: 'graphController'
   }).
+  when('/map', {
+    templateUrl: 'views/map.html',
+    controller: 'mapController'
+  }).
   otherwise({
    redirectTo: '/'
  });

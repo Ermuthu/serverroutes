@@ -83,5 +83,13 @@ module.exports = {
 	lspMesh: function(req, res) {
 		var lspMesh = './db/LSPMesh_02_15.json';
 		res.send(jsonfile.readFileSync(lspMesh));
+	},
+	getMapNodes: function(req, res) {
+		var mapNodes = './db/mapnodes_03_25.json';
+		res.send(jsonfile.readFileSync(mapNodes));
+	},
+	getMapLinks: function(req, res) {
+		var mapLinks = './db/maplinks_03_25.json';
+		res.send(jsonfile.readFileSync(mapLinks));
 	}
 }
