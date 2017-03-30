@@ -89,7 +89,8 @@ module.exports = {
 		res.send(jsonfile.readFileSync(mapNodes));
 	},
 	getMapLinks: function(req, res) {
-		var mapLinks = './db/maplinks_03_25.json';
+		// var mapLinks = './db/maplinks_03_25.json';
+		var mapLinks = './db/maplinks_03_31.json';
 		res.send(jsonfile.readFileSync(mapLinks));
 	}
 }
