@@ -40,8 +40,9 @@ module.exports = {
 		// var status_new = './db/status_new.json';
 		// var status_logs = './db/status_logs.json';
 		// var status_path_type = './db/status_path_type.json';
-		var jan30 = './db/mar01_status.json';
-		res.send(jsonfile.readFileSync(jan30));
+		// var jan30 = './db/mar01_status.json';
+		var apr01 = './db/status_04_01.json';
+		res.send(jsonfile.readFileSync(apr01));
 	},
 	getLSPName: function(req, res) {
 		var LSPName = req.params.lspname,
