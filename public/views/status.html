@@ -9,6 +9,8 @@
 						<label for="search">Search :</label>
 						<!-- http://10.12.21.13:9200/test_applied_lsps/_search/?size=1000&q=router_name:FROM-INMAA1-BBISP-GW1-TO-USDAL2-BB-PE1-VRF-3 -->
 						<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
+						<input type="text" class="form-control" ng-model="source_rtr" placeholder="Source router" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)">
+						<input type="text" class="form-control" ng-model="dest_rtr" placeholder="Destination router" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)">
 						<!-- <input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name"> -->
 					</div>
 				</form>	
@@ -22,7 +24,7 @@
 					<div class="form-group">
 						<div class="funkyradio">
 							<div class="funkyradio-default">
-					            <input type="radio" name="radio" id="radio33" value="" ng-checked="checked" ng-model="selectStatus" />
+					            <input type="radio" name="radio" id="radio33" value="" ng-checked="checked" ng-model="selectStatus" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)" />
 					            <label for="radio33">All</label>
 					        </div>
 						</div>			
@@ -30,7 +32,7 @@
 					<div class="form-group">
 						<div class="funkyradio">
 							<div class="funkyradio-success">
-					            <input type="radio" name="radio" id="radio3" value="Up" ng-model="selectStatus" />
+					            <input type="radio" name="radio" id="radio3" value="Up" ng-model="selectStatus" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)" />
 					            <label for="radio3">Up</label>
 					        </div>
 						</div>			
@@ -38,7 +40,7 @@
 					<div class="form-group">
 						<div class="funkyradio">
 							<div class="funkyradio-danger">
-					            <input type="radio" name="radio" id="radio4" value="Dn" ng-model="selectStatus" />
+					            <input type="radio" name="radio" id="radio4" value="Dn" ng-model="selectStatus" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)" />
 					            <label for="radio4">Down</label>
 					        </div>
 						</div>			
@@ -46,7 +48,7 @@
 					<div class="form-group">
 						<div class="funkyradio">
 							<div class="funkyradio-warning">
-					            <input type="radio" name="radio" id="radio5" value="init" ng-model="selectStatus" />
+					            <input type="radio" name="radio" id="radio5" value="init" ng-model="selectStatus" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)" />
 					            <label for="radio5">Init</label>
 					        </div>
 						</div>			
@@ -54,7 +56,7 @@
 					<div class="form-group">
 						<div class="funkyradio">
 							<div class="funkyradio-primary">
-					            <input type="radio" name="radio" id="radio2" value="unknown" ng-model="selectStatus" />
+					            <input type="radio" name="radio" id="radio2" value="unknown" ng-model="selectStatus" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)" />
 					            <label for="radio2">Unknown</label>
 					        </div>
 						</div>			
@@ -117,8 +119,8 @@
 				<thead>
 					<tr>
 						<th>Router</th>
-						<th>Source Router IP </th>
-						<th>Destination Router IP</th>
+						<th>Source Router </th>
+						<th>Destination Router</th>
 						<th>Path Name</th>
 						<th>LSP Name</th>
 						<th>Path Count</th>
@@ -140,13 +142,13 @@
 					</tr>
 					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | typesFilter: selectedTypes"> -->
 					<!-- <tr ng-repeat-start="s in status.slice(((currentPage - 1)*itemsPerPage), ((currentPage)*itemsPerPage)) | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter"> -->
-					<tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}} | filter: colourFilter">
+					<tr ng-repeat-start="s in status | wildcard: LSPSearch | filter:{_source: {running_status: selectStatus}, _source:{src_rtr: source_rtr}, _source:{dst_rtr: dest_rtr}} " >
 					<!-- <tr ng-repeat-start="s in status | wildcard: LSPSearch"> -->
 						<!-- <p ng-hide="isLoading == false">{{isLoading}}Loading....</p> -->
 						<td>{{s._source.router_name}}</td>
-					 	<td>{{s._source.router_ip}} </td>
-					 	<td>{{s._source.destIp}} </td>
-						<td><a href="#/map/{{uniqPCN(s._source.Primary_config_names)}}" target="_blank">{{s._source.pathName}}</a></td>
+					 	<td>{{s._source.src_rtr}} </td>
+					 	<td>{{s._source.dst_rtr}} </td>
+						<td><a href="#/map/{{uniqPCN(s._source.node_coor)}}" target="_blank">{{s._source.pathName}}</a></td>
 					  	<td>{{s._id}} </td>
 					  	<td style="vertical-align: middle;text-align: center;">
 					  		<i 

@@ -7,12 +7,15 @@
 		<a class="cursor-pointer" ng-href="#/status" xlink:href="">
 			<path 
 				ng-repeat="(l, link) in linkHits track by $index"
-				ng-class="highlightNode(link._source.source, link._source.dest) ? 'green-clr-nde-lnk' : 'black-clr-nde-lnk'"
+				ng-style="{'stroke': strokeColor(link._source.bw_used)}"
+				class="global-clr-nde-lnk"
 				ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
 				tooltip-append-to-body="true"
 				uib-tooltip={{link._source.bw_used}}
 				/>
 		</a>
+
+		<path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="green-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" />
 		
 		<a class="cursor-pointer" ng-href="#/status/{{value._id}}" xlink:href="" ng-repeat="(key, value) in nodeHits track by $index">
 	  	<rect ng-attr-x="{{value._source.x - 6}}" ng-attr-y="{{value._source.y - 13}}" width=100 height=20 style="fill:#e74c3c; stroke: #c0392b; fill-opacity:0.8" tooltip-append-to-body="true" uib-tooltip={{value._id}} />
@@ -23,23 +26,11 @@
 	
 </div>
 
-<svg width="3650" height="1060">
-		<!-- Line -->
-		<a xlink:href="#/status" ><path ng-repeat="(l, link) in linkHits track by $index" ng-class="highlightNode(link._source.source, link._source.dest) ? 'green-clr-nde-lnk' : 'cyan-clr-nde-lnk'" ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}" tooltip-append-to-body="true"
-				uib-tooltip={{link._source.bw_used}} /></a>
-		<a xlink:href="#/status" >
-			<path 
-				ng-repeat="(l, link) in linkHits track by $index"
-				ng-class="highlightNode(link._source.source, link._source.dest) ? 'green-clr-nde-lnk' : 'black-clr-nde-lnk'"
-				ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
-				tooltip-append-to-body="true"
-				uib-tooltip={{link._source.bw_used}}
-				/>
-		</a>
-		<!-- Rect Box -->
-	  <a xlink:href="#/status" >
-	  	<rect ng-repeat="(key, value) in nodeHits track by $index" ng-attr-x="{{value._source.x - 6}}" ng-attr-y="{{value._source.y - 13}}" width=100 height=20 style="fill:#e74c3c; stroke: #c0392b; fill-opacity:0.8" tooltip-append-to-body="true" uib-tooltip={{value._id}} />
-	  </a>
-	  <!-- Text inside Rect Box -->
-		<a href="#/status" style="text-decoration:none;cursor:pointer;"><text id="moveToFront" ng-repeat="(k, v) in nodeHits track by $index" ng-attr-x="{{v._source.x}}" ng-attr-y="{{v._source.y}}" style="fill:#FFF;" font-size="11" font-family="sans-serif">{{v._id}}</text> </a>
-	</svg>
+
+
+<!-- <path ng-class="highlightNode(link._source.source, link._source.dest) ? 'green-clr-nde-lnk' : 'cyan-clr-nde-lnk'" ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}" tooltip-append-to-body="true" uib-tooltip={{link._source.bw_used}} /> 
+
+ng-class="{'cyan-clr-nde-lnk': link._source.bw_used > -0 && link._source.bw_used < 11, 'red-clr-nde-lnk': link._source.bw_used > 20 && link._source.bw_used < 31, 'yellow-clr-nde-lnk': link._source.bw_used > 30 && link._source.bw_used < 41}"
+
+
+-->
