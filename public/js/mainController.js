@@ -460,11 +460,6 @@ ngElastic.controller('statusController', function($scope, $http) {
       $scope.isLoading = true;
       $scope.status = data.hits.hits;
       $scope.totalItems = $scope.status.length;
-      // console.log($scope.totalItems);
-      // $scope.data = $scope.users.slice(0, 5);
-      // $scope.getMoreData = function () {
-      //   $scope.status = data.hits.hits.slice(0, $scope.status.length + 10);
-      // }
       //Time Difference
       $scope.status.map(function(d){
         //variable declaration
@@ -492,43 +487,13 @@ ngElastic.controller('statusController', function($scope, $http) {
     }).error(function(e) {
       console.log(e);
     });
-    // console.log($scope.status);
     $scope.isLoading = false;
-    // $scope.toggleSelection = function toggleSelection(type) {
-   //    console.log(type);
-    //    _.filter($scope.status, function(o) { 
-    //    if(o._source.path_type == type){
-    //      $scope.selectedItems.push(o);
-    //    }
-    //  });
-    // }
-    // $scope.selectedTypes = [];
-    // $scope.toggleSelection = function toggleSelection(type) {
-  //      var idx = $scope.selectedTypes.indexOf(type);
-  //        if (idx > -1) {
-  //          $scope.selectedTypes.splice(idx, 1);
-   //       }else {
-   //         $scope.selectedTypes.push(type);
-   //       }
-   //   }; 
-  //   $scope.colourIncludes = [];
-  //   $scope.toggleSelection = function(colour) {
-  //     var i = $.inArray(colour, $scope.colourIncludes);
-  //     if (i > -1) {
-  //       $scope.colourIncludes.splice(i, 1);
-  //     } else {
-  //       $scope.colourIncludes.push(colour);
-  //     }
-  //   }
-  //   $scope.colourFilter = function(fruit) {
-  //     if ($scope.colourIncludes.length > 0) {
-  //       if ($.inArray(fruit._source.path_type, $scope.colourIncludes) < 0){
-  //         return
-  //       }
-  //     }
-  //     return fruit;
-  //   }
   };
+
+  // searchBox
+  $scope.searchBox = function(src, dest, ss) {
+    console.log(src,dest,ss);
+  }
 
   // LSP watch
   $scope.$watch('LSPSearch', function(findLsp) {
