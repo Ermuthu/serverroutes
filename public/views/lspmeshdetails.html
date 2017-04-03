@@ -1,0 +1,41 @@
+<div class="container-fluid" ng-init="initTable()">
+	<h1>{{table}}</h1>
+	<div class="col-sm-8">
+		<form action="" class="form-inline pull-right" style="margin-top:-40px;" >
+			<div class="form-group" >
+				<label for="search" >Search :</label>
+				<input type="text" class="form-control" placeholder="Source routers" ng-model = "_id">
+			</div>
+		</form>	
+	</div>
+ 	<br/>
+
+ 	<!-- Table -->
+ 	<table class="table table-bordered table-striped" cellspacing="0"  style="margin-top:10px;width:100%;font-size:12px;">
+		<thead>
+			<tr>
+			    <th style="font-size: 10px;">Source routers</th>
+				<th style="border-top-style: hidden;font-size: 10px;transform: rotate(-90deg);max-width:0px;height:110px;text-indent:-43px;border-right-style:hidden;white-space:nowrap;" class="vertical-middle" ng-repeat="th in tableHeader track by $index" class="text-center">
+				  {{th}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-hide="isLoading === true">
+				<td style="text-align: center;" colspan="100">
+					<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+					<span style="font-weight: bolder;">Loading... Please Wait</span>
+				</td>
+			</tr>
+			<tr ng-repeat="(key, value) in tableStats | filter:{_id:_id}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+				<td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
+				<td style="width: 10;border-right-style: hidden;" 
+					class="vertical-middle"
+					ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
+					<a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}"><button  style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle btn-success">{{v}}</button></a>
+					<button ng-if="v<1" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle btn-danger">{{v}}</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

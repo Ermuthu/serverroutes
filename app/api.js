@@ -85,6 +85,14 @@ module.exports = {
 		var lspMesh = './db/LSPMesh_02_15.json';
 		res.send(jsonfile.readFileSync(lspMesh));
 	},
+	lspMeshDetailHeading: function(req, res) {
+		var lspMeshDetailHeading = './db/lspMeshDetailHeading_04_03.json';
+		res.send(jsonfile.readFileSync(lspMeshDetailHeading));
+	},
+	lspMeshDetailStats: function(req, res) {
+		var lspMeshDetailStats = './db/lspMeshDetailStats_04_03.json';
+		res.send(jsonfile.readFileSync(lspMeshDetailStats));
+	},
 	getMapNodes: function(req, res) {
 		var mapNodes = './db/mapnodes_03_25.json';
 		res.send(jsonfile.readFileSync(mapNodes));

@@ -117,6 +117,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/lspmesh.html',
     controller: 'lspMeshController'
   }).
+  when('/lspmeshdetails', {
+    templateUrl: 'views/lspmeshdetails.html',
+    controller: 'lspMeshDetailsController'
+  }).
   when('/chart/:pathname', {
     templateUrl: 'views/connectedgraph.html',
     controller: 'graphController'

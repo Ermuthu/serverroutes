@@ -33,6 +33,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 
 	// http://localhost:9090/#/lspmap/ODgwXzk1MCw4ODBfODc1LDE0MzBfNzIwLDE2MjBfOTUw
 	// ["880_950", "880_875", "1430_720", "1620_950"]
+	// ["uschi5-bb-cr2:lo0", "uschi5-bb-cr2:ae1004"]
 
 	// Nodes
 	// $http.get('/proxy/map_info/config/_search?size=10000&pretty%27%20-d%20%27{%22query%22%20:%20{%22matchAll%22%20:%20{}}}%27').success(function(n) {
