@@ -17,6 +17,7 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
     });
     $http.get('/api/lspmeshdetailstats').success(function(d) {
       $scope.tableStats = d.hits.hits;
+      // console.log($scope.tableStats);
     });
   };
 
@@ -26,4 +27,11 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
     return ts;
     $scope.isLoading = false;
   };
+
+  // watch highlighter input box
+  $scope.highlighter = function(inp) {
+    console.log(inp);
+    $scope.high = inp;
+  };
+
 });
