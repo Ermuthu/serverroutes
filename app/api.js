@@ -54,7 +54,12 @@ module.exports = {
 			}
 		});
 	},
-	linechart: function(req, res) {
+	getStatusHistoryLSPName: function(req, res) {
+		var lsp = './db/status_history_04_05.json';
+		res.send(jsonfile.readFileSync(lsp));
+	},
+	linechart:
+	 function(req, res) {
 		var lc = './db/jsonfile_graph.json';
 		res.send(jsonfile.readFileSync(lc));
 	},

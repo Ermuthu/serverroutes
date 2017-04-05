@@ -1,0 +1,21 @@
+<div class="container" ng-init="StatusHistory()">
+	<h1 style="margin-bottom:20px;">{{SHistory}}</h1>
+	<div>
+		<table  class="table table-bordered table-striped animated fadeIn" style="font-size:11px;">
+			<thead>
+				<tr>
+					<th class="text-center">Time</th>
+					<th>Config </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat ="(key, history) in data" ng-show="history._source.change_timestamp != undefined">
+					<td width="8%;"> {{history._source.change_timestamp*1000| date:'MM-dd-yyyy HH:mm:ss' }} UTC</td>
+					<td  ng-repeat="a in primary(history._source.config,history._source.intfs,history._source.config_ips)">
+						{{a}}
+					</td> 
+				</tr>  
+			</tbody>
+		</table> 
+	</div>		
+</div>	

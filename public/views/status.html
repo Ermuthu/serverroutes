@@ -149,33 +149,35 @@
 					 	<td>{{s._source.src_rtr}} </td>
 					 	<td>{{s._source.dst_rtr}} </td>
 						<td><a href="#/map/{{uniqPCN(s._source.node_coor)}}" target="_blank">{{s._source.pathName}}</a></td>
-					  	<td>{{s._id}} </td>
-					  	<td style="vertical-align: middle;text-align: center;">
-					  		<i 
-					  			ng-class="{'green': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == 3, 'grey': s._source.path_count == undefined}"
-					  			class="rect-box2 inline"
-					  			aria-hidden="true"
-					  			tooltip-class="animated flipInX"
-								tooltip-placement="{{placement.selected}}"
-								uib-tooltip="P">
+				  	<td style="width: 30% !important;">
+				  		<a href="#/statushistory/{{s._source.lsp_name}}">{{s._source.lsp_name}}</a>
+			  		</td>
+				  	<td style="vertical-align: middle;text-align: center;">
+				  		<i 
+				  			ng-class="{'green': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == 3, 'grey': s._source.path_count == undefined}"
+				  			class="rect-box2 inline"
+				  			aria-hidden="true"
+				  			tooltip-class="animated flipInX"
+							tooltip-placement="{{placement.selected}}"
+							uib-tooltip="P">
 							</i>
-					  		<i 
-					  			ng-class="{'green': s._source.path_count == 2 || s._source.path_count == 3, 'grey': s._source.path_count == 1 || s._source.path_count == undefined}"
-					  			class="rect-box2 inline"
-					  			aria-hidden="true"
-					  			tooltip-class="animated flipInX"
-								tooltip-placement="{{placement.selected}}"
-								uib-tooltip="S">
-				  			</i>
-					  		<i 
-					  			ng-class="{'green': s._source.path_count == 3, 'grey': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == undefined}"
-					  			class="rect-box2 inline"
-					  			aria-hidden="true"
-					  			tooltip-class="animated flipInX"
-								tooltip-placement="{{placement.selected}}"
-								uib-tooltip="T">
-				  			</i>
-					  	</td>
+				  		<i 
+				  			ng-class="{'green': s._source.path_count == 2 || s._source.path_count == 3, 'grey': s._source.path_count == 1 || s._source.path_count == undefined}"
+				  			class="rect-box2 inline"
+				  			aria-hidden="true"
+				  			tooltip-class="animated flipInX"
+							tooltip-placement="{{placement.selected}}"
+							uib-tooltip="S">
+			  			</i>
+				  		<i 
+				  			ng-class="{'green': s._source.path_count == 3, 'grey': s._source.path_count == 1 || s._source.path_count == 2 || s._source.path_count == undefined}"
+				  			class="rect-box2 inline"
+				  			aria-hidden="true"
+				  			tooltip-class="animated flipInX"
+							tooltip-placement="{{placement.selected}}"
+							uib-tooltip="T">
+			  			</i>
+				  	</td>
 						<td class="text-center">
 							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Up'" class="btn btn-success btn-circle"></button>
 							<button ng-click="isCollapsed = !isCollapsed" ng-show="s._source.running_status == 'Dn'" class="btn btn-danger btn-circle"></button>

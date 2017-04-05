@@ -93,6 +93,10 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
     templateUrl: 'views/status.html',
     controller: 'statusController'
   }).
+  when('/statushistory/:lspname', {
+    templateUrl: 'views/statushistory.html',
+    controller: 'statusHistoryController'
+  }).
   when('/404', {
     templateUrl: 'views/404.html',
     controller: 'notFound'
