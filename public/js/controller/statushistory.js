@@ -6,42 +6,48 @@ ngElastic.controller('statusHistoryController', function($scope, $http,$routePar
   $scope.StatusHistory = function() {
     $http.get('/api/statushistory/'+$routeParams.lspname).success(function(d) {
       $scope.data = d.hits.hits;
-			// console.log("$scope.data",$scope.data);
     }).error(function(e) {
       console.log(e);
     });
   }
 
-  // $scope.primary = function(pcm, pc) {
-  //    // console.log(pcm,pc)
-  //   if(pcm != undefined && pc != undefined){
-  //     var arr = [];
-  //     var result = pcm.map(function(val, index){
-  //       if(typeof pc === 'string')
-  //         arr.push(val+'('+pc+')');
-  //       if(typeof pc === 'object')
-  //         arr.push(val+'('+pc[index]+')');
-  //     });
-  //     var b = _.toString(arr);
-  //     var c = _.replace(b, /,/g , " ");
-  //     return _.split(c);
-  //   }
-  // };
+  // Radio button default actions
+  $scope.singleModel = false;
+  $scope.showlo = "show lo0";
+  $scope.disablelo = "disable lo0";
 
-  $scope.primary = function(pcm, pc,pi) {
-    console.log(pi);
-    if(pcm != undefined && pc != undefined && pi != undefined){
+  // watch show/disable lo radio button
+  $scope.$watch('singleModel', function() {
+  });
+  
+  // Merge all the input array and give as single array
+  $scope.primary = function(pcm, pc, pi) {
+    if(pcm != undefined && pc != undefined){
       var arr = [];
-      var result = pcm.map(function(val, index){
+      var hidelo = [];
+      pcm.map(function(val, index){
         if(typeof pc === 'string')
           arr.push(val+'('+pc+')');
-        if(typeof pc === 'object')
-          arr.push(val + ':' + pc[index] + ' (' + pi[index] + ')');
-        // arr.push(val+'('+pc[index]+')');
+        if(typeof pc === 'object') {
+          if(pi != undefined)
+            arr.push(val + ':' + pc[index] + ' (' + pi[index] + ')');
+          else
+            arr.push(val + ':' + pc[index]);
+        }
       });
-      var b = _.toString(arr);
-      var c = _.replace(b, /,/g , " ");
-      return _.split(c);    
+      var removeLoFromArr = [];
+      _.map(arr, function(findlo) {
+        if(findlo.indexOf(":lo0") == -1)
+          removeLoFromArr.push(findlo);
+      });
+      var arrToString = _.toString(arr);
+      var mergeAllArr = _.replace(arrToString, /,/g , " ");
+      var removeLoToString = _.toString(removeLoFromArr);
+      var mergeAllArrLo = _.replace(removeLoToString, /,/g , " ");
+      if($scope.singleModel == true)
+        return _.split(mergeAllArr);
+      else
+        return _.split(mergeAllArrLo);
     }
   };
 

@@ -20,16 +20,20 @@
           "insert_timestamp": 1491357482,
           "intfs": [
             "lo0",
-            "ae1004"
+            "ae1004",
+            "ae1003",
+            "ae1005"
           ],
           "config_diff": [],
           "src_rtr": "usxqm1-bb-cr1",
           "lsp_name": "FROM_USXQM1_BB_CR1_TO_USCHI5_BB_CR1_CBF0_3",
           "config_ips": [
             "17.0.0.7",
-            "17.1.0.9"
+            "17.1.0.9",
+            "17.1.0.19"
           ],
           "config": [
+            "uschi5-bb-cr1",
             "uschi5-bb-cr1",
             "uschi5-bb-cr1"
           ],
@@ -49,16 +53,22 @@
           "insert_timestamp": 1491356876,
           "intfs": [
             "lo0",
-            "ae1004"
+            "ae1004",
+            "ae1005",
+            "lo0"
           ],
           "config_diff": [],
           "src_rtr": "usxqm1-bb-cr1",
           "lsp_name": "FROM_USXQM1_BB_CR1_TO_USCHI5_BB_CR1_CBF0_3",
           "config_ips": [
             "17.0.0.7",
+            "17.1.0.9",
+            "17.1.0.9",
             "17.1.0.9"
           ],
           "config": [
+            "uschi5-bb-cr1",
+            "uschi5-bb-cr1",
             "uschi5-bb-cr1",
             "uschi5-bb-cr1"
           ],

@@ -1,5 +1,13 @@
 <div class="container" ng-init="StatusHistory()">
-	<h1 style="margin-bottom:20px;">{{SHistory}}</h1>
+	
+	<!-- Heading and Checkbox -->
+	<h1 style="margin-bottom:20px;">{{SHistory}}
+	 	<label ng-class="singleModel == false ? 'btn btn-success' : 'btn btn-danger'" ng-model="singleModel" uib-btn-checkbox class="pull-right" style="margin-bottom: 10px;" >
+	  	{{singleModel == false ? showlo : disablelo}}
+  	</label>
+  </h1>
+
+	<!-- Table content starts -->
 	<div>
 		<table  class="table table-bordered table-striped animated fadeIn" style="font-size:11px;">
 			<thead>
