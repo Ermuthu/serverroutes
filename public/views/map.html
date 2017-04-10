@@ -12,7 +12,10 @@
 				ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
 				tooltip-append-to-body="true"
 				uib-tooltip={{link._source.bw_used}}
-				/>
+				ng-mouseover="hoverIn(link._source.src_x,link._source.src_y,link._source.dst_x,link._source.dst_y)"
+			>
+				<title>{{link._source.bw_used}}</title>
+			</path>
 		</a>
 
 		<path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="green-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" />

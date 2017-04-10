@@ -96,4 +96,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 		return replaceSymbol(val.replace(/_/g, '-'));
 	};
 
+	$scope.hoverIn = function(sx,sy,dx,dy) {
+		console.log(sx,sy,dx,dy);
+	}
+
 });
