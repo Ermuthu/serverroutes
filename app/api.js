@@ -95,7 +95,8 @@ module.exports = {
 		res.send(jsonfile.readFileSync(lspMeshDetailHeading));
 	},
 	lspMeshDetailStats: function(req, res) {
-		var lspMeshDetailStats = './db/lspMeshDetailStats_04_03.json';
+		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_03.json';
+		var lspMeshDetailStats = './db/lspMeshDetailStats_04_11.json';
 		res.send(jsonfile.readFileSync(lspMeshDetailStats));
 	},
 	getMapNodes: function(req, res) {

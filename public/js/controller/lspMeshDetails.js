@@ -30,8 +30,9 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
 
   // watch highlighter input box
   $scope.highlighter = function(inp) {
-    console.log(inp);
+    $scope.isLoading = true;
     $scope.high = inp;
+    $scope.isLoading = false;
   };
 
 });

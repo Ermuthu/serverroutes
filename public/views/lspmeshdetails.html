@@ -36,7 +36,7 @@
 			</tr>
 			<!-- <p ng-hide="high == undefined || high == ''">lorem</p> -->
 			<!-- content starts -->
-			<tr ng-show="high == undefined || high == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+			<tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
 				<td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
 				<td style="width: 10;border-right-style: hidden;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
 					<a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
@@ -45,14 +45,13 @@
 					<button ng-if="v<1" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle btn-danger">{{v}}</button>
 				</td>
 			</tr>
-			<tr ng-hide="high == undefined || high == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+			<tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
 				<td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
 				<td style="width: 10;border-right-style: hidden;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
-					<!-- <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}"> -->
-					<a>
-						<button ng-class="v == high ? 'highlighter-circle' : 'blur-circle'" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle">{{v}}</button>
+					<a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+						<button ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle">{{v}}</button>
 					</a>
-					<!-- <button ng-if="v<1" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle btn-danger">{{v}}</button> -->
+					<button ng-if="v<1" ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'" style="width:18px;height:18px;padding:1px;font-size:8px;" class="btn btn-circle">{{v}}</button>
 				</td>
 			</tr>
 		</tbody>
