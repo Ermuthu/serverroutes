@@ -341,3 +341,14 @@
 .blur-circle {
   background-color: #ecf0f1;
 }
+.default-style {
+  width: 14px;
+  height: 14px;
+  padding: 1px;
+  font-size: 8px;
+  border-radius: 0px;
+}
+.grey {
+  color: grey;
+  background-color: grey;
+}
