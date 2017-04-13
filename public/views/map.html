@@ -18,7 +18,7 @@
 			</path>
 		</a>
 
-		<path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="green-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" />
+		<path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="black-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" />
 		
 		<a class="cursor-pointer" ng-href="#/status/{{value._id}}" xlink:href="" ng-repeat="(key, value) in nodeHits track by $index">
 	  	<rect ng-attr-x="{{value._source.x - 6}}" ng-attr-y="{{value._source.y - 13}}" width=100 height=20 style="fill:#e74c3c; stroke: #c0392b; fill-opacity:0.8" tooltip-append-to-body="true" uib-tooltip={{value._id}} />
