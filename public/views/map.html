@@ -7,7 +7,7 @@
 		<a class="cursor-pointer" ng-href="#/status" xlink:href="">
 			<path 
 				ng-repeat="(l, link) in linkHits track by $index"
-				ng-style="{'stroke': strokeColor(link._source.bw_used)}"
+				stroke="url(#grad1)"
 				class="global-clr-nde-lnk"
 				ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
 				tooltip-append-to-body="true"
@@ -16,6 +16,10 @@
 			>
 				<title>{{link._source.bw_used}}</title>
 			</path>
+			<linearGradient id="grad1">
+	      <stop offset="50%" ng-style="{'stop-color': strokeColor(35)}" />
+      	<stop offset="50%" ng-style="{'stop-color': strokeColor(75)}" />
+    	</linearGradient>
 		</a>
 
 		<path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="black-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" />

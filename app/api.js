@@ -105,7 +105,9 @@ module.exports = {
 	},
 	getMapLinks: function(req, res) {
 		// var mapLinks = './db/maplinks_03_25.json';
-		var mapLinks = './db/maplinks_03_31.json';
+		// var mapLinks = './db/maplinks_03_31.json';
+		// var mapLinks = './db/maplinks_04_12.json';
+		var mapLinks = './db/maplinks_04_18.json';
 		res.send(jsonfile.readFileSync(mapLinks));
 	}
 }
