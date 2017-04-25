@@ -290,6 +290,14 @@
 .inline{
   display: inline-block;
 }
+.exchange-icon {
+  border: 1px solid #CCC;
+  padding: 8px;
+  cursor: pointer;
+}
+.disable-exchange {
+  cursor: d
+}
 /* links */
 .inlineRoutes {
   margin: 0;
@@ -305,6 +313,10 @@
   display: inline-block;
 }
 /* Map */
+.showline {
+  stroke: red;
+  offset: 50%;
+}
 .green-clr-nde-lnk {
   fill: none;
   stroke: #27ae60;

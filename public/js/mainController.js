@@ -503,6 +503,11 @@ ngElastic.controller('statusController', function($scope, $http) {
     console.log(src,dest,ss);
   }
 
+  $scope.exchangeValues = function(src, dest) {
+    $scope.source_rtr = dest;
+    $scope.dest_rtr = src;
+  }
+
   // LSP watch
   $scope.$watch('LSPSearch', function(findLsp) {
     var copyOfStatus = $scope.status;

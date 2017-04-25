@@ -10,6 +10,7 @@
 						<!-- http://10.12.21.13:9200/test_applied_lsps/_search/?size=1000&q=router_name:FROM-INMAA1-BBISP-GW1-TO-USDAL2-BB-PE1-VRF-3 -->
 						<input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name">
 						<input type="text" class="form-control" ng-model="source_rtr" placeholder="Source router" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)">
+						<i ng-class="{'disable-exchange': source_rtr == undefined}" class="fa fa-exchange exchange-icon" ng-click="exchangeValues(source_rtr, dest_rtr)" aria-hidden="true"></i>
 						<input type="text" class="form-control" ng-model="dest_rtr" placeholder="Destination router" ng-change="searchBox(source_rtr, dest_rtr, selectStatus)">
 						<!-- <input type="text" class="form-control" ng-model="LSPSearch" placeholder="LSP Name"> -->
 					</div>
