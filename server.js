@@ -45,6 +45,7 @@ app.get('/api/tableinfo', Api.getTableInfo);
 app.get('/api/lspmesh', Api.lspMesh);
 app.get('/api/lspmeshdetailheading', Api.lspMeshDetailHeading);
 app.get('/api/lspmeshdetailstats', Api.lspMeshDetailStats);
+app.get('/api/lspmeshdetailstatsold', Api.lspMeshDetailStatsOld);
 app.get('/api/mapnodes', Api.getMapNodes);
 app.get('/api/maplinks', Api.getMapLinks);
 

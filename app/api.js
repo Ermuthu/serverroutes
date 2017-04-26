@@ -96,7 +96,14 @@ module.exports = {
 	},
 	lspMeshDetailStats: function(req, res) {
 		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_03.json';
+		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_11.json';
+		var lspMeshDetailStats = './db/lspMeshDetailStats_04_26.json';
+		res.send(jsonfile.readFileSync(lspMeshDetailStats));
+	},
+	lspMeshDetailStatsOld: function(req, res) {
+		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_03.json';
 		var lspMeshDetailStats = './db/lspMeshDetailStats_04_11.json';
+		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_26.json';
 		res.send(jsonfile.readFileSync(lspMeshDetailStats));
 	},
 	getMapNodes: function(req, res) {
@@ -108,7 +115,8 @@ module.exports = {
 		// var mapLinks = './db/maplinks_03_31.json';
 		// var mapLinks = './db/maplinks_04_12.json';
 		// var mapLinks = './db/maplinks_04_18.json';
-		var mapLinks = './db/maplinks_04_19.json';
+		// var mapLinks = './db/maplinks_04_19.json';
+		var mapLinks = './db/maplinks_04_26.json';
 		res.send(jsonfile.readFileSync(mapLinks));
 	}
 }

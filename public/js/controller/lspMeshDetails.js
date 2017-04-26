@@ -1,6 +1,9 @@
 ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
   // Title
-  $scope.table = "LSP Mesh Detail"
+  $scope.table = "LSP Mesh Detail";
+  $scope.showCompleteModel = false;
+  $scope.showComplete = "Show Complete";
+  $scope.reset = "Reset";
 
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -17,6 +20,7 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
     });
     $http.get('/api/lspmeshdetailstats').success(function(d) {
       $scope.tableStats = d.hits.hits;
+      $scope.tableStatsCopy = d.hits.hits;
     });
   };
 
@@ -25,6 +29,19 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http) {
     $scope.isLoading = true;
     return ts;
     $scope.isLoading = false;
+  };
+
+  // updated the value on Show Complete button click
+  $scope.updateTableWithShowComplete = function() {
+    if($scope.showCompleteModel == true) {
+      toastr.info("Loading...")
+      $http.get('/api/lspmeshdetailstatsold').success(function(d) {
+        $scope.tableStats = d.hits.hits;
+      });
+      toastr.clear();
+    } else {
+        $scope.tableStats = $scope.tableStatsCopy;
+    }
   };
 
 });
