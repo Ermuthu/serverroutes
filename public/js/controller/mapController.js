@@ -32,7 +32,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 		}
 	}
 	$scope.highlightNode = connLineData;
-	console.log($scope.highlightNode);
+	console.log("highlightNode : ",$scope.highlightNode);
+	// console.log($scope.highlightNode);
 
 	// http://localhost:9090/#/lspmap/ODgwXzk1MCw4ODBfODc1LDE0MzBfNzIwLDE2MjBfOTUw
 	// ["880_950", "880_875", "1430_720", "1620_950"]
@@ -50,6 +51,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 	// $http.get('/proxy/map_link_info/config/_search?size=10000&pretty%27%20-d%20%27{%22query%22%20:%20{%22matchAll%22%20:%20{}}}%27').success(function(l){
 	$http.get('/api/maplinks').success(function(l) {
 		$scope.linkHits = l.hits.hits;
+		// console.log($scope.linkHits.length);
 	}).error(function(e) {
 		console.log(e);
 	});
@@ -71,6 +73,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 
 	// stroke color based on bw_used value
 	$scope.strokeColor = function (bw) {
+		// console.log(bw);
  		if(bw>0 && bw<11)
  			return '#4D72E3';
  		else if(bw>10 && bw<21)
@@ -91,6 +94,44 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
  			return '#FF0000';
  		else if(bw>90 && bw<101)
  			return '#F6358A”';
+ 		// else if(bw == '-')
+ 		// 	return 'red';
+ 		// else if(bw==-0)
+ 		// 	return 'yellow';
+ 		else
+			return '#4D72E3';
+ 	};
+ 	// $scope.convertValues = function(w) {
+ 	// 	var width = angular.element(document.querySelectorAll(".global-clr-nde-lnk")[w]).clientWidth;
+ 	// 	console.log("WIDTH : ", width);
+ 	// 	return width/2;
+ 	// }
+ 	$scope.strokeColor2 = function (bw) {
+		// console.log(bw);
+ 		if(bw>0 && bw<11)
+ 			return '#4D72E3';
+ 		else if(bw>10 && bw<21)
+ 			return '#48CCCD';
+ 		else if(bw>20 && bw<31)
+ 			return '#00FF00';
+ 		else if(bw>30 && bw<41)
+ 			return '#B1FB17';
+ 		else if(bw>40 && bw<51)
+ 			return '#FFFF00';
+ 		else if(bw>50 && bw<61)
+ 			return '#FDD017';
+ 		else if(bw>60 && bw<71)
+ 			return '#FBB117';
+ 		else if(bw>70 && bw<81)
+ 			return '#F87217';
+ 		else if(bw>80 && bw<91)
+ 			return '#FF0000';
+ 		else if(bw>90 && bw<101)
+ 			return '#F6358A”';
+ 		// else if(bw == '-')
+ 		// 	return 'red';
+ 		// else if(bw==-0)
+ 		// 	return 'yellow';
  		else
 			return '#4D72E3';
  	};
