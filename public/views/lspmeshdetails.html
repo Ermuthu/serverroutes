@@ -15,7 +15,23 @@
 				<label for="search" >Search :</label>
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="srcroutes">
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="highlight">
-				<!-- show/hide complete -->
+  			<!-- Dropdown -->
+  			<div class="pull-right">
+					<div class="form-group">
+						<select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="watchstatusView(statusView)">
+							<option value="">Default</option>
+						</select>
+					</div>
+				</div>
+				<!-- show/hide statusColorMap -->
+  			<label 
+					ng-class="statusColorMapModel == false ? 'btn btn-success' : 'btn btn-danger'"
+					ng-model="statusColorMapModel" uib-btn-checkbox
+					class="pull-right" style="margin: 0 4px; width: 136px;"
+					ng-click="updateTableWithShowComplete()">
+	  				{{statusColorMapModel == false ? statusColorMap : reset}}
+  			</label>
+  			<!-- show/hide complete -->
 				<label 
 					ng-class="showCompleteModel == false ? 'btn btn-success' : 'btn btn-danger'"
 					ng-model="showCompleteModel" uib-btn-checkbox
@@ -40,42 +56,30 @@
 		</thead>
 		<tbody>
       <!-- Loader -->
-    	<tr ng-hide="isLoading === true">
+    	<!-- <tr ng-hide="isLoading === true">
         <td style="text-align: center;" colspan="100">
           <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
           <span style="font-weight: bolder;">Loading... Please Wait</span>
         </td>
+      </tr> -->
+      <tr ng-show="showLoader == true">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
       </tr>
       <!-- Input value is empty -->
       <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
         <td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
-        <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
-          <!-- v>0 -->
-          <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
-            <button
-              class="btn default-style btn-success"
-              tooltip-append-to-body="true"
-              uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
-              {{v}}
-            </button>
-          </a>
-          <!-- v==0 -->
-          <button
-            ng-if="v==0"
-            class="btn default-style btn-danger"
-            tooltip-append-to-body="true"
-            uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
-            {{v}}
-          </button>
-          <!-- v<0 -->
-          <button
-            ng-if="v<0"
-            class="btn default-style grey btn-primary"
-            tooltip-append-to-body="true"
-            uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
-            {{v}}
-          </button>
-        </td>
+        <!-- Default Values -->
+        <td ng-if="statusColorMapModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Status Color Map Values -->
+        <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Primary Values -->
+        <td ng-if="statusView == 'Primary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Secondary Values -->
+        <td ng-if="statusView == 'Secondary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Tertary Values  -->
+        <td ng-if="statusView == 'Tertiary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+          <!-- <div ng-include="'/views/partiallspmeshdetails.html'"></div> -->
+        <!-- </td> -->
       </tr>
       <!-- Input as value -->
       <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
