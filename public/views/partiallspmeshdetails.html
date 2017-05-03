@@ -1,0 +1,25 @@
+<!-- v>0 -->
+<a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+  <button
+    class="btn default-style btn-success"
+    tooltip-append-to-body="true"
+    uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
+    {{v}}
+  </button>
+</a>
+<!-- v==0 -->
+<button
+  ng-if="v==0"
+  class="btn default-style btn-danger"
+  tooltip-append-to-body="true"
+  uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
+  {{v}}
+</button>
+<!-- v<0 -->
+<button
+  ng-if="v<0"
+  class="btn default-style grey btn-primary"
+  tooltip-append-to-body="true"
+  uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
+  {{v}}
+</button>
