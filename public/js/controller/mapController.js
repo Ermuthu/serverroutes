@@ -1,8 +1,10 @@
-ngElastic.controller('mapController', function($scope, $http, $routeParams) {
+ngElastic.controller('mapController', function($scope, $http, $routeParams, $window) {
 
 	$scope.initMapController = function() {
 		$scope.map = "Connected Chart";
 	};
+	$scope.draw = SVG('drawing').size(3650, 1060);
+	// $scope.sampleCode = "#48f635";
 
 	if($routeParams.sourcenames != undefined){
 		var rp = $routeParams.sourcenames,
@@ -41,20 +43,103 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 
 	// Nodes
 	// $http.get('/proxy/map_info/config/_search?size=10000&pretty%27%20-d%20%27{%22query%22%20:%20{%22matchAll%22%20:%20{}}}%27').success(function(n) {
-	$http.get('/api/mapnodes').success(function(n) {
-		$scope.nodeHits = n.hits.hits;
-	}).error(function(e) {
-		console.log(e);
-	});
+	// $http.get('/api/mapnodes').success(function(n) {
+	// 	$scope.nodeHits = n.hits.hits;
+	// 	_.map($scope.nodeHits, function(d) {
+	// 		$scope.draw.rect(100,20).fill('#e74c3c').move(d._source.x - 6,d._source.y - 13).stroke('#c0392b').attr('class','svg-rect-box')
+	// 		$scope.draw.text(d._id).move(d._source.x,d._source.y-5).font({ fill: '#fff', size: 11 }).attr('class','svg-rect-text')
+	// 	});
+	// }).error(function(e) {
+	// 	console.log(e);
+	// });
 
 	// Links
 	// $http.get('/proxy/map_link_info/config/_search?size=10000&pretty%27%20-d%20%27{%22query%22%20:%20{%22matchAll%22%20:%20{}}}%27').success(function(l){
 	$http.get('/api/maplinks').success(function(l) {
 		$scope.linkHits = l.hits.hits;
-		// console.log($scope.linkHits.length);
+		var path;
+		_.map($scope.linkHits, function(d) {
+			var linear = $scope.draw.gradient('linear', function(stop) {
+			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
+			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
+			});
+			/*
+			* 1. if src_y and dst_y are same, add 1 to src_y
+			* 2. else if src_x and dst_x are same, add 1 to src_x
+			* 3. else src_y and dst_y (default)
+			*/
+			if(d._source.src_y === d._source.dst_y) {
+				var src_y = parseInt(d._source.src_y)+1;
+				path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+			} else if(d._source.src_x === d._source.dst_x) {
+				var src_x = parseInt(d._source.src_x)+1;
+				path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+			} else {
+				path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+			}
+			path.stroke(linear)
+			path.stroke({ width: 2, linecap: 'round', linejoin: 'round'})
+		});
 	}).error(function(e) {
 		console.log(e);
 	});
+
+	$http.get('/api/mapnodes').success(function(n) {
+		$scope.nodeHits = n.hits.hits;
+		_.map($scope.nodeHits, function(d) {
+			// draw rectangle
+			$scope.draw.rect(100,20)
+				.fill('#e74c3c')
+				.move(d._source.x - 6,d._source.y - 13)
+				.stroke('#c0392b')
+				.attr('class','cursor-pointer')
+				.front()
+				// anchor tag
+				.click(function() {
+					$window.location.href = '#/status/'+d._id;
+				});
+			// text inside rectangle
+			$scope.draw.text(d._id)
+				.move(d._source.x,d._source.y-5)
+				.font({ fill: '#fff', size: 11 })
+				.attr('class','cursor-pointer')
+				.front()
+				.click(function() {
+					$window.location.href = '#/status/'+d._id;
+				});
+		});
+	}).error(function(e) {
+		console.log(e);
+	});
+
+	// $http.get('/api/mapnodes').success(function(n) {
+	// 	$scope.nodeHits = n.hits.hits;
+	// 	_.map($scope.nodeHits, function(d) {
+	// 		$scope.draw.rect(100,20).fill('#c0392b').move(d._source.x - 6,d._source.y - 13).fill('#e74c3c').attr('class','svg-rect-box')
+	// 		$scope.draw.text(d._id).move(d._source.x - 6,d._source.y - 13).font({ fill: '#fff', size: 11 })
+	// 	});
+	// }).error(function(e) {
+	// 	console.log(e);
+	// });
+	
+	// var draw = SVG('drawing').size(3650, 1060)
+	// var linear = draw.gradient('linear', function(stop) {
+	//   stop.at(0, '#f06')
+	//   stop.at(1, '#000')
+	// });
+	// var path;
+		// path = draw.path('M'+d._source.src_x d._source.src_y+' L'+d._source.dst_x d._source.dst_y);
+	// _.map($scope.linkHits, function(d) {
+	// 	console.log(d);
+	// });
+	// path = draw.path('M0 0 L50 20')
+	// path.fill('none').move(20, 20)
+	// //path.stroke({ width: 4, linecap: 'round', linejoin: 'round'})
+	// path.stroke(linear)
+	// path.center(50,50)
+	// path.stroke({width: 5})
+
+
 	
 	// Link Highlighter
 	// $scope.highlightNode = function(src, dest) {
@@ -75,25 +160,25 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
 	$scope.strokeColor = function (bw) {
 		// console.log(bw);
  		if(bw>0 && bw<11)
- 			return '#4D72E3';
+ 			return "#4D72E3";
  		else if(bw>10 && bw<21)
- 			return '#48CCCD';
+ 			return "#48CCCD";
  		else if(bw>20 && bw<31)
- 			return '#00FF00';
+ 			return "#00FF00";
  		else if(bw>30 && bw<41)
- 			return '#B1FB17';
+ 			return "#B1FB17";
  		else if(bw>40 && bw<51)
- 			return '#FFFF00';
+ 			return "#FFFF00";
  		else if(bw>50 && bw<61)
- 			return '#FDD017';
+ 			return "#FDD017";
  		else if(bw>60 && bw<71)
- 			return '#FBB117';
+ 			return "#FBB117";
  		else if(bw>70 && bw<81)
- 			return '#F87217';
+ 			return "#F87217";
  		else if(bw>80 && bw<91)
- 			return '#FF0000';
+ 			return "#FF0000";
  		else if(bw>90 && bw<101)
- 			return '#F6358A”';
+ 			return "#F6358A";
  		// else if(bw == '-')
  		// 	return 'red';
  		// else if(bw==-0)
@@ -106,35 +191,47 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams) {
  	// 	console.log("WIDTH : ", width);
  	// 	return width/2;
  	// }
- 	$scope.strokeColor2 = function (bw) {
-		// console.log(bw);
- 		if(bw>0 && bw<11)
- 			return '#4D72E3';
- 		else if(bw>10 && bw<21)
- 			return '#48CCCD';
- 		else if(bw>20 && bw<31)
- 			return '#00FF00';
- 		else if(bw>30 && bw<41)
- 			return '#B1FB17';
- 		else if(bw>40 && bw<51)
- 			return '#FFFF00';
- 		else if(bw>50 && bw<61)
- 			return '#FDD017';
- 		else if(bw>60 && bw<71)
- 			return '#FBB117';
- 		else if(bw>70 && bw<81)
- 			return '#F87217';
- 		else if(bw>80 && bw<91)
- 			return '#FF0000';
- 		else if(bw>90 && bw<101)
- 			return '#F6358A”';
- 		// else if(bw == '-')
- 		// 	return 'red';
- 		// else if(bw==-0)
- 		// 	return 'yellow';
- 		else
-			return '#4D72E3';
+
+ 	// coords
+ 	$scope.coords = function(x1,x2,y1,y2) {
+ 		console.log("hEllo");
+		if(x2 === y2) {
+			var x2new = parseInt(x2)+1;
+			return 'M'+x1+' '+x2new+' L'+y1+' '+y2;
+		} else if(x1 === y1) {
+			var x1new = parseInt(x1)+1;
+			return 'M'+x1new+' '+x2+' L'+y1+' '+y2
+		} else {
+			return 'M'+x1+' '+x2+' L'+y1+' '+y2
+		}
+ 	}
+
+ 	// get the center 1500/430/1500/100 965 800 165
+ 	$scope.lineCenter = function(x1,x2,y1,y2) {
+ 		console.log()
+ 		// console.log(x1,x2,y1,y2);
+ 		var x;
+ 		var y;
+ 		if(x1>y1) {
+ 			x = (parseInt(x1)-parseInt(x2))/2;
+ 			y = (parseInt(y1)-parseInt(y2))/2;
+ 			return x-y
+ 		} else {
+ 			x = (parseInt(x1)+parseInt(x2))/2;
+ 			y = (parseInt(y1)+parseInt(y2))/2;
+	 		return y-x;
+	 	}
  	};
+
+ // 	var x = (parseInt(x1)+parseInt(x2))/2;
+	// var y = (parseInt(y1)+parseInt(y2))/2;
+	// return y-x;
+ 	// var svg   = document.querySelector("svg");
+  // var svgns = "http://www.w3.org/2000/svg";
+  // var el = element[0].querySelector("path");
+  // var bbox = el.getBoundingClientRect();
+  // console.log("bbox",bbox);
+
 	// 
 	$scope.limitMissRoute = function(val) {
 		return replaceSymbol(val.replace(/_/g, '-'));

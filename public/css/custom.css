@@ -344,6 +344,36 @@
 .extra-width {
   width: 3650px;
 }
+.blue-stroke {
+  stroke: #4D72E3;
+}
+.cyan-stroke {
+  stroke: #48CCCD;
+}
+.lime-green-stroke {
+  stroke: #00FF00;
+}
+.vivid-green-stroke {
+  stroke: #B1FB17;
+}
+.yellow-stroke {
+  stroke: #FFFF00;
+}
+.vivid-yellow-stroke {
+  stroke: #FDD017;
+}
+.vivid-orange-stroke {
+  stroke: #FBB117;
+}
+.vivid-orange2-stroke {
+  stroke: #F87217;
+}
+.red-stroke {
+  stroke: #FF0000;
+}
+.pink-stroke {
+  stroke: #F6358A;
+}
 /* LSP Mesh Details */
 .highlighter-circle {
   background-color: #2c3e50;
