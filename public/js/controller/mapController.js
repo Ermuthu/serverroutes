@@ -2,6 +2,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 
 	$scope.initMapController = function() {
 		$scope.map = "Connected Chart";
+		$scope.isLoading = false;
 	};
 	$scope.draw = SVG('drawing').size(3650, 1060);
 	// $scope.sampleCode = "#48f635";
@@ -58,7 +59,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 	$q.all([$http.get('/api/maplinks'), 
     $http.get('/api/mapnodes')])
 	.then(function(values) {
-    // console.log(values[0].data);
+    $scope.isLoading = false;
     $scope.linkHits = values[0].data.hits.hits;
 		var path;
 		_.map($scope.linkHits, function(d) {
@@ -118,6 +119,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 					$window.location.href = '#/status/'+d._id;
 				});
 		});
+		$scope.isLoading = true;
 	});
 	// $http.get('/api/maplinks').success(function(l) {
 	// 	$scope.isLoading = true;

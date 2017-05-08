@@ -1,5 +1,13 @@
 <div ng-init="initMapController()">
 	<h1>{{map}}</h1>
+	<div ng-hide="isLoading === true" class="container text-center" uib-alert ng-class="'alert-danger'">
+		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+		<span style="font-weight: bolder;">Loading... Please Wait...</span>
+	</div>
+	<!-- <div class="text-center" ng-hide="isLoading === true">
+		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+		<span style="font-weight: bolder;">Loading... Please Wait...</span>
+	</div> -->
 	<div id="drawing"></div>
 	<!-- SVG -->
 	<!-- <div id="drawing"></div> -->
