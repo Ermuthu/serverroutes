@@ -1,4 +1,4 @@
-ngElastic.controller('mapController', function($scope, $http, $routeParams, $window) {
+ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout, $q) {
 
 	$scope.initMapController = function() {
 		$scope.map = "Connected Chart";
@@ -34,7 +34,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 		}
 	}
 	$scope.highlightNode = connLineData;
-	console.log("highlightNode : ",$scope.highlightNode);
+	// console.log("highlightNode : ",$scope.highlightNode);
 	// console.log($scope.highlightNode);
 
 	// http://localhost:9090/#/lspmap/ODgwXzk1MCw4ODBfODc1LDE0MzBfNzIwLDE2MjBfOTUw
@@ -55,8 +55,11 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 
 	// Links
 	// $http.get('/proxy/map_link_info/config/_search?size=10000&pretty%27%20-d%20%27{%22query%22%20:%20{%22matchAll%22%20:%20{}}}%27').success(function(l){
-	$http.get('/api/maplinks').success(function(l) {
-		$scope.linkHits = l.hits.hits;
+	$q.all([$http.get('/api/maplinks'), 
+    $http.get('/api/mapnodes')])
+	.then(function(values) {
+    // console.log(values[0].data);
+    $scope.linkHits = values[0].data.hits.hits;
 		var path;
 		_.map($scope.linkHits, function(d) {
 			var linear = $scope.draw.gradient('linear', function(stop) {
@@ -71,21 +74,28 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 			if(d._source.src_y === d._source.dst_y) {
 				var src_y = parseInt(d._source.src_y)+1;
 				path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
 			} else if(d._source.src_x === d._source.dst_x) {
 				var src_x = parseInt(d._source.src_x)+1;
 				path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
 			} else {
 				path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
 			}
 			path.stroke(linear)
 			path.stroke({ width: 2, linecap: 'round', linejoin: 'round'})
 		});
-	}).error(function(e) {
-		console.log(e);
-	});
-
-	$http.get('/api/mapnodes').success(function(n) {
-		$scope.nodeHits = n.hits.hits;
+  	$scope.nodeHits = values[1].data.hits.hits;
 		_.map($scope.nodeHits, function(d) {
 			// draw rectangle
 			$scope.draw.rect(100,20)
@@ -97,7 +107,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 				// anchor tag
 				.click(function() {
 					$window.location.href = '#/status/'+d._id;
-				});
+				})
 			// text inside rectangle
 			$scope.draw.text(d._id)
 				.move(d._source.x,d._source.y-5)
@@ -108,9 +118,89 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 					$window.location.href = '#/status/'+d._id;
 				});
 		});
-	}).error(function(e) {
-		console.log(e);
 	});
+	// $http.get('/api/maplinks').success(function(l) {
+	// 	$scope.isLoading = true;
+	// 	$scope.linkHits = l.hits.hits;
+	// 	var path;
+	// 	_.map($scope.linkHits, function(d) {
+	// 		var linear = $scope.draw.gradient('linear', function(stop) {
+	// 		  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
+	// 		  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
+	// 		});
+	// 		/*
+	// 		* 1. if src_y and dst_y are same, add 1 to src_y
+	// 		* 2. else if src_x and dst_x are same, add 1 to src_x
+	// 		* 3. else src_y and dst_y (default)
+	// 		*/
+	// 		if(d._source.src_y === d._source.dst_y) {
+	// 			var src_y = parseInt(d._source.src_y)+1;
+	// 			path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+	// 				.click(function() {
+	// 					$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+	// 				})
+	// 				.attr('class','cursor-pointer')
+	// 		} else if(d._source.src_x === d._source.dst_x) {
+	// 			var src_x = parseInt(d._source.src_x)+1;
+	// 			path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+	// 				.click(function() {
+	// 					$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+	// 				})
+	// 				.attr('class','cursor-pointer')
+	// 		} else {
+	// 			path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+	// 				.click(function() {
+	// 					$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+	// 				})
+	// 				.attr('class','cursor-pointer')
+	// 		}
+	// 		path.stroke(linear)
+	// 		path.stroke({ width: 2, linecap: 'round', linejoin: 'round'})
+	// 	});
+	// 	$scope.isLoading = false;
+	// }).error(function(e) {
+	// 	console.log(e);
+	// });
+	
+	// $http.get('/api/mapnodes').success(function(n) {
+	// 	$scope.nodeHits = n.hits.hits;
+	// 	_.map($scope.nodeHits, function(d) {
+	// 		// draw rectangle
+	// 		$scope.draw.rect(100,20)
+	// 			.fill('#e74c3c')
+	// 			.move(d._source.x - 6,d._source.y - 13)
+	// 			.stroke('#c0392b')
+	// 			.attr('class','cursor-pointer')
+	// 			.front()
+	// 			// anchor tag
+	// 			.click(function() {
+	// 				$window.location.href = '#/status/'+d._id;
+	// 			})
+	// 		// text inside rectangle
+	// 		$scope.draw.text(d._id)
+	// 			.move(d._source.x,d._source.y-5)
+	// 			.font({ fill: '#fff', size: 11 })
+	// 			.attr('class','cursor-pointer')
+	// 			.front()
+	// 			.click(function() {
+	// 				$window.location.href = '#/status/'+d._id;
+	// 			});
+	// 	});
+	// }).error(function(e) {
+	// 	console.log(e);
+	// });
+
+	// $scope.loadAfterPath();
+
+	// // Function to replicate setInterval using $timeout service.
+ //  $scope.intervalFunction = function(){
+ //    $timeout(function() {
+ //      $scope.loadAfterPath();
+ //    }, 5000)
+ //  };
+
+ //  // Kick off the interval
+ //  $scope.intervalFunction();
 
 	// $http.get('/api/mapnodes').success(function(n) {
 	// 	$scope.nodeHits = n.hits.hits;
