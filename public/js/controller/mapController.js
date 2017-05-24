@@ -18,7 +18,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 	  // console.log(toStr);
 	  var removeUnderscore = _.replace(toStr, /[_-]/g, ",");
 	  $scope.node_coor= _.split(removeUnderscore, ',');
-	  console.log($scope.node_coor);
+	  // console.log($scope.node_coor);
 	 }
 
 	// Re-arrange the params to array of object for src and dest
@@ -35,6 +35,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 		}
 	}
 	$scope.highlightNode = connLineData;
+	// console.log($scope.highlightNode);
 	// console.log("highlightNode : ",$scope.highlightNode);
 	// console.log($scope.highlightNode);
 
@@ -63,10 +64,28 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     $scope.linkHits = values[0].data.hits.hits;
 		var path;
 		_.map($scope.linkHits, function(d) {
-			var linear = $scope.draw.gradient('linear', function(stop) {
-			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
-			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
-			});
+			var linear;
+			if(!_.isUndefined($scope.node_coor)){
+				// console.log($scope.node_coor);
+				if(d._source.src_x == $scope.node_coor[0] && d._source.src_y == $scope.node_coor[1] && d._source.dst_x == $scope.node_coor[2] && d._source.dst_y == $scope.node_coor[3]) {
+					console.log("same");
+					linear = $scope.draw.gradient('linear', function(stop) {
+					  stop.at({offset: '50%', color: '#000'})
+					  stop.at({offset: '50%', color: '#000'})
+					});
+				} else {
+					linear = $scope.draw.gradient('linear', function(stop) {
+					  stop.at({offset: '50%', color: '#ecf0f1'})
+					  stop.at({offset: '50%', color: '#ecf0f1'})
+					});
+					console.log("no match found");
+				}
+			} else {
+				linear = $scope.draw.gradient('linear', function(stop) {
+				  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
+				  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
+				});
+			}
 			/*
 			* 1. if src_y and dst_y are same, add 1 to src_y
 			* 2. else if src_x and dst_x are same, add 1 to src_x
@@ -328,9 +347,5 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 	$scope.limitMissRoute = function(val) {
 		return replaceSymbol(val.replace(/_/g, '-'));
 	};
-
-	// $scope.hoverIn = function(sx,sy,dx,dy) {
-	// 	console.log(sx,sy,dx,dy);
-	// }
 
 });
