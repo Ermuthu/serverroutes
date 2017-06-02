@@ -1,4 +1,4 @@
-var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap', 'infinite-scroll']);
+var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap', 'infinite-scroll', 'ngAnimate', 'angular-loading-bar']);
 
 ngElastic.filter('typesFilter', function() {
   return function(clients, selectedCompany) {
@@ -70,7 +70,7 @@ ngElastic.filter('wildcard', function() {
   }
 });
 
-ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+ngElastic.config(['$routeProvider', '$locationProvider' , 'cfpLoadingBarProvider', function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
 	// Router
 	$routeProvider.
   when('/', {
@@ -139,7 +139,12 @@ ngElastic.config(['$routeProvider', '$locationProvider', function($routeProvider
   }).
   otherwise({
    redirectTo: '/'
- });
+  });
+
+  cfpLoadingBarProvider.includeSpinner = false;
+  cfpLoadingBarProvider.includeBar = true;
+  cfpLoadingBarProvider.loadingBarTemplate = '<div id="loading-bar"><div class="bar"><div class="peg"></div></div></div>';
+  // cfpLoadingBarProvider.spinnerTemplate = '<div id="loading-bar"><span class="fa fa-spinner">Loading...</div>';;
 
 	// Remove hash(#) from Url
 	// $locationProvider.html5Mode({
