@@ -48,6 +48,13 @@ app.get('/api/lspmeshdetailstats', Api.lspMeshDetailStats);
 app.get('/api/lspmeshdetailstatsold', Api.lspMeshDetailStatsOld);
 app.get('/api/mapnodes', Api.getMapNodes);
 app.get('/api/maplinks', Api.getMapLinks);
+// LSP Mesh Default and complete routes
+app.get('/api/lspmeshheading', Api.lspMeshHeading);
+app.get('/api/lspmeshcompleteheading', Api.lspMeshCompleteHeading);
+app.get('/api/lspmesh/source/:sourceparams', Api.lspMeshSource);
+app.get('/api/lspmeshcomplete/source/:sourceparams', Api.lspMeshCompleteSource);
+
+
 
 // POST
 app.post('/api/apply', function(req, res) {

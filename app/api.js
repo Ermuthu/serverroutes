@@ -106,6 +106,74 @@ module.exports = {
 		// var lspMeshDetailStats = './db/lspMeshDetailStats_04_26.json';
 		res.send(jsonfile.readFileSync(lspMeshDetailStats));
 	},
+	/* 
+	 * LSP Mesh Default and complete API starts
+	 */
+	lspMeshHeading: function(req, res) {
+		var lspmesh_default_heading = './db/lspmesh_default_heading_06_02.json';
+		res.send(jsonfile.readFileSync(lspmesh_default_heading));
+	},
+	lspMeshCompleteHeading: function(req, res) {
+		var lspmesh_complete_heading = './db/lspmesh_complete_heading_06_02.json';
+		res.send(jsonfile.readFileSync(lspmesh_complete_heading));
+	},
+	lspMeshSource: function(req, res) {
+		var srcparmas = req.params.sourceparams,
+			lspmesh_default_source_bit_map = './db/lspmesh_default_source_bit_map_06_02.json',
+			lspmesh_default_source_pri_cnt = './db/lspmesh_default_source_pri_cnt_06_02.json',
+			lspmesh_default_source_sec_cnt = './db/lspmesh_default_source_sec_cnt_06_02.json',
+			lspmesh_default_source_ter_cnt = './db/lspmesh_default_source_ter_cnt_06_02.json',
+			lspmesh_default_source_scm_bit_map = './db/lspmesh_default_source_scm_bit_map_06_02.json',
+			lspmesh_default_source_region_r1 = './db/lspmesh_default_source_bit_map_region_r1_06_02.json',
+			lspmesh_default_source_region_r2 = './db/lspmesh_default_source_bit_map_region_r2_06_02.json',
+			lspmesh_default_source_region_r3 = './db/lspmesh_default_source_bit_map_region_r3_06_02.json';
+		if(srcparmas == 'pri_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_pri_cnt));
+		else if(srcparmas == 'sec_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_sec_cnt));
+		else if(srcparmas == 'ter_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_ter_cnt));
+		else if(srcparmas == 'scm_bit_map')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_scm_bit_map));
+		else if(srcparmas == 'region_r1')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_region_r1));
+		else if(srcparmas == 'region_r2')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_region_r2));
+		else if(srcparmas == 'region_r3')
+			res.send(jsonfile.readFileSync(lspmesh_default_source_region_r3));
+		else
+			res.send(jsonfile.readFileSync(lspmesh_default_source_bit_map));
+	},
+	lspMeshCompleteSource: function(req, res) {
+		var srcparmas = req.params.sourceparams,
+			lspmesh_complete_source_bit_map = './db/lspmesh_complete_source_bit_map_06_02.json',
+			lspmesh_complete_source_pri_cnt = './db/lspmesh_complete_source_pri_cnt_06_02.json',
+			lspmesh_complete_source_sec_cnt = './db/lspmesh_complete_source_sec_cnt_06_02.json',
+			lspmesh_complete_source_ter_cnt = './db/lspmesh_complete_source_ter_cnt_06_02.json',
+			lspmesh_complete_source_scm_bit_map = './db/lspmesh_complete_source_scm_bit_map_06_02.json',
+			lspmesh_complete_source_region_r1 = './db/lspmesh_complete_source_bit_map_region_r1_06_02.json',
+			lspmesh_complete_source_region_r2 = './db/lspmesh_complete_source_bit_map_region_r2_06_02.json',
+			lspmesh_complete_source_region_r3 = './db/lspmesh_complete_source_bit_map_region_r3_06_02.json';
+		if(srcparmas == 'pri_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_pri_cnt));
+		else if(srcparmas == 'sec_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_sec_cnt));
+		else if(srcparmas == 'ter_cnt')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_ter_cnt));
+		else if(srcparmas == 'scm_bit_map')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_scm_bit_map));
+		else if(srcparmas == 'region_r1')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_region_r1));
+		else if(srcparmas == 'region_r2')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_region_r2));
+		else if(srcparmas == 'region_r3')
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_region_r3));
+		else
+			res.send(jsonfile.readFileSync(lspmesh_complete_source_bit_map));
+	},
+	/* 
+	 * LSP Mesh Default and complete API ends
+	 */
 	getMapNodes: function(req, res) {
 		var mapNodes = './db/mapnodes_03_25.json';
 		res.send(jsonfile.readFileSync(mapNodes));
