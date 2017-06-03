@@ -6,8 +6,8 @@
     border-top: 1px solid #ddd;
   }    	
 </style>
-<div class="container-fluid" ng-init="initTable()">
-	<h1>{{table}}</h1>
+<div class="container-fluid" ng-init="initTable()" ng-controller="lspMeshDetailsController">
+	<h3>{{table}}</h3>
 	<div class="col-sm-12">
 		<form action="" class="form-inline pull-right" style="margin-top:-40px;" >
 			<div class="form-group" >
@@ -24,21 +24,21 @@
 					</div>
 				</div>
 				<!-- show/hide statusColorMap -->
-  			<label 
+  			<button 
 					ng-class="statusColorMapModel == false ? 'btn btn-success' : 'btn btn-danger'"
 					ng-model="statusColorMapModel" uib-btn-checkbox
 					class="pull-right" style="margin: 0 4px; width: 136px;"
-					ng-click="updateTableWithShowComplete()">
-	  				{{statusColorMapModel == false ? statusColorMap : reset}}
-  			</label>
+					ng-click="statusColorMap()" ng-disabled="disableButton == false || statusView != null">
+	  				{{statusColorMapModel == false ? stateView : normalView}}
+  			</button>
   			<!-- show/hide complete -->
-				<label 
+				<button 
 					ng-class="showCompleteModel == false ? 'btn btn-success' : 'btn btn-danger'"
 					ng-model="showCompleteModel" uib-btn-checkbox
 					class="pull-right" style="margin: 0 4px; width: 125px;"
-					ng-click="updateTableWithShowComplete()">
-	  				{{showCompleteModel == false ? showComplete : reset}}
-  			</label>
+					ng-click="updateTableWithShowComplete()" ng-disabled="disableButton == false || statusColorMapModel == true || statusView != null">
+            {{showCompleteModel == false ? showComplete : reset}}
+  			</button>
 			</div>
 		</form>	
 	</div>
@@ -62,31 +62,31 @@
           <span style="font-weight: bolder;">Loading... Please Wait</span>
         </td>
       </tr> -->
-      <tr ng-show="showLoader == true">
+      <!-- <tr ng-show="showLoader == false">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
-      </tr>
+      </tr> -->
       <!-- Input value is empty -->
-      <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
-        <td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
+      <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+        <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
         <!-- Default Values -->
         <td ng-if="statusColorMapModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Status Color Map Values -->
-        <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
         <!-- Primary Values -->
-        <td ng-if="statusView == 'Primary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- <td ng-if="statusView == 'Primary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
         <!-- Secondary Values -->
-        <td ng-if="statusView == 'Secondary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- <td ng-if="statusView == 'Secondary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
         <!-- Tertary Values  -->
-        <td ng-if="statusView == 'Tertiary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- <td ng-if="statusView == 'Tertiary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
           <!-- <div ng-include="'/views/partiallspmeshdetails.html'"></div> -->
         <!-- </td> -->
       </tr>
       <!-- Input as value -->
-      <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_id:srcroutes}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+      <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
         <td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
         <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
           <!-- v>0 -->
-          <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+          <!-- <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
             <button
               ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
               class="btn default-style"
@@ -94,9 +94,9 @@
               uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
               {{v}}
             </button>
-          </a>
+          </a> -->
           <!-- v==0 -->
-          <button
+          <!-- <button
             ng-if="v==0"
             ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
             class="btn default-style"
@@ -104,16 +104,16 @@
             uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}
             >
             {{v}}
-          </button>
+          </button> -->
           <!-- v<0 -->
-          <button
+          <!-- <button
             ng-if="v<0"
             ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
             class="btn default-style"
             tooltip-append-to-body="true"
             uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
             {{v}}
-          </button>
+          </button> -->
         </td>
       </tr>
     </tbody>

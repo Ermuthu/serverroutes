@@ -17,9 +17,12 @@
 		</div>
 		<div class="form-group">
 			<label for="limit">Dir : </label>
-			<select ng-model="direction" id="" class="form-control" ng-options="dire as dire.dir for dire in setDir" ng-change="watchDirDropDown(direction)">
+			<select ng-model="direction" id="" class="form-control" ng-options="obj.value as obj.text for obj in setDir" ng-change="watchDirDropDown(direction)">
 				<option value="">Select the Dir</option>
 			</select>
+			<!-- <select ng-model="direction" id="" class="form-control" ng-options="dire as dire.dir for dire in setDir" ng-change="watchDirDropDown(direction)">
+				<option value="">Select the Dir</option>
+			</select> -->
 		</div>
 		<input type="button" class="btn btn-danger pull-right" value="Reset All" ng-click="resetAll()">
 	</div>

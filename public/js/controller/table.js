@@ -10,7 +10,8 @@ ngElastic.controller('tableController', function($scope, $http) {
 	$scope.setLimit = [{id:5},{id:10},{id:'All'}];
 
 	// set value for dir dropdown
-	$scope.setDir = [{dir:'In'},{dir:'Out'},{dir:'Default'}];
+	// $scope.setDir = [{dir:'In',},{dir:'Out'},{dir:'Default'}];
+	$scope.setDir = [{ "value": "primary", "text": "1st" }, { "value": "secondary", "text": "2nd" }];
 
 	$scope.limit = 5;
 
@@ -109,6 +110,7 @@ ngElastic.controller('tableController', function($scope, $http) {
 
 	// Direction Dropdown
 	$scope.watchDirDropDown = function(d) {
+		console.log(d);
 		var dirData;
 		$scope.dataset = $scope.defaultDataSetCopy;
 		if(d.dir == 'In'){
