@@ -18,7 +18,8 @@
   			<!-- Dropdown -->
   			<div class="pull-right">
 					<div class="form-group">
-						<select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="watchstatusView(statusView)">
+						<!-- <select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="pstDropdown(statusView)"> -->
+            <select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="pstDropdown(statusView)" ng-disabled="disableButton == false || statusColorMapModel == true">
 							<option value="">Default</option>
 						</select>
 					</div>
@@ -56,15 +57,12 @@
 		</thead>
 		<tbody>
       <!-- Loader -->
-    	<!-- <tr ng-hide="isLoading === true">
+    	<tr ng-hide="isLoading === true">
         <td style="text-align: center;" colspan="100">
           <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
           <span style="font-weight: bolder;">Loading... Please Wait</span>
         </td>
-      </tr> -->
-      <!-- <tr ng-show="showLoader == false">
-        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
-      </tr> -->
+      </tr>
       <!-- Input value is empty -->
       <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
         <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
@@ -72,12 +70,23 @@
         <td ng-if="statusColorMapModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Status Color Map Values -->
         <!-- <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
+        <td ng-if="statusColorMapModel == true || showCompleteModel == true" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
+          <a href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+            <button
+              class="btn default-style"
+              ng-class="{'btn-success': colors[$index] == 1, 'btn-danger': colors[$index] == 2, 'btn-warning': colors[$index] == 3, 'blur-circle': colors[$index] < 1,'blur-value': colors[$index] == 9}"
+              tooltip-append-to-body="true"
+              uib-tooltip=Src:{{value._id}}-Dest:{{tableHeader[$index]}}>
+              {{v}}
+            </button>
+          </a>
+        </td>
         <!-- Primary Values -->
-        <!-- <td ng-if="statusView == 'Primary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
+        <td ng-if="statusView == 'Primary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Secondary Values -->
-        <!-- <td ng-if="statusView == 'Secondary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
+        <td ng-if="statusView == 'Secondary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Tertary Values  -->
-        <!-- <td ng-if="statusView == 'Tertiary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
+        <td ng-if="statusView == 'Tertiary'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
           <!-- <div ng-include="'/views/partiallspmeshdetails.html'"></div> -->
         <!-- </td> -->
       </tr>
