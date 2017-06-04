@@ -7,13 +7,15 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
   $scope.stateView = "State View";
   $scope.reset = "Active Route";
   $scope.normalView = "Active Route";
-  $scope.statusViewDD = ['Primary','Secondary','Tertiary'];
+  // $scope.statusViewDD = ['Primary','Secondary','Tertiary'];
+  $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusView = null;
   $scope.statusColorMap = "Status Color Map";
   $scope.bit_map = 'value._source.bit_map';
   $scope.showLoader = false;
   $scope.allRowsLoaded = false;
   $scope.disableButton=false;
+  $scope.loadAll;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -84,148 +86,17 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     }
   };
 
-  //Drop down for Source AMR,EMEIA,APAC
-  // $scope.srcDropdown = function(v){
-  //   if($scope.showCompleteModel == true) {
-  //     if(v == 'AMR'){
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:1').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //       });
-  //     } else if (v == 'EMEIA'){
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:2').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //      });
-  //     }
-  //       else if (v == 'APAC'){
-  //       // console.log("APAC", 3)
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //       $scope.header(d);
-  //     });
-  //       $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:3').success(function(d) {
-  //       $scope.tableStats="";
-  //       $scope.loadOneItemPerSec(d);
-  //      }).error(function(e){
-  //            console.log(e);
-  //      });
-  //     } else {
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=bit_map').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //       });
-  //     } 
-  //   } else {
-  //     if(v == 'AMR'){
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:1').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //       });
-  //     } else if (v == 'EMEIA') {
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:2').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //       });
-  //     } else if (v == 'APAC') {
-  //       $scope.disableButton = false;
-  //       $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-  //         $scope.header(d);
-  //       });
-  //       $http.get('/proxy/lsp_grid/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map,region&q=region:3').success(function(d) {
-  //         $scope.tableStats="";
-  //         $scope.loadOneItemPerSec(d);
-  //       }).error(function(e){
-  //         console.log(e);
-  //       });
-  //     } else {
-  //       $scope.tableStats="";
-  //       $scope.initTable();
-  //     }
-  //   }
-  // }
-
   // Primay, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {
     if($scope.showCompleteModel == true) {
-      if(cnt == "Primary") {
+      if(cnt == "pri_cnt" || cnt == "sec_cnt" || cnt == "ter_cnt" || cnt == "bit_map") {
         $scope.disableButton = false;
         // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
         $http.get('/api/lspmeshcompleteheading').success(function(d) {
           $scope.header(d);
         });
         // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
-        $http.get('/api/lspmeshcomplete/source/pri_cnt').success(function(d) {
-          $scope.tableStats="";
-          $scope.loadOneItemPerSec(d);
-        }).error(function(e){
-          console.log(e);
-        });
-      } else if(cnt == "Secondary") {
-        $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-        $http.get('/api/lspmeshcompleteheading').success(function(d) {
-          $scope.header(d);
-        });
-        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=sec_cnt').success(function(d) {
-        $http.get('/api/lspmeshcomplete/source/sec_cnt').success(function(d) {
-          $scope.tableStats="";
-          $scope.loadOneItemPerSec(d);
-        }).error(function(e){
-          console.log(e);
-        });
-      } else if(cnt == "Tertiary") {
-        $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-        $http.get('/api/lspmeshcompleteheading').success(function(d) {
-          $scope.header(d);
-        });
-        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=ter_cnt').success(function(d) {
-        $http.get('/api/lspmeshcomplete/source/ter_cnt').success(function(d) {
-          $scope.tableStats="";
-          $scope.loadOneItemPerSec(d);
-        }).error(function(e){
-          console.log(e);
-        });
-      } 
-      else {
-        $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-        $http.get('/api/lspmeshcompleteheading').success(function(d) {
-          $scope.header(d);
-        });
-        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=bit_map').success(function(d) {
-        $http.get('/api/lspmeshcomplete/source/bit_map').success(function(d) {
+        $http.get('/api/lspmeshcomplete/source/'+cnt).success(function(d) {
           $scope.tableStats="";
           $scope.loadOneItemPerSec(d);
         }).error(function(e){
@@ -233,41 +104,16 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
         });
       }
     } else {
-      if(cnt == "Primary") {
+      if(cnt == "pri_cnt" || cnt == "sec_cnt" || cnt == "ter_cnt" || cnt == "bit_map") {
         $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
+        // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
         $http.get('/api/lspmeshheading').success(function(d) {
           $scope.header(d);
         });
-        // $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
-        $http.get('/api/lspmesh/source/pri_cnt').success(function(d) {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmesh/source/'+cnt).success(function(d) {
           $scope.tableStats="";
-          $scope.loadOneItemPerSec(d);
-        }).error(function(e){
-          console.log(e);
-        });
-      } else if(cnt == "Secondary") {
-        $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-        $http.get('/api/lspmeshheading').success(function(d) {
-          $scope.header(d);
-        });
-        // $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=sec_cnt').success(function(d) {
-        $http.get('/api/lspmesh/source/sec_cnt').success(function(d) {
-          $scope.tableStats="";
-          $scope.loadOneItemPerSec(d);
-        }).error(function(e){
-          console.log(e);
-        });
-      } else if(cnt == "Tertiary") {
-        $scope.disableButton = false;
-        // $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-        $http.get('/api/lspmeshheading').success(function(d) {
-          $scope.header(d);
-        });
-        // $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=ter_cnt').success(function(d) {
-        $http.get('/api/lspmesh/source/ter_cnt').success(function(d) {
-          $scope.tableStats="";
+          console.log("loadAll",$scope.loadAll);
           $scope.loadOneItemPerSec(d);
         }).error(function(e){
           console.log(e);
