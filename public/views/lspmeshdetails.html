@@ -16,6 +16,7 @@
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="srcroutes">
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="highlight">
   			<!-- Dropdown -->
+        <!-- Primay,Secondary,Teritary -->
   			<div class="pull-right">
 					<div class="form-group">
 						<!-- <select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="pstDropdown(statusView)"> -->
@@ -24,22 +25,30 @@
 						</select>
 					</div>
 				</div>
+        <!-- Drop Down for Source AMR,EMEIA,& APAC -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 10px 0 5px;" ng-model="srcStatus" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="srcDropdown(srcStatus)" >
+              <option value="">Source</option>
+            </select>
+          </div>
+        </div>
 				<!-- show/hide statusColorMap -->
-  			<button 
+  			<label 
 					ng-class="statusColorMapModel == false ? 'btn btn-success' : 'btn btn-danger'"
 					ng-model="statusColorMapModel" uib-btn-checkbox
 					class="pull-right" style="margin: 0 4px; width: 136px;"
 					ng-click="statusColorMap()">
-	  				{{statusColorMapModel == false ? stateView : normalView}}
-  			</button>
+            {{statusColorMapModel == false ? stateView : reset}}
+        </label>
   			<!-- show/hide complete -->
-				<button 
+				<label 
 					ng-class="showCompleteModel == false ? 'btn btn-success' : 'btn btn-danger'"
 					ng-model="showCompleteModel" uib-btn-checkbox
 					class="pull-right" style="margin: 0 4px; width: 125px;"
 					ng-click="showComplete()">
-            {{showCompleteModel == false ? showComplete : reset}}
-  			</button>
+            {{showCompleteModel == false ? showCompleteText : reset}}
+  			</label>
 			</div>
 		</form>	
 	</div>
@@ -67,10 +76,23 @@
       <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
         <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
         <!-- Default Values -->
-        <td ng-if="statusColorMapModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <td ng-show="statusColorMapModel == false && showCompleteModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Show Complete -->
+        <td ng-show="showCompleteModel == true && statusColorMapModel == false" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Status Color Map Values -->
         <!-- <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
-        <td ng-if="statusColorMapModel == true || showCompleteModel == true" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
+        <td ng-show="statusColorMapModel == true && showCompleteModel == true" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
+          <a href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+            <button
+              class="btn default-style"
+              ng-class="{'btn-success': colors[$index] == 1, 'btn-danger': colors[$index] == 2, 'btn-warning': colors[$index] == 3, 'blur-circle': colors[$index] < 1, 'blur-value': colors[$index] == 9}"
+              tooltip-append-to-body="true"
+              uib-tooltip=Src:{{value._id}}-Dest:{{tableHeader[$index]}}>
+              {{v}}
+            </button>
+          </a>
+        </td> 
+        <td ng-show="statusColorMapModel == true && showCompleteModel == false" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
           <a href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
             <button
               class="btn default-style"
@@ -87,6 +109,12 @@
         <td ng-if="statusView == 'sec_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Tertary Values  -->
         <td ng-if="statusView == 'ter_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Primary Values -->
+        <td ng-if="srcStatus == 'region_r1'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Secondary Values -->
+        <td ng-if="srcStatus == 'region_r2'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Tertary Values  -->
+        <td ng-if="srcStatus == 'region_r3'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
           <!-- <div ng-include="'/views/partiallspmeshdetails.html'"></div> -->
         <!-- </td> -->
       </tr>
