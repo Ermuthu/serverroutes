@@ -1,27 +1,12 @@
-ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $interval, cfpLoadingBar) {
+ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $window) {
   // Title
   $scope.table = "LSP Mesh Detail";
-  $scope.showCompleteModel = false;
-  $scope.showCompleteText = "Show Complete";
-  $scope.statusColorMapModel = false;
-  $scope.stateView = "State View";
-  $scope.reset = "Active Route";
-  $scope.normalView = "Active Route";
-  // $scope.statusViewDD = ['Primary','Secondary','Tertiary'];
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
-  $scope.statusView = null;
-  $scope.statusColorMap = "Status Color Map";
-  $scope.bit_map = 'value._source.bit_map';
-  $scope.showLoader = false;
-  $scope.allRowsLoaded = false;
-  $scope.disableButton=false;
   $scope.loadAll;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
-    $scope.disableButton = false;
-    // var loadAll;
     // $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
     $http.get('/api/lspmeshheading').success(function(d) {
       $scope.header(d);
@@ -31,6 +16,14 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
       $scope.loadOneItemPerSec(d);
     });
   };
+
+  // Primary, Secondary and Teritary Dropdown
+  $scope.pstDropdown = function(cnt) {
+    var cnt;
+    if(cnt == null)
+      cnt = "bit_map";
+    $window.location.href = '#/stateview/' + cnt;
+  }
 
   // load header
   $scope.header = function(d) {
@@ -47,7 +40,6 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
 
   // load one row/sec
   $scope.loadOneItemPerSec = function(d) {
-    // var $scope.loadAll;
     if($scope.loadAll !== undefined) {
       $timeout.cancel($scope.loadAll);
     }
@@ -58,10 +50,6 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
           if(y!=0){
             var nexttendata = d.hits.hits.slice(y-1,y);
             $scope.tableStats = _.concat($scope.tableStats,nexttendata);
-          }
-          // if(y == d.hits.hits.length-1) {
-          if(y == 5) {
-            $scope.disableButton = true;
           }
         }, i *300);
       })(i);
@@ -85,11 +73,4 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     return bm;
   }
 
-  $scope.$watch('statusColorMapModel', function(d) {
-    $scope.statusColorMapModel = d;
-  });
-
-  $scope.$watch('showCompleteModel', function(d) {
-    $scope.showCompleteModel = d;
-  });
 });

@@ -1,4 +1,4 @@
-ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http, $timeout, $window) {
+ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $timeout, $routeParams, $window) {
   // Title
   $scope.table = "LSP Mesh Detail";
   $scope.allroutes = "All Routes";
@@ -6,6 +6,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
+  $scope.cnt = $routeParams.cnt;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -13,8 +14,8 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
     $http.get('/api/lspmeshheading').success(function(d) {
       $scope.header(d);
     });
-    // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=statuscolormap,bit_map').success(function(d) {
-    $http.get('/api/lspmesh/source/scm_bit_map').success(function(d) {
+    // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+    $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
       $scope.loadOneItemPerSec(d);
     });
   };
@@ -46,7 +47,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
       $timeout.cancel($scope.loadAll);
     }
     // for (var i = 1; i < d.hits.hits.length; i++) {
-    for (var i = 1; i < 6; i++) {
+    for (var i = 1; i < 10; i++) {
       $scope.loadAll = (function(y){
         $timeout(function() {
           if(y!=0){

@@ -6,7 +6,7 @@
     border-top: 1px solid #ddd;
   }    	
 </style>
-<div class="container-fluid" ng-init="initTable()" ng-controller="lspMeshDetailsController">
+<div class="container-fluid" ng-init="initTable()" ng-controller="lspMeshDetailsCntController">
 	<h3>{{table}}</h3>
 	<div class="col-sm-12">
 		<form action="" class="form-inline pull-right" style="margin-top:-40px;" >
@@ -15,13 +15,14 @@
 				<label for="search" >Search :</label>
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="srcroutes">
 				<input type="text" class="form-control" placeholder="Source routers" ng-model="highlight">
+        
   			<!-- Dropdown -->
         <!-- Primay,Secondary,Teritary -->
   			<div class="pull-right">
 					<div class="form-group">
-            <select ng-model="pst" id="" class="form-control" ng-options="obj.value as obj.text for obj in statusViewDD" ng-change="pstDropdown(pst)">
-							<option value="">Default</option>
-						</select>
+            <select ng-model="cnt" id="" class="form-control" ng-options="obj.value as obj.text for obj in statusViewDD" ng-change="pstDropdown(cnt)">
+              <option value="">Default</option>
+            </select>
 					</div>
 				</div>
         <!-- Drop Down for Source AMR,EMEIA,& APAC -->
@@ -32,10 +33,10 @@
             </select>
           </div>
         </div>
-        <!-- show/hide complete -->
-        <a href="#/allroutes" class="btn btn-success">All Routes</a>
+				<!-- show/hide complete -->
+        <a href="#/lspmeshdetails" class="btn btn-success">{{allroutes}}</a>
         <!-- show/hide statusColorMap -->
-        <a href="#/stateview" class="btn btn-success">State View</a>
+        <a href="#/stateview" class="btn btn-success">{{stateview}}</a>
 			</div>
 		</form>	
 	</div>
@@ -64,6 +65,12 @@
         <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
         <!-- Default Values -->
         <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Primary Values -->
+        <td ng-if="cnt == 'pri_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Secondary Values -->
+        <td ng-if="cnt == 'sec_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Tertary Values  -->
+        <td ng-if="cnt == 'ter_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
       </tr>
       <!-- Input as value -->
       <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
