@@ -1,4 +1,4 @@
-ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $interval, cfpLoadingBar) {
+ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http, $timeout, $interval, cfpLoadingBar) {
   // Title
   $scope.table = "LSP Mesh Detail";
   $scope.showCompleteModel = false;
@@ -22,12 +22,12 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
   $scope.initTable = function() {
     $scope.disableButton = false;
     // var loadAll;
-    // $http.get('/proxy/lsp_grid/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-    $http.get('/api/lspmeshheading').success(function(d) {
+    // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
+    $http.get('/api/lspmeshcompleteheading').success(function(d) {
       $scope.header(d);
     });
-    // $http.get('/proxy/lsp_grid/stats/_search?size=10000&sort=sort_rtr:asc&_source=bit_map').success(function(d) {
-    $http.get('/api/lspmesh/source/bit_map').success(function(d) {
+    // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=bit_map').success(function(d) {
+    $http.get('/api/lspmeshcomplete/source/bit_map').success(function(d) {
       $scope.loadOneItemPerSec(d);
     });
   };
@@ -51,16 +51,16 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     if($scope.loadAll !== undefined) {
       $timeout.cancel($scope.loadAll);
     }
-    // for (var i = 1; i < d.hits.hits.length; i++) {
-    for (var i = 1; i < 6; i++) {
+    for (var i = 1; i < d.hits.hits.length; i++) {
+    // for (var i = 1; i < 6; i++) {
       $scope.loadAll = (function(y){
         $timeout(function() {
           if(y!=0){
             var nexttendata = d.hits.hits.slice(y-1,y);
             $scope.tableStats = _.concat($scope.tableStats,nexttendata);
           }
-          // if(y == d.hits.hits.length-1) {
-          if(y == 5) {
+          if(y == d.hits.hits.length-1) {
+          // if(y == 5) {
             $scope.disableButton = true;
           }
         }, i *300);
@@ -85,11 +85,4 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     return bm;
   }
 
-  $scope.$watch('statusColorMapModel', function(d) {
-    $scope.statusColorMapModel = d;
-  });
-
-  $scope.$watch('showCompleteModel', function(d) {
-    $scope.showCompleteModel = d;
-  });
 });

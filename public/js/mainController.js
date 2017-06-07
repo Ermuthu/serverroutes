@@ -121,9 +121,17 @@ ngElastic.config(['$routeProvider', '$locationProvider' , 'cfpLoadingBarProvider
     templateUrl: 'views/lspmesh.html',
     controller: 'lspMeshController'
   }).
-  when('/lspmeshdetails/default/:defbool/source/:source', {
+  when('/lspmeshdetails', {
     templateUrl: 'views/lspmeshdetails.html',
     controller: 'lspMeshDetailsController'
+  }).
+  when('/allroutes', {
+    templateUrl: 'views/lspmeshallroutes.html',
+    controller: 'lspMeshDetailsAllRoutesController'
+  }).
+  when('/stateview', {
+    templateUrl: 'views/lspmeshstateview.html',
+    controller: 'lspMeshDetailsStateViewController'
   }).
   when('/chart/:pathname', {
     templateUrl: 'views/connectedgraph.html',

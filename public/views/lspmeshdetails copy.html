@@ -1,0 +1,161 @@
+<style>
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 0px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }    	
+</style>
+<div class="container-fluid" ng-init="initTable()" ng-controller="lspMeshDetailsController">
+	<h3>{{table}}</h3>
+  <a href="#/lspmeshdetails">one</a>
+  <a href="#/lspmeshdetails/123">two</a>
+  <a href="#/lspmeshdetails/123/123">three</a>
+	<div class="col-sm-12">
+		<form action="" class="form-inline pull-right" style="margin-top:-40px;" >
+			<div class="form-group" >
+				<!-- search box's -->
+				<label for="search" >Search :</label>
+				<input type="text" class="form-control" placeholder="Source routers" ng-model="srcroutes">
+				<input type="text" class="form-control" placeholder="Source routers" ng-model="highlight">
+  			<!-- Dropdown -->
+        <!-- Primay,Secondary,Teritary -->
+  			<div class="pull-right">
+					<div class="form-group">
+						<!-- <select ng-model="statusView" id="" class="form-control" ng-options="sv for sv in statusViewDD" ng-change="pstDropdown(statusView)"> -->
+            <select ng-model="statusView" id="" class="form-control" ng-options="obj.value as obj.text for obj in statusViewDD" ng-change="pstDropdown(statusView)">
+							<option value="">Default</option>
+						</select>
+					</div>
+				</div>
+        <!-- Drop Down for Source AMR,EMEIA,& APAC -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 10px 0 5px;" ng-model="srcStatus" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="srcDropdown(srcStatus)" >
+              <option value="">Source</option>
+            </select>
+          </div>
+        </div>
+				<!-- show/hide statusColorMap -->
+  			<label 
+					ng-class="statusColorMapModel == false ? 'btn btn-success' : 'btn btn-danger'"
+					ng-model="statusColorMapModel" uib-btn-checkbox
+					class="pull-right" style="margin: 0 4px; width: 136px;"
+					ng-click="statusColorMap()">
+            {{statusColorMapModel == false ? stateView : reset}}
+        </label>
+  			<!-- show/hide complete -->
+				<label 
+					ng-class="showCompleteModel == false ? 'btn btn-success' : 'btn btn-danger'"
+					ng-model="showCompleteModel" uib-btn-checkbox
+					class="pull-right" style="margin: 0 4px; width: 125px;"
+					ng-click="showComplete()">
+            {{showCompleteModel == false ? showCompleteText : reset}}
+  			</label>
+			</div>
+		</form>	
+	</div>
+ 	<br/>
+
+ 	<!-- Table -->
+ 	<table class="table table-bordered table-striped" cellspacing="0"  style="margin-top:10px;width:100%;font-size:12px;">
+		<thead>
+			<tr>
+	    	<th style="font-size: 10px;">Source routers</th>
+				<th style="border-top-style: hidden;font-size: 10px;transform: rotate(-90deg);max-width:0px;height:110px;text-indent:-43px;border-right-style:hidden;white-space:nowrap;" class="vertical-middle" ng-repeat="th in tableHeader track by $index" class="text-center">
+				  {{th}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+      <!-- Loader -->
+    	<tr ng-hide="isLoading === true">
+        <td style="text-align: center;" colspan="100">
+          <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+          <span style="font-weight: bolder;">Loading... Please Wait</span>
+        </td>
+      </tr>
+      <!-- Input value is empty -->
+      <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+        <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
+        <!-- Default Values -->
+        <td ng-show="statusColorMapModel == false && showCompleteModel == false && statusView == null" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Show Complete -->
+        <td ng-show="showCompleteModel == true && statusColorMapModel == false" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Status Color Map Values -->
+        <!-- <td ng-if="statusColorMapModel == true" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.statuscolormap) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td> -->
+        <td ng-show="statusColorMapModel == true && showCompleteModel == true" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
+          <a href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+            <button
+              class="btn default-style"
+              ng-class="{'btn-success': colors[$index] == 1, 'btn-danger': colors[$index] == 2, 'btn-warning': colors[$index] == 3, 'blur-circle': colors[$index] < 1, 'blur-value': colors[$index] == 9}"
+              tooltip-append-to-body="true"
+              uib-tooltip=Src:{{value._id}}-Dest:{{tableHeader[$index]}}>
+              {{v}}
+            </button>
+          </a>
+        </td> 
+        <td ng-show="statusColorMapModel == true && showCompleteModel == false" style="width: 10;font-size: 8px;" class="vertical-middle" ng-repeat="(k, v) in getTableStatsForStatusColorMap(value._source.bit_map,value._source.statuscolormap) track by $index">
+          <a href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+            <button
+              class="btn default-style"
+              ng-class="{'btn-success': colors[$index] == 1, 'btn-danger': colors[$index] == 2, 'btn-warning': colors[$index] == 3, 'blur-circle': colors[$index] < 1, 'blur-value': colors[$index] == 9}"
+              tooltip-append-to-body="true"
+              uib-tooltip=Src:{{value._id}}-Dest:{{tableHeader[$index]}}>
+              {{v}}
+            </button>
+          </a>
+        </td>
+        <!-- Primary Values -->
+        <td ng-if="statusView == 'pri_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.pri_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Secondary Values -->
+        <td ng-if="statusView == 'sec_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Tertary Values  -->
+        <td ng-if="statusView == 'ter_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Primary Values -->
+        <td ng-if="srcStatus == 'region_r1'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Secondary Values -->
+        <td ng-if="srcStatus == 'region_r2'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Tertary Values  -->
+        <td ng-if="srcStatus == 'region_r3'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+          <!-- <div ng-include="'/views/partiallspmeshdetails.html'"></div> -->
+        <!-- </td> -->
+      </tr>
+      <!-- Input as value -->
+      <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+        <td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
+        <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
+          <!-- v>0 -->
+          <!-- <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+            <button
+              ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
+              class="btn default-style"
+              tooltip-append-to-body="true"
+              uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
+              {{v}}
+            </button>
+          </a> -->
+          <!-- v==0 -->
+          <!-- <button
+            ng-if="v==0"
+            ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
+            class="btn default-style"
+            tooltip-append-to-body="true"
+            uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}
+            >
+            {{v}}
+          </button> -->
+          <!-- v<0 -->
+          <!-- <button
+            ng-if="v<0"
+            ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
+            class="btn default-style"
+            tooltip-append-to-body="true"
+            uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
+            {{v}}
+          </button> -->
+        </td>
+      </tr>
+    </tbody>
+	</table>
+</div>
