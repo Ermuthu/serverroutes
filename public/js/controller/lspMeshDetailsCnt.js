@@ -3,21 +3,35 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
   $scope.table = "LSP Mesh Detail";
   $scope.allroutes = "All Routes";
   $scope.stateview = "State View";
+  $scope.reset = 'Reset';
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
   $scope.cnt = $routeParams.cnt;
+  $scope.flag = $routeParams.svflag;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
-    // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
-    $http.get('/api/lspmeshheading').success(function(d) {
-      $scope.header(d);
-    });
-    // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
-    $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
-      $scope.loadOneItemPerSec(d);
-    });
+    console.log($scope.flag);
+    if($scope.flag == "true") {
+      // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
+      $http.get('/api/lspmeshcompleteheading').success(function(d) {
+        $scope.header(d);
+      });
+      // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+      $http.get('/api/lspmeshcomplete/source/'+$scope.cnt).success(function(d) {
+        $scope.loadOneItemPerSec(d);
+      });  
+    } else {
+      // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
+      $http.get('/api/lspmeshheading').success(function(d) {
+        $scope.header(d);
+      });
+      // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+      $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
+        $scope.loadOneItemPerSec(d);
+      });
+    }
   };
 
   // Primary, Secondary and Teritary Dropdown
@@ -25,7 +39,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     var cnt;
     if(cnt == null)
       cnt = "bit_map";
-    $window.location.href = '#/stateview/' + cnt;
+    $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag;
   }
 
   // load header

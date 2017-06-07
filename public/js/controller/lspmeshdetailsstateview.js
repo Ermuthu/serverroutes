@@ -3,6 +3,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
   $scope.table = "LSP Mesh Detail";
   $scope.allroutes = "All Routes";
   $scope.stateview = "State View";
+  $scope.reset = 'Reset';
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
@@ -24,7 +25,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
     var cnt;
     if(cnt == null)
       cnt = "bit_map";
-    $window.location.href = '#/stateview/' + cnt;
+    $window.location.href = '#/dropdown/' + cnt;
   }
 
   // load header

@@ -28,13 +28,13 @@
         <!-- Drop Down for Source AMR,EMEIA,& APAC -->
         <div class="pull-right">
           <div class="form-group">
-            <select style="margin: 0 10px 0 5px;" ng-model="srcStatus" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="srcDropdown(srcStatus)" >
+            <select style="margin: 0 10px 0 5px;" ng-model="cnt" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="pstDropdown(cnt)" >
               <option value="">Source</option>
             </select>
           </div>
         </div>
 				<!-- show/hide complete -->
-        <a href="#/lspmeshdetails" class="btn btn-success">{{allroutes}}</a>
+        <a href="#/lspmeshdetails" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
         <!-- show/hide statusColorMap -->
         <a href="#/stateview" class="btn btn-success">{{stateview}}</a>
 			</div>
@@ -71,6 +71,12 @@
         <td ng-if="cnt == 'sec_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.sec_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
         <!-- Tertary Values  -->
         <td ng-if="cnt == 'ter_cnt'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.ter_cnt) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Region 1 -->
+        <td ng-if="cnt == 'region_r1'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Region 2 -->
+        <td ng-if="cnt == 'region_r2'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
+        <!-- Region 3  -->
+        <td ng-if="cnt == 'region_r3'" style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
       </tr>
       <!-- Input as value -->
       <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">

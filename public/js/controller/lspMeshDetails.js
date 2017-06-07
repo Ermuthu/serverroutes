@@ -1,9 +1,13 @@
-ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $window) {
+ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $window, $location) {
   // Title
   $scope.table = "LSP Mesh Detail";
+  $scope.allroutes = "All Routes";
+  $scope.stateview = "State View";
+  $scope.reset = 'Reset';
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
+  $scope.flag = $location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -22,7 +26,7 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     var cnt;
     if(cnt == null)
       cnt = "bit_map";
-    $window.location.href = '#/stateview/' + cnt;
+    $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag;
   }
 
   // load header

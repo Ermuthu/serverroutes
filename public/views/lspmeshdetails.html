@@ -27,13 +27,13 @@
         <!-- Drop Down for Source AMR,EMEIA,& APAC -->
         <div class="pull-right">
           <div class="form-group">
-            <select style="margin: 0 10px 0 5px;" ng-model="srcstus" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="srcDropdown(srcstus)" >
+            <select style="margin: 0 10px 0 5px;" ng-model="cnt" id="" class="form-control" ng-options="src.value as src.text for src in statusSourceDD" ng-change="pstDropdown(cnt)" >
               <option value="">Source</option>
             </select>
           </div>
         </div>
         <!-- show/hide complete -->
-        <a href="#/allroutes" class="btn btn-success">All Routes</a>
+        <a href="#/allroutes/true" class="btn btn-success">All Routes</a>
         <!-- show/hide statusColorMap -->
         <a href="#/stateview" class="btn btn-success">State View</a>
 			</div>
