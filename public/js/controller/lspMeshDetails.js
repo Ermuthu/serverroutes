@@ -63,14 +63,4 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     $scope.isLoading = false;
   };
 
-  // For TableStatsForStatusColorMap
-  $scope.getTableStatsForStatusColorMap = function(bm,scm) {
-    var colorCode = [];
-    _.map(scm, function(d) {
-      colorCode.push(d);
-    });
-    $scope.colors = colorCode;
-    return bm;
-  }
-
 });
