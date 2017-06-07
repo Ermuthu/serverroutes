@@ -1,9 +1,9 @@
 ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http, $timeout, $window, $location) {
   // Title
   $scope.table = "LSP Mesh Detail";
-  $scope.allroutes = "All Routes";
+  $scope.allroutes = "All Routers";
   $scope.stateview = "State View";
-  $scope.reset = 'Reset';
+  $scope.reset = "Active Routers";
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;

@@ -33,7 +33,8 @@
           </div>
         </div>
         <!-- show/hide complete -->
-        <a href="#/allroutes/true" class="btn btn-success">All Routes</a>
+        <!-- <a href="#/allroutes/true" class="btn btn-success">All Routes</a> -->
+        <a href="#/allroutes/true" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
         <!-- show/hide statusColorMap -->
         <a href="#/stateview" class="btn btn-success">State View</a>
 			</div>
