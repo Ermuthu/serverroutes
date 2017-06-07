@@ -20,7 +20,7 @@ ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http
       $scope.loadOneItemPerSec(d);
     });
   };
-console.log($scope.flag);
+
   // Primary, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {
     var cnt;

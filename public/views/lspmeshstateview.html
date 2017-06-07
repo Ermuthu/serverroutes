@@ -33,9 +33,17 @@
           </div>
         </div>
         <!-- show/hide complete -->
-        <a href="#/allroutes" class="btn btn-success">All Routes</a>
+        <!-- <a href="#/allroutes" class="btn btn-success">All Routes</a> -->
+        <a href="#/lspmeshdetails" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
         <!-- show/hide statusColorMap -->
-        <a href="#/lspmeshdetails" class="btn btn-danger">Reset</a>
+        <!-- <label 
+          ng-class="showCompleteModel == false ? 'btn btn-success' : 'btn btn-danger'"
+          ng-model="showCompleteModel" uib-btn-checkbox
+          class="pull-right" style="margin: 0 4px; width: 125px;"
+          ng-click="showComplete()">
+            {{showCompleteModel == false ? showCompleteText : reset}}
+        </label> -->
+        <a href="#/lspmeshdetails" ng-model="stateviewflag" ng-class="flag == 'false' ? 'btn btn-danger' : 'btn btn-success'" uib-btn-checkbox>{{flag == 'false' ? reset : stateview }}</a>
 			</div>
 		</form>	
 	</div>

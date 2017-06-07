@@ -35,7 +35,8 @@
 				<!-- show/hide complete -->
         <a href="#/lspmeshdetails" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
         <!-- show/hide statusColorMap -->
-        <a href="#/stateview" class="btn btn-success">State View</a>
+        <a href="#/stateview/{{flag}}" ng-class="flag == 'false' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? stateview : reset }}</a>
+        <!-- <a href="#/stateview" class="btn btn-success">State View</a> -->
 			</div>
 		</form>	
 	</div>
