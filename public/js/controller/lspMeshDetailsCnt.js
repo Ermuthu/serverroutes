@@ -8,7 +8,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
   $scope.cnt = $routeParams.cnt;
-  $scope.flag = $routeParams.svflag;
+  $scope.flag = $routeParams.svflag == undefined ? false : $routeParams.svflag;
 
   // Load initially when the table page called.
   $scope.initTable = function() {

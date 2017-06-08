@@ -7,7 +7,7 @@ ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.loadAll;
-  $scope.flag = $location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false;
+  $scope.flag = $location.path().split('/')[1] == 'allroutes' ? ($location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false) : false;
   
   // Load initially when the table page called.
   $scope.initTable = function() {

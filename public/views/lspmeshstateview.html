@@ -43,7 +43,8 @@
           ng-click="showComplete()">
             {{showCompleteModel == false ? showCompleteText : reset}}
         </label> -->
-        <a href="#/lspmeshdetails" ng-model="stateviewflag" ng-class="flag == 'false' ? 'btn btn-danger' : 'btn btn-success'" uib-btn-checkbox>{{flag == 'false' ? reset : stateview }}</a>
+        <a ng-if="flag == 'false'" href="#/lspmeshdetails" ng-model="stateviewflag" ng-class="flag == 'false' ? 'btn btn-danger' : 'btn btn-success'" uib-btn-checkbox>{{flag == 'false' ? stateview : stateview }}</a>
+        <a ng-if="flag == 'true'" href="#/lspmeshdetails" ng-model="stateviewflag" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'" uib-btn-checkbox>{{flag == 'true' ? stateview : stateview }}</a>
 			</div>
 		</form>	
 	</div>
