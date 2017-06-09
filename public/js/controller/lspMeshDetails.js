@@ -6,6 +6,7 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
   $scope.reset = "Active Routers";
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
+  $scope.destStatus = [{ "value": "amr", "text": "AMR" }, { "value": "emeia", "text": "EMEIA" }, { "value": "apac", "text": "APAC" }];
   $scope.loadAll;
   $scope.flag = $location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false;
 

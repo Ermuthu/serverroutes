@@ -6,31 +6,87 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
   $scope.reset = "Active Routers";
   $scope.statusViewDD = [{ "value": "pri_cnt", "text": "Primary" }, { "value": "sec_cnt", "text": "Secondary" }, { "value": "ter_cnt", "text": "Tertiary" }];
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
+  $scope.destStatus = [{ "value": "amr", "text": "AMR" }, { "value": "emeia", "text": "EMEIA" }, { "value": "apac", "text": "APAC" }];
   $scope.loadAll;
   $scope.cnt = $routeParams.cnt;
+  // console.log($scope.cnt);
   $scope.flag = $routeParams.svflag == undefined ? false : $routeParams.svflag;
 
   // Load initially when the table page called.
   $scope.initTable = function() {
-    console.log($scope.flag);
+    // console.log($scope.flag);
     if($scope.flag == "true") {
       // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
       $http.get('/api/lspmeshcompleteheading').success(function(d) {
         $scope.header(d);
       });
-      // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
-      $http.get('/api/lspmeshcomplete/source/'+$scope.cnt).success(function(d) {
-        $scope.loadOneItemPerSec(d);
-      });  
+      if($scope.cnt == 'pri_cnt' || $scope.cnt == 'sec_cnt' || $scope.cnt == 'ter_cnt') {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmeshcomplete/source/'+$scope.cnt).success(function(d) {
+          $scope.loadOneItemPerSec(d);
+        });
+      } else if($scope.cnt == 'amr' || $scope.cnt == 'emeia' || $scope.cnt == 'apac') {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmeshcomplete/source/bit_map').success(function(d) {
+          var amr = [], emeia = [], apac = [];
+          _.map(d.hits.hits, function(d) {
+            if(d._id.substring(0,2) == 'us')
+              amr.push(d);
+            else if(d._id.substring(0,2) == 'de' || d._id.substring(0,2) == 'gb' || d._id.substring(0,2) == 'uk')
+              emeia.push(d);
+            else
+              apac.push(d);
+          });
+          if($scope.cnt == 'amr') {
+            $scope.loadOneItemPerSec({hits: {hits: amr}});
+          } else if($scope.cnt == 'emeia') {
+            $scope.loadOneItemPerSec({hits: {hits: emeia}});
+          } else {
+            $scope.loadOneItemPerSec({hits: {hits: apac}});
+          }
+        });
+      } else {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmeshcomplete/source/bit_map').success(function(d) {
+          $scope.loadOneItemPerSec(d);
+        });
+      }
     } else {
       // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
       $http.get('/api/lspmeshheading').success(function(d) {
         $scope.header(d);
       });
-      // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
-      $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
-        $scope.loadOneItemPerSec(d);
-      });
+      if($scope.cnt == 'pri_cnt' || $scope.cnt == 'sec_cnt' || $scope.cnt == 'ter_cnt') {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
+          $scope.loadOneItemPerSec(d);
+        });
+      } else if($scope.cnt == 'amr' || $scope.cnt == 'emeia' || $scope.cnt == 'apac') {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmesh/source/bit_map').success(function(d) {
+          var amr = [], emeia = [], apac = [];
+          _.map(d.hits.hits, function(d) {
+            if(d._id.substring(0,2) == 'us')
+              amr.push(d);
+            else if(d._id.substring(0,2) == 'de' || d._id.substring(0,2) == 'gb' || d._id.substring(0,2) == 'uk')
+              emeia.push(d);
+            else
+              apac.push(d);
+          });
+          if($scope.cnt == 'amr') {
+            $scope.loadOneItemPerSec({hits: {hits: amr}});
+          } else if($scope.cnt == 'emeia') {
+            $scope.loadOneItemPerSec({hits: {hits: emeia}});
+          } else {
+            $scope.loadOneItemPerSec({hits: {hits: apac}});
+          }
+        });
+      } else {
+        // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        $http.get('/api/lspmesh/source/'+$scope.cnt).success(function(d) {
+          $scope.loadOneItemPerSec(d);
+        });
+      }
     }
   };
 
