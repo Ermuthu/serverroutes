@@ -1,6 +1,6 @@
 ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeout, $window, $location) {
   // Title
-  $scope.label = "LSP Mesh Detail - Default Page";
+  $scope.label = "LSP Mesh Detail - Active Router";
   $scope.allroutes = "All Routers";
   $scope.stateview = "State View";
   $scope.reset = "Active Routers";
@@ -48,8 +48,8 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     if($scope.loadAll !== undefined) {
       $timeout.cancel($scope.loadAll);
     }
-    // for (var i = 1; i < d.hits.hits.length; i++) {
-    for (var i = 1; i < 6; i++) {
+    for (var i = 1; i < d.hits.hits.length+1; i++) {
+    // for (var i = 1; i < 6; i++) {
       $scope.loadAll = (function(y){
         $timeout(function() {
           if(y!=0){

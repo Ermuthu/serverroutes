@@ -1,6 +1,6 @@
 ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http, $timeout, $window, $location) {
   // Title
-  $scope.label = "LSP Mesh Detail - All Routes - Complete";
+  $scope.label = "LSP Mesh Detail - All Routes";
   $scope.allroutes = "All Routers";
   $scope.stateview = "State View";
   $scope.reset = "Active Routers";

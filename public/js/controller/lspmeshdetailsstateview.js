@@ -1,6 +1,5 @@
 ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http, $timeout, $window, $routeParams, $location) {
   // Title
-  // $scope.table = "LSP Mesh Detail";
   $scope.allroutes = "All Routers";
   $scope.stateview = "State View";
   $scope.reset = "Active Routers";
@@ -14,7 +13,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
   // Load initially when the table page called.
   $scope.initTable = function() {
     if($scope.flag == 'true') {
-      $scope.label = "LSP Mesh Detail - State View - Complete";
+      $scope.label = "LSP Mesh Detail - All Routers - State View";
       // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
       $http.get('/api/lspmeshcompleteheading').success(function(d) {
         $scope.header(d);
@@ -24,7 +23,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
         $scope.loadOneItemPerSec(d);
       });
     } else {
-      $scope.label = "LSP Mesh Detail - State View - Default";
+      $scope.label = "LSP Mesh Detail - Active Router - State View";
       // $http.get('/proxy/lsp_grid_complete/heading/_search?size=10000&pretty&query:matchAll').success(function(d) {
       $http.get('/api/lspmeshheading').success(function(d) {
         $scope.header(d);
