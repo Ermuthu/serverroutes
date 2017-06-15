@@ -26,7 +26,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
         else if($scope.cnt == 'ter_cnt')
           key = "Teritary";
         else
-          key = "Bit Map"
+          key = ""
         $scope.label = "LSP Mesh Detail - All Routers - " + key;
         // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
         $http.get('/api/lspmeshcomplete/source/'+$scope.cnt).success(function(d) {
