@@ -15,8 +15,8 @@
 			<div class="form-group" >
 				<!-- search box's -->
 				<label for="search" >Search :</label>
-				<input type="text" class="form-control" placeholder="Source routers" ng-model="srcroutes">
-				<input type="text" class="form-control" placeholder="Source routers" ng-model="highlight">
+				<input type="text" class="form-control" placeholder="Source Routers" ng-model="src_rtr">
+				<input type="text" class="form-control" placeholder="Number" ng-model="highlight">
   			<!-- Dropdown -->
         <!-- Drop Down for Source AMR,EMEIA,& APAC - DESTINATION -->
         <div class="pull-right">
@@ -46,7 +46,8 @@
         <!-- <a href="#/allroutes/true" class="btn btn-success">All Routes</a> -->
         <a href="#/allroutes/true" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
         <!-- show/hide statusColorMap -->
-        <a href="#/stateview/{{flag}}" class="btn btn-success">State View</a>
+        <a href="#/stateview/{{flag}}" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : stateview }}</a>
+        <!-- <a href="#/stateview/{{flag}}" class="btn btn-success">State View</a> -->
 			</div>
 		</form>	
 	</div>
@@ -71,17 +72,17 @@
         </td>
       </tr>
       <!-- Input value is empty -->
-      <tr ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+      <tr ng-show="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_source:{src_rtr:src_rtr}}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
         <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
         <!-- Default Values -->
         <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index" ng-include="'/views/partiallspmeshdetails.html'"></td>
       </tr>
       <!-- Input as value -->
-      <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
-        <td class="vertical-middle" style="white-space:pre;">{{value._source.src_rtr}}</td>
+      <tr ng-hide="highlight == undefined || highlight == ''" ng-repeat="(key, value) in tableStats | filter:{_source:{src_rtr:src_rtr}}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
+        <td class="vertical-middle" style="white-space:pre;">{{value._id}}</td>
         <td style="width: 10;" class="vertical-middle" ng-repeat="(k, v) in getTableStats(value._source.bit_map) track by $index">
           <!-- v>0 -->
-          <!-- <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
+          <a ng-if="v>0" href="#/table/{{value._id}}/collectionName/{{tableHeader[$index]}}">
             <button
               ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
               class="btn default-style"
@@ -89,9 +90,9 @@
               uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
               {{v}}
             </button>
-          </a> -->
+          </a>
           <!-- v==0 -->
-          <!-- <button
+          <button
             ng-if="v==0"
             ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
             class="btn default-style"
@@ -99,16 +100,16 @@
             uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}
             >
             {{v}}
-          </button> -->
+          </button>
           <!-- v<0 -->
-          <!-- <button
+          <button
             ng-if="v<0"
             ng-class="v == highlight ? 'highlighter-circle' : 'blur-circle'"
             class="btn default-style"
             tooltip-append-to-body="true"
             uib-tooltip=Source:{{value._source.src_rtr}}/Device:{{tableHeader[$index]}}>
             {{v}}
-          </button> -->
+          </button>
         </td>
       </tr>
     </tbody>

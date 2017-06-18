@@ -48,8 +48,8 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
     if($scope.loadAll !== undefined) {
       $timeout.cancel($scope.loadAll);
     }
-    for (var i = 1; i < d.hits.hits.length+1; i++) {
-    // for (var i = 1; i < 6; i++) {
+    // for (var i = 1; i < d.hits.hits.length+1; i++) {
+    for (var i = 1; i < 6; i++) {
       $scope.loadAll = (function(y){
         $timeout(function() {
           if(y!=0){
