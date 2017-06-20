@@ -1,116 +1,13 @@
 <div ng-init="initMapController()">
+	<!-- Title -->
 	<h1>{{map}}</h1>
+
+	<!-- Loader -->
 	<div ng-hide="isLoading === false" class="container text-center" uib-alert ng-class="'alert-danger'">
 		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 		<span style="font-weight: bolder;">Loading... Please Wait...</span>
 	</div>
-	<!-- <div class="text-center" ng-hide="isLoading === true">
-		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-		<span style="font-weight: bolder;">Loading... Please Wait...</span>
-	</div> -->
+
+	<!-- Map using SVG.js -->
 	<div id="drawing"></div>
-	<!-- SVG -->
-	<!-- <div id="drawing"></div> -->
-	<!-- <svg width="3650" height="1060"> -->
-		<!-- <a xlink:href="#/status/{{test}}"> -->
-		<!-- <a class="cursor-pointer" ng-href="#/status" xlink:href=""> -->
-		<!-- radialGradient id="drawMultiLine">
-      	<stop offset="50%" ng-style="{'stop-color': 'red'}" />
-      	<stop offset="50%" ng-style="{'stop-color': 'yellow'}" />
-    	</radialGradient> -->
-		<!-- <a class="cursor-pointer" ng-href="#/status/{{link._source.source}}{{link._source.bundle_intf}}" xlink:href="" ng-repeat="(l, link) in linkHits track by $index"> -->
-			<!-- <div id="drawing"></div> -->
-			<!-- <path
-				stroke="url(#drawMultiLine)"
-				ng-init="coords(link._source.src_x,link._source.src_y,link._source.dst_x,link._source.dst_y)"
-				class="global-clr-nde-lnk"
-				
-				tooltip-append-to-body="true"
-				uib-tooltip={{link._source.out_bw_used}}
-				ng-mouseover="hoverIn(link._source.src_x,link._source.src_y,link._source.dst_x,link._source.dst_y)">
-				<title>{{link._source.out_bw_used}}</title>
-			</path>
-			<defs>
-				<linearGradient id="drawMultiLine">
-		    	<stop offset="50%" ng-style="{'stop-color': strokeColor(link._source.in_bw_used)}" />
-		    	<stop offset="50%" ng-style="{'stop-color': strokeColor(link._source.out_bw_used)}" />
-		  	</linearGradient>
-			</defs> -->
-			<!-- <path
-				ng-style="{'stroke-dasharray': lineCenter(link._source.src_x,link._source.src_y,link._source.dst_x,link._source.dst_y)}"
-				ng-class="{'blue-stroke': link._source.out_bw_used > 0,
-					'cyan-stroke': link._source.out_bw_used > 10,
-					'lime-green-stroke': link._source.out_bw_used > 20,
-					'vivid-green-stroke': link._source.out_bw_used > 30,
-					'yellow-stroke': link._source.out_bw_used > 40,
-					'vivid-yellow-stroke': link._source.out_bw_used > 50,
-					'vivid-orange-stroke': link._source.out_bw_used > 60,
-					'vivid-orange2-stroke': link._source.out_bw_used > 70,
-					'red-stroke': link._source.out_bw_used > 80,
-					'pink-stroke': link._source.out_bw_used > 90}"
-				class="global-clr-nde-lnk"
-				ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
-				tooltip-append-to-body="true"
-				uib-tooltip={{link._source.out_bw_used}}
-				ng-mouseover="hoverIn(link._source.src_x,link._source.src_y,link._source.dst_x,link._source.dst_y)">
-				<title>{{link._source.out_bw_used}}</title>
-			</path> -->
-			<!-- <linearGradient id="drawMultiLine" gradientUnits="userSpaceOnUse"> -->
-			<!-- <linearGradient id="drawMultiLine" ng-show="highlightNode.length==0">
-      	<stop offset="50%" ng-style="{'stop-color': 'red'}" />
-      	<stop offset="50%" ng-style="{'stop-color': 'yellow'}" />
-    	</linearGradient>
-    	<linearGradient id="drawMultiLine" ng-show="highlightNode.length>0">
-      	<stop offset="50%" ng-style="{'stop-color': '#ecf0f1'}" />
-      	<stop offset="50%" ng-style="{'stop-color': '#ecf0f1'}" />
-    	</linearGradient> -->
-
-  	  <!-- <rect width="600" height="200" fill="url(#solids)" />
-    	<defs>
-		    <linearGradient id="solids" x1="0%" y1="0%" x2="100%" y2="0%">
-	      	<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
-		      <stop offset="33%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
-		      <stop offset="33%" style="stop-color:rgb(0,255,0);stop-opacity:1" />
-		      <stop offset="67%" style="stop-color:rgb(0,255,0);stop-opacity:1" />
-		      <stop offset="67%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
-		      <stop offset="100%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
-		    </linearGradient>
-		  </defs> -->
-		<!-- </a> -->
-
-		<!-- <defs>
-      <linearGradient id="grad1">
-        <stop offset="50%" stop-color="red"/>
-        <stop offset="50%" stop-color="green"/>
-      </linearGradient>
-    </defs> -->
-    <!-- <path d="M0 10 L400 400" stroke="url(#grad1)" stroke-width="10" fill="transparent"/> -->
-
-		<!-- <path ng-repeat="(ltkey, lt) in highlightNode track by $index" class="black-clr-nde-lnk" ng-attr-d="M{{lt.src_x}} {{lt.src_y}} L{{lt.dest_x}} {{lt.dest_y}}" /> -->
-		
-		<!-- <a class="cursor-pointer" ng-href="#/status/{{value._id}}" xlink:href="" ng-repeat="(key, value) in nodeHits track by $index">
-	  	<rect ng-attr-x="{{value._source.x - 6}}" ng-attr-y="{{value._source.y - 13}}" width=100 height=20 style="fill:#e74c3c; stroke: #c0392b; fill-opacity:0.8" tooltip-append-to-body="true" uib-tooltip={{value._id}} />
-	  </a>
-
-		<text id="moveToFront" ng-repeat="(k, v) in nodeHits track by $index" ng-attr-x="{{v._source.x}}" ng-attr-y="{{v._source.y}}" style="fill:#FFF;" font-size="11" font-family="sans-serif">{{v._id}}</text> -->
-	<!-- </svg> -->
-	
 </div>
-
-
-
-<!-- <path ng-class="highlightNode(link._source.source, link._source.dest) ? 'green-clr-nde-lnk' : 'cyan-clr-nde-lnk'" ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}" tooltip-append-to-body="true" uib-tooltip={{link._source.bw_used}} /> 
-
-ng-class="{'cyan-clr-nde-lnk': link._source.bw_used > -0 && link._source.bw_used < 11, 'red-clr-nde-lnk': link._source.bw_used > 20 && link._source.bw_used < 31, 'yellow-clr-nde-lnk': link._source.bw_used > 30 && link._source.bw_used < 41}"
-
-ng-style="{'stroke': strokeColor(link._source.out_bw_used)}"
-
-stroke="url(#grad1)"
-
-ng-class="link._source.out_bw_used > 1 ? 'showline' : ''"
-
-ng-attr-d="M{{link._source.src_x}} {{link._source.src_y}} L{{link._source.dst_x}} {{link._source.dst_y}}"
-
-#ecf0f1 - BLUR
-
--->
