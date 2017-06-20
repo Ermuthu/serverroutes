@@ -146,8 +146,8 @@ ngElastic.config(['$routeProvider', '$locationProvider' , 'cfpLoadingBarProvider
     controller: 'mapController'
   }).
   when('/map/:sourcenames', {
-    templateUrl: 'views/map.html',
-    controller: 'mapController'
+    templateUrl: 'views/maphighlight.html',
+    controller: 'mapHighlightController'
   }).
   otherwise({
    redirectTo: '/'
