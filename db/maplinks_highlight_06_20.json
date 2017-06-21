@@ -1,0 +1,2523 @@
+{
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 132,
+    "max_score": 2,
+    "hits": [
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-6/1/1defra1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.482656",
+          "bundle_intf": "ae1",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "1.004260"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-5/1/0defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.382607",
+          "bundle_intf": "ae18",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "1.382122"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-9/0/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.437045",
+          "bundle_intf": "ae13",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "0.064973"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-6/1/0defra1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.272418",
+          "bundle_intf": "ae15",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.620415"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet12gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet15gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet4gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet7gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet49/1uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1100",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet19gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet5gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet7gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet9gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-0/0/3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.153624",
+          "bundle_intf": "ae1",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.375843"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-2/0/2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.424598",
+          "bundle_intf": "ae0",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.074859"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-1/1/0ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw2xe-0/0/0uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "ieork1-bbisp-gw2",
+          "src_x": "3000",
+          "src_y": "110",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-6/0/0uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.816801",
+          "bundle_intf": "ae14",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.243681"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-4/0/2sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw2et-2/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae11",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "deber3-bbisp-gw2",
+          "src_x": "3400",
+          "src_y": "380",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-4/1/1defra1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.202644",
+          "bundle_intf": "ae0",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "0.384545"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-5/1/1defra1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.202644",
+          "bundle_intf": "ae0",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "0.384545"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-8/0/0defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.254939",
+          "bundle_intf": "ae17",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "2.686281"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-7/0/0defra1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "4.349942",
+          "bundle_intf": "ae16",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "1.528443"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-6/1/1defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.323602",
+          "bundle_intf": "ae0",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.346061"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-7/1/1uklon5-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "7.240958",
+          "bundle_intf": "ae18",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "65",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.331664"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet14gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet17gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet19gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet3gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet9gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet14gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet49/1uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-0/0/2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.424598",
+          "bundle_intf": "ae0",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.074859"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-1/0/2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.424598",
+          "bundle_intf": "ae0",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.074859"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-2/0/3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.153624",
+          "bundle_intf": "ae1",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.375843"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-8/0/1sesto4-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3400",
+          "dest": "sesto4-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-0/0/3sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-1/0/2sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-3/0/2sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-3/0/3sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-8/0/0uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw2et-9/1/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae11",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon5-bbisp-gw2",
+          "src_x": "2820",
+          "src_y": "155",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw1et-8/0/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon6-bbisp-gw1",
+          "src_x": "2670",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1et-2/1/1dedus1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.214372",
+          "bundle_intf": "ae1",
+          "dst_x": "3400",
+          "dest": "dedus1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "240",
+          "source": "dedus1-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "310",
+          "out_bw_used": "0.663593"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1et-3/1/1dedus1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.214372",
+          "bundle_intf": "ae1",
+          "dst_x": "3400",
+          "dest": "dedus1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "240",
+          "source": "dedus1-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "310",
+          "out_bw_used": "0.663593"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-9/0/1uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.576854",
+          "bundle_intf": "ae14",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "0.189395"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-9/0/1nlams2-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.342128",
+          "bundle_intf": "ae17",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "320",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.080264"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw2et-8/0/1uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.684024",
+          "bundle_intf": "ae16",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "defra3-bbisp-gw2",
+          "src_x": "3030",
+          "src_y": "440",
+          "out_bw_used": "0.108606"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet1gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet10gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet11gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet13gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet16gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet20gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet5gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet10gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet11gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet16gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet18gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet20gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-1/0/3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.153624",
+          "bundle_intf": "ae1",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.375843"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-1/2/3ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-6/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.171833",
+          "bundle_intf": "ae1",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.327370"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-7/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.171833",
+          "bundle_intf": "ae1",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.327370"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw2et-7/1/1uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "7.492081",
+          "bundle_intf": "ae14",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "nlams2-bbisp-gw2",
+          "src_x": "3160",
+          "src_y": "250",
+          "out_bw_used": "0.729142"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-1/0/3sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-2/0/2sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-4/0/3sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-7/0/0uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw2et-6/1/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon5-bbisp-gw2",
+          "src_x": "2820",
+          "src_y": "155",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw2et-7/1/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon5-bbisp-gw2",
+          "src_x": "2820",
+          "src_y": "155",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw1et-6/0/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon6-bbisp-gw1",
+          "src_x": "2670",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw1et-7/0/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon6-bbisp-gw1",
+          "src_x": "2670",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-0/1/1deber3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3400",
+          "dest": "deber3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "380",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-3/1/0defra1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae11",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-2/1/0nlams2-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1100",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "320",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1et-0/1/1dedus1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.120706",
+          "bundle_intf": "ae0",
+          "dst_x": "3400",
+          "dest": "dedus1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "240",
+          "source": "dedus1-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "310",
+          "out_bw_used": "0.286320"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw2et-1/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae12",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "dedus1-bbisp-gw2",
+          "src_x": "3400",
+          "src_y": "240",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-7/1/0defra1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.482656",
+          "bundle_intf": "ae1",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "1.004260"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-8/0/1uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.731099",
+          "bundle_intf": "ae12",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "2.727840"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw2et-6/0/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.455162",
+          "bundle_intf": "ae15",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "defra3-bbisp-gw2",
+          "src_x": "3030",
+          "src_y": "440",
+          "out_bw_used": "0.044462"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet2gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet8gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet12gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet13gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet15gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet17gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel16",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet6gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-9/0/3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.153624",
+          "bundle_intf": "ae1",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.375843"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-0/3/0ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-1/0/3ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-0/0/2sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1xe-2/0/3sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "sesto4-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "170",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-9/0/0uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-6/1/0uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-8/1/0uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae11",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-1/1/1deber3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3400",
+          "dest": "deber3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "380",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-2/1/1deber3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3400",
+          "dest": "deber3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "380",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1et-3/1/1deber3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3400",
+          "dest": "deber3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "380",
+          "source": "deber3-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "450",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1et-1/1/1dedus1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.120706",
+          "bundle_intf": "ae0",
+          "dst_x": "3400",
+          "dest": "dedus1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "240",
+          "source": "dedus1-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "310",
+          "out_bw_used": "0.286320"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1et-1/1/0defra3-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.700873",
+          "bundle_intf": "ae11",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "dedus1-bbisp-gw1",
+          "src_x": "3400",
+          "src_y": "310",
+          "out_bw_used": "2.632547"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1et-7/1/1nlams2-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.309550",
+          "bundle_intf": "ae18",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "320",
+          "source": "defra1-bbisp-gw1",
+          "src_x": "2860",
+          "src_y": "510",
+          "out_bw_used": "0.620117"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-6/1/0defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.382607",
+          "bundle_intf": "ae18",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "1.382122"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-7/0/0defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.254939",
+          "bundle_intf": "ae17",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "2.686281"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2et-6/0/0sesto4-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3230",
+          "dest": "sesto4-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "defra1-bbisp-gw2",
+          "src_x": "2860",
+          "src_y": "440",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-5/1/0defra1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.272418",
+          "bundle_intf": "ae15",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.620415"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-8/0/0defra1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "4.349942",
+          "bundle_intf": "ae16",
+          "dst_x": "2860",
+          "dest": "defra1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "510",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "1.528443"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-5/1/1defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.323602",
+          "bundle_intf": "ae0",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.346061"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-7/1/0defra3-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.340892",
+          "bundle_intf": "ae1",
+          "dst_x": "3030",
+          "dest": "defra3-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "440",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "0.261811"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1et-4/1/1sesto4-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "16.350393",
+          "bundle_intf": "ae1101",
+          "dst_x": "3400",
+          "dest": "sesto4-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "170",
+          "source": "defra3-bbisp-gw1",
+          "src_x": "3030",
+          "src_y": "510",
+          "out_bw_used": "7.628306"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet18gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Unknown",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1Ethernet6gbmnc1-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "Port-Channel1101",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "gbmnc1-bb-sw1",
+          "src_x": "3150",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet1gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet4gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2Ethernet8gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "3.584620",
+          "bundle_intf": "Port-Channel17",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bb-sw2",
+          "src_x": "3150",
+          "src_y": "130",
+          "out_bw_used": "3.373402"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-10/0/2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.424598",
+          "bundle_intf": "ae0",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.074859"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-10/0/3gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "2.153624",
+          "bundle_intf": "ae1",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.375843"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1xe-9/0/2gbmnc1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "1.424598",
+          "bundle_intf": "ae0",
+          "dst_x": "3300",
+          "dest": "gbmnc1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "90",
+          "source": "gbmnc1-bbisp-gw1",
+          "src_x": "3300",
+          "src_y": "20",
+          "out_bw_used": "1.074859"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-0/0/3ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-0/1/0ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-0/2/3ieork1-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "3000",
+          "dest": "ieork1-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1xe-0/0/0uklon5-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "65",
+          "source": "ieork1-bbisp-gw1",
+          "src_x": "3000",
+          "src_y": "50",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-4/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.171477",
+          "bundle_intf": "ae0",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.321999"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-5/1/0nlams2-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0.171477",
+          "bundle_intf": "ae0",
+          "dst_x": "3160",
+          "dest": "nlams2-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "250",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.321999"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1et-9/1/0uklon5-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "7.276482",
+          "bundle_intf": "ae13",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "65",
+          "source": "nlams2-bbisp-gw1",
+          "src_x": "3160",
+          "src_y": "320",
+          "out_bw_used": "0.318768"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-6/0/0uklon5-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae0",
+          "dst_x": "2820",
+          "dest": "uklon5-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "155",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-7/1/0uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae10",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1et-9/1/0uklon6-bbisp-gw1",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae11",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw1",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "20",
+          "source": "uklon5-bbisp-gw1",
+          "src_x": "2820",
+          "src_y": "65",
+          "out_bw_used": "0"
+        }
+      },
+      {
+        "_index": "map_link_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw1et-9/0/0uklon6-bbisp-gw2",
+        "_score": 2,
+        "_source": {
+          "in_bw_used": "0",
+          "bundle_intf": "ae1",
+          "dst_x": "2670",
+          "dest": "uklon6-bbisp-gw2",
+          "dst_region": 2,
+          "src_region": 2,
+          "dst_y": "110",
+          "source": "uklon6-bbisp-gw1",
+          "src_x": "2670",
+          "src_y": "20",
+          "out_bw_used": "0"
+        }
+      }
+    ]
+  }
+}

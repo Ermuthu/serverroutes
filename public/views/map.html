@@ -1,6 +1,37 @@
+<!-- <div style="zoom:.5;-moz-transform: scale(.9);" ng-init="initMapController()"> -->
 <div ng-init="initMapController()">
 	<!-- Title -->
-	<h1>{{map}}</h1>
+	<div class="col-sm-12 bottom-line">
+    <h3>{{map}}</h3>
+  </div>
+
+  <!--  -->
+  <div class="col-sm-12 bottom-line">
+    <form action="" class="form-inline text-center">
+			<div class="form-group" >
+  			<!-- Dropdown -->
+        <!-- Drop Down for Source AMR,EMEIA,& APAC - DESTINATION -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 5px 0 5px;" ng-model="dest" id="" class="form-control" ng-options="dest.value as dest.text for dest in destDropdown" ng-change="dropdown(src,dest)">
+              <option value="">Destination</option>
+            </select>
+          </div>
+        </div>
+        <!-- Drop Down for Source AMR,EMEIA,& APAC - SOURCE -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 5px 0 5px;" ng-model="src" id="" class="form-control" ng-options="src.value as src.text for src in sourceDropdown" ng-change="dropdown(src,dest)">
+              <option value="">Source</option>
+            </select>
+          </div>
+        </div>
+        <!-- Default Map -->
+        <a href="#/map" ng-click="defaultMap()" class="btn btn-success">Default Map</a>
+			</div>
+		</form>	
+	</div>
+ 	<br/>
 
 	<!-- Loader -->
 	<div ng-hide="isLoading === false" class="container text-center" uib-alert ng-class="'alert-danger'">

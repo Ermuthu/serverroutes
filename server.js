@@ -48,6 +48,7 @@ app.get('/api/lspmeshdetailstats', Api.lspMeshDetailStats);
 app.get('/api/lspmeshdetailstatsold', Api.lspMeshDetailStatsOld);
 app.get('/api/mapnodes', Api.getMapNodes);
 app.get('/api/maplinks', Api.getMapLinks);
+app.get('/api/maplinkshighlight', Api.getMapLinksHighlight);
 // LSP Mesh Default and complete routes
 app.get('/api/lspmeshheading', Api.lspMeshHeading);
 app.get('/api/lspmeshcompleteheading', Api.lspMeshCompleteHeading);

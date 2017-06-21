@@ -186,5 +186,9 @@ module.exports = {
 		// var mapLinks = './db/maplinks_04_19.json';
 		// var mapLinks = './db/maplinks_04_26.json';
 		res.send(jsonfile.readFileSync(mapLinks));
+	},
+	getMapLinksHighlight: function(req, res) {
+		var mapLinksHighlight = './db/maplinks_highlight_06_20.json';
+		res.send(jsonfile.readFileSync(mapLinksHighlight));
 	}
 }

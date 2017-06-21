@@ -1,8 +1,17 @@
 ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout, $q) {
 
 	$scope.initMapController = function() {
+  	$scope.sourceDropdown = [{ "value": "1", "text": "AMR" }, { "value": "2", "text": "EMEIA" }, { "value": "3", "text": "APAC" }];
+  	$scope.destDropdown = [{ "value": "1", "text": "AMR" }, { "value": "2", "text": "EMEIA" }, { "value": "3", "text": "APAC" }];
 		$scope.map = "Connected Chart";
 		$scope.isLoading = false;
+		// Init Map onLoad
+		$http.get('/api/maplinks').success(function(d) {
+			$scope.links(d);
+		}).error(function(e) {
+			console.log(e);
+		});
+		$scope.nodes();
 	};
 	$scope.draw = SVG('drawing').size(3650, 1060);
 
@@ -15,77 +24,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 	  var removeUnderscore = _.replace(toStr, /[_-]/g, ",");
 	  $scope.node_coor= _.split(removeUnderscore, ',');
  	}
-
-	$http.get('/api/maplinks').success(function(l) {
-		$scope.isLoading = true;
-		$scope.linkHits = l.hits.hits;
-		var path;
-		_.map($scope.linkHits, function(d) {
-			var linear = $scope.draw.gradient('linear', function(stop) {
-			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
-			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
-			});
-			/*
-			* 1. if src_y and dst_y are same, add 1 to src_y
-			* 2. else if src_x and dst_x are same, add 1 to src_x
-			* 3. else src_y and dst_y (default)
-			*/
-			if(d._source.src_y === d._source.dst_y) {
-				var src_y = parseInt(d._source.src_y)+1;
-				path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-					.click(function() {
-						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-					})
-					.attr('class','cursor-pointer')
-			} else if(d._source.src_x === d._source.dst_x) {
-				var src_x = parseInt(d._source.src_x)+1;
-				path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-					.click(function() {
-						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-					})
-					.attr('class','cursor-pointer')
-			} else {
-				path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-					.click(function() {
-						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-					})
-					.attr('class','cursor-pointer')
-			}
-			path.stroke(linear)
-			path.stroke({ width: 3, linecap: 'round', linejoin: 'round'})
-			path.back();
-		});
-		$scope.isLoading = false;
-	}).error(function(e) {
-		console.log(e);
-	});
-	
-	$http.get('/api/mapnodes').success(function(n) {
-		$scope.nodeHits = n.hits.hits;
-		_.map($scope.nodeHits, function(d) {
-			// draw rectangle
-			$scope.draw.rect(100,20)
-				.fill('#e74c3c')
-				.move(d._source.x - 6,d._source.y - 13)
-				.stroke('#c0392b')
-				.attr('class','cursor-pointer')
-				// anchor tag
-				.click(function() {
-					$window.location.href = '#/status/'+d._id;
-				})
-			// text inside rectangle
-			$scope.draw.text(d._id)
-				.move(d._source.x,d._source.y-5)
-				.font({ fill: '#fff', size: 11 })
-				.attr('class','cursor-pointer')
-				.click(function() {
-					$window.location.href = '#/status/'+d._id;
-				});
-		});
-	}).error(function(e) {
-		console.log(e);
-	});
-
+ 	
 	// stroke color based on bw_used value
 	$scope.strokeColor = function (bw) {
  		if(bw>0 && bw<11)
@@ -111,5 +50,110 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
  		else
 			return '#4D72E3';
  	};
+
+ 	$scope.defaultMap = function(d) {
+ 		$scope.path = $scope.draw.clear();
+ 		$scope.src = null;
+ 		$scope.dest = null;
+ 		$http.get('/api/maplinks').success(function(l) {
+			$scope.links(l);
+		}).error(function(e) {
+			console.log(e);
+		});
+		$scope.nodes();
+ 	}
+
+ 	// Dropdown's
+ 	$scope.dropdown = function(src, dest) {
+ 		if(!_.isUndefined(src) && !_.isUndefined(dest) && !_.isNull(src) && !_.isNull(dest)) {
+ 			$scope.path = $scope.draw.clear();
+ 			console.log(src,dest);
+ 			if(src == 1 && dest == 1){
+	 			$http.get('/api/maplinkshighlight').success(function(d) {
+	 				$scope.links(d);
+	 			}).error(function(e) {
+	 				console.log(e);
+	 			});
+	 		} else {
+	 			$http.get('/api/maplinks').success(function(d) {
+	 				$scope.links(d);
+	 			}).error(function(e) {
+	 				console.log(e);
+	 			});
+	 		}
+ 			$scope.nodes();
+ 		}
+  }
+
+  $scope.links = function(d) {
+  	$scope.isLoading = true;
+		$scope.linkHits = d.hits.hits;
+		var path;
+		_.map($scope.linkHits, function(d) {
+			var linear = $scope.draw.gradient('linear', function(stop) {
+			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
+			  stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
+			});
+			/*
+			* 1. if src_y and dst_y are same, add 1 to src_y
+			* 2. else if src_x and dst_x are same, add 1 to src_x
+			* 3. else src_y and dst_y (default)
+			*/
+			if(d._source.src_y === d._source.dst_y) {
+				var src_y = parseInt(d._source.src_y)+1;
+				$scope.path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
+			} else if(d._source.src_x === d._source.dst_x) {
+				var src_x = parseInt(d._source.src_x)+1;
+				$scope.path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
+			} else {
+				$scope.path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+					.click(function() {
+						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+					})
+					.attr('class','cursor-pointer')
+			}
+			$scope.path.stroke(linear)
+			$scope.path.stroke({ width: 3, linecap: 'round', linejoin: 'round'})
+			$scope.path.back();
+		});
+		$scope.isLoading = false;
+  }
+
+  // Nodes
+  $scope.nodes = function() {
+  	$http.get('/api/mapnodes').success(function(n) {
+			$scope.nodeHits = n.hits.hits;
+			_.map($scope.nodeHits, function(d) {
+				// draw rectangle
+				$scope.draw.rect(100,20)
+					.fill('#e74c3c')
+					.move(d._source.x - 6,d._source.y - 13)
+					.stroke('#c0392b')
+					.attr('class','cursor-pointer')
+					// anchor tag
+					.click(function() {
+						$window.location.href = '#/status/'+d._id;
+					})
+				// text inside rectangle
+				$scope.draw.text(d._id)
+					.move(d._source.x,d._source.y-5)
+					.font({ fill: '#fff', size: 11 })
+					.attr('class','cursor-pointer')
+					.click(function() {
+						$window.location.href = '#/status/'+d._id;
+					});
+			});
+		}).error(function(e) {
+			console.log(e);
+		});
+  }
 
 });
