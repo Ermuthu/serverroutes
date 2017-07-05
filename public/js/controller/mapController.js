@@ -13,7 +13,53 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 		});
 		$scope.nodes();
 	};
-	$scope.draw = SVG('drawing').size(3650, 1060);
+	$("#zoom1").anythingZoomer({
+	    smallArea: 'small',
+	    largeArea: 'large',
+	    clone: true,
+	    overlay: false,
+	    speed: 100,
+	    edge: 'auto',
+	    offsetX: 0,
+	    offsetY: 0,
+	    switchEvent: 'dblclick',
+	    delay: 0,
+	    edit: false,
+	    initialzied: function(e, zoomer) {},
+	    zoom: function(e, zoomer) {},
+	    unzoom: function(e, zoomer) {}
+		});
+	// $("#zoomSVG").anythingZoomer({
+	//     smallArea: 'small',
+	//     largeArea: 'large',
+	//     clone: true,
+	//     overlay: false,
+	//     speed: 100,
+	//     edge: 'auto',
+	//     offsetX: 0,
+	//     offsetY: 0,
+	//     switchEvent: 'dblclick',
+	//     delay: 0,
+	//     edit: false,
+	//     initialzied: function(e, zoomer) {},
+	//     zoom: function(e, zoomer) {},
+	//     unzoom: function(e, zoomer) {}
+	// 	});
+	$scope.draw = SVG('drawing').size(3650, 1060)
+		.click(function(d) {
+			$("#drawing1").empty();
+		});
+	// $scope.draw = SVG('drawing').size(3650, 1060).style('position: absolute;width: 1056px;height: 500px;top: 0px; left: 0px;zoom:.35');
+	// $scope.draw = SVG('drawing')
+	// 	.size(3650, 1060)
+	// 	.style('position: absolute;width: 1056px;height: 500px;top: 0px; left: 0px')
+	// 	.mouseup(function(d) {
+	// 		console.log(d);
+	// 	})
+	// 	.mousedown(function(d) {
+	// 		this.fill({ border: '2px red' })
+	// 		console.log("mousedown",d);
+	// 	});
 
 	if($routeParams.sourcenames != undefined){
 		var rp = $routeParams.sourcenames,
@@ -106,22 +152,39 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
 						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
 					})
 					.attr('class','cursor-pointer')
+					.mouseover(function(mover) {
+						console.log("====",mover);
+						$scope.draw1 = SVG('drawing1')
+						$scope.draw1.size(500, 100)
+							.attr('class','mover')
+							.style({position: 'absolute', top: mover.screenY, left: mover.screenY, border: '5px solid', background: '#CCC'});
+							// .path('M420 71 L650 70');
+						$scope.path = $scope.draw1.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+							.stroke(linear)
+							.stroke({ width: 3, linecap: 'round', linejoin: 'round'});
+							// .front();
+							// .style({top: mover.screenY, left: mover.screenY});
+
+					})
+					.mouseout(function(mout) {
+						// $scope.draw1.remove();
+					});
 			} else if(d._source.src_x === d._source.dst_x) {
 				var src_x = parseInt(d._source.src_x)+1;
 				$scope.path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
 					.click(function() {
 						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
 					})
-					.attr('class','cursor-pointer')
+					.attr('class','cursor-pointer');
 			} else {
 				$scope.path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
 					.click(function() {
 						$window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
 					})
-					.attr('class','cursor-pointer')
+					.attr('class','cursor-pointer');
 			}
 			$scope.path.stroke(linear)
-			$scope.path.stroke({ width: 3, linecap: 'round', linejoin: 'round'})
+			$scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
 			$scope.path.back();
 		});
 		$scope.isLoading = false;
