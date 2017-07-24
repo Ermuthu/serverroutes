@@ -175,16 +175,18 @@ module.exports = {
 	 * LSP Mesh Default and complete API ends
 	 */
 	getMapNodes: function(req, res) {
-		var mapNodes = './db/mapnodes_03_25.json';
+		// var mapNodes = './db/mapnodes_03_25.json';
+		var mapNodes = './db/mapnodes_07_22.json';
 		res.send(jsonfile.readFileSync(mapNodes));
 	},
 	getMapLinks: function(req, res) {
 		// var mapLinks = './db/maplinks_03_25.json';
 		// var mapLinks = './db/maplinks_03_31.json';
-		var mapLinks = './db/maplinks_04_12.json';
+		// var mapLinks = './db/maplinks_04_12.json'; // working
 		// var mapLinks = './db/maplinks_04_18.json';
 		// var mapLinks = './db/maplinks_04_19.json';
 		// var mapLinks = './db/maplinks_04_26.json';
+		var mapLinks = './db/maplinks_07_22.json';
 		res.send(jsonfile.readFileSync(mapLinks));
 	},
 	getMapLinksHighlight: function(req, res) {
