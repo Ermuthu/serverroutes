@@ -8,6 +8,7 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
   $scope.statusSourceDD = [{ "value": "region_r1", "text": "AMR" }, { "value": "region_r2", "text": "EMEIA" }, { "value": "region_r3", "text": "APAC" }];
   $scope.destStatus = [{ "value": "amr", "text": "AMR" }, { "value": "emeia", "text": "EMEIA" }, { "value": "apac", "text": "APAC" }];
   $scope.loadAll;
+  $scope.ar = 'false';
   $scope.flag = $location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false;
 
   // Load initially when the table page called.
@@ -21,6 +22,16 @@ ngElastic.controller('lspMeshDetailsController', function($scope, $http, $timeou
       $scope.loadOneItemPerSec(d);
     });
   };
+
+  // All Routers Dropdown
+  $scope.arDropdown = function(ar) {
+    $window.location.href = '#/allroutes/' + ar;
+  }
+
+  // StateView Dropdown
+  $scope.svDropdown = function(sv) {
+    $window.location.href = '#/stateview/' + sv;
+  }
 
   // Primary, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {

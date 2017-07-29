@@ -102,6 +102,19 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     }
   };
 
+  // All Routers Dropdown
+  $scope.arDropdown = function(ar) {
+    if(ar == 'false')
+      $window.location.href = '#/allroutes/true';
+    else
+      $window.location.href = '#/lspmeshdetails';
+  }
+
+  // StateView Dropdown
+  $scope.svDropdown = function(sv) {
+    $window.location.href = '#/stateview/' + sv;
+  }
+
   // Primary, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {
     var cnt;

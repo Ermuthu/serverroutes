@@ -8,6 +8,7 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
   $scope.destStatus = [{ "value": "amr", "text": "AMR" }, { "value": "emeia", "text": "EMEIA" }, { "value": "apac", "text": "APAC" }];
   $scope.loadAll;
   $scope.flag = $location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false;
+  $scope.sv = $routeParams.flag;
   $scope.isStateView = $location.path().split('/')[1] != undefined ? $location.path().split('/')[1] : false;
   
   // Load initially when the table page called.
@@ -34,6 +35,19 @@ ngElastic.controller('lspMeshDetailsStateViewController', function($scope, $http
       });
     }
   };
+
+  // All Routers Dropdown
+  $scope.arDropdown = function(ar) {
+    if(ar == 'false')
+      $window.location.href = '#/allroutes/true';
+    else
+      $window.location.href = '#/lspmeshdetails';
+  }
+
+  // StateView Dropdown
+  $scope.svDropdown = function(sv) {
+    $window.location.href = '#/stateview/' + sv;
+  }
 
   // Primary, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {

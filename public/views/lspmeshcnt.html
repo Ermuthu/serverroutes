@@ -42,11 +42,30 @@
             </select>
           </div>
         </div>
+        <!-- State View -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 5px 0 5px;" ng-model="sv" id="" class="form-control" ng-change="svDropdown(sv)">
+              <option value="" disabled="">Select StateView</option>
+              <option ng-value="flag">{{reset}}</option>
+            </select>
+          </div>
+        </div>
+        <!-- All Routers -->
+        <div class="pull-right">
+          <div class="form-group">
+            <select style="margin: 0 5px 0 5px;" ng-model="ar" id="" class="form-control" ng-change="arDropdown(ar)">
+              <option value="" disabled="">Select Routers</option>
+              <option ng-show="flag == 'false'" ng-value="flag">{{allroutes}}</option>
+              <option ng-show="flag == 'true'" ng-value="flag">{{reset}}</option>
+            </select>
+          </div>
+        </div>
 
 				<!-- show/hide complete -->
-        <a href="#/lspmeshdetails" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a>
+        <!-- <a href="#/lspmeshdetails" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : allroutes }}</a> -->
         <!-- show/hide statusColorMap -->
-        <a href="#/stateview/{{flag}}" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : stateview }}</a>
+        <!-- <a href="#/stateview/{{flag}}" ng-class="flag == 'true' ? 'btn btn-danger' : 'btn btn-success'">{{flag == 'true' ? reset : stateview }}</a> -->
 			</div>
 		</form>	
 	</div>

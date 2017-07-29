@@ -1,4 +1,4 @@
-ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http, $timeout, $window, $location) {
+ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http, $timeout, $window, $location, $routeParams) {
   // Title
   $scope.label = "LSP Mesh Detail - All Routes";
   $scope.allroutes = "All Routers";
@@ -9,6 +9,7 @@ ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http
   $scope.destStatus = [{ "value": "amr", "text": "AMR" }, { "value": "emeia", "text": "EMEIA" }, { "value": "apac", "text": "APAC" }];
   $scope.loadAll;
   $scope.flag = $location.path().split('/')[1] == 'allroutes' ? ($location.path().split('/')[2] != undefined ? $location.path().split('/')[2] : false) : false;
+  $scope.ar = $routeParams.alflag;
   
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -21,6 +22,16 @@ ngElastic.controller('lspMeshDetailsAllRoutesController', function($scope, $http
       $scope.loadOneItemPerSec(d);
     });
   };
+
+  // All Routers Dropdown
+  $scope.arDropdown = function(ar) {
+    $window.location.href = '#/lspmeshdetails';
+  }
+
+  // StateView Dropdown
+  $scope.svDropdown = function(sv) {
+    $window.location.href = '#/stateview/' + sv;
+  }
 
   // Primary, Secondary and Teritary Dropdown
   $scope.pstDropdown = function(cnt) {
