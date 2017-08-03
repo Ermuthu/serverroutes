@@ -1,4 +1,3 @@
- 
 ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout, $q) {
  
   $scope.initMapController = function() {
@@ -14,10 +13,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     });
     $scope.nodes();
   };
-  $scope.draw = SVG('drawing').size(3650, 1060)
-    .click(function(d) {
-      $("#onhover").empty();
-    });
+  $scope.draw = SVG('drawing').size(3650, 1060);
   $scope.drawonhover = SVG('onhover').size(500, 100);
   // $scope.draw = SVG('drawing').size(3650, 1060).style('position: absolute;width: 1056px;height: 500px;top: 0px; left: 0px;zoom:.35');
   // $scope.draw = SVG('drawing')
@@ -144,9 +140,9 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
-          // .mouseout(function(mout) {
-          // 	$("#onhover").empty();
-          // });
+          .mouseout(function(mout) {
+          	$("#onhover").empty();
+          });
       } else if(d._source.src_x === d._source.dst_x) {
         var src_x = parseInt(d._source.src_x)+1;
         $scope.path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
@@ -175,9 +171,9 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
-          // .mouseout(function(mout) {
-          // 	$("#onhover").empty();
-          // });
+          .mouseout(function(mout) {
+          	$("#onhover").empty();
+          });
       } else {
         $scope.path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
           .click(function() {
@@ -205,9 +201,9 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
-          // .mouseout(function(mout) {
-          // 	$("#onhover").empty();
-          // });
+          .mouseout(function(mout) {
+          	$("#onhover").empty();
+          });
       }
       $scope.path.stroke(linear)
       $scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
