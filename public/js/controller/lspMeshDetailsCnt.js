@@ -127,12 +127,28 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
   $scope.header = function(d) {
     $scope.dataHeader = d.hits.hits;
     _.map(d.hits.hits, function(d) {
-      $scope.headerLength = d._source.dst_routers.length/2;
       var replaceSymbol = [];
       _.map(d._source.dst_routers, function(d) {
         replaceSymbol.push(d.replace(/_/g, '-'));
       });
-      $scope.tableHeader = replaceSymbol;
+      var amr = [], emeia = [], apac = [];
+      _.map(replaceSymbol, function(d) {
+        if(d.substring(0,2) == 'us')
+          amr.push(d);
+        else if(d.substring(0,2) == 'de' || d.substring(0,2) == 'gb' || d.substring(0,2) == 'uk')
+          emeia.push(d);
+        else
+          apac.push(d);
+      });
+      if($scope.cnt == 'amr') {
+        $scope.tableHeader = amr;
+      } else if($scope.cnt == 'emeia') {
+        $scope.tableHeader = emeia;
+      } else {
+        $scope.tableHeader = apac;
+      }
+      // $scope.tableHeader = replaceSymbol;
+      // console.log("tableHeader : ",$scope.tableHeader);
     });
   }
 
@@ -141,6 +157,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     if($scope.loadAll !== undefined) {
       $timeout.cancel($scope.loadAll);
     }
+    // console.log(d.hits.hits.length);
     // for (var i = 1; i < d.hits.hits.length; i++) {
     for (var i = 1; i < 10; i++) {
       $scope.loadAll = (function(y){
