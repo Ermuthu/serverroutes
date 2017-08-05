@@ -69,9 +69,31 @@
   </main> -->
   <!-- <div id="zoomSVG" style="clear: both;"> -->
     <!-- <div class="small" zoom id="drawing" > -->
-      <div id="drawing"></div>
-      <div id="onhover"></div>
+    <div id="focal" style="clear: both;">
+      <div class="panzoom">
+        <div id="drawing"></div>
+      </div>
+    </div>
+    <div id="onhover"></div>
     <!-- </div> -->
   <!-- </div> -->
 	<!-- <div id="drawing" ng-mousedrag="onMouseDrag($event);" style="position:absolute"></div> -->
 </div>
+<!-- </div> -->
+
+<script>
+  (function() {
+    var $section = $('#focal');
+    var $panzoom = $section.find('.panzoom').panzoom();
+    $panzoom.parent().on('mousewheel.focal', function( e ) {
+      e.preventDefault();
+      var delta = e.delta || e.originalEvent.wheelDelta;
+      var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+      $panzoom.panzoom('zoom', zoomOut, {
+        increment: 0.1,
+        animate: false,
+        focal: e
+      });
+    });
+  })();
+</script>
