@@ -242,7 +242,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
         $scope.tableHeader = amr;
       } else if ($scope.cnt == 'emeia') {
         $scope.tableHeader = emeia;
-      } else if ($scope.cnt == 'emeia') {
+      } else if ($scope.cnt == 'apac') {
         $scope.tableHeader = apac;
       } else {
         $scope.tableHeader = replaceSymbol; 
