@@ -67,14 +67,14 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
             emeia = [],
             apac = [];
           _.map(d.hits.hits, function(d) {
-            if (d._id.substring(0, 2) == 'us') {
+            if ($scope.cnt == 'amr') {
               var amrFinal = [];
               _.map($scope.amrHeaderIndex, function(dd, i) {
                 amrFinal.push(d._source.bit_map[dd]);
               });
               d._source.bit_map = amrFinal;
               amr.push(d);
-            } else if (d._id.substring(0, 2) == 'de' || d._id.substring(0, 2) == 'gb' || d._id.substring(0, 2) == 'uk') {
+            } else if ($scope.cnt == 'emeia') {
               var emeiaFinal = [];
               _.map($scope.emeiaHeaderIndex, function(dd, i) {
                 emeiaFinal.push(d._source.bit_map[dd]);
@@ -137,14 +137,16 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
             emeia = [],
             apac = [];
           _.map(d.hits.hits, function(d) {
-            if (d._id.substring(0, 2) == 'us') {
+            // if (d._id.substring(0, 2) == 'us') {
+            if ($scope.cnt == 'amr') {
               var amrFinal = [];
               _.map($scope.amrHeaderIndex, function(dd, i) {
                 amrFinal.push(d._source.bit_map[dd]);
               });
               d._source.bit_map = amrFinal;
               amr.push(d);
-            } else if (d._id.substring(0, 2) == 'de' || d._id.substring(0, 2) == 'gb' || d._id.substring(0, 2) == 'uk') {
+            // } else if (d._id.substring(0, 2) == 'de' || d._id.substring(0, 2) == 'gb' || d._id.substring(0, 2) == 'uk') {
+            } else if ($scope.cnt == 'emeia') {
               var emeiaFinal = [];
               _.map($scope.emeiaHeaderIndex, function(dd, i) {
                 emeiaFinal.push(d._source.bit_map[dd]);
