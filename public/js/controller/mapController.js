@@ -130,13 +130,21 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .move(160,90)
               .stroke(linear)
               .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(525,78).fill('#e74c3c').stroke('#c0392b')
+            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+            //Percentage on hover
+            $scope.drawonhover.text(d._source.in_bw_used)
+              .move(150,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            $scope.drawonhover.text(d._source.out_bw_used)
+              .move(450,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            // Text on hover
             $scope.drawonhover.text(d._source.source)
               .move(18,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
             $scope.drawonhover.text(d._source.dest)
-              .move(535,85)
+              .move(522,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
@@ -161,13 +169,21 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .move(160,90)
               .stroke(linear)
               .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(525,78).fill('#e74c3c').stroke('#c0392b')
+            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+            //Percentage on hover
+            $scope.drawonhover.text(d._source.in_bw_used)
+              .move(150,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            $scope.drawonhover.text(d._source.out_bw_used)
+              .move(450,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            // Text on hover
             $scope.drawonhover.text(d._source.source)
-              .move(18,75)
+              .move(18,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
             $scope.drawonhover.text(d._source.dest)
-              .move(535,75)
+              .move(522,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
@@ -191,13 +207,21 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               .move(160,90)
               .stroke(linear)
               .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(525,78).fill('#e74c3c').stroke('#c0392b')
+            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+            //Percentage on hover
+            $scope.drawonhover.text(d._source.in_bw_used)
+              .move(150,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            $scope.drawonhover.text(d._source.out_bw_used)
+              .move(450,130)
+              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+            // Text on hover
             $scope.drawonhover.text(d._source.source)
-              .move(18,75)
+              .move(18,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
             $scope.drawonhover.text(d._source.dest)
-              .move(535,75)
+              .move(522,85)
               .font({ fill: '#fff', size: 16, weight: 'bolder' })
               .attr('class','cursor-pointer');
           })
