@@ -13,7 +13,9 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     });
     $scope.nodes();
   };
-  $scope.draw = SVG('drawing').size(3650, 1060);
+
+  // $scope.draw = SVG('drawing').size(3650, 1060).attr('id', 'testing').style('display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;');
+  $scope.draw = SVG('drawing').size(3650, 1060).attr('id', 'testing');
   $scope.drawonhover = SVG('onhover').size(500, 100);
   // $scope.draw = SVG('drawing').size(3650, 1060).style('position: absolute;width: 1056px;height: 500px;top: 0px; left: 0px;zoom:.35');
   // $scope.draw = SVG('drawing')
@@ -38,7 +40,36 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
   }
  
   // stroke color based on bw_used value
-  $scope.strokeColor = function (bw) {
+  $scope.strokeColor = function (b, src) {
+    if(src == "in" && b._source.src_x > b._source.dst_x) {
+      if(b._source.in_bw_used == 4.246460){
+        console.log("Im in 1", b._source.in_bw_used, b._source.out_bw_used);
+      }
+      return $scope.getColor(b._source.out_bw_used);
+    } else if(src == "out" && b._source.src_x > b._source.dst_x) {
+      if(b._source.in_bw_used == 4.246460){
+        console.log("Im in 2", b._source.in_bw_used, b._source.out_bw_used);
+      }
+      return $scope.getColor(b._source.in_bw_used);
+    } else if(src == "in" && b._source.src_x < b._source.dst_x) {
+      if(b._source.in_bw_used == 4.246460){
+        console.log("Im in 3", b._source.in_bw_used, b._source.out_bw_used);
+      }
+      return $scope.getColor(b._source.in_bw_used);
+    } else if(src == "out" && b._source.src_x < b._source.dst_x) {
+      if(b._source.in_bw_used == 4.246460){
+        console.log("Im in 4", b._source.in_bw_used, b._source.out_bw_used);
+      }
+      return $scope.getColor(b._source.out_bw_used);
+    } else {
+      if(b == 4.246460){
+        console.log("Im in 5", b, b);
+      }
+      return $scope.getColor(b);
+    }
+  };
+
+  $scope.getColor = function(bw) {
     if(bw>0 && bw<11)
       return "#4D72E3";
     else if(bw>10 && bw<21)
@@ -61,7 +92,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       return "#F6358A";
     else
       return '#4D72E3';
-  };
+  }
  
   $scope.defaultMap = function(d) {
     $scope.path = $scope.draw.clear();
@@ -103,6 +134,10 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     var path;
     _.map($scope.linkHits, function(d) {
       var linear = $scope.draw.gradient('linear', function(stop) {
+        stop.at({offset: '50%', color: $scope.strokeColor(d, 'in')})
+        stop.at({offset: '50%', color: $scope.strokeColor(d, 'out')})
+      });
+      var hoverLinear = $scope.draw.gradient('linear', function(stop) {
         stop.at({offset: '50%', color: $scope.strokeColor(d._source.in_bw_used)})
         stop.at({offset: '50%', color: $scope.strokeColor(d._source.out_bw_used)})
       });
@@ -111,127 +146,133 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       * 2. else if src_x and dst_x are same, add 1 to src_x
       * 3. else src_y and dst_y (default)
       */
-      if(d._source.src_y === d._source.dst_y) {
-        var src_y = parseInt(d._source.src_y)+1;
-       
-        $scope.path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-          .click(function() {
-            $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-          })
-          .attr('class','cursor-pointer')
-          .mouseover(function(mover) {
-            $scope.drawonhover = SVG('onhover').size(700, 200)
-              .attr('class','mover')
-              .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
-            $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
-            $scope.pathonhover = $scope.drawonhover
-            	.path('M160 91 L525 90')
-            	.back()
-              .move(160,90)
-              .stroke(linear)
-              .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
-            //Percentage on hover
-            $scope.drawonhover.text(d._source.in_bw_used)
-              .move(150,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            $scope.drawonhover.text(d._source.out_bw_used)
-              .move(450,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            // Text on hover
-            $scope.drawonhover.text(d._source.source)
-              .move(18,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-            $scope.drawonhover.text(d._source.dest)
-              .move(522,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-          })
-          .mouseout(function(mout) {
-          	$("#onhover").empty();
-          });
-      } else if(d._source.src_x === d._source.dst_x) {
-        var src_x = parseInt(d._source.src_x)+1;
-        $scope.path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-          .click(function() {
-            $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-          })
-          .attr('class','cursor-pointer')
-          .mouseover(function(mover) {
-            $scope.drawonhover = SVG('onhover').size(700, 200)
-              .attr('class','mover')
-              .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
-            $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
-            $scope.pathonhover = $scope.drawonhover
-            	.path('M160 91 L525 90')
-            	.back()
-              .move(160,90)
-              .stroke(linear)
-              .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
-            //Percentage on hover
-            $scope.drawonhover.text(d._source.in_bw_used)
-              .move(150,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            $scope.drawonhover.text(d._source.out_bw_used)
-              .move(450,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            // Text on hover
-            $scope.drawonhover.text(d._source.source)
-              .move(18,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-            $scope.drawonhover.text(d._source.dest)
-              .move(522,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-          })
-          .mouseout(function(mout) {
-          	$("#onhover").empty();
-          });
-      } else {
-        $scope.path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
-          .click(function() {
-            $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
-          })
-          .attr('class','cursor-pointer')
-          .mouseover(function(mover) {
-            $scope.drawonhover = SVG('onhover').size(700, 200)
-              .attr('class','mover')
-              .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
-            $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
-            $scope.pathonhover = $scope.drawonhover
-            	.path('M160 91 L525 90')
-            	.back()
-              .move(160,90)
-              .stroke(linear)
-              .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
-            $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
-            //Percentage on hover
-            $scope.drawonhover.text(d._source.in_bw_used)
-              .move(150,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            $scope.drawonhover.text(d._source.out_bw_used)
-              .move(450,130)
-              .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
-            // Text on hover
-            $scope.drawonhover.text(d._source.source)
-              .move(18,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-            $scope.drawonhover.text(d._source.dest)
-              .move(522,85)
-              .font({ fill: '#fff', size: 16, weight: 'bolder' })
-              .attr('class','cursor-pointer');
-          })
-          .mouseout(function(mout) {
-          	$("#onhover").empty();
-          });
+      if(d._source.src_y != undefined && d._source.dst_y != undefined && d._source.src_x != undefined && d._source.dst_y != undefined) { 
+        if(d._source.src_y === d._source.dst_y) {
+          var src_y = parseInt(d._source.src_y)+1;
+         
+          $scope.path = $scope.draw.path('M'+d._source.src_x+' '+src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+            .click(function() {
+              $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+            })
+            .attr('class','cursor-pointer')
+            .mouseover(function(mover) {
+              $scope.drawonhover = SVG('onhover').size(700, 200)
+                .attr('class','mover')
+                .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
+              $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
+              $scope.pathonhover = $scope.drawonhover
+               .path('M160 91 L525 90')
+               .back()
+                .move(160,90)
+                .stroke(hoverLinear)
+                .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
+              // $scope.drawonhover.rect(150,30).move(525,78).fill('#e74c3c').stroke('#c0392b')
+              $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+              //Percentage on hover
+              $scope.drawonhover.text(d._source.in_bw_used)
+                .move(150,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              $scope.drawonhover.text(d._source.out_bw_used)
+                .move(450,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              // Text on hover
+              $scope.drawonhover.text(d._source.source)
+                .move(18,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+              $scope.drawonhover.text(d._source.dest)
+                .move(522,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+            })
+            .mouseout(function(mout) {
+             $("#onhover").empty();
+            });
+        } else if(d._source.src_x === d._source.dst_x) {
+          var src_x = parseInt(d._source.src_x)+1;
+          $scope.path = $scope.draw.path('M'+src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+            .click(function() {
+              $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+            })
+            .attr('class','cursor-pointer')
+            .mouseover(function(mover) {
+              $scope.drawonhover = SVG('onhover').size(700, 200)
+                .attr('class','mover')
+                .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
+              $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
+              $scope.pathonhover = $scope.drawonhover
+               .path('M160 91 L525 90')
+               .back()
+                .move(160,90)
+                .stroke(hoverLinear)
+                .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
+              $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+              //Percentage on hover
+              $scope.drawonhover.text(d._source.in_bw_used)
+                .move(150,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              $scope.drawonhover.text(d._source.out_bw_used)
+                .move(450,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              // Text on hover
+              $scope.drawonhover.text(d._source.source)
+                .move(18,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+              $scope.drawonhover.text(d._source.dest)
+                .move(522,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+            })
+            .mouseout(function(mout) {
+             $("#onhover").empty();
+            });
+        } else {
+          $scope.path = $scope.draw.path('M'+d._source.src_x+' '+d._source.src_y+' L'+d._source.dst_x+' '+d._source.dst_y)
+            .click(function() {
+              $window.location.href = '#/status/'+d._source.source+''+d._source.bundle_intf;
+            })
+            .attr('class','cursor-pointer')
+            .mouseover(function(mover) {
+              $scope.drawonhover = SVG('onhover').size(700, 200)
+                .attr('class','mover')
+                .style({position: 'absolute', top: mover.pageY, left: mover.pageX, border: '5px solid', background: '#CCC'});
+              $scope.drawonhover.rect(150,30).move(10,78).fill('#e74c3c').stroke('#c0392b');       
+              $scope.pathonhover = $scope.drawonhover
+                .path('M160 91 L525 90')
+                .back()
+                .move(160,90)
+                .stroke(hoverLinear)
+                .stroke({ width: 3, linecap: 'round', linejoin: 'round'});
+              $scope.drawonhover.rect(150,30).move(515,78).fill('#e74c3c').stroke('#c0392b')
+              //Percentage on hover
+              $scope.drawonhover.text(d._source.in_bw_used)
+                .move(150,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              $scope.drawonhover.text(d._source.out_bw_used)
+                .move(450,130)
+                .font({ fill: ' #ff0000', size: 18, weight: 'bolder' })
+              // Text on hover
+              $scope.drawonhover.text(d._source.source)
+                .move(18,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+              $scope.drawonhover.text(d._source.dest)
+                .move(522,85)
+                .font({ fill: '#fff', size: 16, weight: 'bolder' })
+                .attr('class','cursor-pointer');
+            })
+            .mouseout(function(mout) {
+              $("#onhover").empty();
+            })
+            .stroke(linear)
+            $scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
+            $scope.path.back();
+        }
       }
-      $scope.path.stroke(linear)
-      $scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
-      $scope.path.back();
+      // $scope.path.stroke(linear)
+      // $scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
+      // $scope.path.back();
     });
     $scope.isLoading = false;
   }
