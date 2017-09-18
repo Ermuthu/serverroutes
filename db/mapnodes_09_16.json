@@ -1,0 +1,1495 @@
+{
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 148,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "krsel6-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "30",
+          "x": "50"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jptyo5-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "70",
+          "x": "650"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jptyo7-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "170",
+          "x": "700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "hkhkg1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "60"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "hkhkg1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "220"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sgsin8-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "630",
+          "x": "250"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussea4-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "70",
+          "x": "900"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussea4-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "140",
+          "x": "1100"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz3-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "200",
+          "x": "1120"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usnkq1-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "435",
+          "x": "850"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usscz2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "625",
+          "x": "1000"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussjc2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "750",
+          "x": "1000"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "925",
+          "x": "1150"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "925",
+          "x": "1300"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-cr4",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "1450"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno1-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "500",
+          "x": "1490"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno1-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "1660"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usden5-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "270",
+          "x": "1870"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmes1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "30",
+          "x": "1950"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usdal4-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "790",
+          "x": "1870"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ushou1-bb-sw1",
+        "_score": 1,
+        "_source": {
+          "y": "900",
+          "x": "1790"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ushou1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "970",
+          "x": "1790"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usnyc3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "175",
+          "x": "2470"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usewr1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "175",
+          "x": "2670"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usbos2-bb-sw2",
+        "_score": 1,
+        "_source": {
+          "y": "70",
+          "x": "2360"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usxqm1-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "250",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas3-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "320",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas3-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "370",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo4-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "625",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bb-sw4",
+        "_score": 1,
+        "_source": {
+          "y": "1040",
+          "x": "2350"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw2",
+        "_score": 1,
+        "_source": {
+          "y": "130",
+          "x": "3450"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "3600"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "110",
+          "x": "2970"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "440",
+          "x": "3160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "defra1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "510",
+          "x": "3160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "cntnj1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "280",
+          "x": "50"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jptyo5-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "70",
+          "x": "420"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sgsin3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "700",
+          "x": "250"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sgsin3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "700",
+          "x": "390"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ausyd2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "850",
+          "x": "450"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz2-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "100",
+          "x": "1500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usscz2-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "675",
+          "x": "850"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussjc2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "750",
+          "x": "1150"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslax1-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "975"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno1-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "450",
+          "x": "1490"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usden5-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "180",
+          "x": "1730"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi6-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "270",
+          "x": "2290"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslxa1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "430",
+          "x": "1800"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usdal4-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "720",
+          "x": "1730"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usewr1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "80",
+          "x": "2670"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usbos2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "2650"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas3-bb-pe3",
+        "_score": 1,
+        "_source": {
+          "y": "320",
+          "x": "2670"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas3-bb-pe4",
+        "_score": 1,
+        "_source": {
+          "y": "370",
+          "x": "2670"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo4-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "525",
+          "x": "2370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo4-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "525",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "2260"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "1040",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bb-sw1",
+        "_score": 1,
+        "_source": {
+          "y": "850",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "170",
+          "x": "3530"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "dkblp1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "240",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "430",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "550",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "inbom2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "700",
+          "x": "3350"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "cntnj1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "350",
+          "x": "50"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "cnsha10-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "200",
+          "x": "160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "krsel6-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "90",
+          "x": "50"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jposa3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "130",
+          "x": "240"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "hkhkg3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "480",
+          "x": "220"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussea4-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "140",
+          "x": "900"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz3-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "100",
+          "x": "1240"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz2-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "200",
+          "x": "1370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslax1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "875",
+          "x": "880"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-pe3",
+        "_score": 1,
+        "_source": {
+          "y": "1025",
+          "x": "1300"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "1000"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "1150"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-cr3",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "1300"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno3-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "240",
+          "x": "1380"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno3-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "290",
+          "x": "1380"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usden5-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "180",
+          "x": "1870"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usden5-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "270",
+          "x": "1730"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi5-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "190",
+          "x": "2110"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi5-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "190",
+          "x": "2260"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslxa1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "500",
+          "x": "1800"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usatl4-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "1100",
+          "x": "2060"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usatl4-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "1160",
+          "x": "1920"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usbos2-bb-sw1",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "2360"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usxqm1-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "250",
+          "x": "2620"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "320",
+          "x": "2380"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo4-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "625",
+          "x": "2370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bb-sw2",
+        "_score": 1,
+        "_source": {
+          "y": "850",
+          "x": "2395"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bb-sw3",
+        "_score": 1,
+        "_source": {
+          "y": "950",
+          "x": "2350"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "gbmnc1-bb-sw1",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "3450"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "gbmnc1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "90",
+          "x": "3600"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "155",
+          "x": "3120"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "50",
+          "x": "3300"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "250",
+          "x": "3460"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "nlams2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "320",
+          "x": "3460"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "frcch1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "315",
+          "x": "3160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sesto4-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "170",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "dkblp1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "310",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "inmaa1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "700",
+          "x": "3200"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "inmaa1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "800",
+          "x": "3200"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz2-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "150",
+          "x": "1370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usnkq1-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "535",
+          "x": "850"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usscz2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "525",
+          "x": "1000"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslax1-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "1080",
+          "x": "825"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmsc2-bb-pe4",
+        "_score": 1,
+        "_source": {
+          "y": "1025",
+          "x": "1150"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno3-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "350",
+          "x": "1250"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno3-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "1250"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi5-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "110",
+          "x": "2110"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usdal4-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "790",
+          "x": "1730"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ushou1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "1040",
+          "x": "1790"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usnyc3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "80",
+          "x": "2470"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usbos2-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usqas2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "370",
+          "x": "2380"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "475",
+          "x": "2260"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uklon5-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "65",
+          "x": "3120"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "440",
+          "x": "3330"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "defra3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "510",
+          "x": "3330"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "frcch1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "375",
+          "x": "3160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "dedus1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "360",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "cnsha10-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "260",
+          "x": "160"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jposa3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "60",
+          "x": "240"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "jptyo7-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "170",
+          "x": "420"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "hkhkg3-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "480",
+          "x": "60"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "sgsin8-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "630",
+          "x": "390"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ausyd2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "850",
+          "x": "600"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ussea4-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "70",
+          "x": "1100"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz3-bb-pe2",
+        "_score": 1,
+        "_source": {
+          "y": "250",
+          "x": "1120"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz3-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "50",
+          "x": "1240"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usprz2-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "50",
+          "x": "1500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usscz2-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "575",
+          "x": "850"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uslax1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "950",
+          "x": "880"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usrno1-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "350",
+          "x": "1660"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmes1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "30",
+          "x": "1800"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi5-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "110",
+          "x": "2260"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uschi6-bb-pe1",
+        "_score": 1,
+        "_source": {
+          "y": "270",
+          "x": "2140"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usdal4-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "720",
+          "x": "1870"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usatl4-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "1100",
+          "x": "1920"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usatl4-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "1160",
+          "x": "2060"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ushou1-bb-sw2",
+        "_score": 1,
+        "_source": {
+          "y": "1100",
+          "x": "1790"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo1-bb-cr1",
+        "_score": 1,
+        "_source": {
+          "y": "400",
+          "x": "2370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usuqo1-bb-cr2",
+        "_score": 1,
+        "_source": {
+          "y": "475",
+          "x": "2370"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "usmia1-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "950",
+          "x": "2500"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "uklon6-bbisp-gw1",
+        "_score": 1,
+        "_source": {
+          "y": "20",
+          "x": "2970"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "ieork1-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "110",
+          "x": "3300"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "deber3-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "480",
+          "x": "3700"
+        }
+      },
+      {
+        "_index": "map_info",
+        "_type": "config",
+        "_id": "inbom2-bbisp-gw2",
+        "_score": 1,
+        "_source": {
+          "y": "800",
+          "x": "3350"
+        }
+      }
+    ]
+  }
+}
