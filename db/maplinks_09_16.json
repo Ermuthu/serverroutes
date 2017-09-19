@@ -801,7 +801,7 @@
           "dest": "jposa3-bbisp-gw1",
           "dst_region": 3,
           "src_region": 3,
-          "dst_y": "60",
+          "dst_y": "88",
           "source": "jptyo5-bbisp-gw1",
           "src_x": "420",
           "src_y": "70",
@@ -974,8 +974,8 @@
           "src_region": 9,
           "dst_y": "260",
           "source": "cnsha10-bbisp-gw1",
-          "src_x": "160",
-          "src_y": "200",
+          "src_x": "116",
+          "src_y": "163",
           "out_bw_used": "0.108714"
         }
       },
@@ -993,8 +993,8 @@
           "src_region": 9,
           "dst_y": "260",
           "source": "cnsha10-bbisp-gw1",
-          "src_x": "160",
-          "src_y": "200",
+          "src_x": "116",
+          "src_y": "163",
           "out_bw_used": "0.108714"
         }
       },
@@ -1709,14 +1709,14 @@
         "_source": {
           "in_bw_used": "0.239243",
           "bundle_intf": "ae0",
-          "dst_x": "240",
+          "dst_x": "186",
           "dest": "jposa3-bbisp-gw2",
           "dst_region": 3,
           "src_region": 3,
           "dst_y": "130",
           "source": "jposa3-bbisp-gw1",
           "src_x": "240",
-          "src_y": "60",
+          "src_y": "88",
           "out_bw_used": "0.327173"
         }
       },
@@ -1728,14 +1728,14 @@
         "_source": {
           "in_bw_used": "0.219132",
           "bundle_intf": "ae1",
-          "dst_x": "240",
+          "dst_x": "186",
           "dest": "jposa3-bbisp-gw2",
           "dst_region": 3,
           "src_region": 3,
           "dst_y": "130",
           "source": "jposa3-bbisp-gw1",
           "src_x": "240",
-          "src_y": "60",
+          "src_y": "88",
           "out_bw_used": "0.402280"
         }
       },
@@ -1753,7 +1753,7 @@
           "src_region": 3,
           "dst_y": "170",
           "source": "jposa3-bbisp-gw2",
-          "src_x": "240",
+          "src_x": "186",
           "src_y": "130",
           "out_bw_used": "21.512742"
         }
@@ -9879,14 +9879,14 @@
         "_source": {
           "in_bw_used": "0.219132",
           "bundle_intf": "ae1",
-          "dst_x": "240",
+          "dst_x": "186",
           "dest": "jposa3-bbisp-gw2",
           "dst_region": 3,
           "src_region": 3,
           "dst_y": "130",
           "source": "jposa3-bbisp-gw1",
           "src_x": "240",
-          "src_y": "60",
+          "src_y": "88",
           "out_bw_used": "0.402280"
         }
       },
@@ -18334,14 +18334,14 @@
         "_source": {
           "in_bw_used": "0.239243",
           "bundle_intf": "ae0",
-          "dst_x": "240",
+          "dst_x": "186",
           "dest": "jposa3-bbisp-gw2",
           "dst_region": 3,
           "src_region": 3,
           "dst_y": "130",
           "source": "jposa3-bbisp-gw1",
           "src_x": "240",
-          "src_y": "60",
+          "src_y": "88",
           "out_bw_used": "0.327173"
         }
       },
@@ -18360,7 +18360,7 @@
           "dst_y": "70",
           "source": "jposa3-bbisp-gw1",
           "src_x": "240",
-          "src_y": "60",
+          "src_y": "88",
           "out_bw_used": "9.526169"
         }
       },
@@ -25938,7 +25938,7 @@
           "dest": "jposa3-bbisp-gw1",
           "dst_region": 3,
           "src_region": 3,
-          "dst_y": "60",
+          "dst_y": "88",
           "source": "jptyo5-bbisp-gw1",
           "src_x": "420",
           "src_y": "70",
@@ -26168,8 +26168,8 @@
           "src_region": 9,
           "dst_y": "280",
           "source": "cnsha10-bbisp-gw1",
-          "src_x": "160",
-          "src_y": "200",
+          "src_x": "116",
+          "src_y": "163",
           "out_bw_used": "0.058978"
         }
       },
