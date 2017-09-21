@@ -128,10 +128,27 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       $scope.nodes();
     }
   }
+
+  // Remove Duplicates Starts
+  $scope.addToArray = function(val1, val2) {
+    // return _.isArray(val1) ? val1.concat(val2) : [val1].concat(val2); // Add all the values into an array
+    return val2; // Replace with new value
+  }
+
+  $scope.modifyObjs = function(a, b) {
+    b._source.in_bw_used = $scope.addToArray(b._source.in_bw_used, a._source.in_bw_used);
+    b._source.out_bw_used = $scope.addToArray(b._source.out_bw_used, a._source.out_bw_used);
+    return true;
+  }
+
+  $scope.predicateAndModifier = function(a, b) {
+    return a._source.dest === b._source.dest && a._source.src === b._source.src && a._source.src_x === b._source.src_x && a._source.src_y === b._source.src_y && a._source.dst_x === b._source.dst_x && a._source.dst_y === b._source.dst_y && $scope.modifyObjs(a, b);
+  }
+  // Remove Duplicates Ends
  
   $scope.links = function(d) {
     $scope.isLoading = true;
-    $scope.linkHits = d.hits.hits;
+    $scope.linkHits = _.uniqWith(d.hits.hits, $scope.predicateAndModifier); // Remove Duplicate objects
     var path;
     _.map($scope.linkHits, function(d) {
       var linear = $scope.draw.gradient('linear', function(stop) {
