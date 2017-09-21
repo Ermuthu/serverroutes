@@ -176,7 +176,8 @@ module.exports = {
 	 */
 	getMapNodes: function(req, res) {
 		// var mapNodes = './db/mapnodes_03_25.json';
-		var mapNodes = './db/mapnodes_07_22.json';
+		// var mapNodes = './db/mapnodes_07_22.json';
+		var mapNodes = './db/mapnodes_09_16.json';
 		res.send(jsonfile.readFileSync(mapNodes));
 	},
 	getMapLinks: function(req, res) {
@@ -186,7 +187,12 @@ module.exports = {
 		// var mapLinks = './db/maplinks_04_18.json';
 		// var mapLinks = './db/maplinks_04_19.json';
 		// var mapLinks = './db/maplinks_04_26.json';
-		var mapLinks = './db/maplinks_07_22.json';
+		// var mapLinks = './db/maplinks_07_22.json';
+		var mapLinks = './db/maplinks_09_16.json';
+		res.send(jsonfile.readFileSync(mapLinks));
+	},
+	getMapLinksDynColor: function(req, res) {
+		var mapLinks = './db/maplinks_09_16_color.json';
 		res.send(jsonfile.readFileSync(mapLinks));
 	},
 	getMapLinksHighlight: function(req, res) {
