@@ -1,4 +1,4 @@
-ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout, $q) {
+ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout) {
  
   $scope.initMapController = function() {
     $scope.sourceDropdown = [{ "value": "1", "text": "AMR" }, { "value": "2", "text": "EMEIA" }, { "value": "3", "text": "APAC" }];
@@ -7,6 +7,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     $scope.isLoading = false;
     // Init Map onLoad
     $http.get('/api/maplinks').success(function(d) {
+      // console.log(d.hits.hits);
       $scope.links(d);
     }).error(function(e) {
       console.log(e);
@@ -15,7 +16,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
   };
 
   // $scope.draw = SVG('drawing').size(3650, 1060).attr('id', 'testing').style('display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;');
-  $scope.draw = SVG('drawing').size(3650, 1060).attr('id', 'testing');
+  $scope.draw = SVG('drawing').size(4000, 1500).attr('id', 'testing');
   $scope.drawonhover = SVG('onhover').size(500, 100);
   // $scope.draw = SVG('drawing').size(3650, 1060).style('position: absolute;width: 1056px;height: 500px;top: 0px; left: 0px;zoom:.35');
   // $scope.draw = SVG('drawing')
@@ -266,7 +267,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
               $("#onhover").empty();
             })
             .stroke(linear)
-            $scope.path.stroke({ width: 5, linecap: 'round', linejoin: 'round'})
+            $scope.path.stroke({ width: 1, linecap: 'round', linejoin: 'round'})
             $scope.path.back();
         }
       }
@@ -285,7 +286,7 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
         // draw rectangle
         $scope.draw.rect(100,20)
           .fill('#e74c3c')
-          .move(d._source.x - 6,d._source.y - 13)
+          .move(d._source.x - 5,d._source.y - 13)
           .stroke('#c0392b')
           .attr('class','cursor-pointer')
           // anchor tag
