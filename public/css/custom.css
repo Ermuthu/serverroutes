@@ -1,3 +1,25 @@
+/* table.js */
+
+.tableMainClass { 
+  width: 446px; 
+  overflow-x:scroll;  
+  margin-left:720px; 
+  overflow-y:visible;
+  padding-bottom:1px;
+}
+.theadWrap {
+  margin-top: -39px;
+  border-top: 1px solid #CCC;
+}
+.headcol {
+  position: absolute;
+  left: 0;
+  top: auto;
+  border-right: 0px none black;
+  border-top-width: 3px;
+  min-width: 100px;
+}
+
 /* Global */
 .white-pre{
   white-space: pre;
@@ -10,6 +32,7 @@
 }
 .cursor-pointer{
   cursor: pointer;
+  position: absolute;
 }
 .bolder{
   font-weight: bolder;
@@ -414,4 +437,13 @@
   cursor: wait;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Node */
+.link {
+  stroke: #ccc;
+}
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
 }

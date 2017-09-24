@@ -59,16 +59,22 @@
 	</div>
 
 	<!-- Table data starts here  -->
-	<table class="table table-bordered table-striped">
+	<div class="tableMainClass">
+	<table class="table table-bordered table-striped" style="margin-top: 50px;">
 		<thead>
 			<tr>
-				<th class="text-center">Device</th>
-				<th class="text-center">Interface </th>
-				<th class="text-center">Partner</th>
-				<th class="text-center">AS </th>
-				<th class="text-center">partner type</th>
- 				<th class="text-center">Speed</th>
- 				<th class="text-center">Dir</th>
+				<th class="text-center headcol theadWrap" style="left: 70px; width: 103px;">Device</th>
+				<th class="text-center headcol theadWrap" style="left: 172px; width: 113px;">Interface </th>
+				<th class="text-center headcol theadWrap" style="left: 284px;">Partner</th>
+				<th class="text-center headcol theadWrap" style="left: 383px;">AS </th>
+				<th class="text-center headcol theadWrap" style="left: 482px;">partner type</th>
+ 				<th class="text-center headcol theadWrap" style="left: 592px;">Speed</th>
+ 				<th class="text-center headcol theadWrap" style="left: 691px;">Dir</th>
+
+ 				<th style="text-indent: -3px;" ng-if="radio.value == 'default'" ng-repeat="h in heading track by $index" class="table-active text-center col-all"><span>{{h}}</span></th>
+			<!-- 	<th style="text-indent: -3px;" ng-if="radio.value == 'all'" ng-repeat="h in filHeading track by $index" class="table-active text-center col-all"><span>{{h}}</span></th> -->
+				<th style="text-indent: -3px;" ng-if="radio.value == 'all'" ng-repeat="h in heading track by $index" class="table-active text-center col-all"><span>{{h}}</span></th>
+
  				<th ng-if="radio.value == 'default'" ng-repeat="h in heading track by $index" class="text-center col-all"><span>{{h}}</span></th>
 				<th ng-if="radio.value == 'all'" ng-repeat="h in filHeading track by $index" class="text-center col-all"><span>{{h}}</span></th>
  				<!-- <th ng-repeat="h in heading track by $index" class="text-center">
@@ -87,13 +93,13 @@
 
 			<!-- Row data -->
 			<tr ng-repeat-start="(key, value) in dataset | filter:{_source:{interface:interface,partner:partner, device:device}}" class="text-center" style="padding: 0;margin: 0;font-size: 10px !important;">
-				<td class="col1"><span><a href="" ng-model="deviceName" ng-click=" isCollapsed = !isCollapsed; disputeButton(value._source.device,value._source.interface,value._source.desc,value._source.partner,value._source.AS,value._source.partner_type,value._source.speed,value._source.direction, isCollapsed)">{{value._source.device}}</a></span></td>
-				<td class="text-center">{{value._source.interface}}</td>
-				<td class="text-center">{{value._source.partner}}</td>
-			 	<td class="text-center">{{value._source.AS}} </td>
-			 	<td class="text-center" style="white-space:pre"> {{value._source.partner_type}}</td>
-				<td class="text-center" style="white-space:pre">{{value._source.speed}} Gbps </td>
-		 	 	<td class="text-center">{{value._source.direction}} </td>
+				<td class="col1 headcol" style="left: 70px;"><span><a href="" ng-model="deviceName" ng-click=" isCollapsed = !isCollapsed; disputeButton(value._source.device,value._source.interface,value._source.desc,value._source.partner,value._source.AS,value._source.partner_type,value._source.speed,value._source.direction, isCollapsed)">{{value._source.device}}</a></span></td>
+				<td class="text-center headcol" style="left: 172px; width: 113px;">{{value._source.interface}}</td>
+				<td class="text-center headcol" style="left: 284px;">{{value._source.partner}}</td>
+			 	<td class="text-center headcol" style="left: 383px;">{{value._source.AS}} </td>
+			 	<td class="text-center headcol" style="left: 482px; width: 111px;" style="white-space:pre"> {{value._source.partner_type}}</td>
+				<td class="text-center headcol" style="left: 592px;" style="white-space:pre">{{value._source.speed}} Gbps </td>
+		 	 	<td class="text-center headcol" style="left: 691px;">{{value._source.direction}} </td>
 				<td class="col-all"
 					ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
 					ng-style="{'background-color': '{{colors[$index]}}'}"
@@ -253,6 +259,7 @@
      	</tr>
 		</tbody>
 	</table>
+	</div>
 </div>
 
 
