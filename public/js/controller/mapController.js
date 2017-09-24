@@ -1,4 +1,4 @@
-ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout) {
+ngElastic.controller('mapController', function($scope, $http, $routeParams, $window, $timeout, $q) {
  
   $scope.initMapController = function() {
     $scope.sourceDropdown = [{ "value": "1", "text": "AMR" }, { "value": "2", "text": "EMEIA" }, { "value": "3", "text": "APAC" }];
@@ -6,11 +6,17 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     $scope.map = "Connected Chart";
     $scope.isLoading = false;
     // Init Map onLoad
-    $http.get('/api/maplinks').success(function(d) {
-      // console.log(d.hits.hits);
-      $scope.links(d);
-    }).error(function(e) {
-      console.log(e);
+    // $http.get('/api/maplinks').success(function(d) {
+    //   $scope.links(d);
+    // }).error(function(e) {
+    //   console.log(e);
+    // });
+    $q.all([$http.get('/api/maplinks'),
+     $http.get('/api/maplinksdyncolor')])
+    .then(function(res) {
+      $scope.mapLinks = _.uniqWith(res[0].data.hits.hits, $scope.predicateAndModifier);
+      $scope.maplinksdyncolor = _.uniqWith(res[1].data.hits.hits, $scope.predicateAndModifier);
+      $scope.links(_.unionWith($scope.mapLinks, $scope.maplinksdyncolor, $scope.predict));
     });
     $scope.nodes();
   };
@@ -144,13 +150,17 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
   $scope.predicateAndModifier = function(a, b) {
     return a._source.dest === b._source.dest && a._source.src === b._source.src && a._source.src_x === b._source.src_x && a._source.src_y === b._source.src_y && a._source.dst_x === b._source.dst_x && a._source.dst_y === b._source.dst_y && $scope.modifyObjs(a, b);
   }
+
+  $scope.predict = function(a, b) {
+    return a._source.dest === b._source.dest && a._source.source === b._source.source && $scope.modifyObjs(a, b);
+  }
+
   // Remove Duplicates Ends
  
-  $scope.links = function(d) {
+  $scope.links = function(data) {
     $scope.isLoading = true;
-    $scope.linkHits = _.uniqWith(d.hits.hits, $scope.predicateAndModifier); // Remove Duplicate objects
     var path;
-    _.map($scope.linkHits, function(d) {
+    _.map(data, function(d) {
       var linear = $scope.draw.gradient('linear', function(stop) {
         stop.at({offset: '50%', color: $scope.strokeColor(d, 'in')})
         stop.at({offset: '50%', color: $scope.strokeColor(d, 'out')})

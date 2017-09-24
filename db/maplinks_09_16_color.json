@@ -35,7 +35,7 @@
         "_id": "usmsc2-bb-cr1et-1/0/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0",
+          "in_bw_used": "50",
           "bundle_intf": "Unknown",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -45,7 +45,7 @@
           "source": "usmsc2-bb-cr1",
           "src_x": "1000",
           "src_y": "1080",
-          "out_bw_used": "0"
+          "out_bw_used": "60"
         }
       },
       {
@@ -54,7 +54,7 @@
         "_id": "usmsc2-bb-cr2et-1/1/3usmsc2-bb-pe4",
         "_score": 1,
         "_source": {
-          "in_bw_used": "50",
+          "in_bw_used": "0",
           "bundle_intf": "Unknown",
           "dst_x": "1006",
           "dest": "usmsc2-bb-pe4",
@@ -64,7 +64,7 @@
           "source": "usmsc2-bb-cr2",
           "src_x": "1110",
           "src_y": "1150",
-          "out_bw_used": "60"
+          "out_bw_used": "0"
         }
       },
       {
@@ -73,7 +73,7 @@
         "_id": "usmsc2-bb-cr3et-1/0/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0",
+          "in_bw_used": "50",
           "bundle_intf": "Unknown",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -83,7 +83,7 @@
           "source": "usmsc2-bb-cr3",
           "src_x": "1300",
           "src_y": "1140",
-          "out_bw_used": "0"
+          "out_bw_used": "60"
         }
       },
       {
@@ -92,7 +92,7 @@
         "_id": "usmsc2-bb-cr4et-1/0/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0",
+          "in_bw_used": "50",
           "bundle_intf": "Unknown",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -102,7 +102,7 @@
           "source": "usmsc2-bb-cr4",
           "src_x": "1450",
           "src_y": "1080",
-          "out_bw_used": "0"
+          "out_bw_used": "60"
         }
       },
       {
@@ -5355,7 +5355,7 @@
         "_id": "usmsc2-bb-cr1et-0/0/14usmsc2-bb-pe1",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.000004",
+          "in_bw_used": "25",
           "bundle_intf": "ae500",
           "dst_x": "1150",
           "dest": "usmsc2-bb-pe1",
@@ -5365,7 +5365,7 @@
           "source": "usmsc2-bb-cr1",
           "src_x": "1000",
           "src_y": "1080",
-          "out_bw_used": "0.000008"
+          "out_bw_used": "45"
         }
       },
       {
@@ -5412,7 +5412,7 @@
         "_id": "usmsc2-bb-cr2et-1/1/14usmsc2-bb-pe4",
         "_score": 1,
         "_source": {
-          "in_bw_used": "50",
+          "in_bw_used": "0.000004",
           "bundle_intf": "ae503",
           "dst_x": "1006",
           "dest": "usmsc2-bb-pe4",
@@ -5422,7 +5422,7 @@
           "source": "usmsc2-bb-cr2",
           "src_x": "1110",
           "src_y": "1150",
-          "out_bw_used": "60"
+          "out_bw_used": "0.000007"
         }
       },
       {
@@ -16679,7 +16679,7 @@
         "_id": "usmsc2-bb-cr2et-1/0/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0",
+          "in_bw_used": "50",
           "bundle_intf": "Unknown",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -16689,7 +16689,7 @@
           "source": "usmsc2-bb-cr2",
           "src_x": "1110",
           "src_y": "1150",
-          "out_bw_used": "0"
+          "out_bw_used": "60"
         }
       },
       {
@@ -17401,7 +17401,7 @@
         "_id": "usmsc2-bb-pe2et-4/1/1usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.092867",
+          "in_bw_used": "50",
           "bundle_intf": "ae4",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -17411,7 +17411,7 @@
           "source": "usmsc2-bb-pe2",
           "src_x": "1300",
           "src_y": "925",
-          "out_bw_used": "0.000017"
+          "out_bw_used": "60"
         }
       },
       {
@@ -22170,7 +22170,7 @@
         "_id": "usmsc2-bb-cr4et-1/0/14usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.000004",
+          "in_bw_used": "50",
           "bundle_intf": "ae502",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -22180,7 +22180,7 @@
           "source": "usmsc2-bb-cr4",
           "src_x": "1450",
           "src_y": "1080",
-          "out_bw_used": "0.000007"
+          "out_bw_used": "60"
         }
       },
       {
@@ -30568,7 +30568,7 @@
         "_id": "usmsc2-bb-cr1et-1/0/14usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.000004",
+          "in_bw_used": "50",
           "bundle_intf": "ae502",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -30578,7 +30578,7 @@
           "source": "usmsc2-bb-cr1",
           "src_x": "1000",
           "src_y": "1080",
-          "out_bw_used": "0.000009"
+          "out_bw_used": "60"
         }
       },
       {
@@ -30587,7 +30587,7 @@
         "_id": "usmsc2-bb-cr2et-1/0/14usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.000004",
+          "in_bw_used": "50",
           "bundle_intf": "ae502",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -30597,7 +30597,7 @@
           "source": "usmsc2-bb-cr2",
           "src_x": "1110",
           "src_y": "1150",
-          "out_bw_used": "0.000007"
+          "out_bw_used": "60"
         }
       },
       {
@@ -30663,7 +30663,7 @@
         "_id": "usmsc2-bb-pe1et-8/1/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.106419",
+          "in_bw_used": "50",
           "bundle_intf": "ae2",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -30673,7 +30673,7 @@
           "source": "usmsc2-bb-pe1",
           "src_x": "1150",
           "src_y": "925",
-          "out_bw_used": "0.000071"
+          "out_bw_used": "60"
         }
       },
       {
@@ -33057,7 +33057,7 @@
         "_id": "usmsc2-bb-pe1et-4/1/1usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0",
+          "in_bw_used": "50",
           "bundle_intf": "ae2",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -33067,7 +33067,7 @@
           "source": "usmsc2-bb-pe1",
           "src_x": "1150",
           "src_y": "925",
-          "out_bw_used": "0"
+          "out_bw_used": "60"
         }
       },
       {
@@ -39004,7 +39004,7 @@
         "_id": "usmsc2-bb-cr3et-1/0/14usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.000004",
+          "in_bw_used": "50",
           "bundle_intf": "ae502",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -39014,7 +39014,7 @@
           "source": "usmsc2-bb-cr3",
           "src_x": "1300",
           "src_y": "1140",
-          "out_bw_used": "0.000007"
+          "out_bw_used": "60"
         }
       },
       {
@@ -39080,7 +39080,7 @@
         "_id": "usmsc2-bb-pe2et-8/1/3usmsc2-bb-pe3",
         "_score": 1,
         "_source": {
-          "in_bw_used": "0.065143",
+          "in_bw_used": "50",
           "bundle_intf": "ae4",
           "dst_x": "1420",
           "dest": "usmsc2-bb-pe3",
@@ -39090,7 +39090,7 @@
           "source": "usmsc2-bb-pe2",
           "src_x": "1300",
           "src_y": "925",
-          "out_bw_used": "0.000026"
+          "out_bw_used": "60"
         }
       },
       {
