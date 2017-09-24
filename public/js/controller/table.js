@@ -7,7 +7,7 @@ ngElastic.controller('tableController', function($scope, $http) {
   $scope.isCollapseMpls = true;
 
 	// set value for limit dropdown
-	$scope.setLimit = [{id:5},{id:10},{id:'All'}];
+	$scope.setLimit = [{id:5},{id:30},{id:'All'}];
 
 	// set value for dir dropdown
 	// $scope.setDir = [{dir:'In',},{dir:'Out'},{dir:'Default'}];
