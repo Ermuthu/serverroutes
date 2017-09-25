@@ -5,48 +5,51 @@
   }
 </style>
 <div ng-init="initMapController()">
+	<go-diagram go-model="model" style="width:100%; height:100%"></go-diagram>
+
+	<!-- OLD WORKING CODE -->
 	<!-- Title -->
-  <div class="col-sm-12 bottom-line">
+  <!-- <div class="col-sm-12 bottom-line">
     <h3>{{map}}</h3>
-  </div>
+  </div> -->
 
   <!-- Dropdown's -->
-  <div class="col-sm-12 bottom-line">
+  <!-- <div class="col-sm-12 bottom-line">
     <form action="" class="form-inline text-center">
-			<div class="form-group" >
+			<div class="form-group" > -->
         <!-- Destination -->
-        <div class="pull-right">
+        <!-- <div class="pull-right">
           <div class="form-group">
             <select style="margin: 0 5px 0 5px;" ng-model="dest" id="" class="form-control" ng-options="dest.value as dest.text for dest in destDropdown" ng-change="dropdown(src,dest)">
               <option value="">Destination</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <!-- Source -->
-        <div class="pull-right">
+        <!-- <div class="pull-right">
           <div class="form-group">
             <select style="margin: 0 5px 0 5px;" ng-model="src" id="" class="form-control" ng-options="src.value as src.text for src in sourceDropdown" ng-change="dropdown(src,dest)">
               <option value="">Source</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <!-- Default Map -->
-        <a href="#/map" ng-click="defaultMap()" class="btn btn-success">Default Map</a>
+        <!-- <a href="#/map" ng-click="defaultMap()" class="btn btn-success">Default Map</a>
 			</div>
 		</form>	
 	</div>
- 	<br/>
+ 	<br/> -->
 
 	<!-- Loader -->
-	<div ng-hide="isLoading === false" class="container text-center" uib-alert ng-class="'alert-danger'">
+	<!-- <div ng-hide="isLoading === false" class="container text-center" uib-alert ng-class="'alert-danger'">
 		<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 		<span style="font-weight: bolder;">Loading... Please Wait...</span>
-	</div>
+	</div> -->
 
   <!-- OverAll SVG -->
-  <div id="drawing"></div>
+  <!-- <div id="drawing"></div> -->
 
   <!-- SVG onHover -->
-  <div id="onhover"></div>
+  <!-- <div id="onhover"></div> -->
 
 </div>
