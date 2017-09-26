@@ -5,19 +5,36 @@ ngElastic.directive('goDiagram', function($http) {
     replace: true,
     scope: { model: '=goModel' },
     link: function(scope, element, attrs) {
-      console.log(element);
-      console.log(attrs);
       if (window.goSamples) goSamples(); // init for these samples -- you don't need to call this
       var $ = go.GraphObject.make;
-      // function strokeColor(bw,d) {
-      //   if(bw>0 && bw<11){
-      //     return 'green'
-      //   } 
-      //   return 'blue'
-      // }
-      // var rainbow = new go.Brush(go.Brush.Linear);
-      // rainbow.addColorStop(0,  strokeColor('d', 'd._source.out_bw_used'));
-      // rainbow.addColorStop(1, "red");
+
+      function linkLinearBrush(link) {
+        var b = new go.Brush(go.Brush.Linear);
+        var fp = link.fromPort.getDocumentPoint(go.Spot.Center);
+        var tp = link.toPort.getDocumentPoint(go.Spot.Center);
+        var right = (tp.x > fp.x);
+        var down = (tp.y > fp.y);
+        if (right) {
+          if (down) {
+            b.start = go.Spot.TopLeft;
+            b.end = go.Spot.BottomRight;
+          } else {
+            b.start = go.Spot.BottomLeft;
+            b.end = go.Spot.TopRight;
+          }
+        } else {  // leftward
+          if (down) {
+            b.start = go.Spot.TopRight;
+            b.end = go.Spot.BottomLeft;
+          } else {
+            b.start = go.Spot.BottomRight;
+            b.end = go.Spot.TopLeft;
+          }
+        }
+        b.addColorStop(0.4999, link.data.inColor);
+        b.addColorStop(0.5000, link.data.outColor);
+        return b;
+      }
 
       // create a Diagram for the given HTML DIV element
       var diagram = $(go.Diagram, element[0],{
@@ -29,46 +46,24 @@ ngElastic.directive('goDiagram', function($http) {
               height: 15,
               locationSpot: go.Spot.Center
           },
-          // new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-          // $(go.Shape, "RoundedRectangle", new go.Binding("fill", "color"),
           new go.Binding("location"),
           $(go.Shape, { fill: "#e74c3c",stroke:'#c0392b' }, {
             portId: "", cursor: "pointer", strokeWidth: 0,
-            // fromLinkable: true, toLinkable: true,
-            // fromLinkableSelfNode: true, toLinkableSelfNode: true,
-            // fromLinkableDuplicates: true, toLinkableDuplicates: true
           }),
           $(go.TextBlock, { margin: 0,stroke: "#eee"},
             new go.Binding("text", "key"))
           ),
         linkTemplate: 
-          $(go.Link, {
-            routing: go.Link.AvoidsNodes,
-            reshapable: true,
-            resegmentable: true
-          }, 
-          $(go.Shape,
-            // new go.Binding("stroke", "in"),
-            {
-              fill: $(go.Brush, go.Brush.Linear, { 0: "#FEC901", 1: "red" }),
-            },
-            new go.Binding("stroke", "out"),
-          ),
-          // $(go.Shape,
-          //   new go.Binding("stroke", "in"),
-          //   new go.Binding("fill", "in"),
-          //   { fromArrow: "circle", strokeWidth: 2 },
-          //   { segmentIndex: 0, segmentFraction: .5}
-          // ),
-          // $(go.Shape,
-          //   new go.Binding("stroke", "out"),
-          //   new go.Binding("fill", "out"),
-          //   { toArrow: "circle", strokeWidth: 2 },
-          //   { segmentIndex: 0, segmentFraction: .5}
-          // ),
-            { relinkableFrom: true, relinkableTo: true },
-            // $(go.Shape),
-            $(go.Shape, { toArrow: "Standard", stroke: null, strokeWidth: 0 })
+          $(go.Link, 
+            // To display lines either vertical or zig-zag
+            // {
+            //   routing: go.Link.AvoidsNodes,
+            //   reshapable: true,
+            //   resegmentable: true
+            // },
+          $(go.Shape, 
+            { strokeWidth: 5},
+            new go.Binding("stroke", "", linkLinearBrush).ofObject()) // Dynamic Two color lines
           ),
           initialContentAlignment: go.Spot.Center,
           // "ModelChanged": updateAngular,
@@ -276,8 +271,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
         links.push({
           from: obj._source.source,
           to: obj._source.dest,
-          in: $scope.getColor(obj._source.in_bw_used),
-          out: $scope.getColor(obj._source.out_bw_used),
+          inColor: $scope.getColor(obj._source.in_bw_used),
+          outColor: $scope.getColor(obj._source.out_bw_used),
         });
       });
       $scope.model = new go.GraphLinksModel(
