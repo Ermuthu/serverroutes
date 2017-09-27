@@ -1,0 +1,2267 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacing rather than Scaling when Zooming</title>
+<meta name="description" content="Zooming only changes the distance between nodes, not the apparent size of each node." />
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="go.js"></script>
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.25/go-debug.js"></script>
+ --><script src="OrthogonalLinkReshapingTool.js"></script><script id="code">
+  function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+    myDiagram = $(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
+                  {
+                    initialContentAlignment: go.Spot.Center,  // center the content
+                    commandHandler: $(SpacingCommandHandler),
+                    // update the SpacingCommandHandler.space from the model at the end of each transaction
+                    "ModelChanged": function(e) {
+                      if (e.isTransactionFinished) {
+                        myDiagram.commandHandler.space = myDiagram.model.modelData.space;
+                      }
+                    },
+                    "undoManager.isEnabled": true  // enable undo & redo
+                    // "linkReshapingTool": new OrthogonalLinkReshapingTool()
+
+                  });
+    // Define a simple Node template that cannot be shared with other Diagrams,
+    // because of the use of the Node.location Binding conversion functions.
+    // The SpacingCommandHandler also assumes the Node.location is bound to the data property named "loc".
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",  // the Shape will go around the TextBlock
+        // {
+        //   width: 120,
+        //   height: 15,
+        //   locationSpot: go.Spot.Center
+        // },
+        new go.Binding("location", "loc", spacedLocationParse).makeTwoWay(spacedLocationStringify),
+        $(go.Shape,
+          // Shape.fill is bound to Node.data.color
+          new go.Binding("fill", "color"),
+         new go.Binding("stroke", "color")),
+        $(go.TextBlock,
+          { margin: 0,stroke: "#eee", wrap: go.TextBlock.WrapFit, textAlign: "center",cursor: "pointer" },  // some room around the text
+          // TextBlock.text is bound to Node.data.key
+          new go.Binding("text", "key"))
+      );
+         // var rainbow = $(go.Brush, "Linear", {
+         //              //  0.0: "red",
+         //              // 0.15: "red",
+         //              // 0.30: "blue",
+         //              // 0.50: "blue",
+         //              // 0.65: "blue",
+         //              0: "blue",
+         //              1: "blue"
+         //              });   
+      //   myDiagram.linkTemplate =
+      // $(go.Link,
+      //   {
+      //    // routing: go.Link.AvoidsNodes,
+      //      reshapable: true,
+      //      resegmentable: true
+      //   },
+      //   $(go.Shape, { strokeWidth: 1 , stroke:rainbow })
+      // ); 
+        function GradientLink() {
+       go.Link.call(this);
+       this._startColor = "black";
+       this._endColor = "black";
+     }
+     go.Diagram.inherit(GradientLink, go.Link);
+
+  Object.defineProperty(GradientLink.prototype, "startColor", {
+    get: function() { return this._startColor; },
+    set: function(value) {
+      if (this._startColor !== value) {
+        this._startColor = value;
+        this.updateBrush();
+      }
+    }
+  });
+
+  Object.defineProperty(GradientLink.prototype, "endColor", {
+    get: function() { return this._endColor; },
+    set: function(value) {
+      if (this._endColor !== value) {
+        this._endColor = value;
+        this.updateBrush();
+      }
+    }
+  });
+
+  GradientLink.prototype.updateBrush = function() {
+    var path = this.path;
+    if (path !== null) {
+      if (this.startColor === this.endColor) {
+        path.stroke = this.startColor;
+      } else if (this.pointsCount >= 2) {
+        var br = new go.Brush(go.Brush.Linear);
+        var p0 = this.getPoint(0);
+        var pn = this.getPoint(this.pointsCount - 1);
+        var dx = pn.x - p0.x;
+        var dy = pn.y - p0.y;
+        var ex = (dx > 0) ? 1.0 : 0.0;
+        var ey = (dy > 0) ? 1.0 : 0.0;
+        br.end = new go.Spot(ex, ey);
+        br.start = br.end.opposite();
+        br.addColorStop(0.4999, this.startColor);  // 0.0 for a normal gradient
+        br.addColorStop(0.5000, this.endColor);  // 1.0 for a normal gradient
+        path.stroke = br;
+      }
+    }
+  };
+
+  GradientLink.prototype.computePoints = function() {
+    var result = go.Link.prototype.computePoints.call(this);
+    if (result) this.updateBrush();
+    return result;
+  };
+  // end GradientLink 
+        myDiagram.linkTemplate =
+      $(GradientLink,
+        { toShortLength: 1 },
+        new go.Binding("startColor"),
+        new go.Binding("endColor"),
+        $(go.Shape, { strokeWidth: 1 }),
+        $(go.Shape, { toArrow: "OpenTriangle" },
+          new go.Binding("stroke", "endColor"))
+      );  
+
+    // but use the default Link template, by not setting Diagram.linkTemplate
+    // create the model data that will be represented by Nodes and Links
+    myDiagram.model = new go.GraphLinksModel(
+    [
+      // { key: "krsel6-bbisp-gw1", color: "#e74c3c",location: new go.Point(50, 30), loc: "30 50" },
+      // { key: "jptyo5-bbisp-gw2",color: "#e74c3c",location: new go.Point(650, 70), loc: "650 70" },
+      // { key: "jptyo7-bbisp-gw2", color: "#e74c3c",location: new go.Point(700, 170) ,loc: "700 170" },
+      // { key: "hkhkg1-bbisp-gw1",color: "#e74c3c", location: new go.Point(60, 400) ,loc: "60 400" },
+      // { key: "hkhkg1-bbisp-gw2",color: "#e74c3c", location: new go.Point(220, 400),loc: "220 400" },
+      // { key: "sgsin8-bbisp-gw1",color: "#e74c3c", location: new go.Point(250, 630),loc: "250 630" },
+      // { key: "ussea4-bbisp-gw2",color: "#e74c3c", location: new go.Point(900, 70),loc: "900 70" },
+      // { key:  "ussea4-bb-cr1",  color: "#e74c3c", location: new go.Point(1100, 140),loc: "1100 140" },
+      // { key: "usprz3-bb-pe1", color: "#e74c3c",   location: new go.Point(1120, 200),loc: "1120 200" },
+      // { key: "usnkq1-bb-cr1", color: "#e74c3c",   location: new go.Point(850, 435) ,loc: "850 435"},
+      // { key: "usscz2-bbisp-gw2",color: "#e74c3c", location: new go.Point(1000, 625),loc: "1000 625" },
+      // { key: "ussjc2-bbisp-gw2",color: "#e74c3c", location: new go.Point(1000, 750),loc: "1000 750" },
+      // { key: "usmsc2-bb-pe1",color: "#e74c3c",    location: new go.Point(1150, 925),loc: "1150 925" },
+      // { key: "usmsc2-bb-pe2",color: "#e74c3c",    location: new go.Point(1300, 925),loc: "1300 925" },
+      // { key: "usmsc2-bb-cr4", color: "#e74c3c",   location: new go.Point(1450, 1080),loc: "1450 1080" },
+      // { key: "usrno1-bb-pe2", color: "#e74c3c",   location: new go.Point(1490, 500) ,loc: "1490 500"},
+      // { key: "usrno1-bb-cr2", color: "#e74c3c",   location: new go.Point(1660, 400),loc: "1660 400" },
+      // { key: "usden5-bb-cr2",color: "#e74c3c",    location: new go.Point(1870, 270) ,loc: "1870 270"},
+      // { key: "usmes1-bbisp-gw2",color: "#e74c3c", location: new go.Point(1950, 30) ,loc: "1950 30"},
+          { key: "krsel6-bbisp-gw1",color: "#e74c3c", location: new go.Point(50, 30) , loc: "50 30", },
+          { key: "jptyo5-bbisp-gw2",color: "#e74c3c", location: new go.Point(650, 70) , loc: "650 70",},
+          { key: "jptyo7-bbisp-gw2",color: "#e74c3c", location: new go.Point(700, 170) ,loc: "700 170",},
+          { key: "hkhkg1-bbisp-gw1",color: "#e74c3c", location: new go.Point(60, 400) ,loc: "60 400",},
+          { key: "hkhkg1-bbisp-gw2",color: "#e74c3c", location: new go.Point(220, 400),loc: "220 400", },
+          { key: "sgsin8-bbisp-gw1",color: "#e74c3c", location: new go.Point(250, 630) ,loc: "250 630",},
+          { key: "ussea4-bbisp-gw2",color: "#e74c3c", location: new go.Point(900, 70),loc: "900 70", },
+          { key: "ussea4-bb-cr1",color: "#e74c3c",   location: new go.Point(1100, 140),loc: "1100 140", },
+          { key: "usprz3-bb-pe1",color: "#e74c3c",    location: new go.Point(1120, 200) ,loc: "1120 200",},
+          { key: "usnkq1-bb-cr1",color: "#e74c3c",    location: new go.Point(850, 435),loc: "850 435", },
+          { key: "usscz2-bbisp-gw2",color: "#e74c3c", location: new go.Point(1000, 625),loc: "1000 625", },
+          { key: "ussjc2-bbisp-gw2",color: "#e74c3c", location: new go.Point(1000, 750) ,loc: "1000 750",},
+          { key: "usmsc2-bb-pe1",color: "#e74c3c",    location: new go.Point(1150, 925),loc: "1150 925", },
+          { key: "usmsc2-bb-pe2",color: "#e74c3c",    location: new go.Point(1300, 925),loc: "1300 925", },
+          { key: "usmsc2-bb-cr4",color: "#e74c3c",    location: new go.Point(1450, 1080),loc: "1450 1080", },
+          { key: "usrno1-bb-pe2",color: "#e74c3c",    location: new go.Point(1490, 500) ,loc: "1490 500",},
+          { key: "usrno1-bb-cr2",color: "#e74c3c",    location: new go.Point(1660, 400),loc: "1660 400", },
+          { key: "usden5-bb-cr2",color: "#e74c3c",    location: new go.Point(1870, 270),loc: "1870 270", },
+          { key: "usmes1-bbisp-gw2",color: "#e74c3c", location: new go.Point(1950, 30) ,loc: "1950 30",},
+          { key: "usdal4-bbisp-gw2",color: "#e74c3c", location: new go.Point(1870, 790),loc: "1870 790", },
+          { key: "ushou1-bb-sw1",color: "#e74c3c",    location: new go.Point(1790, 900) ,loc: "1790 900",},
+          { key: "ushou1-bbisp-gw1",color: "#e74c3c", location: new go.Point(1790, 970),loc: "1790 970", },
+          { key: "usnyc3-bbisp-gw2",color: "#e74c3c", location: new go.Point(2470, 175) ,loc: "2470 175",},
+          { key: "usewr1-bbisp-gw2",color: "#e74c3c", location: new go.Point(2670, 175),loc: "2670 175", },
+          { key:  "usbos2-bb-sw2",color: "#e74c3c",   location: new go.Point(2360, 70) ,loc: "2360 70",},
+          { key:  "usxqm1-bb-cr1",color: "#e74c3c", location: new go.Point(2500, 250),loc: "2500 250", },
+          { key: "usqas3-bb-pe1",color: "#e74c3c", location: new go.Point(2500, 320),loc: "2500 320", },
+          { key: "usqas3-bb-pe2",color: "#e74c3c", location: new go.Point(2500, 370),loc: "2500 370", },
+          { key: "usuqo4-bb-cr2",color: "#e74c3c", location: new go.Point(2500, 625) ,loc: "2500 625",},
+          { key: "usmia1-bb-sw4",color: "#e74c3c", location: new go.Point(2350, 1040) ,loc: "2350 1040",},
+          { key: "gbmnc1-bb-sw2",color: "#e74c3c", location: new go.Point(3450, 130) ,loc: "3450 130",},
+          { key: "gbmnc1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3600, 20) ,loc: "3600 20",},
+          { key: "uklon6-bbisp-gw2",color: "#e74c3c", location: new go.Point(2970, 110) ,loc: "2970 110",},
+
+          { key: "defra1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3160, 440) ,loc: "3160 440",},
+          { key: "defra1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3160, 510) ,loc: "3160 510",},
+          { key: "cntnj1-bbisp-gw1",color: "#e74c3c", location: new go.Point(50,280) ,loc: "50 280",},
+          { key: "jptyo5-bbisp-gw1",color: "#e74c3c", location: new go.Point(420,  70) ,loc: "420 70",},
+          { key: "sgsin3-bbisp-gw1",color: "#e74c3c", location: new go.Point(250, 700),loc: "250 700", },
+          { key: "sgsin3-bbisp-gw2",color: "#e74c3c", location: new go.Point(390, 700),loc: "390 700", },
+          { key: "ausyd2-bbisp-gw1",color: "#e74c3c", location: new go.Point(450, 850),loc: "450 850", },
+          { key: "usprz2-bb-cr2",color: "#e74c3c",    location: new go.Point(1500, 100),loc: "1500 100", },
+          { key: "usscz2-bb-cr2",color: "#e74c3c",    location: new go.Point(850, 675) ,loc: "850 675",},
+          { key: "ussjc2-bbisp-gw1",color: "#e74c3c", location: new go.Point(1150, 750),loc: "1150 750", },
+          { key: "uslax1-bb-cr2",color: "#e74c3c",    location:    new go.Point(975, 1080),loc: "975 1080", },
+          { key: "usrno1-bb-pe1",color: "#e74c3c", location: new go.Point(1490, 450) ,loc: "1490 450",},
+          { key: "usden5-bbisp-gw1",color: "#e74c3c", location: new go.Point(1730, 180),loc: "1730 180", },
+          { key: "uschi6-bb-pe2",color: "#e74c3c", location: new go.Point(2135, 270),loc: "2135 270", },
+          { key: "uschi6-bb-pe3",color: "#e74c3c", location: new go.Point(2265, 270),loc: "2265 270", },
+          { key: "uslxa1-bbisp-gw1",color: "#e74c3c", location: new go.Point(1800, 430),loc: "1800 430", },
+          { key: "usdal4-bb-cr1",color: "#e74c3c", location: new go.Point(1730, 720) ,loc: "1730 720",},
+          { key: "usewr1-bbisp-gw1",color: "#e74c3c", location: new go.Point(2670, 80),loc: "2670 80", },
+          { key: "usbos2-bbisp-gw2",color: "#e74c3c", location: new go.Point(2650, 20),loc: "2650 20", },
+
+          { key: "usqas3-bb-pe3",color: "#e74c3c", location: new go.Point(2670, 320),loc: "2670 320", },
+          { key: "usqas3-bb-pe4",color: "#e74c3c", location: new go.Point(2670, 370),loc: "2670 370", },
+          { key: "usuqo4-bbisp-gw1",color: "#e74c3c", location: new go.Point(2370, 525),loc: "2370 525", },
+          { key: "usuqo4-bb-cr1",color: "#e74c3c", location: new go.Point(2500, 525),loc: "2500 525", },
+          { key: "usuqo1-bbisp-gw1",color: "#e74c3c", location: new go.Point(2260, 400) ,loc: "2260 400",},
+          { key: "usmia1-bbisp-gw2",color: "#e74c3c", location: new go.Point(2500, 1040),loc: "2500 1040", },
+          { key: "usmia1-bb-sw1",color: "#e74c3c", location: new go.Point(2500, 850),loc: "2500 850", },
+          { key: "sesto4-bbisp-gw2",color: "#e74c3c", location: new go.Point(3530, 170),loc: "3530 170", },
+          { key: "dkblp1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3700, 240),loc: "3700 240", },
+          { key: "dedus1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3700, 430),loc: "3700 430", },
+          { key: "deber3-bbisp-gw1",color: "#e74c3c", location: new go.Point(3700, 550),loc: "3700 550", },
+          { key: "inbom2-bbisp-gw1",color: "#e74c3c", location: new go.Point(3350, 700),loc: "3350 700", },
+          { key: "cntnj1-bbisp-gw2",color: "#e74c3c", location: new go.Point(50, 350) ,loc: "50 350",},
+
+          { key: "cnsha10-bbisp-gw1",color: "#e74c3c", location: new go.Point(160, 200),loc: "160 200", },
+          { key: "krsel6-bbisp-gw2",color: "#e74c3c", location: new go.Point(50, 90),loc: "50 90", },
+          { key: "jposa3-bbisp-gw2",color: "#e74c3c", location: new go.Point(240, 130),loc: "240 130",},
+          { key: "hkhkg3-bbisp-gw2",color: "#e74c3c", location: new go.Point(220, 480),loc: "220 480",},
+          { key: "ussea4-bbisp-gw1",color: "#e74c3c", location: new go.Point(900, 140),loc: "900 140",},
+          { key: "usprz3-bb-cr2",color: "#e74c3c", location: new go.Point(1240, 100),loc: "1240 100",},
+          { key: "usprz2-bb-pe2",color: "#e74c3c", location: new go.Point(1370, 200),loc: "1370 200",},
+          { key: "uslax1-bbisp-gw1",color: "#e74c3c", location: new go.Point(880, 875),loc: "880 875",},
+          { key: "usmsc2-bb-pe3",color: "#e74c3c", location: new go.Point(1300, 1025),loc: "1300 1025",},
+          { key: "usmsc2-bb-cr1",color: "#e74c3c", location: new go.Point(1000, 1080),loc: "1000 1080",},
+          { key: "usmsc2-bb-cr2",color: "#e74c3c", location: new go.Point(1150, 1080),loc: "1150 1080",},
+          { key: "usmsc2-bb-cr3",color: "#e74c3c", location: new go.Point(1300, 1080),loc: "1300 1080",},
+          { key: "usrno3-bb-cr1",color: "#e74c3c", location: new go.Point(1380, 240),loc: "1380 240",},
+          { key: "usrno3-bb-cr2",color: "#e74c3c", location: new go.Point(1380, 290),loc: "1380 290",},
+          { key: "usden5-bbisp-gw2",color: "#e74c3c", location: new go.Point(1870, 180),loc: "1870 180",},
+          { key: "usden5-bb-cr1",color: "#e74c3c", location: new go.Point(1730, 270),loc: "1730 270",},
+          { key: "uschi5-bb-cr1",color: "#e74c3c", location: new go.Point(2110, 190),loc: "2110 190",},
+          { key: "uschi5-bb-cr2",color: "#e74c3c", location: new go.Point(2260, 190),loc: "2260 190",},
+          { key: "uslxa1-bbisp-gw2", color: "#e74c3c",location: new go.Point(1800, 500),loc: "1800 500",},
+          { key: "usatl4-bb-cr2",color: "#e74c3c", location: new go.Point(2060, 1100),loc: "2060 1100",},
+          { key: "usatl4-bbisp-gw1",color: "#e74c3c", location: new go.Point(1920, 1160),loc: "1920 1160",},
+          { key: "usbos2-bb-sw1",color: "#e74c3c", location: new go.Point(2360, 20),loc: "2360 20",},
+          { key: "usxqm1-bb-cr2",color: "#e74c3c", location: new go.Point(2620, 250),loc: "2620 250",},
+          { key: "usqas2-bbisp-gw1",color: "#e74c3c", location: new go.Point(2380, 320),loc: "2380 320",},
+          { key: "usuqo4-bbisp-gw2",color: "#e74c3c", location: new go.Point(2370, 625),loc: "2370 625",},
+          { key: "usmia1-bb-sw2",color: "#e74c3c", location: new go.Point(2395, 850),loc: "2395 850",},
+          { key: "usmia1-bb-sw3",color: "#e74c3c", location: new go.Point(2350, 950),loc: "2350 950",},
+          { key: "gbmnc1-bb-sw1",color: "#e74c3c", location: new go.Point(3450, 20),loc: "3450 20",},
+          { key: "gbmnc1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3600, 90),loc: "3600 90",},
+          { key: "uklon5-bbisp-gw2",color: "#e74c3c", location: new go.Point(3120, 155),loc: "3120 155",},
+          { key: "ieork1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3300, 50),loc: "3300 50",},
+          { key: "nlams2-bbisp-gw2",color: "#e74c3c", location: new go.Point(3460, 250),loc: "3460 250",},
+          { key: "nlams2-bbisp-gw1",color: "#e74c3c", location: new go.Point(3460, 320),loc: "3460 320",},
+          { key: "frcch1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3160, 315),loc: "3160 315",},
+          { key: "sesto4-bbisp-gw1",color: "#e74c3c", location: new go.Point(3700, 170),loc: "3700 170",},
+          { key: "dkblp1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3700, 310),loc: "3700 310",},
+          { key: "inmaa1-bbisp-gw1",color: "#e74c3c", location: new go.Point(3200, 700),loc: "3200 700",},
+          { key: "inmaa1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3200, 800),loc: "3200 800",},
+          { key: "usprz2-bb-pe1",color: "#e74c3c",    location: new go.Point(1370, 150),loc: "1370 150",},
+
+
+
+
+          { key: "usnkq1-bb-cr2",color: "#e74c3c", location: new go.Point(850, 535),loc: "850 535",},
+          { key: "usscz2-bbisp-gw1",color: "#e74c3c", location: new go.Point(1000, 525),loc: "1000 525",},
+          { key: "uslax1-bb-cr1",color: "#e74c3c", location: new go.Point(825, 1080),loc: "825 1080",},
+          { key: "usmsc2-bb-pe4",color: "#e74c3c", location: new go.Point(1150, 1025),loc: "1150 1025",},
+          { key: "usrno3-bb-pe1",color: "#e74c3c", location: new go.Point(1250, 350),loc: "1250 350",},
+          { key: "usrno3-bb-pe2",color: "#e74c3c", location: new go.Point(1250, 400),loc: "1250 400",},
+          { key: "uschi5-bbisp-gw2", color: "#e74c3c",location: new go.Point(2110, 110),loc: "2110 110",},
+          { key: "uschi6-bb-pe4",color: "#e74c3c", location: new go.Point(2335, 270),loc: "2335 270",},
+          { key: "usdal4-bbisp-gw1",color: "#e74c3c", location: new go.Point(1730, 790),loc: "1730 790",},
+          { key: "ushou1-bbisp-gw2",color: "#e74c3c", location: new go.Point(1790, 1040),loc: "1790 1040",},
+          { key: "usnyc3-bbisp-gw1",color: "#e74c3c", location: new go.Point(2470, 80),loc: "2470 80",},
+          { key: "usbos2-bbisp-gw1",color: "#e74c3c", location: new go.Point(2500, 20),loc: "2500 20",},
+          { key: "usqas2-bbisp-gw2",color: "#e74c3c", location: new go.Point(2380, 370),loc: "2380 370",},
+          { key: "usuqo1-bbisp-gw2",color: "#e74c3c", location: new go.Point(2260, 475),loc: "2260 475",},
+          { key: "uklon5-bbisp-gw1",color: "#e74c3c", location: new go.Point(3120, 65),loc: "3120 65",},
+          { key: "defra3-bbisp-gw2",color: "#e74c3c", location: new go.Point(3330, 440),loc: "3330 440",},
+          { key: "defra3-bbisp-gw1",color: "#e74c3c", location: new go.Point(3330, 510),loc: "3330 510",},
+          { key: "frcch1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3160, 375),loc: "3160 375",},
+          { key: "dedus1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3700, 360),loc: "3700 360",},
+          { key: "cnsha10-bbisp-gw2",color: "#e74c3c", location: new go.Point(160, 260),loc: "160 260",},
+          { key: "jposa3-bbisp-gw1",color: "#e74c3c", location: new go.Point(240, 60),loc: "240 60",},
+          { key: "jptyo7-bbisp-gw1",color: "#e74c3c", location: new go.Point(420, 170),loc: "420 170",},
+          { key: "hkhkg3-bbisp-gw1",color: "#e74c3c", location: new go.Point(60, 480),loc: "60 480",},
+          { key: "sgsin8-bbisp-gw2",color: "#e74c3c", location: new go.Point(390, 630),loc: "390 630",},
+          { key: "ausyd2-bbisp-gw2",color: "#e74c3c", location: new go.Point(600, 850),loc: "600 850",},
+          { key: "ussea4-bb-cr2",color: "#e74c3c", location: new go.Point(1100,70),loc: "1100 70",},
+          { key: "usprz3-bb-pe2",color: "#e74c3c", location: new go.Point(1120, 250),loc: "1120 250",},
+          { key: "usprz3-bb-cr1",color: "#e74c3c", location: new go.Point(1240, 50),loc: "1240 50",},
+          { key: "usprz2-bb-cr1",color: "#e74c3c", location: new go.Point(1500, 50),loc: "1500 50",},
+          { key: "usscz2-bb-cr1",color: "#e74c3c", location: new go.Point(850, 575),loc: "850 575",},
+          { key: "uslax1-bbisp-gw2",color: "#e74c3c",location: new go.Point(880, 950),loc: "880 950",},
+          { key: "usrno1-bb-cr1",color: "#e74c3c", location: new go.Point(1660, 350),loc: "1660 350",},
+          { key: "usmes1-bbisp-gw1",color: "#e74c3c", location: new go.Point(1800, 30),loc: "1800 30",},
+          { key: "uschi5-bbisp-gw1",color: "#e74c3c", location: new go.Point(2260, 110),loc: "2260 110",},
+          { key: "uschi6-bb-pe1",color: "#e74c3c", location: new go.Point(2035, 270),loc: "2035 270",},
+          { key: "usdal4-bb-cr2",color: "#e74c3c", location: new go.Point(1870, 720),loc: "1870 720",},
+          { key: "usatl4-bb-cr1",color: "#e74c3c", location: new go.Point(1920, 1100),loc: "1920 1100",},
+          { key: "usatl4-bbisp-gw2",color: "#e74c3c", location: new go.Point(2060, 1160),loc: "2060 1160",},
+          { key: "ushou1-bb-sw2",color: "#e74c3c", location: new go.Point(1790, 1100),loc: "1790 1100",},
+          { key: "usuqo1-bb-cr1",color: "#e74c3c", location: new go.Point(2370, 400),loc: "2370 400",},
+          { key: "usuqo1-bb-cr2",color: "#e74c3c", location: new go.Point(2370, 475),loc: "2370 475",},
+          { key: "usmia1-bbisp-gw1",color: "#e74c3c", location: new go.Point(2500, 950),loc: "2500 950",},
+          { key: "uklon6-bbisp-gw1",color: "#e74c3c", location: new go.Point(2970, 20),loc: "2970 20",},
+          { key: "ieork1-bbisp-gw2",color: "#e74c3c", location: new go.Point(3300, 110),loc: "3300 110",},
+          { key: "deber3-bbisp-gw2",color: "#e74c3c", location: new go.Point(3700, 480),loc: "3700 480",},
+          { key: "inbom2-bbisp-gw2",color: "#e74c3c", location: new go.Point(3350, 800),loc: "3350 800",}
+    ],
+    [
+  { from: "krsel6-bbisp-gw1", to: "sesto4-bbisp-gw1",startColor: "orange", endColor: "blue" },
+      { from: "cntnj1-bbisp-gw1", to: "jposa3-bbisp-gw2",startColor: "orange", endColor: "green" },
+     { from: "usatl4-bb-cr2", to: "jposa3-bbisp-gw2",startColor: "orange", endColor: "red" },
+     { from: "usatl4-bb-cr2", to: "usmia1-bb-sw3",startColor: "orange", endColor: "yellow" },
+    { from: "krsel6-bbisp-gw1", to: "usmia1-bb-sw3",startColor: "orange", endColor: "black" },
+
+  
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe1"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe3"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-pe4"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-pe3"
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usmsc2-bb-pe3"
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw1",
+  //   to: "uschi5-bb-cr1"
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usatl4-bbisp-gw2"
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw1",
+  //   to: "usdal4-bb-cr1"
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw2",
+  //   to: "usdal4-bb-cr2"
+  // },
+  // {
+  //   from: "usden5-bbisp-gw2",
+  //   to: "usden5-bbisp-gw1"
+  // },
+  // {
+  //   from: "usxqm1-bb-cr1",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe1",
+  //   to: "usmsc2-bb-cr4" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw1",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw2",
+  //   to: "usatl4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "usatl4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw1",
+  //   to: "usrno1-bb-pe1" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw1",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw2",
+  //   to: "uschi5-bb-cr2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "hkhkg1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "hkhkg3-bbisp-gw2" 
+  // },
+  // // {
+  // //   from: "jptyo5-bbisp-gw2",
+  // //   to: "jptyo5-bbisp-gw1" 
+  // // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "jptyo7-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw1",
+  //   to: "jptyo5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "usrno1-bb-pe2" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "uslax1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "jptyo7-bbisp-gw1" 
+  // },
+  // //1
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "jposa3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw1",
+  //   to: "ausyd2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "cnsha10-bbisp-gw1",
+  //   to: "cnsha10-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cnsha10-bbisp-gw2",
+  //   to: "jptyo5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cntnj1-bbisp-gw1",
+  //   to: "cntnj1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw1",
+  //   to: "defra1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw2",
+  //   to: "defra3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw2",
+  //   to: "nlams2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "defra1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "dkblp1-bbisp-gw2",
+  //   to: "sesto4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "frcch1-bbisp-gw1",
+  //   to: "frcch1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "frcch1-bbisp-gw1",
+  //   to: "uklon6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "gbmnc1-bb-sw1",
+  //   to: "gbmnc1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "gbmnc1-bb-sw1",
+  //   to: "uklon6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "gbmnc1-bb-sw2",
+  //   to: "gbmnc1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "gbmnc1-bbisp-gw1",
+  //   to: "gbmnc1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "hkhkg1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "hkhkg3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "jptyo7-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw2",
+  //   to: "hkhkg3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw2",
+  //   to: "jptyo5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw2",
+  //   to: "sgsin3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw1",
+  //   to: "hkhkg3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ieork1-bbisp-gw1",
+  //   to: "ieork1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ieork1-bbisp-gw2",
+  //   to: "uklon5-bbisp-gw2"
+  // },
+  // {
+  //   from: "inbom2-bbisp-gw1",
+  //   to: "inmaa1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "inmaa1-bbisp-gw1",
+  //   to: "inmaa1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jposa3-bbisp-gw1",
+  //   to: "jposa3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jposa3-bbisp-gw2",
+  //   to: "jptyo7-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "sgsin3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw1",
+  //   to: "jptyo7-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw1",
+  //   to: "sgsin8-bbisp-gw1" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "uklon6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "sesto4-bbisp-gw1",
+  //   to: "sesto4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "sgsin3-bbisp-gw2",
+  //   to: "sgsin8-bbisp-gw2" 
+  // },
+  // {
+  //   from: "sgsin8-bbisp-gw1",
+  //   to: "sgsin3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "sgsin8-bbisp-gw1",
+  //   to: "sgsin8-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usatl4-bb-cr2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usatl4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "uschi5-bb-cr1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usdal4-bb-cr1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usmia1-bb-sw3" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usuqo1-bb-cr1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "uschi5-bb-cr2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usdal4-bb-cr2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usuqo1-bb-cr2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw1",
+  //   to: "usbos2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw2",
+  //   to: "usbos2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw2",
+  //   to: "uschi5-bb-cr2" 
+  // },
+  // {
+  //   from: "usbos2-bbisp-gw1",
+  //   to: "usbos2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "uschi5-bb-cr2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "uschi5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "uschi6-bb-pe1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "uschi6-bb-pe2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "usden5-bb-cr1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "usnyc3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "uschi5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "uschi5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "uschi6-bb-pe1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "uschi6-bb-pe2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "usden5-bb-cr2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "usnyc3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "uschi5-bbisp-gw1",
+  //   to: "uschi5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usdal4-bb-cr2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usdal4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usden5-bb-cr1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usmsc2-bb-cr1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usmsc2-bb-cr2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usdal4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usden5-bb-cr2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usmsc2-bb-cr3" 
+  // },
+  // {
+  //   from: "usdal4-bbisp-gw1",
+  //   to: "usdal4-bb-cr1" 
+  // },
+  // {
+  //   from: "usdal4-bbisp-gw1",
+  //   to: "usdal4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "usden5-bb-cr2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "usden5-bbisp-gw1"
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "usden5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "usrno1-bb-cr1" 
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usden5-bb-cr1",
+  //   to: "ussea4-bb-cr1", 
+  // },
+  // {
+  //   from: "usden5-bb-cr2",
+  //   to: "usden5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr2",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr2",
+  //   to: "ussea4-bb-cr2" 
+  // },
+  // {
+  //   from: "usewr1-bbisp-gw1",
+  //   to: "usewr1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usewr1-bbisp-gw2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "ushou1-bb-sw1",
+  //   to: "ushou1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ushou1-bbisp-gw1",
+  //   to: "ushou1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ushou1-bbisp-gw2",
+  //   to: "ushou1-bb-sw2" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "uslax1-bb-cr2" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "uslax1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "usmsc2-bb-cr1" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "usmsc2-bb-cr2" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr1",
+  //   to: "usscz2-bb-cr1" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr2",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr2",
+  //   to: "usmsc2-bb-cr3" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr2",
+  //   to: "usmsc2-bb-cr4" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr2",
+  //   to: "usscz2-bb-cr2" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw1",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw2",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslxa1-bbisp-gw1",
+  //   to: "uslxa1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usmes1-bbisp-gw1",
+  //   to: "usmes1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usmia1-bbisp-gw1",
+  //   to: "usmia1-bb-sw1" 
+  // },
+  // {
+  //   from: "usmia1-bbisp-gw1",
+  //   to: "usmia1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usmia1-bbisp-gw2",
+  //   to: "usmia1-bb-sw2" 
+  // },
+  // {
+  //   from: "usmia1-bbisp-gw2",
+  //   to: "usmia1-bb-sw4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-cr2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-cr3" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-cr4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-cr4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-cr4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usdal4-bb-cr2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usnyc3-bbisp-gw2",
+  //   to: "usnyc3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz2-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz2-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz3-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usrno1-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz3-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usrno1-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "ussea4-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "usprz2-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "usprz3-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "usprz3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe2",
+  //   to: "usprz3-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe2",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr1",
+  //   to: "usprz3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr1",
+  //   to: "ussea4-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr2",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr2",
+  //   to: "ussea4-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe2",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe1",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe2",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe3",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe3",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe4",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usqas3-bb-pe4",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno1-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno1-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno1-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "usrno3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe2",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usrno3-bb-cr1",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno3-bb-cr1",
+  //   to: "usrno3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno3-bb-cr2",
+  //   to: "usrno3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw1",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr1",
+  //   to: "usprz2-bb-cr1" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr1",
+  //   to: "ussea4-bb-cr2" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr1",
+  //   to: "ussea4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr1",
+  //   to: "ussea4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr2",
+  //   to: "ussea4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ussea4-bbisp-gw1",
+  //   to: "ussea4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ussjc2-bbisp-gw1",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ussjc2-bbisp-gw1",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo1-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw1",
+  //   to: "usuqo1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw1",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw1",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw2",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr1",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw1",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw2",
+  //   to: "usmia1-bb-sw2" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr1",
+  //   to: "usqas2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr1",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr2",
+  //   to: "usqas2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw2",
+  //   to: "uslax1-bb-cr2" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr1",
+  //   to: "usuqo1-bb-cr1 "
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw1",
+  //   to: "ieork1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe1",
+  //   to: "usrno1-bb-pe1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "usbos2-bb-sw1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe1",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe2",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr2",
+  //   to: "usatl4-bb-cr2"
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw2",
+  //   to: "usmia1-bb-sw4" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "hkhkg1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe2",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe4",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // //1
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "jptyo5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw1",
+  //   to: "jptyo7-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "deber3-bbisp-gw2",
+  //   to: "nlams2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "defra3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "uklon5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw2",
+  //   to: "frcch1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "gbmnc1-bb-sw2",
+  //   to: "uklon5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "sgsin3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "jptyo5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "ieork1-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "inbom2-bbisp-gw1",
+  //   to: "inbom2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "inbom2-bbisp-gw1",
+  //   to: "uklon5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw2",
+  //   to: "sgsin8-bbisp-gw2" 
+  // },
+  // {
+  //   from: "krsel6-bbisp-gw1",
+  //   to: "krsel6-bbisp-gw2" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "sesto4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "usnyc3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "sgsin3-bbisp-gw2",
+  //   to: "sgsin3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw1",
+  //   to: "uklon5-bbisp-gw2"
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw2",
+  //   to: "uklon6-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uklon6-bbisp-gw1",
+  //   to: "uklon6-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr1",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usatl4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "ushou1-bb-sw2" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw1",
+  //   to: "usatl4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uschi5-bb-cr1",
+  //   to: "uschi5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "uslax1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usdal4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usden5-bb-cr2",
+  //   to: "usden5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usden5-bb-cr2",
+  //   to: "usrno1-bb-cr2" 
+  // },
+  // {
+  //   from: "usden5-bbisp-gw1",
+  //   to: "usmes1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usewr1-bbisp-gw1",
+  //   to: "usnyc3-bbisp-gw1"
+  // },
+  // {
+  //   from: "usewr1-bbisp-gw1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usewr1-bbisp-gw2",
+  //   to: "usnyc3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw2",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usmia1-bbisp-gw1",
+  //   to: "usmia1-bb-sw3" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-cr3" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz2-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr1",
+  //   to: "usprz3-bb-pe2"
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz2-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usscz2-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe2",
+  //   to: "usprz3-bb-cr2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe2",
+  //   to: "usprz3-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz2-bb-pe2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr1",
+  //   to: "usprz3-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr1",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr2",
+  //   to: "usprz3-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz3-bb-pe1",
+  //   to: "usprz3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno1-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno1-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr2",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe2",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe2",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usrno3-bb-cr1",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno3-bb-cr2",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe1",
+  //   to: "usrno3-bb-pe2" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe1",
+  //   to: "usscz2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr1",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw1",
+  //   to: "usuqo4-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw2",
+  //   to: "usuqo4-bb-cr2" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr1",
+  //   to: "usuqo4-bbisp-gw1"
+  // },
+  // {
+  //   from: "usuqo4-bb-cr1",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo4-bb-cr2",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr1",
+  //   to: "usqas2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usxqm1-bb-cr2",
+  //   to: "usqas2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-pe3" 
+  // },
+  // {
+  //   from: "usqas2-bbisp-gw2",
+  //   to: "usqas2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "sgsin3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe2",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe2",
+  //   to: "usmsc2-bb-pe3" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe4",
+  //   to: "usmsc2-bb-pe1" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe3",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw1",
+  //   to: "hkhkg1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw2",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cnsha10-bbisp-gw2",
+  //   to: "cntnj1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cntnj1-bbisp-gw2",
+  //   to: "hkhkg3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "dedus1-bbisp-gw1",
+  //   to: "dedus1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw2",
+  //   to: "uklon6-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw2",
+  //   to: "uklon5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "dkblp1-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw1",
+  //   to: "sgsin3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "jptyo7-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "krsel6-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "sgsin8-bbisp-gw2" 
+  // },
+  // {
+  //   from: "inmaa1-bbisp-gw2",
+  //   to: "sgsin3-bbisp-gw2" 
+  // },
+  // //1st
+  // // {
+  // //   from: "jposa3-bbisp-gw1",
+  // //   to: "jptyo5-bbisp-gw1" 
+  // // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "usscz2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw2",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw2",
+  //   to: "uklon5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw1",
+  //   to: "usnyc3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr1",
+  //   to: "ushou1-bb-sw1" 
+  // },
+  // {
+  //   from: "usdal4-bb-cr2",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usdal4-bbisp-gw2",
+  //   to: "uslxa1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usden5-bbisp-gw1",
+  //   to: "usden5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usden5-bbisp-gw2",
+  //   to: "uslxa1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uslax1-bb-cr2",
+  //   to: "uslax1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw1",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usnkq1-bb-cr1",
+  //   to: "usrno3-bb-cr1" 
+  // },
+  // {
+  //   from: "usnkq1-bb-cr2",
+  //   to: "usnkq1-bb-cr1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz2-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz2-bb-cr2",
+  //   to: "usprz3-bb-pe2" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr1",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "usprz3-bb-cr2",
+  //   to: "usprz3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno1-bb-cr1",
+  //   to: "usrno3-bb-pe1" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usscz2-bbisp-gw1",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ussjc2-bbisp-gw2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo1-bb-cr2",
+  //   to: "usuqo4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usuqo1-bbisp-gw2",
+  //   to: "usuqo4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usuqo4-bbisp-gw1",
+  //   to: "usmia1-bb-sw1"
+  //  },  
+  // {
+  //   from: "usmsc2-bb-pe1",
+  //   to: "usmsc2-bb-cr3" 
+  // },
+  // {
+  //   from: "usmia1-bb-sw3",
+  //   to: "usatl4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw2",
+  //   to: "ussea4-bb-cr2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe3",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe1",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw2",
+  //   to: "jptyo5-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cnsha10-bbisp-gw1",
+  //   to: "cntnj1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "deber3-bbisp-gw1",
+  //   to: "deber3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "deber3-bbisp-gw1",
+  //   to: "defra1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "deber3-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "dedus1-bbisp-gw2",
+  //   to: "nlams2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw1",
+  //   to: "uklon6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw2",
+  //   to: "nlams2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "dkblp1-bbisp-gw1",
+  //   to: "dkblp1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw1",
+  //   to: "sgsin8-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ieork1-bbisp-gw1",
+  //   to: "uklon5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "inbom2-bbisp-gw2",
+  //   to: "inmaa1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "inmaa1-bbisp-gw1",
+  //   to: "sgsin8-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw1",
+  //   to: "uklon6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw2",
+  //   to: "usewr1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw2",
+  //   to: "usnyc3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uslax1-bbisp-gw2",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usmsc2-bb-pe4" 
+  // },
+  // {
+  //   from: "usmsc2-bb-pe1",
+  //   to: "usmsc2-bb-pe3" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe2",
+  //   to: "usrno3-bb-cr2" 
+  // },
+  // {
+  //   from: "ussea4-bb-cr2",
+  //   to: "ussea4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-pe2" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw1",
+  //   to: "usmia1-bb-sw3" 
+  // },
+  // {
+  //   from: "usmes1-bbisp-gw1",
+  //   to: "usden5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usatl4-bbisp-gw2",
+  //   to: "ushou1-bb-sw2" 
+  // },
+  // {
+  //   from: "sgsin3-bbisp-gw1",
+  //   to: "jptyo5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw1",
+  //   to: "ussea4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "ausyd2-bbisp-gw2",
+  //   to: "hkhkg3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "cntnj1-bbisp-gw1",
+  //   to: "jptyo5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "dedus1-bbisp-gw1",
+  //   to: "defra3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw1",
+  //   to: "nlams2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw2",
+  //   to: "sesto4-bbisp-gw2" 
+  // },
+  // {
+  //   from: "defra1-bbisp-gw2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "sesto4-bbisp-gw1" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw1",
+  //   to: "usxqm1-bb-cr1" 
+  // },
+  // {
+  //   from: "defra3-bbisp-gw2",
+  //   to: "usxqm1-bb-cr2" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw1",
+  //   to: "jptyo5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg1-bbisp-gw2",
+  //   to: "uslax1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw1",
+  //   to: "jptyo7-bbisp-gw1" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "sgsin3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "hkhkg3-bbisp-gw2",
+  //   to: "uslax1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo5-bbisp-gw1",
+  //   to: "krsel6-bbisp-gw1" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw1",
+  //   to: "ussea4-bb-cr1" 
+  // },
+  // {
+  //   from: "jptyo7-bbisp-gw2",
+  //   to: "ussjc2-bbisp-gw2" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw1",
+  //   to: "uklon5-bbisp-gw1" 
+  // },
+  // {
+  //   from: "nlams2-bbisp-gw2",
+  //   to: "usewr1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "uklon5-bbisp-gw1",
+  //   to: "usewr1-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uklon6-bbisp-gw1",
+  //   to: "usnyc3-bbisp-gw1" 
+  // },
+  // {
+  //   from: "uklon6-bbisp-gw2",
+  //   to: "usnyc3-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usatl4-bb-cr2",
+  //   to: "usmia1-bb-sw4" 
+  // },
+  // {
+  //   from: "usbos2-bb-sw1",
+  //   to: "uschi5-bb-cr1" 
+  // },
+  // {
+  //   from: "uschi5-bbisp-gw2",
+  //   to: "usmes1-bbisp-gw2" 
+  // },
+  // {
+  //   from: "usrno1-bb-pe1",
+  //   to: "ussjc2-bbisp-gw1" 
+  // },
+  // {
+  //   from: "usrno3-bb-pe2",
+  //   to: "usscz2-bbisp-gw2" 
+  // }
+]
+  //   [
+  //     // { from: "krsel6-bbisp-gw1", to: "jptyo5-bbisp-gw2" },
+  //     // { from: "uschi6-bb-pe3", to: "hkhkg1-bbisp-gw1" },
+  //     // { from: "Beta", to: "Beta" },
+  //     // { from: "Gamma", to: "Delta" },
+  //     // { from: "Delta", to: "Alpha" }
+  //     {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe1"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr1",
+  //   to: "usmsc2-bb-pe3"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr2",
+  //   to: "usmsc2-bb-pe4"
+  //  },
+  // {
+  //   from: "usmsc2-bb-cr3",
+  //   to: "usmsc2-bb-pe3"
+  // },
+  // {
+  //   from: "usmsc2-bb-cr4",
+  //   to: "usmsc2-bb-pe3"
+  // },
+  //    ]
+  )
+    // the "space" property is kept on the Model.modelData too
+    myDiagram.model.modelData.space = 1.0;
+  }
+  // Conversion functions -- these only work with myDiagram, assuming it uses a SpacingCommandHandler
+  function spacedLocationParse(str) {
+    var cmd = myDiagram.commandHandler;
+    if (!(cmd instanceof SpacingCommandHandler)) throw new Error("not using SpacingCommandHandler");
+    var pt = go.Point.parse(str);
+    pt.x = (pt.x-cmd.spaceCenter.x) * cmd.space + cmd.spaceCenter.x;
+    if (cmd.isYSpaced) {
+      pt.y = (pt.y-cmd.spaceCenter.y) * cmd.space + cmd.spaceCenter.y;
+    }
+    return pt;
+  }
+  function spacedLocationStringify(pt, data) {
+    var cmd = myDiagram.commandHandler;
+    if (!cmd._isUpdating) {
+      pt = pt.copy();
+      pt.x = (pt.x - cmd.spaceCenter.x) / cmd.space + cmd.spaceCenter.x;
+      if (cmd.isYSpaced) {
+        pt.y = (pt.y - cmd.spaceCenter.y) / cmd.space + cmd.spaceCenter.y;
+      }
+      return go.Point.stringify(pt);
+    } else {
+      return data.loc;
+    }
+  }
+  // The custom CommandHandler that avoids changing the Diagram.scale
+  function SpacingCommandHandler() {
+    go.CommandHandler.call(this);
+    this._space = 1.0;  // replaces Diagram.scale; also copied to/from Model.modelData.space
+    this._spaceCenter = new go.Point(0, 0);  // not currently used -- should this be saved on modelData too?
+    this._isYSpaced = false;  // scale Y along with X?  This option is just for demonstration purposes.
+    this._isUpdating = false;
+  }
+  go.Diagram.inherit(SpacingCommandHandler, go.CommandHandler);
+  // Overrides of commands that scale the diagram -- change the space instead
+  /** @override */
+  SpacingCommandHandler.prototype.decreaseZoom = function(factor) {
+    if (factor === undefined/*notpresent*/) factor = 1.0 / this.zoomFactor;
+    this.setSpace(this.space * factor);
+  };
+  /** @override */
+  SpacingCommandHandler.prototype.canDecreaseZoom = function(factor) {
+    if (factor === undefined/*notpresent*/) factor = 1.0 / this.zoomFactor;
+    return this.checkSpace(this.space * factor);
+  };
+  /** @override */
+  SpacingCommandHandler.prototype.increaseZoom = function(factor) {
+    if (factor === undefined/*notpresent*/) factor = 1.0 / this.zoomFactor;
+    this.setSpace(this.space / factor);
+  };
+  /** @override */
+  SpacingCommandHandler.prototype.canIncreaseZoom = function(factor) {
+    if (factor === undefined/*notpresent*/) factor = 1.0 / this.zoomFactor;
+    return this.checkSpace(this.space / factor);
+  };
+  /** @override */
+  SpacingCommandHandler.prototype.resetZoom = function(newspace) {
+    if (newspace === undefined/*notpresent*/) newspace = 1.0;
+    this.setSpace(newspace);
+  };
+  /** @override */
+  SpacingCommandHandler.prototype.canResetZoom = function(newspace) {
+    return this.checkSpace(newspace);
+  };
+  // actually set a new value for SPACE
+  SpacingCommandHandler.prototype.setSpace = function(s) {
+    this.space = Math.max(0.1, Math.min(10.0, s));
+  };
+  // validity check for a new value for SPACE
+  SpacingCommandHandler.prototype.checkSpace = function(s) {
+    return 0.1 <= s && s <= 10.0;
+  };
+  // Properties for SpacingCommandHandler
+  Object.defineProperty(SpacingCommandHandler.prototype, "space", {
+    get: function() { return this._space; },
+    set: function(val) {
+      if (val !== this._space) {
+        this._space = val;
+        var diagram = this.diagram;
+        if (diagram !== null) {  // store in model too, and support undo
+          diagram.model.setDataProperty(diagram.model.modelData, "space", val);
+        }
+        this.updateAllLocations();
+        // update the page showing the current value
+        document.getElementById("SPACE").textContent = val.toString();
+      }
+    }
+  });
+  Object.defineProperty(SpacingCommandHandler.prototype, "spaceCenter", {
+    get: function() { return this._spaceCenter; },
+    set: function(val) {
+      if (!val.equals(this._spaceCenter)) {
+        this._spaceCenter = val.copy();
+      }
+    }
+  });
+  Object.defineProperty(SpacingCommandHandler.prototype, "isYSpaced", {
+    get: function() { return this._isYSpaced; },
+    set: function(val) {
+      if (val !== this._isYSpaced) {
+        this._isYSpaced = val;
+        this.updateAllLocations();
+      }
+    }
+  });
+  // If the spacing or isYSpaced properties change value,
+  // we need to update the effective locations of all nodes.
+  // Assume Node.location is data bound to "loc" property.
+  SpacingCommandHandler.prototype.updateAllLocations = function() {
+    var diagram = this.diagram;
+    if (diagram === null) return;
+    this._isUpdating = true;
+    diagram.skipsUndoManager = true;
+    diagram.startTransaction("respace nodes");
+    diagram.parts.each(function(p) {
+      p.updateTargetBindings("loc");
+    });
+    diagram.nodes.each(function(n) {
+      n.updateTargetBindings("loc");
+    });
+    diagram.commitTransaction("respace nodes");
+    diagram.skipsUndoManager = false;
+    this._isUpdating = false;
+  };
+  // end SpacingCommandHandler class
+  function onIsYSpacedToggled() {
+    myDiagram.commandHandler.isYSpaced = !myDiagram.commandHandler.isYSpaced;
+  }
+</script>
+</head>
+<body onload="init()">
+<div id="sample">
+   Spacing factor: <span id="SPACE">1.0</span>
+  <br />
+  <label><input type="checkbox" onclick="onIsYSpacedToggled()" checked="checked" />Is Y Axis Spaced?</label>
+
+  <div id="myDiagramDiv" style="width:100%; height:1000px"></div>
+ <!--  Spacing factor: <span id="SPACE">1.0</span>
+  <br />
+  <label><input type="checkbox" onclick="onIsYSpacedToggled()" checked="checked" />Is Y Axis Spaced?</label>
+ -->
+</div>
+</body>
+</html>
