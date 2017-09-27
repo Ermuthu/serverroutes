@@ -8,6 +8,7 @@ ngElastic.directive('goDiagram', function($http) {
       if (window.goSamples) goSamples(); // init for these samples -- you don't need to call this
       var $ = go.GraphObject.make;
 
+      // Dynamic color function
       function linkLinearBrush(link) {
         var b = new go.Brush(go.Brush.Linear);
         var fp = link.fromPort.getDocumentPoint(go.Spot.Center);
@@ -39,33 +40,33 @@ ngElastic.directive('goDiagram', function($http) {
       // create a Diagram for the given HTML DIV element
       var diagram = $(go.Diagram, element[0],{
         nodeTemplate: 
-          $(go.Node, "Auto", { 
-            locationSpot: go.Spot.Center
-          }, {
+          $(go.Node, "Auto", {
               width: 120,
               height: 15,
               locationSpot: go.Spot.Center
-          },
-          new go.Binding("location"),
-          $(go.Shape, { fill: "#e74c3c",stroke:'#c0392b' }, {
-            portId: "", cursor: "pointer", strokeWidth: 0,
-          }),
-          $(go.TextBlock, { margin: 0,stroke: "#eee"},
-            new go.Binding("text", "key"))
+            },
+            new go.Binding("location"),
+            $(go.Shape, { fill: "#e74c3c",stroke:'#c0392b' }, {
+              portId: "", cursor: "pointer", strokeWidth: 0,
+            }),
+            $(go.TextBlock, { margin: 0,stroke: "#eee"},
+              new go.Binding("text", "key")
+            )
           ),
         linkTemplate: 
           $(go.Link, 
             // To display lines either vertical or zig-zag
-            // {
+            {
             //   routing: go.Link.AvoidsNodes,
             //   reshapable: true,
             //   resegmentable: true
-            // },
+            },
           $(go.Shape, 
-            { strokeWidth: 5, stroke: "red" },)
-            // new go.Binding("stroke", "", linkLinearBrush).ofObject()) // Dynamic Two color lines
+            { strokeWidth: 1 },
+            new go.Binding("stroke", "", linkLinearBrush).ofObject()), // Dynamic Two color lines
+          $(go.Shape, { toArrow: "Standard", stroke: null, strokeWidth: 0 })
           ),
-          initialContentAlignment: go.Spot.Center,
+          "initialContentAlignment": go.Spot.Center,
           "ModelChanged": updateAngular,
           "ChangedSelection": updateSelection,
           "undoManager.isEnabled": true,
@@ -265,11 +266,16 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       { key: "inbom2-bbisp-gw2", location: new go.Point(3350, 800)}
     ];
     var links = [];
-    $http.get('/api/maplinks').success(function(link) {
-      var removedDupliates = _.uniqWith(link.hits.hits, $scope.removeDuplicatesLink);
-      console.log(removedDupliates);
-      var removeDupObj = _.uniqWith(link.hits.hits, $scope.predicateAndModifier);
-      _.map(removedDupliates, function(obj) {
+    $q.all([$http.get('/api/maplinks'),
+     $http.get('/api/maplinksdyncolor')])
+    .then(function(res) {
+      $scope.mapLinks = _.uniqWith(res[0].data.hits.hits, $scope.predicateAndModifier);
+      // console.log($scope.mapLinks);
+      $scope.maplinksdyncolor = _.uniqWith(res[1].data.hits.hits, $scope.predicateAndModifier);
+      // console.log($scope.maplinksdyncolor);
+      // console.log(_.unionWith($scope.mapLinks, $scope.maplinksdyncolor, $scope.predict));
+      var linksObj = _.unionWith($scope.mapLinks, $scope.maplinksdyncolor, $scope.predict);
+      _.map(linksObj, function(obj) {
         links.push({
           from: obj._source.source,
           to: obj._source.dest,
@@ -277,16 +283,32 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
           outColor: $scope.getColor(obj._source.out_bw_used),
         });
       });
-      console.log(links);
-      // console.log(_.uniqWith(links, $scope.removeDuplicatesNode));
       $scope.model = new go.GraphLinksModel(
         nodes,
         links
       );
       $scope.model.selectedNodeData = null;
-    }).error(function(err) {
-      console.log(err);
     });
+    // $http.get('/api/maplinks').success(function(link) {
+    //   var removedDupliates = _.uniqWith(link.hits.hits, $scope.removeDuplicatesLink);
+    //   console.log(removedDupliates);
+    //   var removeDupObj = _.uniqWith(link.hits.hits, $scope.predicateAndModifier);
+    //   _.map(removedDupliates, function(obj) {
+    //     links.push({
+    //       from: obj._source.source,
+    //       to: obj._source.dest,
+    //       inColor: $scope.getColor(obj._source.in_bw_used),
+    //       outColor: $scope.getColor(obj._source.out_bw_used),
+    //     });
+    //   });
+    //   $scope.model = new go.GraphLinksModel(
+    //     nodes,
+    //     links
+    //   );
+    //   $scope.model.selectedNodeData = null;
+    // }).error(function(err) {
+    //   console.log(err);
+    // });
   }
 
   $scope.removeDuplicatesLink = function(a,b) {
@@ -331,6 +353,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       return '#4D72E3';
   }
 
+  // Remove Duplicates Ends
+
   // Remove Duplicates Starts
   $scope.addToArray = function(val1, val2) {
     // return _.isArray(val1) ? val1.concat(val2) : [val1].concat(val2); // Add all the values into an array
@@ -344,7 +368,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
   }
 
   $scope.predicateAndModifier = function(a, b) {
-    return a._source.dest === b._source.dest && a._source.src === b._source.src && a._source.src_x === b._source.src_x && a._source.src_y === b._source.src_y && a._source.dst_x === b._source.dst_x && a._source.dst_y === b._source.dst_y && $scope.modifyObjs(a, b);
+    return a._source.source === b._source.dest && a._source.dest === b._source.source;
+    // return a._source.dest === b._source.dest && a._source.src === b._source.src && a._source.src_x === b._source.src_x && a._source.src_y === b._source.src_y && a._source.dst_x === b._source.dst_x && a._source.dst_y === b._source.dst_y && $scope.modifyObjs(a, b);
   }
 
   $scope.predict = function(a, b) {
