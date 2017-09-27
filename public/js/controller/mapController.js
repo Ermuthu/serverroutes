@@ -62,12 +62,12 @@ ngElastic.directive('goDiagram', function($http) {
             //   resegmentable: true
             // },
           $(go.Shape, 
-            { strokeWidth: 5},
-            new go.Binding("stroke", "", linkLinearBrush).ofObject()) // Dynamic Two color lines
+            { strokeWidth: 5, stroke: "red" },)
+            // new go.Binding("stroke", "", linkLinearBrush).ofObject()) // Dynamic Two color lines
           ),
           initialContentAlignment: go.Spot.Center,
-          // "ModelChanged": updateAngular,
-          // "ChangedSelection": updateSelection,
+          "ModelChanged": updateAngular,
+          "ChangedSelection": updateSelection,
           "undoManager.isEnabled": true,
           "linkReshapingTool": new OrthogonalLinkReshapingTool()
       });
@@ -266,8 +266,10 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     ];
     var links = [];
     $http.get('/api/maplinks').success(function(link) {
+      var removedDupliates = _.uniqWith(link.hits.hits, $scope.removeDuplicatesLink);
+      console.log(removedDupliates);
       var removeDupObj = _.uniqWith(link.hits.hits, $scope.predicateAndModifier);
-      _.map(removeDupObj, function(obj) {
+      _.map(removedDupliates, function(obj) {
         links.push({
           from: obj._source.source,
           to: obj._source.dest,
@@ -275,6 +277,8 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
           outColor: $scope.getColor(obj._source.out_bw_used),
         });
       });
+      console.log(links);
+      // console.log(_.uniqWith(links, $scope.removeDuplicatesNode));
       $scope.model = new go.GraphLinksModel(
         nodes,
         links
@@ -283,6 +287,23 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     }).error(function(err) {
       console.log(err);
     });
+  }
+
+  $scope.removeDuplicatesLink = function(a,b) {
+    // from = source
+    // to = dest
+    return (a._source.source === b._source.dest || 
+            a._source.dest === b._source.source &&
+            a._source.source == b._source.source || 
+            a._source.dest == b._source.dest && 
+            a._source.src_x === b._source.src_x ||
+            a._source.src_y === b._source.src_y && 
+            a._source.dst_x === b._source.dst_x ||
+            a._source.dst_y === b._source.dst_y);
+  }
+
+  $scope.removeDuplicatesNode = function(a,b) {
+    return (a.from === b.to || a.to === b.from && a.from == b.from || a.to == b.to);
   }
 
   $scope.getColor = function(bw) {
