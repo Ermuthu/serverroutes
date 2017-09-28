@@ -1,10 +1,10 @@
 ngElastic.directive('goDiagram', function($http) {
   return {
-    restrict: 'E',
+    restrict: 'E', //E = element, A = attribute, C = class, M = comment
     template: '<div></div>',  // just an empty DIV element
     replace: true,
-    scope: { model: '=goModel' },
-    link: function(scope, element, attrs) {
+    scope: { model: '=goModel' }, //goModel reads the attribute value, = provides two-way binding, & works with functions
+    link: function(scope, element, attrs) { //DOM manipulation
       if (window.goSamples) goSamples(); // init for these samples -- you don't need to call this
       var $ = go.GraphObject.make;
 
@@ -46,11 +46,19 @@ ngElastic.directive('goDiagram', function($http) {
               locationSpot: go.Spot.Center
             },
             new go.Binding("location"),
-            $(go.Shape, { fill: "#e74c3c",stroke:'#c0392b' }, {
-              portId: "", cursor: "pointer", strokeWidth: 0,
+            $(go.Shape, {
+              fill: "#e74c3c",
+              stroke:'#c0392b'
+            },{
+              portId: "",
+              cursor: "pointer",
+              strokeWidth: 0,
             }),
-            $(go.TextBlock, { margin: 0,stroke: "#eee"},
-              new go.Binding("text", "key")
+            $(go.TextBlock, {
+              margin: 0,
+              stroke: "#eee"
+            },
+            new go.Binding("text", "key")
             )
           ),
         linkTemplate: 
@@ -61,12 +69,16 @@ ngElastic.directive('goDiagram', function($http) {
             //   reshapable: true,
             //   resegmentable: true
             },
-          $(go.Shape, 
-            { strokeWidth: 1 },
-            new go.Binding("stroke", "", linkLinearBrush).ofObject()), // Dynamic Two color lines
-          $(go.Shape, { toArrow: "Standard", stroke: null, strokeWidth: 0 })
+            $(go.Shape, { 
+              strokeWidth: 1 
+              },
+              new go.Binding("stroke", "", linkLinearBrush).ofObject()  // Dynamic Two color lines
+            ),
+            $(go.Shape, { 
+              toArrow: "Standard", stroke: null, strokeWidth: 0 }
+            )
           ),
-          "initialContentAlignment": go.Spot.Center,
+          "initialContentAlignment": go.Spot.Center, // Center the content
           "ModelChanged": updateAngular,
           "ChangedSelection": updateSelection,
           "undoManager.isEnabled": true,
@@ -114,166 +126,170 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
   $scope.initMapController = function() {
     // Init Map onLoad
     var nodes = [
-      { key: "krsel6-bbisp-gw1", location: new go.Point(50, 30) , loc: "0 0"},
-      { key: "jptyo5-bbisp-gw2", location: new go.Point(650, 70) , loc: "100 0"},
-      { key: "jptyo7-bbisp-gw2", location: new go.Point(700, 170) ,loc: "0 100"},
-      { key: "hkhkg1-bbisp-gw1", location: new go.Point(60, 400) ,loc: "100 100"},
-      { key: "hkhkg1-bbisp-gw2", location: new go.Point(220, 400) },
-      { key: "sgsin8-bbisp-gw1", location: new go.Point(250, 630) },
-      { key: "ussea4-bbisp-gw2", location: new go.Point(900, 70) },
-      { key: "ussea4-bb-cr1",   location: new go.Point(1100, 140) },
-      { key: "usprz3-bb-pe1",    location: new go.Point(1120, 200) },
-      { key: "usnkq1-bb-cr1",    location: new go.Point(850, 435) },
-      { key: "usscz2-bbisp-gw2", location: new go.Point(1000, 625) },
-      { key: "ussjc2-bbisp-gw2", location: new go.Point(1000, 750) },
-      { key: "usmsc2-bb-pe1",    location: new go.Point(1150, 925) },
-      { key: "usmsc2-bb-pe2",    location: new go.Point(1300, 925) },
-      { key: "usmsc2-bb-cr4",    location: new go.Point(1450, 1080) },
-      { key: "usrno1-bb-pe2",    location: new go.Point(1490, 500) },
-      { key: "usrno1-bb-cr2",    location: new go.Point(1660, 400) },
-      { key: "usden5-bb-cr2",    location: new go.Point(1870, 270) },
-      { key: "usmes1-bbisp-gw2", location: new go.Point(1950, 30) },
-      { key: "usdal4-bbisp-gw2", location: new go.Point(1870, 790) },
-      { key: "ushou1-bb-sw1",    location: new go.Point(1790, 900) },
-      { key: "ushou1-bbisp-gw1", location: new go.Point(1790, 970) },
-      { key: "usnyc3-bbisp-gw2", location: new go.Point(2470, 175) },
-      { key: "usewr1-bbisp-gw2", location: new go.Point(2670, 175) },
-      { key:  "usbos2-bb-sw2",   location: new go.Point(2360, 70) },
-      { key:  "usxqm1-bb-cr1", location: new go.Point(2500, 250) },
-      { key: "usqas3-bb-pe1", location: new go.Point(2500, 320) },
-      { key: "usqas3-bb-pe2", location: new go.Point(2500, 370) },
-      { key: "usuqo4-bb-cr2", location: new go.Point(2500, 625) },
-      { key: "usmia1-bb-sw4", location: new go.Point(2350, 1040) },
-      { key: "gbmnc1-bb-sw2", location: new go.Point(3450, 130) },
-      { key: "gbmnc1-bbisp-gw1", location: new go.Point(3600, 20) },
-      { key: "uklon6-bbisp-gw2", location: new go.Point(2970, 110) },
-      { key: "defra1-bbisp-gw2", location: new go.Point(3160, 440) },
-      { key: "defra1-bbisp-gw1", location: new go.Point(3160, 510) },
-      { key: "cntnj1-bbisp-gw1", location: new go.Point(50,280) },
-      { key: "jptyo5-bbisp-gw1", location: new go.Point(420,  70) },
-      { key: "sgsin3-bbisp-gw1", location: new go.Point(250, 700) },
-      { key: "sgsin3-bbisp-gw2", location: new go.Point(390, 700) },
-      { key: "ausyd2-bbisp-gw1", location: new go.Point(450, 850) },
-      { key: "usprz2-bb-cr2",    location: new go.Point(1500, 100) },
-      { key: "usscz2-bb-cr2",    location: new go.Point(850, 675) },
-      { key: "ussjc2-bbisp-gw1", location: new go.Point(1150, 750) },
-      { key: "uslax1-bb-cr2",    location:    new go.Point(975, 1080) },
-      { key: "usrno1-bb-pe1", location: new go.Point(1490, 450) },
-      { key: "usden5-bbisp-gw1", location: new go.Point(1730, 180) },
-      { key: "uschi6-bb-pe2", location: new go.Point(2135, 270) },
-      { key: "uschi6-bb-pe3", location: new go.Point(2265, 270) },
-      { key: "uslxa1-bbisp-gw1", location: new go.Point(1800, 430) },
-      { key: "usdal4-bb-cr1", location: new go.Point(1730, 720) },
-      { key: "usewr1-bbisp-gw1", location: new go.Point(2670, 80) },
-      { key: "usbos2-bbisp-gw2", location: new go.Point(2650, 20) },
-      { key: "usqas3-bb-pe3", location: new go.Point(2670, 320) },
-      { key: "usqas3-bb-pe4", location: new go.Point(2670, 370) },
-      { key: "usuqo4-bbisp-gw1", location: new go.Point(2370, 525) },
-      { key: "usuqo4-bb-cr1", location: new go.Point(2500, 525) },
-      { key: "usuqo1-bbisp-gw1", location: new go.Point(2260, 400) },
-      { key: "usmia1-bbisp-gw2", location: new go.Point(2500, 1040) },
-      { key: "usmia1-bb-sw1", location: new go.Point(2500, 850) },
-      { key: "sesto4-bbisp-gw2", location: new go.Point(3530, 170) },
-      { key: "dkblp1-bbisp-gw2", location: new go.Point(3700, 240) },
-      { key: "dedus1-bbisp-gw1", location: new go.Point(3700, 430) },
-      { key: "deber3-bbisp-gw1", location: new go.Point(3700, 550) },
-      { key: "inbom2-bbisp-gw1", location: new go.Point(3350, 700) },
-      { key: "cntnj1-bbisp-gw2", location: new go.Point(50, 350) },
-      { key: "cnsha10-bbisp-gw1", location: new go.Point(160, 200) },
-      { key: "krsel6-bbisp-gw2", location: new go.Point(50, 90) },
-      { key: "jposa3-bbisp-gw2", location: new go.Point(240, 130)},
-      { key: "hkhkg3-bbisp-gw2", location: new go.Point(220, 480)},
-      { key: "ussea4-bbisp-gw1", location: new go.Point(900, 140)},
-      { key: "usprz3-bb-cr2", location: new go.Point(1240, 100)},
-      { key: "usprz2-bb-pe2", location: new go.Point(1370, 200)},
-      { key: "uslax1-bbisp-gw1", location: new go.Point(880, 875)},
-      { key: "usmsc2-bb-pe3", location: new go.Point(1300, 1025)},
-      { key: "usmsc2-bb-cr1", location: new go.Point(1000, 1080)},
-      { key: "usmsc2-bb-cr2", location: new go.Point(1150, 1080)},
-      { key: "usmsc2-bb-cr3", location: new go.Point(1300, 1080)},
-      { key: "usrno3-bb-cr1", location: new go.Point(1380, 240)},
-      { key: "usrno3-bb-cr2", location: new go.Point(1380, 290)},
-      { key: "usden5-bbisp-gw2", location: new go.Point(1870, 180)},
-      { key: "usden5-bb-cr1", location: new go.Point(1730, 270)},
-      { key: "uschi5-bb-cr1", location: new go.Point(2110, 190)},
-      { key: "uschi5-bb-cr2", location: new go.Point(2260, 190)},
-      { key: "uslxa1-bbisp-gw2", location: new go.Point(1800, 500)},
-      { key: "usatl4-bb-cr2", location: new go.Point(2060, 1100)},
-      { key: "usatl4-bbisp-gw1", location: new go.Point(1920, 1160)},
-      { key: "usbos2-bb-sw1", location: new go.Point(2360, 20)},
-      { key: "usxqm1-bb-cr2", location: new go.Point(2620, 250)},
-      { key: "usqas2-bbisp-gw1", location: new go.Point(2380, 320)},
-      { key: "usuqo4-bbisp-gw2", location: new go.Point(2370, 625)},
-      { key: "usmia1-bb-sw2", location: new go.Point(2395, 850)},
-      { key: "usmia1-bb-sw3", location: new go.Point(2350, 950)},
-      { key: "gbmnc1-bb-sw1", location: new go.Point(3450, 20)},
-      { key: "gbmnc1-bbisp-gw2", location: new go.Point(3600, 90)},
-      { key: "uklon5-bbisp-gw2", location: new go.Point(3120, 155)},
-      { key: "ieork1-bbisp-gw1", location: new go.Point(3300, 50)},
-      { key: "nlams2-bbisp-gw2", location: new go.Point(3460, 250)},
-      { key: "nlams2-bbisp-gw1", location: new go.Point(3460, 320)},
-      { key: "frcch1-bbisp-gw1", location: new go.Point(3160, 315)},
-      { key: "sesto4-bbisp-gw1", location: new go.Point(3700, 170)},
-      { key: "dkblp1-bbisp-gw1", location: new go.Point(3700, 310)},
-      { key: "inmaa1-bbisp-gw1", location: new go.Point(3200, 700)},
-      { key: "inmaa1-bbisp-gw2", location: new go.Point(3200, 800)},
-      { key: "usprz2-bb-pe1",    location: new go.Point(1370, 150)},
-      { key: "usnkq1-bb-cr2", location: new go.Point(850, 535)},
-      { key: "usscz2-bbisp-gw1", location: new go.Point(1000, 525)},
-      { key: "uslax1-bb-cr1", location: new go.Point(825, 1080)},
-      { key: "usmsc2-bb-pe4", location: new go.Point(1150, 1025)},
-      { key: "usrno3-bb-pe1", location: new go.Point(1250, 350)},
-      { key: "usrno3-bb-pe2", location: new go.Point(1250, 400)},
-      { key: "uschi5-bbisp-gw2", location: new go.Point(2110, 110)},
-      { key: "uschi6-bb-pe4", location: new go.Point(2335, 270)},
-      { key: "usdal4-bbisp-gw1", location: new go.Point(1730, 790)},
-      { key: "ushou1-bbisp-gw2", location: new go.Point(1790, 1040)},
-      { key: "usnyc3-bbisp-gw1", location: new go.Point(2470, 80)},
-      { key: "usbos2-bbisp-gw1", location: new go.Point(2500, 20)},
-      { key: "usqas2-bbisp-gw2", location: new go.Point(2380, 370)},
-      { key: "usuqo1-bbisp-gw2", location: new go.Point(2260, 475)},
-      { key: "uklon5-bbisp-gw1", location: new go.Point(3120, 65)},
-      { key: "defra3-bbisp-gw2", location: new go.Point(3330, 440)},
-      { key: "defra3-bbisp-gw1", location: new go.Point(3330, 510)},
-      { key: "frcch1-bbisp-gw2", location: new go.Point(3160, 375)},
-      { key: "dedus1-bbisp-gw2", location: new go.Point(3700, 360)},
-      { key: "cnsha10-bbisp-gw2", location: new go.Point(160, 260)},
-      { key: "jposa3-bbisp-gw1", location: new go.Point(240, 60)},
-      { key: "jptyo7-bbisp-gw1", location: new go.Point(420, 170)},
-      { key: "hkhkg3-bbisp-gw1", location: new go.Point(60, 480)},
-      { key: "sgsin8-bbisp-gw2", location: new go.Point(390, 630)},
-      { key: "ausyd2-bbisp-gw2", location: new go.Point(600, 850)},
-      { key: "ussea4-bb-cr2", location: new go.Point(1100,70)},
-      { key: "usprz3-bb-pe2", location: new go.Point(1120, 250)},
-      { key: "usprz3-bb-cr1", location: new go.Point(1240, 50)},
-      { key: "usprz2-bb-cr1", location: new go.Point(1500, 50)},
-      { key: "usscz2-bb-cr1", location: new go.Point(850, 575)},
-      { key: "uslax1-bbisp-gw2",location: new go.Point(880, 950)},
-      { key: "usrno1-bb-cr1", location: new go.Point(1660, 350)},
-      { key: "usmes1-bbisp-gw1", location: new go.Point(1800, 30)},
-      { key: "uschi5-bbisp-gw1", location: new go.Point(2260, 110)},
-      { key: "uschi6-bb-pe1", location: new go.Point(2035, 270)},
-      { key: "usdal4-bb-cr2", location: new go.Point(1870, 720)},
-      { key: "usatl4-bb-cr1", location: new go.Point(1920, 1100)},
-      { key: "usatl4-bbisp-gw2", location: new go.Point(2060, 1160)},
-      { key: "ushou1-bb-sw2", location: new go.Point(1790, 1100)},
-      { key: "usuqo1-bb-cr1", location: new go.Point(2370, 400)},
-      { key: "usuqo1-bb-cr2", location: new go.Point(2370, 475)},
-      { key: "usmia1-bbisp-gw1", location: new go.Point(2500, 950)},
-      { key: "uklon6-bbisp-gw1", location: new go.Point(2970, 20)},
-      { key: "ieork1-bbisp-gw2", location: new go.Point(3300, 110)},
-      { key: "deber3-bbisp-gw2", location: new go.Point(3700, 480)},
-      { key: "inbom2-bbisp-gw2", location: new go.Point(3350, 800)}
+      { key: "krsel6-bbisp-gw1", location: new go.Point(50, 30) , loc: "50 30", },
+      { key: "jptyo5-bbisp-gw2", location: new go.Point(650, 70) , loc: "650 70",},
+      { key: "jptyo7-bbisp-gw2", location: new go.Point(700, 170) ,loc: "700 170",},
+      { key: "hkhkg1-bbisp-gw1", location: new go.Point(60, 400) ,loc: "60 400",},
+      { key: "hkhkg1-bbisp-gw2", location: new go.Point(220, 400),loc: "220 400", },
+      { key: "sgsin8-bbisp-gw1", location: new go.Point(250, 630) ,loc: "250 630",},
+      { key: "ussea4-bbisp-gw2", location: new go.Point(900, 70),loc: "900 70", },
+      { key: "ussea4-bb-cr1",   location: new go.Point(1100, 140),loc: "1100 140", },
+      { key: "usprz3-bb-pe1",    location: new go.Point(1120, 200) ,loc: "1120 200",},
+      { key: "usnkq1-bb-cr1",    location: new go.Point(850, 435),loc: "850 435", },
+      { key: "usscz2-bbisp-gw2", location: new go.Point(1000, 625),loc: "1000 625", },
+      { key: "ussjc2-bbisp-gw2", location: new go.Point(1000, 750) ,loc: "1000 750",},
+      { key: "usmsc2-bb-pe1",    location: new go.Point(1150, 925),loc: "1150 925", },
+      { key: "usmsc2-bb-pe2",    location: new go.Point(1300, 925),loc: "1300 925", },
+      { key: "usmsc2-bb-cr4",    location: new go.Point(1450, 1080),loc: "1450 1080", },
+      { key: "usrno1-bb-pe2",    location: new go.Point(1490, 500) ,loc: "1490 500",},
+      { key: "usrno1-bb-cr2",    location: new go.Point(1660, 400),loc: "1660 400", },
+      { key: "usden5-bb-cr2",    location: new go.Point(1870, 270),loc: "1870 270", },
+      { key: "usmes1-bbisp-gw2", location: new go.Point(1950, 30) ,loc: "1950 30",},
+      { key: "usdal4-bbisp-gw2", location: new go.Point(1870, 790),loc: "1870 790", },
+      { key: "ushou1-bb-sw1",    location: new go.Point(1790, 900) ,loc: "1790 900",},
+      { key: "ushou1-bbisp-gw1", location: new go.Point(1790, 970),loc: "1790 970", },
+      { key: "usnyc3-bbisp-gw2", location: new go.Point(2470, 175) ,loc: "2470 175",},
+      { key: "usewr1-bbisp-gw2", location: new go.Point(2670, 175),loc: "2670 175", },
+      { key:  "usbos2-bb-sw2",   location: new go.Point(2360, 70) ,loc: "2360 70",},
+      { key:  "usxqm1-bb-cr1", location: new go.Point(2500, 250),loc: "2500 250", },
+      { key: "usqas3-bb-pe1", location: new go.Point(2500, 320),loc: "2500 320", },
+      { key: "usqas3-bb-pe2", location: new go.Point(2500, 370),loc: "2500 370", },
+      { key: "usuqo4-bb-cr2", location: new go.Point(2500, 625) ,loc: "2500 625",},
+      { key: "usmia1-bb-sw4", location: new go.Point(2350, 1040) ,loc: "2350 1040",},
+      { key: "gbmnc1-bb-sw2", location: new go.Point(3450, 130) ,loc: "3450 130",},
+      { key: "gbmnc1-bbisp-gw1", location: new go.Point(3600, 20) ,loc: "3600 20",},
+      { key: "uklon6-bbisp-gw2", location: new go.Point(2970, 110) ,loc: "2970 110",},
+
+      { key: "defra1-bbisp-gw2", location: new go.Point(3160, 440) ,loc: "3160 440",},
+      { key: "defra1-bbisp-gw1", location: new go.Point(3160, 510) ,loc: "3160 510",},
+      { key: "cntnj1-bbisp-gw1", location: new go.Point(50,280) ,loc: "50 280",},
+      { key: "jptyo5-bbisp-gw1", location: new go.Point(420,  70) ,loc: "420 70",},
+      { key: "sgsin3-bbisp-gw1", location: new go.Point(250, 700),loc: "250 700", },
+      { key: "sgsin3-bbisp-gw2", location: new go.Point(390, 700),loc: "390 700", },
+      { key: "ausyd2-bbisp-gw1", location: new go.Point(450, 850),loc: "450 850", },
+      { key: "usprz2-bb-cr2",    location: new go.Point(1500, 100),loc: "1500 100", },
+      { key: "usscz2-bb-cr2",    location: new go.Point(850, 675) ,loc: "850 675",},
+      { key: "ussjc2-bbisp-gw1", location: new go.Point(1150, 750),loc: "1150 750", },
+      { key: "uslax1-bb-cr2",    location: new go.Point(975, 1080),loc: "975 1080", },
+      { key: "usrno1-bb-pe1", location: new go.Point(1490, 450) ,loc: "1490 450",},
+      { key: "usden5-bbisp-gw1", location: new go.Point(1730, 180),loc: "1730 180", },
+      { key: "uschi6-bb-pe2", location: new go.Point(2135, 270),loc: "2135 270", },
+      { key: "uschi6-bb-pe3", location: new go.Point(2265, 270),loc: "2265 270", },
+      { key: "uslxa1-bbisp-gw1", location: new go.Point(1800, 430),loc: "1800 430", },
+      { key: "usdal4-bb-cr1", location: new go.Point(1730, 720) ,loc: "1730 720",},
+      { key: "usewr1-bbisp-gw1", location: new go.Point(2670, 80),loc: "2670 80", },
+      { key: "usbos2-bbisp-gw2", location: new go.Point(2650, 20),loc: "2650 20", },
+
+      { key: "usqas3-bb-pe3", location: new go.Point(2670, 320),loc: "2670 320", },
+      { key: "usqas3-bb-pe4", location: new go.Point(2670, 370),loc: "2670 370", },
+      { key: "usuqo4-bbisp-gw1", location: new go.Point(2370, 525),loc: "2370 525", },
+      { key: "usuqo4-bb-cr1", location: new go.Point(2500, 525),loc: "2500 525", },
+      { key: "usuqo1-bbisp-gw1", location: new go.Point(2260, 400) ,loc: "2260 400",},
+      { key: "usmia1-bbisp-gw2", location: new go.Point(2500, 1040),loc: "2500 1040", },
+      { key: "usmia1-bb-sw1", location: new go.Point(2500, 850),loc: "2500 850", },
+      { key: "sesto4-bbisp-gw2", location: new go.Point(3530, 170),loc: "3530 170", },
+      { key: "dkblp1-bbisp-gw2", location: new go.Point(3700, 240),loc: "3700 240", },
+      { key: "dedus1-bbisp-gw1", location: new go.Point(3700, 430),loc: "3700 430", },
+      { key: "deber3-bbisp-gw1", location: new go.Point(3700, 550),loc: "3700 550", },
+      { key: "inbom2-bbisp-gw1", location: new go.Point(3350, 700),loc: "3350 700", },
+      { key: "cntnj1-bbisp-gw2", location: new go.Point(50, 350) ,loc: "50 350",},
+
+      { key: "cnsha10-bbisp-gw1", location: new go.Point(160, 200),loc: "160 200", },
+      { key: "krsel6-bbisp-gw2", location: new go.Point(50, 90),loc: "50 90", },
+      { key: "jposa3-bbisp-gw2", location: new go.Point(240, 130),loc: "240 130",},
+      { key: "hkhkg3-bbisp-gw2", location: new go.Point(220, 480),loc: "220 480",},
+      { key: "ussea4-bbisp-gw1", location: new go.Point(900, 140),loc: "900 140",},
+      { key: "usprz3-bb-cr2", location: new go.Point(1240, 100),loc: "1240 100",},
+      { key: "usprz2-bb-pe2", location: new go.Point(1370, 200),loc: "1370 200",},
+      { key: "uslax1-bbisp-gw1", location: new go.Point(880, 875),loc: "880 875",},
+      { key: "usmsc2-bb-pe3", location: new go.Point(1300, 1025),loc: "1300 1025",},
+      { key: "usmsc2-bb-cr1", location: new go.Point(1000, 1080),loc: "1000 1080",},
+      { key: "usmsc2-bb-cr2", location: new go.Point(1150, 1080),loc: "1150 1080",},
+      { key: "usmsc2-bb-cr3", location: new go.Point(1300, 1080),loc: "1300 1080",},
+      { key: "usrno3-bb-cr1", location: new go.Point(1380, 240),loc: "1380 240",},
+      { key: "usrno3-bb-cr2", location: new go.Point(1380, 290),loc: "1380 290",},
+      { key: "usden5-bbisp-gw2", location: new go.Point(1870, 180),loc: "1870 180",},
+      { key: "usden5-bb-cr1", location: new go.Point(1730, 270),loc: "1730 270",},
+      { key: "uschi5-bb-cr1", location: new go.Point(2110, 190),loc: "2110 190",},
+      { key: "uschi5-bb-cr2", location: new go.Point(2260, 190),loc: "2260 190",},
+      { key: "uslxa1-bbisp-gw2", location: new go.Point(1800, 500),loc: "1800 500",},
+      { key: "usatl4-bb-cr2", location: new go.Point(2060, 1100),loc: "2060 1100",},
+      { key: "usatl4-bbisp-gw1", location: new go.Point(1920, 1160),loc: "1920 1160",},
+      { key: "usbos2-bb-sw1", location: new go.Point(2360, 20),loc: "2360 20",},
+      { key: "usxqm1-bb-cr2", location: new go.Point(2620, 250),loc: "2620 250",},
+      { key: "usqas2-bbisp-gw1", location: new go.Point(2380, 320),loc: "2380 320",},
+      { key: "usuqo4-bbisp-gw2", location: new go.Point(2370, 625),loc: "2370 625",},
+      { key: "usmia1-bb-sw2", location: new go.Point(2395, 850),loc: "2395 850",},
+      { key: "usmia1-bb-sw3", location: new go.Point(2350, 950),loc: "2350 950",},
+      { key: "gbmnc1-bb-sw1", location: new go.Point(3450, 20),loc: "3450 20",},
+      { key: "gbmnc1-bbisp-gw2", location: new go.Point(3600, 90),loc: "3600 90",},
+      { key: "uklon5-bbisp-gw2", location: new go.Point(3120, 155),loc: "3120 155",},
+      { key: "ieork1-bbisp-gw1", location: new go.Point(3300, 50),loc: "3300 50",},
+      { key: "nlams2-bbisp-gw2", location: new go.Point(3460, 250),loc: "3460 250",},
+      { key: "nlams2-bbisp-gw1", location: new go.Point(3460, 320),loc: "3460 320",},
+      { key: "frcch1-bbisp-gw1", location: new go.Point(3160, 315),loc: "3160 315",},
+      { key: "sesto4-bbisp-gw1", location: new go.Point(3700, 170),loc: "3700 170",},
+      { key: "dkblp1-bbisp-gw1", location: new go.Point(3700, 310),loc: "3700 310",},
+      { key: "inmaa1-bbisp-gw1", location: new go.Point(3200, 700),loc: "3200 700",},
+      { key: "inmaa1-bbisp-gw2", location: new go.Point(3200, 800),loc: "3200 800",},
+      { key: "usprz2-bb-pe1",    location: new go.Point(1370, 150),loc: "1370 150",},
+
+
+
+
+      { key: "usnkq1-bb-cr2", location: new go.Point(850, 535),loc: "850 535",},
+      { key: "usscz2-bbisp-gw1", location: new go.Point(1000, 525),loc: "1000 525",},
+      { key: "uslax1-bb-cr1", location: new go.Point(825, 1080),loc: "825 1080",},
+      { key: "usmsc2-bb-pe4", location: new go.Point(1150, 1025),loc: "1150 1025",},
+      { key: "usrno3-bb-pe1", location: new go.Point(1250, 350),loc: "1250 350",},
+      { key: "usrno3-bb-pe2", location: new go.Point(1250, 400),loc: "1250 400",},
+      { key: "uschi5-bbisp-gw2", location: new go.Point(2110, 110),loc: "2110 110",},
+      { key: "uschi6-bb-pe4", location: new go.Point(2335, 270),loc: "2335 270",},
+      { key: "usdal4-bbisp-gw1", location: new go.Point(1730, 790),loc: "1730 790",},
+      { key: "ushou1-bbisp-gw2", location: new go.Point(1790, 1040),loc: "1790 1040",},
+      { key: "usnyc3-bbisp-gw1", location: new go.Point(2470, 80),loc: "2470 80",},
+      { key: "usbos2-bbisp-gw1", location: new go.Point(2500, 20),loc: "2500 20",},
+      { key: "usqas2-bbisp-gw2", location: new go.Point(2380, 370),loc: "2380 370",},
+      { key: "usuqo1-bbisp-gw2", location: new go.Point(2260, 475),loc: "2260 475",},
+      { key: "uklon5-bbisp-gw1", location: new go.Point(3120, 65),loc: "3120 65",},
+      { key: "defra3-bbisp-gw2", location: new go.Point(3330, 440),loc: "3330 440",},
+      { key: "defra3-bbisp-gw1", location: new go.Point(3330, 510),loc: "3330 510",},
+      { key: "frcch1-bbisp-gw2", location: new go.Point(3160, 375),loc: "3160 375",},
+      { key: "dedus1-bbisp-gw2", location: new go.Point(3700, 360),loc: "3700 360",},
+      { key: "cnsha10-bbisp-gw2", location: new go.Point(160, 260),loc: "160 260",},
+      { key: "jposa3-bbisp-gw1", location: new go.Point(240, 60),loc: "240 60",},
+      { key: "jptyo7-bbisp-gw1", location: new go.Point(420, 170),loc: "420 170",},
+      { key: "hkhkg3-bbisp-gw1", location: new go.Point(60, 480),loc: "60 480",},
+      { key: "sgsin8-bbisp-gw2", location: new go.Point(390, 630),loc: "390 630",},
+      { key: "ausyd2-bbisp-gw2", location: new go.Point(600, 850),loc: "600 850",},
+      { key: "ussea4-bb-cr2", location: new go.Point(1100,70),loc: "1100 70",},
+      { key: "usprz3-bb-pe2", location: new go.Point(1120, 250),loc: "1120 250",},
+      { key: "usprz3-bb-cr1", location: new go.Point(1240, 50),loc: "1240 50",},
+      { key: "usprz2-bb-cr1", location: new go.Point(1500, 50),loc: "1500 50",},
+      { key: "usscz2-bb-cr1", location: new go.Point(850, 575),loc: "850 575",},
+      { key: "uslax1-bbisp-gw2", location: new go.Point(880, 950),loc: "880 950",},
+      { key: "usrno1-bb-cr1", location: new go.Point(1660, 350),loc: "1660 350",},
+      { key: "usmes1-bbisp-gw1", location: new go.Point(1800, 30),loc: "1800 30",},
+      { key: "uschi5-bbisp-gw1", location: new go.Point(2260, 110),loc: "2260 110",},
+      { key: "uschi6-bb-pe1", location: new go.Point(2035, 270),loc: "2035 270",},
+      { key: "usdal4-bb-cr2", location: new go.Point(1870, 720),loc: "1870 720",},
+      { key: "usatl4-bb-cr1", location: new go.Point(1920, 1100),loc: "1920 1100",},
+      { key: "usatl4-bbisp-gw2", location: new go.Point(2060, 1160),loc: "2060 1160",},
+      { key: "ushou1-bb-sw2", location: new go.Point(1790, 1100),loc: "1790 1100",},
+      { key: "usuqo1-bb-cr1", location: new go.Point(2370, 400),loc: "2370 400",},
+      { key: "usuqo1-bb-cr2", location: new go.Point(2370, 475),loc: "2370 475",},
+      { key: "usmia1-bbisp-gw1", location: new go.Point(2500, 950),loc: "2500 950",},
+      { key: "uklon6-bbisp-gw1", location: new go.Point(2970, 20),loc: "2970 20",},
+      { key: "ieork1-bbisp-gw2", location: new go.Point(3300, 110),loc: "3300 110",},
+      { key: "deber3-bbisp-gw2", location: new go.Point(3700, 480),loc: "3700 480",},
+      { key: "inbom2-bbisp-gw2", location: new go.Point(3350, 800),loc: "3350 800",}
     ];
     var links = [];
     $q.all([$http.get('/api/maplinks'),
-     $http.get('/api/maplinksdyncolor')])
+      $http.get('/api/maplinksdyncolor')])
     .then(function(res) {
       $scope.mapLinks = _.uniqWith(res[0].data.hits.hits, $scope.predicateAndModifier);
-      // console.log($scope.mapLinks);
       $scope.maplinksdyncolor = _.uniqWith(res[1].data.hits.hits, $scope.predicateAndModifier);
-      // console.log($scope.maplinksdyncolor);
-      // console.log(_.unionWith($scope.mapLinks, $scope.maplinksdyncolor, $scope.predict));
       var linksObj = _.unionWith($scope.mapLinks, $scope.maplinksdyncolor, $scope.predict);
       _.map(linksObj, function(obj) {
         links.push({
@@ -289,43 +305,6 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
       );
       $scope.model.selectedNodeData = null;
     });
-    // $http.get('/api/maplinks').success(function(link) {
-    //   var removedDupliates = _.uniqWith(link.hits.hits, $scope.removeDuplicatesLink);
-    //   console.log(removedDupliates);
-    //   var removeDupObj = _.uniqWith(link.hits.hits, $scope.predicateAndModifier);
-    //   _.map(removedDupliates, function(obj) {
-    //     links.push({
-    //       from: obj._source.source,
-    //       to: obj._source.dest,
-    //       inColor: $scope.getColor(obj._source.in_bw_used),
-    //       outColor: $scope.getColor(obj._source.out_bw_used),
-    //     });
-    //   });
-    //   $scope.model = new go.GraphLinksModel(
-    //     nodes,
-    //     links
-    //   );
-    //   $scope.model.selectedNodeData = null;
-    // }).error(function(err) {
-    //   console.log(err);
-    // });
-  }
-
-  $scope.removeDuplicatesLink = function(a,b) {
-    // from = source
-    // to = dest
-    return (a._source.source === b._source.dest || 
-            a._source.dest === b._source.source &&
-            a._source.source == b._source.source || 
-            a._source.dest == b._source.dest && 
-            a._source.src_x === b._source.src_x ||
-            a._source.src_y === b._source.src_y && 
-            a._source.dst_x === b._source.dst_x ||
-            a._source.dst_y === b._source.dst_y);
-  }
-
-  $scope.removeDuplicatesNode = function(a,b) {
-    return (a.from === b.to || a.to === b.from && a.from == b.from || a.to == b.to);
   }
 
   $scope.getColor = function(bw) {
@@ -352,8 +331,6 @@ ngElastic.controller('mapController', function($scope, $http, $routeParams, $win
     else
       return '#4D72E3';
   }
-
-  // Remove Duplicates Ends
 
   // Remove Duplicates Starts
   $scope.addToArray = function(val1, val2) {
