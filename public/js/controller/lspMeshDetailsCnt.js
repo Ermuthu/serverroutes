@@ -34,8 +34,18 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     "text": "APAC"
   }];
   $scope.loadAll;
-  $scope.cnt = $routeParams.cnt;
   $scope.flag = $routeParams.svflag == undefined ? false : $routeParams.svflag;
+
+  if($routeParams.cnt == 'region_r1' || $routeParams.cnt == 'region_r2' || $routeParams.cnt == 'region_r3' || $routeParams.tcksrc == 'region_r1' || $routeParams.tcksrc == 'region_r2' || $routeParams.tcksrc == 'region_r3'){
+    if($routeParams.tcksrc == 'region_r1' || $routeParams.tcksrc == 'region_r2' || $routeParams.tcksrc == 'region_r3') {
+      $scope.cntSrc = $routeParams.tcksrc;
+      $scope.cnt = $routeParams.cnt;
+    } else {
+      $scope.cntSrc = $routeParams.cnt;
+    }
+  } else {
+    $scope.cnt = $routeParams.cnt;
+  }
 
   // Load initially when the table page called.
   $scope.initTable = function() {
@@ -129,7 +139,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
         $http.get('/api/lspmesh/source/' + $scope.cnt).success(function(d) {
           $scope.loadOneItemPerSec(d);
         });
-      } else if ($scope.cnt == 'amr' || $scope.cnt == 'emeia' || $scope.cnt == 'apac') {
+      } else if ($scope.cnt == 'amr' || $scope.cnt == 'emeia' || $scope.cnt == 'apac' || $scope.cntSrc == 'region_r1' || $scope.cntSrc == 'region_r2' || $scope.cntSrc == 'region_r3') {
         $scope.label = "LSP Mesh Detail - Active Router - " + _.upperCase($scope.cnt);
         // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
         $http.get('/api/lspmesh/source/bit_map').success(function(d) {
@@ -184,8 +194,18 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
           }
         });
       } else {
+        // var key;
+        // if($scope.cntSrc == '1')
+        //   key = "AMR";
+        // else if($scope.cntSrc == '2')
+        //   key = "EMEIA";
+        // else
+        //   key = "APAC";
         $scope.label = "LSP Mesh Detail - Active Router - " + $scope.cnt;
         // $http.get('/proxy/lsp_grid_complete/stats/_search?size=10000&pretty&query:matchAll&sort=sort_rtr:asc&_source=pri_cnt').success(function(d) {
+        // $http.get('/proxy/lsp_grid/stats/_search?size=10000&sort=sort_rtr:asc&q=region:'+$scope.cntSrc+'&_source=bit_map,src_rtr').success(function(d) {
+        //   $scope.loadOneItemPerSec(d);
+        // });
         $http.get('/api/lspmesh/source/' + $scope.cnt).success(function(d) {
           $scope.loadOneItemPerSec(d);
         });
@@ -211,7 +231,11 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     var cnt;
     if (cnt == null)
       cnt = "bit_map";
-    $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag;
+    if(cnt == 'region_r1' || cnt == 'region_r2' || cnt == 'region_r3'){
+      $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag;
+    } else {
+      $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag + '/' + $scope.cntSrc;
+    }
   }
 
   // load header

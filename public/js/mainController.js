@@ -133,7 +133,7 @@ ngElastic.config(['$routeProvider', '$locationProvider' , 'cfpLoadingBarProvider
     templateUrl: 'views/lspmeshstateview.html',
     controller: 'lspMeshDetailsStateViewController'
   }).
-  when('/dropdown/:cnt/:svflag?', {
+  when('/dropdown/:cnt/:svflag?/:tcksrc?', {
     templateUrl: 'views/lspmeshcnt.html',
     controller: 'lspMeshDetailsCntController'
   }).
