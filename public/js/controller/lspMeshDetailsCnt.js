@@ -13,7 +13,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
     "value": "ter_cnt",
     "text": "Tertiary"
   }];
-  $scope.statusSourceDD = [{
+  $scope.statusSourceDD = [{ "value": "source", "text": "Source" }, {
     "value": "region_r1",
     "text": "AMR"
   }, {
@@ -35,6 +35,7 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
   }];
   $scope.loadAll;
   $scope.flag = $routeParams.svflag == undefined ? false : $routeParams.svflag;
+  $scope.cntSrc = "source";
 
   if($routeParams.cnt == 'region_r1' || $routeParams.cnt == 'region_r2' || $routeParams.cnt == 'region_r3' || $routeParams.tcksrc == 'region_r1' || $routeParams.tcksrc == 'region_r2' || $routeParams.tcksrc == 'region_r3'){
     if($routeParams.tcksrc == 'region_r1' || $routeParams.tcksrc == 'region_r2' || $routeParams.tcksrc == 'region_r3') {
@@ -233,6 +234,8 @@ ngElastic.controller('lspMeshDetailsCntController', function($scope, $http, $tim
       cnt = "bit_map";
     if(cnt == 'region_r1' || cnt == 'region_r2' || cnt == 'region_r3'){
       $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag;
+    } else if(cnt == "source") {
+      $window.location.href = '#/lspmeshdetails';
     } else {
       $window.location.href = '#/dropdown/' + cnt + '/' + $scope.flag + '/' + $scope.cntSrc;
     }
