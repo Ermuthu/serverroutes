@@ -142,8 +142,8 @@ ngElastic.config(['$routeProvider', '$locationProvider' , 'cfpLoadingBarProvider
     controller: 'graphController'
   }).
   when('/map', {
-    templateUrl: 'views/map.html',
-    controller: 'mapController'
+    templateUrl: 'views/mapzoom.html',
+    controller: 'mapZoomController'
   }).
   when('/map/:sourcenames', {
     templateUrl: 'views/maphighlight.html',

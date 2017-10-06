@@ -1,0 +1,11 @@
+<style>
+  .small p {
+    width: 300px;
+    font-size: 8px;
+  }
+</style>
+<div ng-init="initMapController()">
+  <span ng-hide="2>1" id="SPACE"></span>
+  <label><input type="checkbox" ng-click="onIsYSpacedToggled()" checked="checked" />Is Y Axis Spaced?</label>
+  <div id="myDiagramDiv" style="border: 1px solid #FFF; width:3650px; height:1060px"></div>
+</div>
