@@ -59,18 +59,30 @@ ngElastic.controller('tableController', function($scope, $http) {
   	   		statSource = d._source;
 				// console.log("$scope.dataset",$scope.newObjectOdd);
   		});
+  		_.map($scope.dataset, function(d) {
+				$scope.$watch('limit', function(limit) {
+					if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
+						$scope.limit = d._source.heading.length;
+						$scope.heading = _.take(d._source.heading, $scope.limit);
+					}});
+					// thead (date)
+					$scope.heading = _.take(d._source.heading, $scope.limit);
+				// });
+			});
 		});
 
 		// watch limit
-		_.map($scope.dataset, function(d) {
-			$scope.$watch('limit', function(limit) {
-				if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
-					$scope.limit = d._source.heading.length;
-				}
-				// thead (date)
-				$scope.heading = _.take(d._source.heading, $scope.limit);
-			});
-		});
+		// _.map($scope.dataset, function(d) {
+		// 	$scope.$watch('limit', function(limit) {
+		// 		console.log("$scope.radio.value");
+		// 		if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
+		// 			$scope.limit = d._source.heading.length;
+		// 		}});
+		// 		// thead (date)
+		// 		$scope.heading = _.take(d._source.heading, $scope.limit);
+		// 		console.log($scope.heading);
+		// 	// });
+		// });
 		// $http.get('/proxy/lsp_grid/stats/_search?size=10000&pretty&query:matchAll').success(function(d) {
 		$http.get('/api/tablestats').success(function(d) {
 			$scope.tableStats = d.hits.hits;
@@ -150,6 +162,15 @@ ngElastic.controller('tableController', function($scope, $http) {
 		}
 		$scope.dataset = $scope.defaultDataSetCopy;
 	};
+
+	$scope.mergeCol = function(c1, c2, c3) {
+		var mixCols;
+		if(c3 == 'c1')
+			mixCols = _.concat(c1+' ('+c2+')');
+		else
+			mixCols = _.concat(c1+': '+c2);
+		return mixCols;
+	}
 
 	// Reset All Filter
 	$scope.resetAll = function() {

@@ -1,23 +1,36 @@
 /* table.js */
 
-.tableMainClass { 
-  width: 446px; 
-  overflow-x:scroll;  
-  margin-left:720px; 
-  overflow-y:visible;
-  padding-bottom:1px;
+.fixedCols th:last-child, .fixedCols td:last-child{
+  border-right: 5px solid #EEE;
 }
-.theadWrap {
-  margin-top: -39px;
-  border-top: 1px solid #CCC;
+.scrollableTableCols th:first-child, .scrollableTableCols td:first-child{
+  border-left: 1px solid #EEE;
 }
-.headcol {
-  position: absolute;
-  left: 0;
-  top: auto;
-  border-right: 0px none black;
-  border-top-width: 3px;
-  min-width: 100px;
+.table-container {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+table.table-font-size{
+  float: left;
+  font-size: 10px;
+}
+
+th{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+td{
+  border: 1px solid black;
+  padding: 10px;
+  margin: 0;
+  white-space: nowrap
+}
+
+.scrollableTableCols {
+  overflow: auto;
 }
 
 /* Global */
