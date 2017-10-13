@@ -1,7 +1,58 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li ng-repeat="(key, value) in sidebarList"><span class="rect-bar blue"></span><a href="">{{value}}</a></li>
+      </ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" ng-init="initTable()">
+			<h1>{{table}}</h1>
+
+			<div class="table-container" style="margin-bottom: 50px;">
+				<div class="fixedCols">
+					<table class="table-bordered table-striped table-font-size">
+						<thead>
+							<th>Partner (AS)</th>
+							<th>Device: Interface</th>
+							<th>Partner Type</th>
+							<th>Capacity <br/> (Gbps)</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, value) in dataset">
+								<td ng-repeat="a in mergeCol(value._source.partner,value._source.AS,'c1') track by $index">{{a}}</td>
+								<td ng-repeat="a in mergeCol(value._source.device,value._source.interface,'c2') track by $index">{{a}}</td>
+								<td>{{value._source.partner_type}}</td>
+								<td>{{value._source.speed}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="scrollableTableCols">
+					<table class="table-bordered table-striped table-font-size">
+						<thead>
+							<th ng-repeat="h in heading track by $index"><span>{{h}}</span></th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, value) in dataset">
+								<td
+									ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
+									ng-style="{'background-color': '{{colors[$index]}}'}"
+								>
+									<span ng-if="v == '?'">?</span><span>{{v | number : 1}}</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container" ng-init="initTable()">
 	<h1>{{table}}</h1>
 
-	<div class="table-container" style="margin-bottom: 50px;">
+	<!-- <div class="table-container" style="margin-bottom: 50px;">
 		<div class="fixedCols">
 			<table class="table-bordered table-striped table-font-size">
 				<thead>
@@ -37,7 +88,7 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div> -->
 	
 	<!-- search, Limit and direction dropdown's and RESET ALL Button -->
 	<div class="col-sm-12 form-inline" style="margin-bottom: 2em;">

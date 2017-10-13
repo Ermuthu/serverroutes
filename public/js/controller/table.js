@@ -2,6 +2,9 @@ ngElastic.controller('tableController', function($scope, $http) {
 	// Title
 	$scope.table = "Table";
 
+	// sidebar dummy data
+	$scope.sidebarList = ["krsel6-bbisp-gw1", "jptyo5-bbisp-gw2", "hkhkg1-bbisp-gw2", "ussea4-bb-cr1", "usqas3-bb-pe1"];
+
 	// set flag for expand/collapse
  	$scope.isCollapsed = true;
   $scope.isCollapseMpls = true;
