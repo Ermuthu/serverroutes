@@ -1,9 +1,22 @@
-ngElastic.controller('tableController', function($scope, $http) {
+ngElastic.controller('tableController', function($scope, $http, DTOptionsBuilder) {
+ 	var vm = this;
+  vm.dtOptions = DTOptionsBuilder.newOptions()
+    // .withOption('scrollCollapse', true)
+    .withOption('searching', false)
+    .withOption('ordering', false)
+    .withOption('bInfo', false)
+    .withOption('paging', false)
+    .withOption('scrollY', '300px')
+    .withOption('scrollX', true)
+    .withFixedColumns({
+      leftColumns: 2
+    });
 	// Title
 	$scope.table = "Table";
 
 	// sidebar dummy data
 	$scope.sidebarList = ["krsel6-bbisp-gw1", "jptyo5-bbisp-gw2", "hkhkg1-bbisp-gw2", "ussea4-bb-cr1", "usqas3-bb-pe1"];
+	$scope.fixedTableHeader = ["Partner (AS)", "Device: Interface", "Partner Type", "Capacity (Gbps)"]
 
 	// set flag for expand/collapse
  	$scope.isCollapsed = true;
@@ -66,10 +79,12 @@ ngElastic.controller('tableController', function($scope, $http) {
 				$scope.$watch('limit', function(limit) {
 					if($scope.limit == 'All' || limit==undefined || $scope.limit > d._source.heading.length){
 						$scope.limit = d._source.heading.length;
-						$scope.heading = _.take(d._source.heading, $scope.limit);
+						// $scope.heading = _.take(d._source.heading, $scope.limit);
+						$scope.heading = _.take(d._source.heading, 30);
 					}});
 					// thead (date)
-					$scope.heading = _.take(d._source.heading, $scope.limit);
+					// $scope.heading = _.take(d._source.heading, $scope.limit);
+					$scope.heading = _.take(d._source.heading, 30);
 				// });
 			});
 		});

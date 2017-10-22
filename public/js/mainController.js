@@ -1,4 +1,4 @@
-var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap', 'infinite-scroll', 'ngAnimate', 'angular-loading-bar']);
+var ngElastic = angular.module('ngElastic',['ngRoute', 'nvd3', 'ui.bootstrap', 'infinite-scroll', 'ngAnimate', 'angular-loading-bar', 'fixedTableHeader', 'datatables', 'datatables.fixedcolumns']);
 
 ngElastic.filter('typesFilter', function() {
   return function(clients, selectedCompany) {

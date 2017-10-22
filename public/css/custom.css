@@ -2,6 +2,7 @@ body {
   padding-top: 50px;
 }
 
+/* Sidebar navigation */
 .rect-bar {
   /*float: left;*/
   position: absolute;
@@ -10,12 +11,9 @@ body {
   margin: 6px;
   border: 1px solid rgb(0, 63, 255);
 }
-
 .blue {
   background: rgb(0, 63, 255);
 }
-
-/* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px;
   margin-bottom: 20px;
@@ -32,7 +30,6 @@ body {
 }
 
 /* table.js */
-
 .fixedCols th:last-child, .fixedCols td:last-child{
   border-right: 5px solid #EEE;
 }
@@ -45,24 +42,49 @@ body {
   display: inline-block;
 }
 
-table.table-font-size{
+/*table.table-font-size{
   float: left;
+  font-size: 10px;
+}*/
+
+.fixedTable td, .scrollableTable td{
+  padding: 10px;
+  /*margin: 0;*/
+  white-space: nowrap
+}
+.fixedTable th, .scrollableTable th{
+  padding: 10px;
+}
+.scrollableTable th {
+  height: 44px;
+}
+.fixedTable {
+  overflow: auto;
+  width: 41%;
+  float: left;
+}
+.fixed-table-style {
+  height: 310px;
+  font-size: 10px;
+}
+.scrollableTable {
+  overflow: auto;
+  width: 59%;
+}
+.scroll-table-style {
+  height: 310px;
   font-size: 10px;
 }
 
-th{
-  border: 1px solid black;
-  padding: 10px;
+.fixedCols {
+  height: 377px;
+  overflow: auto;
+  width: 42%;
+  float: left;
 }
-
-td{
-  border: 1px solid black;
-  padding: 10px;
-  margin: 0;
-  white-space: nowrap
-}
-
 .scrollableTableCols {
+  height: 377px;
+  width: 58%;
   overflow: auto;
 }
 
@@ -84,6 +106,10 @@ td{
 }
 
 /* Global */
+.remove-anchor-style, .remove-anchor-style:hover {
+  text-decoration:none;
+  color:white;
+}
 .white-pre{
   white-space: pre;
 }.
@@ -485,8 +511,8 @@ td{
   background-color: grey;
 }
 
-// ### Main spinner ###
-// Add an overlay to the screen when using the loading bar
+/*### Main spinner ###
+Add an overlay to the screen when using the loading bar*/
 #loading-bar{
   pointer-events: all;
   z-index: 99999;

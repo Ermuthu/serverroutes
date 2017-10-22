@@ -1,21 +1,149 @@
-<div class="container-fluid">
+<style>
+  #showcase-fixedcolumns_wrapper th,
+  #showcase-fixedcolumns_wrappertd {
+    white-space: nowrap;
+  }
+  #showcase-fixedcolumns_wrapper.dataTables_wrapper {
+    width: 70%;
+    /*font-size: 10px;*/
+    margin: 0 auto;
+  }
+  .DTFC_LeftHeadWrapper table, .DTFC_LeftBodyWrapper table {
+  	font-size: 10px;
+  }
+  .dataTables_scrollHeadInner table {
+  	font-size: 10px;
+  }
+  .dataTables_scrollBody table {
+  	font-size: 10px;
+  	margin: 0;
+  }
+</style>
+<div class="container-fluid" ng-controller="tableController as showCase">
 	<div class="row">
+		<!-- Sidebar -->
 		<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar">
 				<li ng-repeat="(key, value) in sidebarList"><span class="rect-bar blue"></span><a href="">{{value}}</a></li>
       </ul>
 		</div>
+
+		<!-- Main Block(Table) -->
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" ng-init="initTable()">
 			<h1>{{table}}</h1>
+			<div class="row" style="margin: 25px 0;">
+				<div class="col-sm-6">
+					<!-- Input Textbox and Clear Button -->
+					<div class="col-sm-9" style="padding-right: 0;">
+						<input type="text" class="form-control" ng-model="_searchQuery._source.device" placeholder="Type a Partner, Partner Type, ASN, Device/Interface" ng-change="graphFilter()">
+					</div>
+					<div class="col-sm-3" style="padding-left: 0;">
+						<div class="btn btn-default reset-btn"><span class="glyphicon glyphicon-refresh"></span> Clear</div>
+					</div>
+				</div>
+				<!--Filters for  12-Hours/1-Day/3-Days/7-Days -->
+				<div class="col-sm-offset-2 col-sm-4">
+			    <div class="btn-group">
+		        <label class="btn btn-primary" ng-model="radioModel"><a class="remove-anchor-style" href="#/traffictwelvehours">12-Hours</a></label>
+		        <label class="btn btn-primary" ng-model="radioModel"><a class="remove-anchor-style" href="#/traffic">1-Day</a></label>
+		        <label class="btn btn-primary" ng-model="radioModel"><a class="remove-anchor-style" href="#/trafficdayschart">3-Days</a></label>
+		        <label class="btn btn-primary" ng-model="radioModel"><a class="remove-anchor-style" href="#/trafficSevenDayschart">7-Days</a></label>
+			    </div>
+				</div>
+			</div>
+			<!-- Heading -->
+			<p style="font-size: 16px; font-family:Myriad Set,Lucida Grande,Lucida Sans Unicode,Helvetica Neue,Helvetica,Arial,sans-serif;color: #333;">Partner Link Utilization</p>
+	
+			<!-- Table using DataTables Directive -->
+			<!-- <table class="table table-bordered" id="showcase-fixedcolumns" datatable="" dt-options="showCase.dtOptions">
+				<thead>
+					<tr>
+            <th>Partner (AS)</th>
+						<th>Device: Interface</th>
+						<th>Partner Type</th>
+						<th>Capacity <br/> (Gbps)</th>
+          </tr>
+        </thead>
+				<tbody>
+					<tr ng-repeat="(key, value) in dataset">
+						<td ng-repeat="a in mergeCol(value._source.partner,value._source.AS,'c1') track by $index">{{a}}</td>
+						<td ng-repeat="a in mergeCol(value._source.device,value._source.interface,'c2') track by $index">{{a}}</td>
+						<td>{{value._source.partner_type}}</td>
+						<td>{{value._source.speed}}</td>
+						<td ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index" ng-style="{'background-color': '{{colors[$index]}}'}">
+							<span ng-if="v == '?'">?</span><span>{{v | number : 1}}</span>
+						</td>
+				</tbody>
+    	</table> -->
+			
+			<!-- <table id="example"  style="font-size: 12px;" class="table table-bordered table-striped" width="100%">
+        <thead>
+          <tr>
+            <th>Partner (AS)</th>
+						<th>Device: Interface</th>
+						<th>Partner Type</th>
+						<th>Capacity <br/> (Gbps)</th>
+						<th ng-repeat="h in heading track by $index"><span>{{h}}</span></th>
+          </tr>
+        </thead>
+        <tbody>
+					<tr ng-repeat="(key, value) in dataset">
+						<td ng-repeat="a in mergeCol(value._source.partner,value._source.AS,'c1') track by $index">{{a}}</td>
+						<td ng-repeat="a in mergeCol(value._source.device,value._source.interface,'c2') track by $index">{{a}}</td>
+						<td>{{value._source.partner_type}}</td>
+						<td>{{value._source.speed}}</td>
+						<td ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index" ng-style="{'background-color': '{{colors[$index]}}'}">
+							<span ng-if="v == '?'">?</span><span>{{v | number : 1}}</span>
+						</td>
+					</tr>
+    		</tbody>
+    	</table> -->
 
-			<div class="table-container" style="margin-bottom: 50px;">
+			<div>
+				<!-- Left Table Columns (Fixed - Vertical Scroll) -->
+				<div id="scrollable-table" class="fixedTable">
+					<table class="table table-striped table-bordered fixed-table-style" fixed-header>
+		        <thead>
+		          <tr>
+		            <th ng-repeat="(key, value) in fixedTableHeader">{{value}}</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		        	<tr ng-repeat="(key, value) in dataset">
+								<td ng-repeat="a in mergeCol(value._source.partner,value._source.AS,'c1') track by $index">{{a}}</td>
+								<td ng-repeat="a in mergeCol(value._source.device,value._source.interface,'c2') track by $index">{{a}}</td>
+								<td>{{value._source.partner_type}}</td>
+								<td>{{value._source.speed}}</td>
+							</tr>
+		        </tbody>
+		    	</table>
+	    	</div>
+	    	<!-- Right Table Columns (Vertical and Horizontal Scroll) -->
+	    	<div id="scrollable-table" class="scrollableTable">
+	    		<table class="table table-striped table-bordered scroll-table-style" fixed-header>
+		        <thead>
+		          <tr>
+		          	<th ng-repeat="h in heading track by $index"><span>{{h}}</span></th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr ng-repeat="(key, value) in dataset">
+								<td
+									ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
+									ng-style="{'background-color': '{{colors[$index]}}'}"
+								>
+									<span ng-if="v == '?'">?</span><span>{{v | number : 1}}</span>
+								</td>
+							</tr>
+		        </tbody>
+		    	</table>
+	    	</div>
+    	</div>
+			<!-- <div class="table-container" style="margin-bottom: 50px;">
 				<div class="fixedCols">
 					<table class="table-bordered table-striped table-font-size">
 						<thead>
-							<th>Partner (AS)</th>
-							<th>Device: Interface</th>
-							<th>Partner Type</th>
-							<th>Capacity <br/> (Gbps)</th>
+							<th ng-repeat="(key, value) in fixedTableHeader">{{value}}</th>
 						</thead>
 						<tbody>
 							<tr ng-repeat="(key, value) in dataset">
@@ -44,51 +172,15 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
 
+
+<!-- Old Code - commented on(Oct-22) -->
 <div class="container" ng-init="initTable()">
 	<h1>{{table}}</h1>
-
-	<!-- <div class="table-container" style="margin-bottom: 50px;">
-		<div class="fixedCols">
-			<table class="table-bordered table-striped table-font-size">
-				<thead>
-					<th style="padding: 20px;">Partner (AS)</th>
-					<th style="padding: 20px;">Device: Interface</th>
-					<th style="padding: 20px;">Partner Type</th>
-					<th style="padding: 20px;">Capacity <br/> (Gbps)</th>
-				</thead>
-				<tbody>
-					<tr ng-repeat="(key, value) in dataset">
-						<td ng-repeat="a in mergeCol(value._source.partner,value._source.AS,'c1') track by $index">{{a}}</td>
-						<td ng-repeat="a in mergeCol(value._source.device,value._source.interface,'c2') track by $index">{{a}}</td>
-						<td>{{value._source.partner_type}}</td>
-						<td>{{value._source.speed}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="scrollableTableCols">
-			<table class="table-bordered table-striped table-font-size">
-				<thead>
-					<th style="padding: 26px;" ng-repeat="h in heading track by $index"><span>{{h}}</span></th>
-				</thead>
-				<tbody>
-					<tr ng-repeat="(key, value) in dataset">
-						<td
-							ng-repeat="(k, v) in getDescValue(value._source.b_w) track by $index"
-							ng-style="{'background-color': '{{colors[$index]}}'}"
-						>
-							<span ng-if="v == '?'">?</span><span>{{v | number : 1}}</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div> -->
 	
 	<!-- search, Limit and direction dropdown's and RESET ALL Button -->
 	<div class="col-sm-12 form-inline" style="margin-bottom: 2em;">
